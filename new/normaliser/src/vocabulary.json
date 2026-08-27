@@ -1,0 +1,9191 @@
+{
+  "facets": {
+    "project": [
+      {
+        "canonical": "Wave City",
+        "aliases": [
+          "wave city",
+          "wave-city",
+          "wavecity"
+        ],
+        "variants": [
+          "Wave City"
+        ],
+        "row_count": 473253,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Wave Estate",
+        "aliases": [
+          "wave estate",
+          "wave-estate",
+          "waveestate"
+        ],
+        "variants": [
+          "Wave Estate"
+        ],
+        "row_count": 44542,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WMCC Sec 32",
+        "aliases": [
+          "wmcc",
+          "wmcc sec",
+          "wmcc sec 32",
+          "wmcc-sec-32",
+          "wmccsec32"
+        ],
+        "variants": [
+          "WMCC Sec 32"
+        ],
+        "row_count": 22873,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sun City",
+        "aliases": [
+          "sun city",
+          "sun-city",
+          "suncity"
+        ],
+        "variants": [
+          "Sun City"
+        ],
+        "row_count": 4620,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Wave One",
+        "aliases": [
+          "wave one",
+          "wave-one",
+          "waveone"
+        ],
+        "variants": [
+          "Wave One"
+        ],
+        "row_count": 1121,
+        "tables": [
+          "case",
+          "event",
+          "opportunity"
+        ]
+      }
+    ],
+    "product": [
+      {
+        "canonical": "DREAM HOMES",
+        "aliases": [
+          "dream homes",
+          "dream-homes",
+          "dreamhomes"
+        ],
+        "variants": [
+          "DREAM HOMES"
+        ],
+        "row_count": 101209,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Veridia",
+        "aliases": [
+          "veridia"
+        ],
+        "variants": [
+          "Veridia",
+          "veridia"
+        ],
+        "row_count": 70380,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "EDEN",
+        "aliases": [
+          "eden"
+        ],
+        "variants": [
+          "EDEN"
+        ],
+        "row_count": 55369,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "EXECUTIVE FLOORS",
+        "aliases": [
+          "executive floors",
+          "executive-floors",
+          "executivefloors"
+        ],
+        "variants": [
+          "EXECUTIVE FLOORS"
+        ],
+        "row_count": 53192,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "ELIGO",
+        "aliases": [
+          "eligo"
+        ],
+        "variants": [
+          "ELIGO"
+        ],
+        "row_count": 49517,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WAVE FLOOR",
+        "aliases": [
+          "wave floor",
+          "wave-floor",
+          "wavefloor"
+        ],
+        "variants": [
+          "WAVE FLOOR"
+        ],
+        "row_count": 41099,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "NEW  PLOTS",
+        "aliases": [
+          "new plots",
+          "new-plots",
+          "newplots"
+        ],
+        "variants": [
+          "NEW  PLOTS",
+          "NEW PLOTS"
+        ],
+        "row_count": 25602,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "OLD PLOTS",
+        "aliases": [
+          "old plots",
+          "old-plots",
+          "oldplots"
+        ],
+        "variants": [
+          "OLD PLOTS"
+        ],
+        "row_count": 23370,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WAVE GARDEN",
+        "aliases": [
+          "wave garden",
+          "wave-garden",
+          "wavegarden"
+        ],
+        "variants": [
+          "WAVE GARDEN"
+        ],
+        "row_count": 18199,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "AMORE",
+        "aliases": [
+          "amore"
+        ],
+        "variants": [
+          "AMORE"
+        ],
+        "row_count": 13791,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WAVE GALLERIA",
+        "aliases": [
+          "wave galleria",
+          "wave-galleria",
+          "wavegalleria"
+        ],
+        "variants": [
+          "WAVE GALLERIA"
+        ],
+        "row_count": 11568,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "SWAMANORATH",
+        "aliases": [
+          "swamanorath"
+        ],
+        "variants": [
+          "SWAMANORATH"
+        ],
+        "row_count": 10205,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "PLOTS-RES",
+        "aliases": [
+          "plots res",
+          "plots-res",
+          "plotsres"
+        ],
+        "variants": [
+          "PLOTS-RES"
+        ],
+        "row_count": 9886,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WAVE GARDEN GH2-Ph-2",
+        "aliases": [
+          "wave garden gh2 ph",
+          "wave garden gh2 ph 2",
+          "wave-garden-gh2-ph-2",
+          "wavegardengh2ph2"
+        ],
+        "variants": [
+          "WAVE GARDEN GH2-Ph-2"
+        ],
+        "row_count": 8354,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "LIG_001_(310)",
+        "aliases": [
+          "lig",
+          "lig 001",
+          "lig 001 (310)",
+          "lig-001-(310)",
+          "lig001",
+          "lig001(310)"
+        ],
+        "variants": [
+          "LIG_001_(310)"
+        ],
+        "row_count": 5302,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "HARMONY GREENS",
+        "aliases": [
+          "harmony greens",
+          "harmony-greens",
+          "harmonygreens"
+        ],
+        "variants": [
+          "HARMONY GREENS"
+        ],
+        "row_count": 4653,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "EWS_001_(410)",
+        "aliases": [
+          "ews",
+          "ews 001",
+          "ews 001 (410)",
+          "ews-001-(410)",
+          "ews001",
+          "ews001(410)"
+        ],
+        "variants": [
+          "EWS_001_(410)"
+        ],
+        "row_count": 4089,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "EWS_P2",
+        "aliases": [
+          "ews p2",
+          "ews-p2",
+          "ewsp2"
+        ],
+        "variants": [
+          "EWS_P2"
+        ],
+        "row_count": 4085,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "EWS",
+        "aliases": [
+          "ews"
+        ],
+        "variants": [
+          "EWS"
+        ],
+        "row_count": 3978,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WRC OLD PLOT",
+        "aliases": [
+          "wrc old plot",
+          "wrc-old-plot",
+          "wrcoldplot"
+        ],
+        "variants": [
+          "WRC OLD PLOT"
+        ],
+        "row_count": 2916,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "LIG_P2",
+        "aliases": [
+          "lig p2",
+          "lig-p2",
+          "ligp2"
+        ],
+        "variants": [
+          "LIG_P2"
+        ],
+        "row_count": 2688,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "PRIME FLOORS",
+        "aliases": [
+          "prime floors",
+          "prime-floors",
+          "primefloors"
+        ],
+        "variants": [
+          "PRIME FLOORS"
+        ],
+        "row_count": 2500,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "HSSC",
+        "aliases": [
+          "hssc"
+        ],
+        "variants": [
+          "HSSC"
+        ],
+        "row_count": 2384,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "LIVORK",
+        "aliases": [
+          "livork"
+        ],
+        "variants": [
+          "LIVORK"
+        ],
+        "row_count": 2330,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Mayfair Park",
+        "aliases": [
+          "mayfair park",
+          "mayfair-park",
+          "mayfairpark"
+        ],
+        "variants": [
+          "Mayfair Park"
+        ],
+        "row_count": 2184,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "SAMRIDDHI HOMES-EWS",
+        "aliases": [
+          "samriddhi homes ews",
+          "samriddhi-homes-ews",
+          "samriddhihomesews"
+        ],
+        "variants": [
+          "SAMRIDDHI HOMES-EWS"
+        ],
+        "row_count": 2067,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Golf Range",
+        "aliases": [
+          "golf range",
+          "golf-range",
+          "golfrange"
+        ],
+        "variants": [
+          "Golf Range"
+        ],
+        "row_count": 1662,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "WAVE FLOOR 99",
+        "aliases": [
+          "wave floor",
+          "wave floor 99",
+          "wave-floor-99",
+          "wavefloor99"
+        ],
+        "variants": [
+          "WAVE FLOOR 99"
+        ],
+        "row_count": 1350,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "METRO MART",
+        "aliases": [
+          "metro mart",
+          "metro-mart",
+          "metromart"
+        ],
+        "variants": [
+          "METRO MART"
+        ],
+        "row_count": 1342,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "ARMONIA VILLA",
+        "aliases": [
+          "armonia villa",
+          "armonia-villa",
+          "armoniavilla"
+        ],
+        "variants": [
+          "ARMONIA VILLA"
+        ],
+        "row_count": 1184,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WAVE FLOOR 85",
+        "aliases": [
+          "wave floor",
+          "wave floor 85",
+          "wave-floor-85",
+          "wavefloor85"
+        ],
+        "variants": [
+          "WAVE FLOOR 85"
+        ],
+        "row_count": 1128,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WRC PLOTS",
+        "aliases": [
+          "wrc plots",
+          "wrc-plots",
+          "wrcplots"
+        ],
+        "variants": [
+          "WRC PLOTS"
+        ],
+        "row_count": 966,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "TRUCIA",
+        "aliases": [
+          "trucia"
+        ],
+        "variants": [
+          "TRUCIA"
+        ],
+        "row_count": 768,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "SAMRIDDHI HOMES-LIG",
+        "aliases": [
+          "samriddhi homes lig",
+          "samriddhi-homes-lig",
+          "samriddhihomeslig"
+        ],
+        "variants": [
+          "SAMRIDDHI HOMES-LIG"
+        ],
+        "row_count": 724,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "WRC FLOORS",
+        "aliases": [
+          "wrc floors",
+          "wrc-floors",
+          "wrcfloors"
+        ],
+        "variants": [
+          "WRC FLOORS"
+        ],
+        "row_count": 713,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "SILVER",
+        "aliases": [
+          "silver"
+        ],
+        "variants": [
+          "SILVER"
+        ],
+        "row_count": 667,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "DREAM BAZAAR",
+        "aliases": [
+          "dream bazaar",
+          "dream-bazaar",
+          "dreambazaar"
+        ],
+        "variants": [
+          "DREAM BAZAAR"
+        ],
+        "row_count": 591,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WBT 1",
+        "aliases": [
+          "wbt",
+          "wbt 1",
+          "wbt-1",
+          "wbt1"
+        ],
+        "variants": [
+          "WBT 1"
+        ],
+        "row_count": 585,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "LIG",
+        "aliases": [
+          "lig"
+        ],
+        "variants": [
+          "LIG"
+        ],
+        "row_count": 528,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "IRENIA",
+        "aliases": [
+          "irenia"
+        ],
+        "variants": [
+          "IRENIA"
+        ],
+        "row_count": 403,
+        "tables": [
+          "case",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "VASILIA",
+        "aliases": [
+          "vasilia"
+        ],
+        "variants": [
+          "VASILIA"
+        ],
+        "row_count": 355,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "GOLD",
+        "aliases": [
+          "gold"
+        ],
+        "variants": [
+          "GOLD"
+        ],
+        "row_count": 287,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "ELEGANTIA",
+        "aliases": [
+          "elegantia"
+        ],
+        "variants": [
+          "ELEGANTIA"
+        ],
+        "row_count": 281,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "PLOTS-RES-IF",
+        "aliases": [
+          "plots res if",
+          "plots-res-if",
+          "plotsresif"
+        ],
+        "variants": [
+          "PLOTS-RES-IF"
+        ],
+        "row_count": 224,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "PLOTS-COMM",
+        "aliases": [
+          "plots comm",
+          "plots-comm",
+          "plotscomm"
+        ],
+        "variants": [
+          "PLOTS-COMM"
+        ],
+        "row_count": 196,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "EDENIA",
+        "aliases": [
+          "edenia"
+        ],
+        "variants": [
+          "EDENIA"
+        ],
+        "row_count": 179,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "SCO",
+        "aliases": [
+          "sco"
+        ],
+        "variants": [
+          "SCO",
+          "SCO."
+        ],
+        "row_count": 176,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Wave Business Square",
+        "aliases": [
+          "wave business square",
+          "wave-business-square",
+          "wavebusinesssquare"
+        ],
+        "variants": [
+          "Wave Business Square"
+        ],
+        "row_count": 138,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "WBT A",
+        "aliases": [
+          "wbt a",
+          "wbt-a",
+          "wbta"
+        ],
+        "variants": [
+          "WBT A"
+        ],
+        "row_count": 131,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "RETAIL",
+        "aliases": [
+          "retail"
+        ],
+        "variants": [
+          "RETAIL"
+        ],
+        "row_count": 113,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "COMM BOOTH",
+        "aliases": [
+          "comm booth",
+          "comm-booth",
+          "commbooth"
+        ],
+        "variants": [
+          "COMM BOOTH"
+        ],
+        "row_count": 110,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "WAVE RESIDENCY",
+        "aliases": [
+          "wave residency",
+          "wave-residency",
+          "waveresidency"
+        ],
+        "variants": [
+          "WAVE RESIDENCY"
+        ],
+        "row_count": 106,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "EMINENCE",
+        "aliases": [
+          "eminence"
+        ],
+        "variants": [
+          "EMINENCE"
+        ],
+        "row_count": 103,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "COMMERCIAL PLOTS",
+        "aliases": [
+          "commercial plots",
+          "commercial-plots",
+          "commercialplots"
+        ],
+        "variants": [
+          "COMMERCIAL PLOTS"
+        ],
+        "row_count": 87,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "INSTITUTIONAL",
+        "aliases": [
+          "institutional"
+        ],
+        "variants": [
+          "INSTITUTIONAL"
+        ],
+        "row_count": 83,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "FSI",
+        "aliases": [
+          "fsi"
+        ],
+        "variants": [
+          "FSI"
+        ],
+        "row_count": 57,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "PLOT-RES-IF",
+        "aliases": [
+          "plot res if",
+          "plot-res-if",
+          "plotresif"
+        ],
+        "variants": [
+          "PLOT-RES-IF"
+        ],
+        "row_count": 55,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "WAVED GARDEN",
+        "aliases": [
+          "waved garden",
+          "waved-garden",
+          "wavedgarden"
+        ],
+        "variants": [
+          "WAVED GARDEN"
+        ],
+        "row_count": 49,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "COURTYARD",
+        "aliases": [
+          "courtyard"
+        ],
+        "variants": [
+          "COURTYARD"
+        ],
+        "row_count": 34,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "VILLAS",
+        "aliases": [
+          "villas"
+        ],
+        "variants": [
+          "VILLAS",
+          "VILLAS."
+        ],
+        "row_count": 22,
+        "tables": [
+          "case",
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "HUBB",
+        "aliases": [
+          "hubb"
+        ],
+        "variants": [
+          "HUBB"
+        ],
+        "row_count": 20,
+        "tables": [
+          "event",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "WRC FSI",
+        "aliases": [
+          "wrc fsi",
+          "wrc-fsi",
+          "wrcfsi"
+        ],
+        "variants": [
+          "WRC FSI"
+        ],
+        "row_count": 19,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "GROUP HOUSING 1",
+        "aliases": [
+          "group housing",
+          "group housing 1",
+          "group-housing-1",
+          "grouphousing1"
+        ],
+        "variants": [
+          "GROUP HOUSING 1"
+        ],
+        "row_count": 15,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "INSTITUTIONAL_WE",
+        "aliases": [
+          "institutional we",
+          "institutional-we",
+          "institutionalwe"
+        ],
+        "variants": [
+          "INSTITUTIONAL_WE"
+        ],
+        "row_count": 9,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "VILLA",
+        "aliases": [
+          "villa"
+        ],
+        "variants": [
+          "VILLA"
+        ],
+        "row_count": 9,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "ARANYAM VALLEY",
+        "aliases": [
+          "aranyam valley",
+          "aranyam-valley",
+          "aranyamvalley"
+        ],
+        "variants": [
+          "ARANYAM VALLEY"
+        ],
+        "row_count": 6,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      }
+    ],
+    "source": [
+      {
+        "canonical": "Digital",
+        "aliases": [
+          "digital"
+        ],
+        "variants": [
+          "Digital"
+        ],
+        "row_count": 284450,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Channel Partner",
+        "aliases": [
+          "channel partner",
+          "channel-partner",
+          "channelpartner"
+        ],
+        "variants": [
+          "Channel Partner"
+        ],
+        "row_count": 24905,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "SMS Campaign",
+        "aliases": [
+          "sms campaign",
+          "sms-campaign",
+          "smscampaign"
+        ],
+        "variants": [
+          "SMS Campaign"
+        ],
+        "row_count": 14380,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Outdoor",
+        "aliases": [
+          "outdoor"
+        ],
+        "variants": [
+          "Outdoor"
+        ],
+        "row_count": 14344,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Print Media",
+        "aliases": [
+          "print media",
+          "print-media",
+          "printmedia"
+        ],
+        "variants": [
+          "Print Media"
+        ],
+        "row_count": 13965,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Transfered",
+        "aliases": [
+          "transfered"
+        ],
+        "variants": [
+          "Transfered"
+        ],
+        "row_count": 8310,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Referral",
+        "aliases": [
+          "referral"
+        ],
+        "variants": [
+          "Referral"
+        ],
+        "row_count": 5034,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Word of mouth",
+        "aliases": [
+          "word of mouth",
+          "word-of-mouth",
+          "wordofmouth"
+        ],
+        "variants": [
+          "Word of mouth"
+        ],
+        "row_count": 4584,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Direct Walkin",
+        "aliases": [
+          "direct walkin",
+          "direct-walkin",
+          "directwalkin"
+        ],
+        "variants": [
+          "Direct Walkin"
+        ],
+        "row_count": 2537,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Unit Shifting",
+        "aliases": [
+          "unit shifting",
+          "unit-shifting",
+          "unitshifting"
+        ],
+        "variants": [
+          "Unit Shifting"
+        ],
+        "row_count": 2530,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Lead Reassigned",
+        "aliases": [
+          "lead reassigned",
+          "lead-reassigned",
+          "leadreassigned"
+        ],
+        "variants": [
+          "Lead Reassigned"
+        ],
+        "row_count": 2354,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Existing customer",
+        "aliases": [
+          "existing customer",
+          "existing-customer",
+          "existingcustomer"
+        ],
+        "variants": [
+          "Existing customer"
+        ],
+        "row_count": 2307,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Unregistered Channel Partner",
+        "aliases": [
+          "unregistered channel partner",
+          "unregistered-channel-partner",
+          "unregisteredchannelpartner"
+        ],
+        "variants": [
+          "Unregistered Channel Partner"
+        ],
+        "row_count": 669,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Electronic Media",
+        "aliases": [
+          "electronic media",
+          "electronic-media",
+          "electronicmedia"
+        ],
+        "variants": [
+          "Electronic Media"
+        ],
+        "row_count": 382,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Events / Exhibitions",
+        "aliases": [
+          "events exhibitions",
+          "events-exhibitions",
+          "eventsexhibitions"
+        ],
+        "variants": [
+          "Events / Exhibitions"
+        ],
+        "row_count": 372,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Reference Sale",
+        "aliases": [
+          "reference sale",
+          "reference-sale",
+          "referencesale"
+        ],
+        "variants": [
+          "Reference Sale"
+        ],
+        "row_count": 120,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Bulk Sale",
+        "aliases": [
+          "bulk sale",
+          "bulk-sale",
+          "bulksale"
+        ],
+        "variants": [
+          "Bulk Sale"
+        ],
+        "row_count": 75,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Direct",
+        "aliases": [
+          "direct"
+        ],
+        "variants": [
+          "Direct"
+        ],
+        "row_count": 48,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Referral Sale",
+        "aliases": [
+          "referral sale",
+          "referral-sale",
+          "referralsale"
+        ],
+        "variants": [
+          "Referral Sale"
+        ],
+        "row_count": 28,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Outbound Campaign",
+        "aliases": [
+          "outbound campaign",
+          "outbound-campaign",
+          "outboundcampaign"
+        ],
+        "variants": [
+          "Outbound Campaign"
+        ],
+        "row_count": 9,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      }
+    ],
+    "subsource": [
+      {
+        "canonical": "Facebook",
+        "aliases": [
+          "facebook"
+        ],
+        "variants": [
+          "Facebook"
+        ],
+        "row_count": 172276,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Google",
+        "aliases": [
+          "google"
+        ],
+        "variants": [
+          "Google"
+        ],
+        "row_count": 44545,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Direct",
+        "aliases": [
+          "direct"
+        ],
+        "variants": [
+          "Direct"
+        ],
+        "row_count": 32836,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Channel Partner",
+        "aliases": [
+          "channel partner",
+          "channel-partner",
+          "channelpartner"
+        ],
+        "variants": [
+          "Channel Partner"
+        ],
+        "row_count": 24921,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Outdoor",
+        "aliases": [
+          "outdoor"
+        ],
+        "variants": [
+          "Outdoor"
+        ],
+        "row_count": 14351,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "SMS Campaign",
+        "aliases": [
+          "sms campaign",
+          "sms-campaign",
+          "smscampaign"
+        ],
+        "variants": [
+          "SMS Campaign",
+          "SMS Campaign."
+        ],
+        "row_count": 13858,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Live Chat",
+        "aliases": [
+          "live chat",
+          "live-chat",
+          "livechat"
+        ],
+        "variants": [
+          "Live Chat"
+        ],
+        "row_count": 8538,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Transfered",
+        "aliases": [
+          "transfered"
+        ],
+        "variants": [
+          "Transfered"
+        ],
+        "row_count": 8311,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Housing.com",
+        "aliases": [
+          "housing com",
+          "housing-com",
+          "housingcom"
+        ],
+        "variants": [
+          "Housing.com"
+        ],
+        "row_count": 5741,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "99 Acres",
+        "aliases": [
+          "99 acres",
+          "99-acres",
+          "99acres"
+        ],
+        "variants": [
+          "99 Acres"
+        ],
+        "row_count": 5727,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Word Of Mouth",
+        "aliases": [
+          "word of mouth",
+          "word-of-mouth",
+          "wordofmouth"
+        ],
+        "variants": [
+          "Word Of Mouth"
+        ],
+        "row_count": 4371,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Magic Bricks",
+        "aliases": [
+          "magic bricks",
+          "magic-bricks",
+          "magicbricks"
+        ],
+        "variants": [
+          "Magic Bricks"
+        ],
+        "row_count": 4354,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Hindustan Hindi",
+        "aliases": [
+          "hindustan hindi",
+          "hindustan-hindi",
+          "hindustanhindi"
+        ],
+        "variants": [
+          "Hindustan Hindi"
+        ],
+        "row_count": 4155,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "External Referral",
+        "aliases": [
+          "external referral",
+          "external-referral",
+          "externalreferral"
+        ],
+        "variants": [
+          "External Referral"
+        ],
+        "row_count": 3141,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Direct Walkin",
+        "aliases": [
+          "direct walkin",
+          "direct-walkin",
+          "directwalkin"
+        ],
+        "variants": [
+          "Direct Walkin"
+        ],
+        "row_count": 2802,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Unit shift",
+        "aliases": [
+          "unit shift",
+          "unit-shift",
+          "unitshift"
+        ],
+        "variants": [
+          "Unit shift"
+        ],
+        "row_count": 2530,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Tribune",
+        "aliases": [
+          "tribune"
+        ],
+        "variants": [
+          "Tribune"
+        ],
+        "row_count": 2421,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Taboola",
+        "aliases": [
+          "taboola"
+        ],
+        "variants": [
+          "Taboola"
+        ],
+        "row_count": 2409,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Existing Customer",
+        "aliases": [
+          "existing customer",
+          "existing-customer",
+          "existingcustomer"
+        ],
+        "variants": [
+          "Existing Customer"
+        ],
+        "row_count": 2308,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Lead Reassigned - CDL",
+        "aliases": [
+          "lead reassigned cdl",
+          "lead-reassigned-cdl",
+          "leadreassignedcdl"
+        ],
+        "variants": [
+          "Lead Reassigned - CDL"
+        ],
+        "row_count": 2227,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Nav Bharat Times",
+        "aliases": [
+          "nav bharat times",
+          "nav-bharat-times",
+          "navbharattimes"
+        ],
+        "variants": [
+          "Nav Bharat Times"
+        ],
+        "row_count": 2070,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Internal Referral",
+        "aliases": [
+          "internal referral",
+          "internal-referral",
+          "internalreferral"
+        ],
+        "variants": [
+          "Internal Referral"
+        ],
+        "row_count": 1891,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Hindustan Times Hindi",
+        "aliases": [
+          "hindustan times hindi",
+          "hindustan-times-hindi",
+          "hindustantimeshindi"
+        ],
+        "variants": [
+          "Hindustan Times Hindi"
+        ],
+        "row_count": 1300,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Amar Ujala",
+        "aliases": [
+          "amar ujala",
+          "amar-ujala",
+          "amarujala"
+        ],
+        "variants": [
+          "Amar Ujala"
+        ],
+        "row_count": 1225,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Dainik Jagran",
+        "aliases": [
+          "dainik jagran",
+          "dainik-jagran",
+          "dainikjagran"
+        ],
+        "variants": [
+          "Dainik Jagran"
+        ],
+        "row_count": 1192,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Social Media-Fb Page",
+        "aliases": [
+          "social media fb page",
+          "social-media-fb-page",
+          "socialmediafbpage"
+        ],
+        "variants": [
+          "Social Media-Fb Page"
+        ],
+        "row_count": 1073,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Youtube",
+        "aliases": [
+          "youtube"
+        ],
+        "variants": [
+          "Youtube"
+        ],
+        "row_count": 1034,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "NP Insertions",
+        "aliases": [
+          "np insertions",
+          "np-insertions",
+          "npinsertions"
+        ],
+        "variants": [
+          "NP Insertions"
+        ],
+        "row_count": 873,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Instagram",
+        "aliases": [
+          "instagram"
+        ],
+        "variants": [
+          "Instagram"
+        ],
+        "row_count": 813,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Google-Call Extension Campaign",
+        "aliases": [
+          "google call extension campaign",
+          "google-call-extension-campaign",
+          "googlecallextensioncampaign"
+        ],
+        "variants": [
+          "Google-Call Extension Campaign"
+        ],
+        "row_count": 675,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Unregistered Channel Partner",
+        "aliases": [
+          "unregistered channel partner",
+          "unregistered-channel-partner",
+          "unregisteredchannelpartner"
+        ],
+        "variants": [
+          "Unregistered Channel Partner"
+        ],
+        "row_count": 671,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Digital Others",
+        "aliases": [
+          "digital others",
+          "digital-others",
+          "digitalothers"
+        ],
+        "variants": [
+          "Digital Others"
+        ],
+        "row_count": 664,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "SFMC",
+        "aliases": [
+          "sfmc"
+        ],
+        "variants": [
+          "SFMC"
+        ],
+        "row_count": 617,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Adgebra",
+        "aliases": [
+          "adgebra"
+        ],
+        "variants": [
+          "Adgebra",
+          "adgebra"
+        ],
+        "row_count": 602,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Whatsapp SMS Campaign",
+        "aliases": [
+          "whatsapp sms campaign",
+          "whatsapp-sms-campaign",
+          "whatsappsmscampaign"
+        ],
+        "variants": [
+          "Whatsapp SMS Campaign"
+        ],
+        "row_count": 553,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Time of India",
+        "aliases": [
+          "time of india",
+          "time-of-india",
+          "timeofindia"
+        ],
+        "variants": [
+          "Time of India"
+        ],
+        "row_count": 317,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Paid Mailer Activity",
+        "aliases": [
+          "paid mailer activity",
+          "paid-mailer-activity",
+          "paidmaileractivity"
+        ],
+        "variants": [
+          "Paid Mailer Activity"
+        ],
+        "row_count": 304,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Cinema Slides",
+        "aliases": [
+          "cinema slides",
+          "cinema-slides",
+          "cinemaslides"
+        ],
+        "variants": [
+          "Cinema Slides"
+        ],
+        "row_count": 248,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "TOI.com",
+        "aliases": [
+          "toi com",
+          "toi-com",
+          "toicom"
+        ],
+        "variants": [
+          "TOI.com"
+        ],
+        "row_count": 245,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Online Events",
+        "aliases": [
+          "online events",
+          "online-events",
+          "onlineevents"
+        ],
+        "variants": [
+          "Online Events"
+        ],
+        "row_count": 226,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "HT.com",
+        "aliases": [
+          "ht com",
+          "ht-com",
+          "htcom"
+        ],
+        "variants": [
+          "HT.com"
+        ],
+        "row_count": 215,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Justdial",
+        "aliases": [
+          "justdial"
+        ],
+        "variants": [
+          "Justdial"
+        ],
+        "row_count": 212,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Adzealous",
+        "aliases": [
+          "adzealous"
+        ],
+        "variants": [
+          "Adzealous"
+        ],
+        "row_count": 202,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Digital Posters",
+        "aliases": [
+          "digital posters",
+          "digital-posters",
+          "digitalposters"
+        ],
+        "variants": [
+          "Digital Posters"
+        ],
+        "row_count": 201,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Print- Others",
+        "aliases": [
+          "print others",
+          "print-others",
+          "printothers"
+        ],
+        "variants": [
+          "Print- Others"
+        ],
+        "row_count": 152,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "RCS",
+        "aliases": [
+          "rcs"
+        ],
+        "variants": [
+          "RCS"
+        ],
+        "row_count": 151,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Events / Exhibitions",
+        "aliases": [
+          "events exhibitions",
+          "events-exhibitions",
+          "eventsexhibitions"
+        ],
+        "variants": [
+          "Events / Exhibitions"
+        ],
+        "row_count": 146,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Radio",
+        "aliases": [
+          "radio"
+        ],
+        "variants": [
+          "Radio"
+        ],
+        "row_count": 133,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Delhi Times",
+        "aliases": [
+          "delhi times",
+          "delhi-times",
+          "delhitimes"
+        ],
+        "variants": [
+          "Delhi Times"
+        ],
+        "row_count": 131,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Lead Reassigned - SDL",
+        "aliases": [
+          "lead reassigned sdl",
+          "lead-reassigned-sdl",
+          "leadreassignedsdl"
+        ],
+        "variants": [
+          "Lead Reassigned - SDL"
+        ],
+        "row_count": 128,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Reference Sale",
+        "aliases": [
+          "reference sale",
+          "reference-sale",
+          "referencesale"
+        ],
+        "variants": [
+          "Reference Sale"
+        ],
+        "row_count": 120,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Career Socially",
+        "aliases": [
+          "career socially",
+          "career-socially",
+          "careersocially"
+        ],
+        "variants": [
+          "Career Socially"
+        ],
+        "row_count": 116,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Internal Mailer Activity",
+        "aliases": [
+          "internal mailer activity",
+          "internal-mailer-activity",
+          "internalmaileractivity"
+        ],
+        "variants": [
+          "Internal Mailer Activity"
+        ],
+        "row_count": 96,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "iAvatarz",
+        "aliases": [
+          "iavatarz"
+        ],
+        "variants": [
+          "iAvatarz"
+        ],
+        "row_count": 93,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Quora",
+        "aliases": [
+          "quora"
+        ],
+        "variants": [
+          "Quora"
+        ],
+        "row_count": 82,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Blog",
+        "aliases": [
+          "blog"
+        ],
+        "variants": [
+          "Blog"
+        ],
+        "row_count": 81,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Bulk Sale",
+        "aliases": [
+          "bulk sale",
+          "bulk-sale",
+          "bulksale"
+        ],
+        "variants": [
+          "Bulk Sale"
+        ],
+        "row_count": 75,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Poster",
+        "aliases": [
+          "poster"
+        ],
+        "variants": [
+          "Poster"
+        ],
+        "row_count": 66,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Mygate",
+        "aliases": [
+          "mygate"
+        ],
+        "variants": [
+          "Mygate"
+        ],
+        "row_count": 58,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "JioStar",
+        "aliases": [
+          "jiostar"
+        ],
+        "variants": [
+          "JioStar"
+        ],
+        "row_count": 54,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Direct Email",
+        "aliases": [
+          "direct email",
+          "direct-email",
+          "directemail"
+        ],
+        "variants": [
+          "Direct Email"
+        ],
+        "row_count": 52,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Punjab Kesari",
+        "aliases": [
+          "punjab kesari",
+          "punjab-kesari",
+          "punjabkesari"
+        ],
+        "variants": [
+          "Punjab Kesari"
+        ],
+        "row_count": 35,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "KI_Instagram",
+        "aliases": [
+          "ki instagram",
+          "ki-instagram",
+          "kiinstagram"
+        ],
+        "variants": [
+          "KI_Instagram"
+        ],
+        "row_count": 35,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Organic",
+        "aliases": [
+          "organic"
+        ],
+        "variants": [
+          "Organic"
+        ],
+        "row_count": 34,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Money Control",
+        "aliases": [
+          "money control",
+          "money-control",
+          "moneycontrol"
+        ],
+        "variants": [
+          "Money Control"
+        ],
+        "row_count": 34,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "KI_Facebook",
+        "aliases": [
+          "ki facebook",
+          "ki-facebook",
+          "kifacebook"
+        ],
+        "variants": [
+          "KI_Facebook"
+        ],
+        "row_count": 31,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Dailyhunt",
+        "aliases": [
+          "dailyhunt"
+        ],
+        "variants": [
+          "Dailyhunt"
+        ],
+        "row_count": 30,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Referral Sale",
+        "aliases": [
+          "referral sale",
+          "referral-sale",
+          "referralsale"
+        ],
+        "variants": [
+          "Referral Sale"
+        ],
+        "row_count": 28,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Click To Call",
+        "aliases": [
+          "click to call",
+          "click-to-call",
+          "clicktocall"
+        ],
+        "variants": [
+          "Click To Call"
+        ],
+        "row_count": 18,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Digital-3.14",
+        "aliases": [
+          "digital 3",
+          "digital 3 14",
+          "digital-3-14",
+          "digital314"
+        ],
+        "variants": [
+          "Digital-3.14"
+        ],
+        "row_count": 17,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "GMB",
+        "aliases": [
+          "gmb"
+        ],
+        "variants": [
+          "GMB"
+        ],
+        "row_count": 16,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "emailer",
+        "aliases": [
+          "emailer"
+        ],
+        "variants": [
+          "emailer"
+        ],
+        "row_count": 16,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Hotstar",
+        "aliases": [
+          "hotstar"
+        ],
+        "variants": [
+          "Hotstar"
+        ],
+        "row_count": 15,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Indian Express",
+        "aliases": [
+          "indian express",
+          "indian-express",
+          "indianexpress"
+        ],
+        "variants": [
+          "Indian Express"
+        ],
+        "row_count": 14,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Organic/Direct",
+        "aliases": [
+          "organic direct",
+          "organic-direct",
+          "organicdirect"
+        ],
+        "variants": [
+          "Organic/Direct"
+        ],
+        "row_count": 13,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Website-NDTV",
+        "aliases": [
+          "website ndtv",
+          "website-ndtv",
+          "websitendtv"
+        ],
+        "variants": [
+          "Website-NDTV"
+        ],
+        "row_count": 12,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Inshorts",
+        "aliases": [
+          "inshorts"
+        ],
+        "variants": [
+          "Inshorts"
+        ],
+        "row_count": 11,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Spotify",
+        "aliases": [
+          "spotify"
+        ],
+        "variants": [
+          "Spotify"
+        ],
+        "row_count": 10,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Outbound Campaign",
+        "aliases": [
+          "outbound campaign",
+          "outbound-campaign",
+          "outboundcampaign"
+        ],
+        "variants": [
+          "Outbound Campaign"
+        ],
+        "row_count": 9,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Livemint",
+        "aliases": [
+          "livemint"
+        ],
+        "variants": [
+          "Livemint"
+        ],
+        "row_count": 8,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Magazine",
+        "aliases": [
+          "magazine"
+        ],
+        "variants": [
+          "Magazine"
+        ],
+        "row_count": 6,
+        "tables": [
+          "opportunity"
+        ]
+      }
+    ],
+    "feedback": [
+      {
+        "canonical": "Discussion Pending",
+        "aliases": [
+          "discussion pending",
+          "discussion-pending",
+          "discussionpending"
+        ],
+        "variants": [
+          "Discussion Pending"
+        ],
+        "row_count": 238212,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Not Interested",
+        "aliases": [
+          "not interested",
+          "not-interested",
+          "notinterested"
+        ],
+        "variants": [
+          "Not Interested"
+        ],
+        "row_count": 185671,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Junk",
+        "aliases": [
+          "junk"
+        ],
+        "variants": [
+          "Junk"
+        ],
+        "row_count": 112192,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Satisfied",
+        "aliases": [
+          "satisfied"
+        ],
+        "variants": [
+          "Satisfied"
+        ],
+        "row_count": 82636,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Interested",
+        "aliases": [
+          "interested"
+        ],
+        "variants": [
+          "Interested"
+        ],
+        "row_count": 53240,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Forcefully Closed",
+        "aliases": [
+          "forcefully closed",
+          "forcefully-closed",
+          "forcefullyclosed"
+        ],
+        "variants": [
+          "Forcefully Closed"
+        ],
+        "row_count": 4618,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Non-Contactable",
+        "aliases": [
+          "non contactable",
+          "non-contactable",
+          "noncontactable"
+        ],
+        "variants": [
+          "Non-Contactable"
+        ],
+        "row_count": 1010,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Duplicate",
+        "aliases": [
+          "duplicate"
+        ],
+        "variants": [
+          "Duplicate"
+        ],
+        "row_count": 49,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Dissatisfied",
+        "aliases": [
+          "dissatisfied"
+        ],
+        "variants": [
+          "Dissatisfied"
+        ],
+        "row_count": 24,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Other/Exceptional Case",
+        "aliases": [
+          "other exceptional case",
+          "other-exceptional-case",
+          "otherexceptionalcase"
+        ],
+        "variants": [
+          "Other/Exceptional Case"
+        ],
+        "row_count": 16,
+        "tables": [
+          "case"
+        ]
+      }
+    ],
+    "status": [
+      {
+        "canonical": "Completed",
+        "aliases": [
+          "completed"
+        ],
+        "variants": [
+          "Completed"
+        ],
+        "row_count": 739367,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Unqualified",
+        "aliases": [
+          "unqualified"
+        ],
+        "variants": [
+          "Unqualified"
+        ],
+        "row_count": 251644,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Open",
+        "aliases": [
+          "open"
+        ],
+        "variants": [
+          "Open"
+        ],
+        "row_count": 47736,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Qualified",
+        "aliases": [
+          "qualified"
+        ],
+        "variants": [
+          "Qualified"
+        ],
+        "row_count": 28578,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Canceled",
+        "aliases": [
+          "canceled"
+        ],
+        "variants": [
+          "Canceled"
+        ],
+        "row_count": 21653,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "New",
+        "aliases": [
+          "new"
+        ],
+        "variants": [
+          "New"
+        ],
+        "row_count": 6361,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Nurturing",
+        "aliases": [
+          "nurturing"
+        ],
+        "variants": [
+          "Nurturing"
+        ],
+        "row_count": 3166,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Cancelled",
+        "aliases": [
+          "cancelled"
+        ],
+        "variants": [
+          "Cancelled"
+        ],
+        "row_count": 1252,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "In Progress",
+        "aliases": [
+          "in progress",
+          "in-progress",
+          "inprogress"
+        ],
+        "variants": [
+          "In Progress"
+        ],
+        "row_count": 139,
+        "tables": [
+          "task"
+        ]
+      }
+    ],
+    "rating": [
+      {
+        "canonical": "Cold",
+        "aliases": [
+          "cold"
+        ],
+        "variants": [
+          "Cold"
+        ],
+        "row_count": 174284,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Warm",
+        "aliases": [
+          "warm"
+        ],
+        "variants": [
+          "Warm"
+        ],
+        "row_count": 19719,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Hot",
+        "aliases": [
+          "hot"
+        ],
+        "variants": [
+          "Hot"
+        ],
+        "row_count": 19582,
+        "tables": [
+          "lead"
+        ]
+      }
+    ],
+    "property_type": [
+      {
+        "canonical": "Residential",
+        "aliases": [
+          "residential"
+        ],
+        "variants": [
+          "Residential"
+        ],
+        "row_count": 57055,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Plots",
+        "aliases": [
+          "plots"
+        ],
+        "variants": [
+          "Plots"
+        ],
+        "row_count": 1393,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Commercial",
+        "aliases": [
+          "commercial"
+        ],
+        "variants": [
+          "Commercial"
+        ],
+        "row_count": 1271,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Leasing",
+        "aliases": [
+          "leasing"
+        ],
+        "variants": [
+          "Leasing"
+        ],
+        "row_count": 134,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Buying",
+        "aliases": [
+          "buying"
+        ],
+        "variants": [
+          "Buying"
+        ],
+        "row_count": 122,
+        "tables": [
+          "lead"
+        ]
+      }
+    ],
+    "city": [
+      {
+        "canonical": "Ghaziabad",
+        "aliases": [
+          "ghaziabad"
+        ],
+        "variants": [
+          "GHAZIABAD",
+          "GHaziabad",
+          "GhaziABad",
+          "Ghaziabad",
+          "Ghaziabad.",
+          "ghaziabad"
+        ],
+        "row_count": 30296,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Delhi",
+        "aliases": [
+          "delhi"
+        ],
+        "variants": [
+          "DELHI",
+          "DELHi",
+          "DelHi",
+          "Delhi",
+          "Delhi.",
+          "Delhi..",
+          "dELHI",
+          "delhi",
+          "delhi.."
+        ],
+        "row_count": 27743,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Noida",
+        "aliases": [
+          "noida"
+        ],
+        "variants": [
+          "NOIDA",
+          "Noida",
+          "Noida.",
+          "noida"
+        ],
+        "row_count": 8825,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Mohali",
+        "aliases": [
+          "mohali"
+        ],
+        "variants": [
+          "MOHALI",
+          "MOhali",
+          "Mohali",
+          "Mohali.",
+          "mohali",
+          "‌mohali"
+        ],
+        "row_count": 7113,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "New Delhi",
+        "aliases": [
+          "new delhi",
+          "new-delhi",
+          "newdelhi"
+        ],
+        "variants": [
+          "NEW DELHI",
+          "NEW Delhi",
+          "New  Delhi",
+          "New  delhi",
+          "New DELHI",
+          "New Delhi",
+          "New Delhi🙏🌹🙏",
+          "New delhi",
+          "New. Delhi",
+          "New.Delhi",
+          "new  delhi",
+          "new Delhi",
+          "new delhi",
+          "new delhi 🎉",
+          "new delhi.",
+          "new. delhi"
+        ],
+        "row_count": 2609,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Gaziabad",
+        "aliases": [
+          "gaziabad"
+        ],
+        "variants": [
+          "GAZIABAD",
+          "GAziabad",
+          "Gaziabad",
+          "gaziabad"
+        ],
+        "row_count": 2189,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "ghaziabaad",
+        "aliases": [
+          "ghaziabaad"
+        ],
+        "variants": [
+          "GHAZIABAAD",
+          "Ghaziabaad",
+          "ghaziabaad"
+        ],
+        "row_count": 1914,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Chandigarh",
+        "aliases": [
+          "chandigarh"
+        ],
+        "variants": [
+          "CHANDIGARH",
+          "Chandigarh",
+          "Chandigarh.",
+          "chandigarh"
+        ],
+        "row_count": 1697,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Greater Noida",
+        "aliases": [
+          "greater noida",
+          "greater-noida",
+          "greaternoida"
+        ],
+        "variants": [
+          "GREATER NOIDA",
+          "Greater Noida",
+          "Greater noida",
+          "greater Noida",
+          "greater Noida.",
+          "greater noida",
+          "greater.noida"
+        ],
+        "row_count": 716,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Meerut",
+        "aliases": [
+          "meerut"
+        ],
+        "variants": [
+          "MEERUT",
+          "Meerut",
+          "mEERUT",
+          "meerut",
+          "meerut."
+        ],
+        "row_count": 705,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Gurugram",
+        "aliases": [
+          "gurugram"
+        ],
+        "variants": [
+          "GURUGRAM",
+          "Gurugram",
+          "gurugram"
+        ],
+        "row_count": 684,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Gurgaon",
+        "aliases": [
+          "gurgaon"
+        ],
+        "variants": [
+          ", Gurgaon",
+          "GURGAON",
+          "Gurgaon",
+          "gurgaon",
+          "gurgaon,"
+        ],
+        "row_count": 568,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Faridabad",
+        "aliases": [
+          "faridabad"
+        ],
+        "variants": [
+          "FARIDABAD",
+          "Faridabad",
+          "faridabad"
+        ],
+        "row_count": 454,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Lucknow",
+        "aliases": [
+          "lucknow"
+        ],
+        "variants": [
+          "LUCKNOW",
+          "Lucknow",
+          "lucknow"
+        ],
+        "row_count": 407,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Hapur",
+        "aliases": [
+          "hapur"
+        ],
+        "variants": [
+          "HAPUR",
+          "Hapur",
+          "hapur"
+        ],
+        "row_count": 375,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Ludhiana",
+        "aliases": [
+          "ludhiana"
+        ],
+        "variants": [
+          "LUDHIANA",
+          "Ludhiana",
+          "ludhiana"
+        ],
+        "row_count": 352,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Meerut City",
+        "aliases": [
+          "meerut city",
+          "meerut-city",
+          "meerutcity"
+        ],
+        "variants": [
+          "Meerut City"
+        ],
+        "row_count": 288,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Agra",
+        "aliases": [
+          "agra"
+        ],
+        "variants": [
+          "AGRA",
+          "Agra",
+          "agra"
+        ],
+        "row_count": 277,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Mumbai",
+        "aliases": [
+          "mumbai"
+        ],
+        "variants": [
+          "MUMBAI",
+          "Mumbai",
+          "mumbai"
+        ],
+        "row_count": 235,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Patna",
+        "aliases": [
+          "patna"
+        ],
+        "variants": [
+          "PATNA",
+          "Patna",
+          "pAtna",
+          "patna"
+        ],
+        "row_count": 208,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Patiala",
+        "aliases": [
+          "patiala"
+        ],
+        "variants": [
+          "PATIALA",
+          "Patiala",
+          "Patiala,",
+          "patiala"
+        ],
+        "row_count": 206,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Amritsar",
+        "aliases": [
+          "amritsar"
+        ],
+        "variants": [
+          "Amritsar",
+          "Amritsar.",
+          "amritsar",
+          "amritsar."
+        ],
+        "row_count": 206,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Bareilly",
+        "aliases": [
+          "bareilly"
+        ],
+        "variants": [
+          "BAREILLY",
+          "Bareilly",
+          "bareilly"
+        ],
+        "row_count": 204,
+        "tables": [
+          "lead"
+        ]
+      }
+    ],
+    "owner": [
+      {
+        "canonical": "Admin",
+        "aliases": [
+          "admin"
+        ],
+        "variants": [
+          "Admin"
+        ],
+        "row_count": 320710,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anubhav Kumar",
+        "aliases": [
+          "anubhav kumar",
+          "anubhav-kumar",
+          "anubhavkumar"
+        ],
+        "variants": [
+          "Anubhav Kumar"
+        ],
+        "row_count": 79038,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Prabin Kumar",
+        "aliases": [
+          "prabin kumar",
+          "prabin-kumar",
+          "prabinkumar"
+        ],
+        "variants": [
+          "Prabin Kumar"
+        ],
+        "row_count": 78919,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Digamber Negi",
+        "aliases": [
+          "digamber negi",
+          "digamber-negi",
+          "digambernegi"
+        ],
+        "variants": [
+          "Digamber Negi"
+        ],
+        "row_count": 65942,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anisha Kanojia",
+        "aliases": [
+          "anisha kanojia",
+          "anisha-kanojia",
+          "anishakanojia"
+        ],
+        "variants": [
+          "Anisha Kanojia"
+        ],
+        "row_count": 65119,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Cheena Sharma",
+        "aliases": [
+          "cheena sharma",
+          "cheena-sharma",
+          "cheenasharma"
+        ],
+        "variants": [
+          "Cheena Sharma"
+        ],
+        "row_count": 57415,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Arun Kumar",
+        "aliases": [
+          "arun kumar",
+          "arun-kumar",
+          "arunkumar"
+        ],
+        "variants": [
+          "Arun Kumar"
+        ],
+        "row_count": 45114,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Pallavi Mishra",
+        "aliases": [
+          "pallavi mishra",
+          "pallavi-mishra",
+          "pallavimishra"
+        ],
+        "variants": [
+          "Pallavi Mishra"
+        ],
+        "row_count": 42344,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Nupoor Aggarwal",
+        "aliases": [
+          "nupoor aggarwal",
+          "nupoor-aggarwal",
+          "nupooraggarwal"
+        ],
+        "variants": [
+          "Nupoor Aggarwal"
+        ],
+        "row_count": 41911,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Mahendra Kumawat",
+        "aliases": [
+          "mahendra kumawat",
+          "mahendra-kumawat",
+          "mahendrakumawat"
+        ],
+        "variants": [
+          "Mahendra Kumawat"
+        ],
+        "row_count": 38959,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ozonetel Integration User",
+        "aliases": [
+          "ozonetel integration user",
+          "ozonetel-integration-user",
+          "ozonetelintegrationuser"
+        ],
+        "variants": [
+          "Ozonetel Integration User"
+        ],
+        "row_count": 38766,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Aishwarya MK",
+        "aliases": [
+          "aishwarya mk",
+          "aishwarya-mk",
+          "aishwaryamk"
+        ],
+        "variants": [
+          "Aishwarya MK"
+        ],
+        "row_count": 38311,
+        "tables": [
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ravinder Kaur",
+        "aliases": [
+          "ravinder kaur",
+          "ravinder-kaur",
+          "ravinderkaur"
+        ],
+        "variants": [
+          "Ravinder Kaur"
+        ],
+        "row_count": 31874,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Lalit Singh",
+        "aliases": [
+          "lalit singh",
+          "lalit-singh",
+          "lalitsingh"
+        ],
+        "variants": [
+          "Lalit Singh"
+        ],
+        "row_count": 26922,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Manvi Jaiswal",
+        "aliases": [
+          "manvi jaiswal",
+          "manvi-jaiswal",
+          "manvijaiswal"
+        ],
+        "variants": [
+          "Manvi Jaiswal"
+        ],
+        "row_count": 25922,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Aishwarya",
+        "aliases": [
+          "aishwarya"
+        ],
+        "variants": [
+          "Aishwarya"
+        ],
+        "row_count": 24408,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Manpreet Dhanjal",
+        "aliases": [
+          "manpreet dhanjal",
+          "manpreet-dhanjal",
+          "manpreetdhanjal"
+        ],
+        "variants": [
+          "Manpreet Dhanjal"
+        ],
+        "row_count": 24185,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Krishan Negi",
+        "aliases": [
+          "krishan negi",
+          "krishan-negi",
+          "krishannegi"
+        ],
+        "variants": [
+          "Krishan Negi"
+        ],
+        "row_count": 22540,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ajay Sejwal",
+        "aliases": [
+          "ajay sejwal",
+          "ajay-sejwal",
+          "ajaysejwal"
+        ],
+        "variants": [
+          "Ajay Sejwal"
+        ],
+        "row_count": 20953,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Priyanka Sengar",
+        "aliases": [
+          "priyanka sengar",
+          "priyanka-sengar",
+          "priyankasengar"
+        ],
+        "variants": [
+          "Priyanka Sengar"
+        ],
+        "row_count": 20585,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sandeep Singh",
+        "aliases": [
+          "sandeep singh",
+          "sandeep-singh",
+          "sandeepsingh"
+        ],
+        "variants": [
+          "Sandeep Singh"
+        ],
+        "row_count": 18656,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Talat Faiz",
+        "aliases": [
+          "talat faiz",
+          "talat-faiz",
+          "talatfaiz"
+        ],
+        "variants": [
+          "Talat Faiz"
+        ],
+        "row_count": 15228,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Rohit Hansa",
+        "aliases": [
+          "rohit hansa",
+          "rohit-hansa",
+          "rohithansa"
+        ],
+        "variants": [
+          "Rohit Hansa"
+        ],
+        "row_count": 13764,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Divyansh Sharma",
+        "aliases": [
+          "divyansh sharma",
+          "divyansh-sharma",
+          "divyanshsharma"
+        ],
+        "variants": [
+          "Divyansh Sharma"
+        ],
+        "row_count": 12973,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ambuj Srivastava",
+        "aliases": [
+          "ambuj srivastava",
+          "ambuj-srivastava",
+          "ambujsrivastava"
+        ],
+        "variants": [
+          "Ambuj Srivastava"
+        ],
+        "row_count": 10838,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Deepa Mehra",
+        "aliases": [
+          "deepa mehra",
+          "deepa-mehra",
+          "deepamehra"
+        ],
+        "variants": [
+          "Deepa Mehra"
+        ],
+        "row_count": 10580,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Chanchal Rangan",
+        "aliases": [
+          "chanchal rangan",
+          "chanchal-rangan",
+          "chanchalrangan"
+        ],
+        "variants": [
+          "Chanchal Rangan"
+        ],
+        "row_count": 10212,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Jasleen Kaur",
+        "aliases": [
+          "jasleen kaur",
+          "jasleen-kaur",
+          "jasleenkaur"
+        ],
+        "variants": [
+          "Jasleen Kaur"
+        ],
+        "row_count": 9838,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Surbhi Thakur",
+        "aliases": [
+          "surbhi thakur",
+          "surbhi-thakur",
+          "surbhithakur"
+        ],
+        "variants": [
+          "Surbhi Thakur"
+        ],
+        "row_count": 8549,
+        "tables": [
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sharad Shashank",
+        "aliases": [
+          "sharad shashank",
+          "sharad-shashank",
+          "sharadshashank"
+        ],
+        "variants": [
+          "Sharad Shashank"
+        ],
+        "row_count": 7120,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Simran Arora",
+        "aliases": [
+          "simran arora",
+          "simran-arora",
+          "simranarora"
+        ],
+        "variants": [
+          "Simran Arora"
+        ],
+        "row_count": 7073,
+        "tables": [
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Shweta Kapur",
+        "aliases": [
+          "shweta kapur",
+          "shweta-kapur",
+          "shwetakapur"
+        ],
+        "variants": [
+          "Shweta Kapur"
+        ],
+        "row_count": 6558,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Rhythm Raghav",
+        "aliases": [
+          "rhythm",
+          "rhythm raghav",
+          "rhythm-raghav",
+          "rhythmraghav"
+        ],
+        "variants": [
+          "Rhythm Raghav"
+        ],
+        "row_count": 6527,
+        "tables": [
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anju Ramwani",
+        "aliases": [
+          "anju ramwani",
+          "anju-ramwani",
+          "anjuramwani"
+        ],
+        "variants": [
+          "Anju Ramwani"
+        ],
+        "row_count": 6271,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Himanshu Sharma",
+        "aliases": [
+          "himanshu sharma",
+          "himanshu-sharma",
+          "himanshusharma"
+        ],
+        "variants": [
+          "Himanshu Sharma"
+        ],
+        "row_count": 5909,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Lovepreet Singh",
+        "aliases": [
+          "lovepreet singh",
+          "lovepreet-singh",
+          "lovepreetsingh"
+        ],
+        "variants": [
+          "Lovepreet Singh"
+        ],
+        "row_count": 5675,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Hasibullah",
+        "aliases": [
+          "hasibullah"
+        ],
+        "variants": [
+          "Hasibullah"
+        ],
+        "row_count": 5491,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Gaurav Singh",
+        "aliases": [
+          "gaurav singh",
+          "gaurav-singh",
+          "gauravsingh"
+        ],
+        "variants": [
+          "Gaurav Singh"
+        ],
+        "row_count": 5232,
+        "tables": [
+          "case",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Raghvendra Singh",
+        "aliases": [
+          "raghvendra singh",
+          "raghvendra-singh",
+          "raghvendrasingh"
+        ],
+        "variants": [
+          "Raghvendra Singh"
+        ],
+        "row_count": 4921,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ambuj Pratap",
+        "aliases": [
+          "ambuj pratap",
+          "ambuj-pratap",
+          "ambujpratap"
+        ],
+        "variants": [
+          "Ambuj Pratap"
+        ],
+        "row_count": 4762,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Service Request Queue",
+        "aliases": [
+          "service request queue",
+          "service-request-queue",
+          "servicerequestqueue"
+        ],
+        "variants": [
+          "Service Request Queue"
+        ],
+        "row_count": 4457,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Beena Bhagat",
+        "aliases": [
+          "beena bhagat",
+          "beena-bhagat",
+          "beenabhagat"
+        ],
+        "variants": [
+          "Beena Bhagat"
+        ],
+        "row_count": 4341,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Rais Ahmad",
+        "aliases": [
+          "rais ahmad",
+          "rais-ahmad",
+          "raisahmad"
+        ],
+        "variants": [
+          "Rais Ahmad"
+        ],
+        "row_count": 3327,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ratul Seth",
+        "aliases": [
+          "ratul seth",
+          "ratul-seth",
+          "ratulseth"
+        ],
+        "variants": [
+          "Ratul Seth"
+        ],
+        "row_count": 2700,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Vikram Rana",
+        "aliases": [
+          "vikram rana",
+          "vikram-rana",
+          "vikramrana"
+        ],
+        "variants": [
+          "Vikram Rana"
+        ],
+        "row_count": 2672,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Surjit Kaur",
+        "aliases": [
+          "surjit kaur",
+          "surjit-kaur",
+          "surjitkaur"
+        ],
+        "variants": [
+          "Surjit Kaur"
+        ],
+        "row_count": 2652,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sameer Ahmad",
+        "aliases": [
+          "sameer ahmad",
+          "sameer-ahmad",
+          "sameerahmad"
+        ],
+        "variants": [
+          "Sameer Ahmad"
+        ],
+        "row_count": 2560,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sanjana Bhateja",
+        "aliases": [
+          "sanjana bhateja",
+          "sanjana-bhateja",
+          "sanjanabhateja"
+        ],
+        "variants": [
+          "Sanjana Bhateja"
+        ],
+        "row_count": 2496,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Yachna Bangia",
+        "aliases": [
+          "yachna bangia",
+          "yachna-bangia",
+          "yachnabangia"
+        ],
+        "variants": [
+          "Yachna Bangia"
+        ],
+        "row_count": 2216,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ishan Gaur",
+        "aliases": [
+          "ishan gaur",
+          "ishan-gaur",
+          "ishangaur"
+        ],
+        "variants": [
+          "Ishan Gaur"
+        ],
+        "row_count": 1982,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Aastha Chaudhary",
+        "aliases": [
+          "aastha chaudhary",
+          "aastha-chaudhary",
+          "aasthachaudhary"
+        ],
+        "variants": [
+          "Aastha Chaudhary"
+        ],
+        "row_count": 1874,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Tamanna Dua",
+        "aliases": [
+          "tamanna dua",
+          "tamanna-dua",
+          "tamannadua"
+        ],
+        "variants": [
+          "Tamanna Dua"
+        ],
+        "row_count": 1843,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Vishal Gandhi",
+        "aliases": [
+          "vishal gandhi",
+          "vishal-gandhi",
+          "vishalgandhi"
+        ],
+        "variants": [
+          "Vishal Gandhi"
+        ],
+        "row_count": 1607,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anshit Dave",
+        "aliases": [
+          "anshit dave",
+          "anshit-dave",
+          "anshitdave"
+        ],
+        "variants": [
+          "Anshit Dave"
+        ],
+        "row_count": 1547,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Komal Rathore",
+        "aliases": [
+          "komal rathore",
+          "komal-rathore",
+          "komalrathore"
+        ],
+        "variants": [
+          "Komal Rathore"
+        ],
+        "row_count": 1518,
+        "tables": [
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Tanya Parihar",
+        "aliases": [
+          "tanya parihar",
+          "tanya-parihar",
+          "tanyaparihar"
+        ],
+        "variants": [
+          "Tanya Parihar"
+        ],
+        "row_count": 1513,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Vishesha Grover",
+        "aliases": [
+          "vishesha grover",
+          "vishesha-grover",
+          "visheshagrover"
+        ],
+        "variants": [
+          "Vishesha Grover"
+        ],
+        "row_count": 1472,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Abhishek Guleria",
+        "aliases": [
+          "abhishek guleria",
+          "abhishek-guleria",
+          "abhishekguleria"
+        ],
+        "variants": [
+          "Abhishek Guleria"
+        ],
+        "row_count": 1395,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Asha Biswa",
+        "aliases": [
+          "asha biswa",
+          "asha-biswa",
+          "ashabiswa"
+        ],
+        "variants": [
+          "Asha Biswa"
+        ],
+        "row_count": 1313,
+        "tables": [
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Prerna Sharma",
+        "aliases": [
+          "prerna sharma",
+          "prerna-sharma",
+          "prernasharma"
+        ],
+        "variants": [
+          "Prerna Sharma"
+        ],
+        "row_count": 1275,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Deepti Gupta",
+        "aliases": [
+          "deepti gupta",
+          "deepti-gupta",
+          "deeptigupta"
+        ],
+        "variants": [
+          "Deepti Gupta"
+        ],
+        "row_count": 1241,
+        "tables": [
+          "event",
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Rahul Yadav",
+        "aliases": [
+          "rahul yadav",
+          "rahul-yadav",
+          "rahulyadav"
+        ],
+        "variants": [
+          "Rahul Yadav"
+        ],
+        "row_count": 995,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Surjeet Kaur",
+        "aliases": [
+          "surjeet kaur",
+          "surjeet-kaur",
+          "surjeetkaur"
+        ],
+        "variants": [
+          "Surjeet Kaur"
+        ],
+        "row_count": 930,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Kapil Kapoor",
+        "aliases": [
+          "kapil kapoor",
+          "kapil-kapoor",
+          "kapilkapoor"
+        ],
+        "variants": [
+          "Kapil Kapoor"
+        ],
+        "row_count": 855,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sandeep Kaur",
+        "aliases": [
+          "sandeep kaur",
+          "sandeep-kaur",
+          "sandeepkaur"
+        ],
+        "variants": [
+          "Sandeep Kaur"
+        ],
+        "row_count": 749,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Nimesh Chaudhary",
+        "aliases": [
+          "nimesh chaudhary",
+          "nimesh-chaudhary",
+          "nimeshchaudhary"
+        ],
+        "variants": [
+          "Nimesh Chaudhary"
+        ],
+        "row_count": 697,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Prashant Pateriya",
+        "aliases": [
+          "prashant pateriya",
+          "prashant-pateriya",
+          "prashantpateriya"
+        ],
+        "variants": [
+          "Prashant Pateriya"
+        ],
+        "row_count": 638,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anil Nayal",
+        "aliases": [
+          "anil nayal",
+          "anil-nayal",
+          "anilnayal"
+        ],
+        "variants": [
+          "Anil Nayal"
+        ],
+        "row_count": 613,
+        "tables": [
+          "case",
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Gajendra Gaur",
+        "aliases": [
+          "gajendra gaur",
+          "gajendra-gaur",
+          "gajendragaur"
+        ],
+        "variants": [
+          "Gajendra Gaur"
+        ],
+        "row_count": 612,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Shaman Parveen",
+        "aliases": [
+          "shaman parveen",
+          "shaman-parveen",
+          "shamanparveen"
+        ],
+        "variants": [
+          "Shaman Parveen"
+        ],
+        "row_count": 600,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Mahima bisht",
+        "aliases": [
+          "mahima bisht",
+          "mahima-bisht",
+          "mahimabisht"
+        ],
+        "variants": [
+          "Mahima bisht"
+        ],
+        "row_count": 521,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Kiranpreet Kaur",
+        "aliases": [
+          "kiranpreet kaur",
+          "kiranpreet-kaur",
+          "kiranpreetkaur"
+        ],
+        "variants": [
+          "Kiranpreet Kaur"
+        ],
+        "row_count": 466,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Shalini Chopra",
+        "aliases": [
+          "shalini chopra",
+          "shalini-chopra",
+          "shalinichopra"
+        ],
+        "variants": [
+          "Shalini Chopra"
+        ],
+        "row_count": 445,
+        "tables": [
+          "case",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Grace Joseph",
+        "aliases": [
+          "grace joseph",
+          "grace-joseph",
+          "gracejoseph"
+        ],
+        "variants": [
+          "Grace Joseph"
+        ],
+        "row_count": 444,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Pawan Kumar",
+        "aliases": [
+          "pawan kumar",
+          "pawan-kumar",
+          "pawankumar"
+        ],
+        "variants": [
+          "Pawan Kumar"
+        ],
+        "row_count": 423,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anshul Chaudhary",
+        "aliases": [
+          "anshul chaudhary",
+          "anshul-chaudhary",
+          "anshulchaudhary"
+        ],
+        "variants": [
+          "Anshul Chaudhary"
+        ],
+        "row_count": 416,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sandhya Singh",
+        "aliases": [
+          "sandhya singh",
+          "sandhya-singh",
+          "sandhyasingh"
+        ],
+        "variants": [
+          "Sandhya Singh"
+        ],
+        "row_count": 394,
+        "tables": [
+          "case",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anup Mamgain",
+        "aliases": [
+          "anup mamgain",
+          "anup-mamgain",
+          "anupmamgain"
+        ],
+        "variants": [
+          "Anup Mamgain"
+        ],
+        "row_count": 370,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Rohan Jagota",
+        "aliases": [
+          "rohan jagota",
+          "rohan-jagota",
+          "rohanjagota"
+        ],
+        "variants": [
+          "Rohan Jagota"
+        ],
+        "row_count": 363,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Nisha Kumari",
+        "aliases": [
+          "nisha kumari",
+          "nisha-kumari",
+          "nishakumari"
+        ],
+        "variants": [
+          "Nisha Kumari"
+        ],
+        "row_count": 353,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Amandeep Kaur",
+        "aliases": [
+          "amandeep kaur",
+          "amandeep-kaur",
+          "amandeepkaur"
+        ],
+        "variants": [
+          "Amandeep Kaur"
+        ],
+        "row_count": 337,
+        "tables": [
+          "event",
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Saurabh Kumar",
+        "aliases": [
+          "saurabh kumar",
+          "saurabh-kumar",
+          "saurabhkumar"
+        ],
+        "variants": [
+          "Saurabh Kumar"
+        ],
+        "row_count": 329,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Vaibhav Airon",
+        "aliases": [
+          "vaibhav airon",
+          "vaibhav-airon",
+          "vaibhavairon"
+        ],
+        "variants": [
+          "Vaibhav Airon"
+        ],
+        "row_count": 327,
+        "tables": [
+          "case",
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Megha Kashyap",
+        "aliases": [
+          "megha kashyap",
+          "megha-kashyap",
+          "meghakashyap"
+        ],
+        "variants": [
+          "Megha Kashyap"
+        ],
+        "row_count": 317,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Abhishek Verma",
+        "aliases": [
+          "abhishek verma",
+          "abhishek-verma",
+          "abhishekverma"
+        ],
+        "variants": [
+          "Abhishek Verma"
+        ],
+        "row_count": 315,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Shivank Sharma",
+        "aliases": [
+          "shivank sharma",
+          "shivank-sharma",
+          "shivanksharma"
+        ],
+        "variants": [
+          "Shivank Sharma"
+        ],
+        "row_count": 297,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Jaspreet Kaur",
+        "aliases": [
+          "jaspreet kaur",
+          "jaspreet-kaur",
+          "jaspreetkaur"
+        ],
+        "variants": [
+          "Jaspreet Kaur"
+        ],
+        "row_count": 294,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sanjay Sharma",
+        "aliases": [
+          "sanjay sharma",
+          "sanjay-sharma",
+          "sanjaysharma"
+        ],
+        "variants": [
+          "Sanjay Sharma"
+        ],
+        "row_count": 286,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Rishab Hora",
+        "aliases": [
+          "rishab hora",
+          "rishab-hora",
+          "rishabhora"
+        ],
+        "variants": [
+          "Rishab Hora"
+        ],
+        "row_count": 260,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ankit Sharma",
+        "aliases": [
+          "ankit sharma",
+          "ankit-sharma",
+          "ankitsharma"
+        ],
+        "variants": [
+          "Ankit Sharma"
+        ],
+        "row_count": 248,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Atul Kumar Gahlot",
+        "aliases": [
+          "atul kumar gahlot",
+          "atul-kumar-gahlot",
+          "atulkumargahlot"
+        ],
+        "variants": [
+          "Atul Kumar Gahlot"
+        ],
+        "row_count": 211,
+        "tables": [
+          "case",
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Navreet Kaur",
+        "aliases": [
+          "navreet kaur",
+          "navreet-kaur",
+          "navreetkaur"
+        ],
+        "variants": [
+          "Navreet Kaur"
+        ],
+        "row_count": 208,
+        "tables": [
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Lucky Hazarika",
+        "aliases": [
+          "lucky hazarika",
+          "lucky-hazarika",
+          "luckyhazarika"
+        ],
+        "variants": [
+          "Lucky Hazarika"
+        ],
+        "row_count": 202,
+        "tables": [
+          "case",
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Abneet Singh",
+        "aliases": [
+          "abneet singh",
+          "abneet-singh",
+          "abneetsingh"
+        ],
+        "variants": [
+          "Abneet Singh"
+        ],
+        "row_count": 185,
+        "tables": [
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Bharti",
+        "aliases": [
+          "bharti"
+        ],
+        "variants": [
+          "Bharti"
+        ],
+        "row_count": 176,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Jatinder Arora",
+        "aliases": [
+          "jatinder arora",
+          "jatinder-arora",
+          "jatinderarora"
+        ],
+        "variants": [
+          "Jatinder Arora"
+        ],
+        "row_count": 175,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Shaili Chadha",
+        "aliases": [
+          "shaili chadha",
+          "shaili-chadha",
+          "shailichadha"
+        ],
+        "variants": [
+          "Shaili Chadha"
+        ],
+        "row_count": 143,
+        "tables": [
+          "case",
+          "event",
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Kanwarjit Singh",
+        "aliases": [
+          "kanwarjit singh",
+          "kanwarjit-singh",
+          "kanwarjitsingh"
+        ],
+        "variants": [
+          "Kanwarjit Singh"
+        ],
+        "row_count": 141,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ishant Rana",
+        "aliases": [
+          "ishant rana",
+          "ishant-rana",
+          "ishantrana"
+        ],
+        "variants": [
+          "Ishant Rana"
+        ],
+        "row_count": 138,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Jatin Gaur",
+        "aliases": [
+          "jatin gaur",
+          "jatin-gaur",
+          "jatingaur"
+        ],
+        "variants": [
+          "Jatin Gaur"
+        ],
+        "row_count": 133,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Shalini Kinnoo",
+        "aliases": [
+          "shalini kinnoo",
+          "shalini-kinnoo",
+          "shalinikinnoo"
+        ],
+        "variants": [
+          "Shalini Kinnoo"
+        ],
+        "row_count": 123,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Mehak Lalit",
+        "aliases": [
+          "mehak lalit",
+          "mehak-lalit",
+          "mehaklalit"
+        ],
+        "variants": [
+          "Mehak Lalit"
+        ],
+        "row_count": 107,
+        "tables": [
+          "event",
+          "lead",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Randheer Kumar",
+        "aliases": [
+          "randheer kumar",
+          "randheer-kumar",
+          "randheerkumar"
+        ],
+        "variants": [
+          "Randheer Kumar"
+        ],
+        "row_count": 100,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Sonia Anand",
+        "aliases": [
+          "sonia anand",
+          "sonia-anand",
+          "soniaanand"
+        ],
+        "variants": [
+          "Sonia Anand"
+        ],
+        "row_count": 90,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Shishir Kumar Giri",
+        "aliases": [
+          "shishir kumar giri",
+          "shishir-kumar-giri",
+          "shishirkumargiri"
+        ],
+        "variants": [
+          "Shishir Kumar Giri"
+        ],
+        "row_count": 89,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Manjeet Kaur",
+        "aliases": [
+          "manjeet kaur",
+          "manjeet-kaur",
+          "manjeetkaur"
+        ],
+        "variants": [
+          "Manjeet Kaur"
+        ],
+        "row_count": 77,
+        "tables": [
+          "case",
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Test Corporate",
+        "aliases": [
+          "test corporate",
+          "test-corporate",
+          "testcorporate"
+        ],
+        "variants": [
+          "Test Corporate"
+        ],
+        "row_count": 70,
+        "tables": [
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Shruti Aggarwal",
+        "aliases": [
+          "shruti aggarwal",
+          "shruti-aggarwal",
+          "shrutiaggarwal"
+        ],
+        "variants": [
+          "Shruti Aggarwal"
+        ],
+        "row_count": 64,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Gitika Pandey",
+        "aliases": [
+          "gitika pandey",
+          "gitika-pandey",
+          "gitikapandey"
+        ],
+        "variants": [
+          "Gitika Pandey"
+        ],
+        "row_count": 58,
+        "tables": [
+          "case",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Khushi Sharma",
+        "aliases": [
+          "khushi sharma",
+          "khushi-sharma",
+          "khushisharma"
+        ],
+        "variants": [
+          "Khushi Sharma"
+        ],
+        "row_count": 51,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Garima Patel",
+        "aliases": [
+          "garima patel",
+          "garima-patel",
+          "garimapatel"
+        ],
+        "variants": [
+          "Garima Patel"
+        ],
+        "row_count": 49,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Jyoti",
+        "aliases": [
+          "jyoti"
+        ],
+        "variants": [
+          "Jyoti"
+        ],
+        "row_count": 45,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Cloud Centric",
+        "aliases": [
+          "cloud centric",
+          "cloud-centric",
+          "cloudcentric"
+        ],
+        "variants": [
+          "Cloud Centric"
+        ],
+        "row_count": 30,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Jayant Kumar Lakhotia",
+        "aliases": [
+          "jayant kumar lakhotia",
+          "jayant-kumar-lakhotia",
+          "jayantkumarlakhotia"
+        ],
+        "variants": [
+          "Jayant Kumar Lakhotia"
+        ],
+        "row_count": 25,
+        "tables": [
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Anuj Dua",
+        "aliases": [
+          "anuj dua",
+          "anuj-dua",
+          "anujdua"
+        ],
+        "variants": [
+          "Anuj Dua"
+        ],
+        "row_count": 20,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Vaishnavi Pandey",
+        "aliases": [
+          "vaishnavi pandey",
+          "vaishnavi-pandey",
+          "vaishnavipandey"
+        ],
+        "variants": [
+          "Vaishnavi Pandey"
+        ],
+        "row_count": 19,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Abhishek Singla",
+        "aliases": [
+          "abhishek singla",
+          "abhishek-singla",
+          "abhisheksingla"
+        ],
+        "variants": [
+          "Abhishek Singla"
+        ],
+        "row_count": 14,
+        "tables": [
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Love Mehrotra",
+        "aliases": [
+          "love mehrotra",
+          "love-mehrotra",
+          "lovemehrotra"
+        ],
+        "variants": [
+          "Love Mehrotra"
+        ],
+        "row_count": 12,
+        "tables": [
+          "case",
+          "event",
+          "opportunity",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Akash Gaur",
+        "aliases": [
+          "akash gaur",
+          "akash-gaur",
+          "akashgaur"
+        ],
+        "variants": [
+          "Akash Gaur"
+        ],
+        "row_count": 12,
+        "tables": [
+          "case",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Laiqram Sharma",
+        "aliases": [
+          "laiqram sharma",
+          "laiqram-sharma",
+          "laiqramsharma"
+        ],
+        "variants": [
+          "Laiqram Sharma"
+        ],
+        "row_count": 12,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Kushan Rahut",
+        "aliases": [
+          "kushan rahut",
+          "kushan-rahut",
+          "kushanrahut"
+        ],
+        "variants": [
+          "Kushan Rahut"
+        ],
+        "row_count": 9,
+        "tables": [
+          "case",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Ashu Tyagi",
+        "aliases": [
+          "ashu tyagi",
+          "ashu-tyagi",
+          "ashutyagi"
+        ],
+        "variants": [
+          "Ashu Tyagi"
+        ],
+        "row_count": 9,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Test sales",
+        "aliases": [
+          "test sales",
+          "test-sales",
+          "testsales"
+        ],
+        "variants": [
+          "Test sales"
+        ],
+        "row_count": 8,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Mayank Tandon",
+        "aliases": [
+          "mayank tandon",
+          "mayank-tandon",
+          "mayanktandon"
+        ],
+        "variants": [
+          "Mayank Tandon"
+        ],
+        "row_count": 6,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Chetanya Sharma",
+        "aliases": [
+          "chetanya sharma",
+          "chetanya-sharma",
+          "chetanyasharma"
+        ],
+        "variants": [
+          "Chetanya Sharma"
+        ],
+        "row_count": 6,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Neeraj Singh",
+        "aliases": [
+          "neeraj singh",
+          "neeraj-singh",
+          "neerajsingh"
+        ],
+        "variants": [
+          "Neeraj Singh"
+        ],
+        "row_count": 5,
+        "tables": [
+          "lead",
+          "task"
+        ]
+      },
+      {
+        "canonical": "Varsha Yadav",
+        "aliases": [
+          "varsha yadav",
+          "varsha-yadav",
+          "varshayadav"
+        ],
+        "variants": [
+          "Varsha Yadav"
+        ],
+        "row_count": 5,
+        "tables": [
+          "opportunity"
+        ]
+      }
+    ],
+    "disqualification_reason": [
+      {
+        "canonical": "Client called to seek product information only",
+        "aliases": [
+          "client called to seek product information only",
+          "client-called-to-seek-product-information-only",
+          "clientcalledtoseekproductinformationonly"
+        ],
+        "variants": [
+          "Client called to seek product information only"
+        ],
+        "row_count": 45703,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Regular follow up done but stopped responding",
+        "aliases": [
+          "regular follow up done but stopped responding",
+          "regular-follow-up-done-but-stopped-responding",
+          "regularfollowupdonebutstoppedresponding"
+        ],
+        "variants": [
+          "Regular follow up done but stopped responding"
+        ],
+        "row_count": 42446,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Dropped the idea of investment",
+        "aliases": [
+          "dropped the idea of investment",
+          "dropped-the-idea-of-investment",
+          "droppedtheideaofinvestment"
+        ],
+        "variants": [
+          "Dropped the idea of investment"
+        ],
+        "row_count": 15043,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Different location Preference",
+        "aliases": [
+          "different location preference",
+          "different-location-preference",
+          "differentlocationpreference"
+        ],
+        "variants": [
+          "Different location Preference"
+        ],
+        "row_count": 14449,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Inventory sold out",
+        "aliases": [
+          "inventory sold out",
+          "inventory-sold-out",
+          "inventorysoldout"
+        ],
+        "variants": [
+          "Inventory sold out"
+        ],
+        "row_count": 12820,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for other products",
+        "aliases": [
+          "looking for other products",
+          "looking-for-other-products",
+          "lookingforotherproducts"
+        ],
+        "variants": [
+          "Looking for other products"
+        ],
+        "row_count": 11877,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Out of budget",
+        "aliases": [
+          "out of budget",
+          "out-of-budget",
+          "outofbudget"
+        ],
+        "variants": [
+          "Out of budget"
+        ],
+        "row_count": 11156,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Not Interested in buying the property",
+        "aliases": [
+          "not interested in buying the property",
+          "not-interested-in-buying-the-property",
+          "notinterestedinbuyingtheproperty"
+        ],
+        "variants": [
+          "Not Interested in buying the property"
+        ],
+        "row_count": 10413,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Disqualified by Broker",
+        "aliases": [
+          "disqualified by broker",
+          "disqualified-by-broker",
+          "disqualifiedbybroker"
+        ],
+        "variants": [
+          "Disqualified by Broker"
+        ],
+        "row_count": 5498,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for ready to move in property.",
+        "aliases": [
+          "looking for ready to move in property",
+          "looking-for-ready-to-move-in-property",
+          "lookingforreadytomoveinproperty"
+        ],
+        "variants": [
+          "Looking for ready to move in property."
+        ],
+        "row_count": 4644,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Client invested with other developer",
+        "aliases": [
+          "client invested with other developer",
+          "client-invested-with-other-developer",
+          "clientinvestedwithotherdeveloper"
+        ],
+        "variants": [
+          "Client invested with other developer"
+        ],
+        "row_count": 3023,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Product/Inventory not available",
+        "aliases": [
+          "product inventory not available",
+          "product-inventory-not-available",
+          "productinventorynotavailable"
+        ],
+        "variants": [
+          "Product/Inventory not available"
+        ],
+        "row_count": 2091,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Came to see sample apartment only",
+        "aliases": [
+          "came to see sample apartment only",
+          "came-to-see-sample-apartment-only",
+          "cametoseesampleapartmentonly"
+        ],
+        "variants": [
+          "Came to see sample apartment only"
+        ],
+        "row_count": 1801,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Incorrect details",
+        "aliases": [
+          "incorrect details",
+          "incorrect-details",
+          "incorrectdetails"
+        ],
+        "variants": [
+          "Incorrect details"
+        ],
+        "row_count": 1437,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for 3 Bhk apartment only",
+        "aliases": [
+          "looking for 3 bhk apartment only",
+          "looking-for-3-bhk-apartment-only",
+          "lookingfor3bhkapartmentonly"
+        ],
+        "variants": [
+          "Looking for 3 Bhk apartment only"
+        ],
+        "row_count": 1110,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Late possession timelines",
+        "aliases": [
+          "late possession timelines",
+          "late-possession-timelines",
+          "latepossessiontimelines"
+        ],
+        "variants": [
+          "Late possession timelines"
+        ],
+        "row_count": 750,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for property on rent",
+        "aliases": [
+          "looking for property on rent",
+          "looking-for-property-on-rent",
+          "lookingforpropertyonrent"
+        ],
+        "variants": [
+          "Looking for property on rent"
+        ],
+        "row_count": 648,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for property in resale only",
+        "aliases": [
+          "looking for property in resale only",
+          "looking-for-property-in-resale-only",
+          "lookingforpropertyinresaleonly"
+        ],
+        "variants": [
+          "Looking for property in resale only"
+        ],
+        "row_count": 364,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Complained about low level of development on site",
+        "aliases": [
+          "complained about low level of development on site",
+          "complained-about-low-level-of-development-on-site",
+          "complainedaboutlowlevelofdevelopmentonsite"
+        ],
+        "variants": [
+          "Complained about low level of development on site"
+        ],
+        "row_count": 263,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Not eligible for Loan",
+        "aliases": [
+          "not eligible for loan",
+          "not-eligible-for-loan",
+          "noteligibleforloan"
+        ],
+        "variants": [
+          "Not eligible for Loan"
+        ],
+        "row_count": 184,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Room sizes are too small",
+        "aliases": [
+          "room sizes are too small",
+          "room-sizes-are-too-small",
+          "roomsizesaretoosmall"
+        ],
+        "variants": [
+          "Room sizes are too small"
+        ],
+        "row_count": 164,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Samriddhi Homes Scheme Closed",
+        "aliases": [
+          "samriddhi homes scheme closed",
+          "samriddhi-homes-scheme-closed",
+          "samriddhihomesschemeclosed"
+        ],
+        "variants": [
+          "Samriddhi Homes Scheme Closed"
+        ],
+        "row_count": 117,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Broker",
+        "aliases": [
+          "broker"
+        ],
+        "variants": [
+          "Broker"
+        ],
+        "row_count": 101,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for bigger apartment",
+        "aliases": [
+          "looking for bigger apartment",
+          "looking-for-bigger-apartment",
+          "lookingforbiggerapartment"
+        ],
+        "variants": [
+          "Looking for bigger apartment"
+        ],
+        "row_count": 93,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Wants longer payment plan",
+        "aliases": [
+          "wants longer payment plan",
+          "wants-longer-payment-plan",
+          "wantslongerpaymentplan"
+        ],
+        "variants": [
+          "Wants longer payment plan"
+        ],
+        "row_count": 79,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Looking for under construction property only",
+        "aliases": [
+          "looking for under construction property only",
+          "looking-for-under-construction-property-only",
+          "lookingforunderconstructionpropertyonly"
+        ],
+        "variants": [
+          "Looking for under construction property only"
+        ],
+        "row_count": 49,
+        "tables": [
+          "lead",
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Design Issue (Servant Room / Small Balcony / Windows / Vastu Issue)",
+        "aliases": [
+          "design issue",
+          "design issue (servant room small balcony windows vastu issue)",
+          "design-issue-(servant-room-small-balcony-windows-vastu-issue)",
+          "designissue",
+          "designissue(servantroomsmallbalconywindowsvastuissue)"
+        ],
+        "variants": [
+          "Design Issue (Servant Room / Small Balcony / Windows / Vastu Issue)"
+        ],
+        "row_count": 23,
+        "tables": [
+          "opportunity"
+        ]
+      },
+      {
+        "canonical": "Duplicate",
+        "aliases": [
+          "duplicate"
+        ],
+        "variants": [
+          "Duplicate"
+        ],
+        "row_count": 11,
+        "tables": [
+          "opportunity"
+        ]
+      }
+    ],
+    "junk_reason": [
+      {
+        "canonical": "Not Interested In Real Estate",
+        "aliases": [
+          "not interested in real estate",
+          "not-interested-in-real-estate",
+          "notinterestedinrealestate"
+        ],
+        "variants": [
+          "Not Interested In Real Estate"
+        ],
+        "row_count": 35820,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Invalid No.",
+        "aliases": [
+          "invalid no",
+          "invalid-no",
+          "invalidno"
+        ],
+        "variants": [
+          "Invalid No."
+        ],
+        "row_count": 12254,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Did Not Post",
+        "aliases": [
+          "did not post",
+          "did-not-post",
+          "didnotpost"
+        ],
+        "variants": [
+          "Did Not Post"
+        ],
+        "row_count": 4075,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Wrong No.",
+        "aliases": [
+          "wrong no",
+          "wrong-no",
+          "wrongno"
+        ],
+        "variants": [
+          "Wrong No."
+        ],
+        "row_count": 3328,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Broker",
+        "aliases": [
+          "broker"
+        ],
+        "variants": [
+          "Broker"
+        ],
+        "row_count": 2188,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Duplicate",
+        "aliases": [
+          "duplicate"
+        ],
+        "variants": [
+          "Duplicate"
+        ],
+        "row_count": 845,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Existing Customer",
+        "aliases": [
+          "existing customer",
+          "existing-customer",
+          "existingcustomer"
+        ],
+        "variants": [
+          "Existing Customer"
+        ],
+        "row_count": 840,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Job Related",
+        "aliases": [
+          "job related",
+          "job-related",
+          "jobrelated"
+        ],
+        "variants": [
+          "Job Related"
+        ],
+        "row_count": 531,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Language Barrier",
+        "aliases": [
+          "language barrier",
+          "language-barrier",
+          "languagebarrier"
+        ],
+        "variants": [
+          "Language Barrier"
+        ],
+        "row_count": 223,
+        "tables": [
+          "lead"
+        ]
+      },
+      {
+        "canonical": "Looking For Property In Resale",
+        "aliases": [
+          "looking for property in resale",
+          "looking-for-property-in-resale",
+          "lookingforpropertyinresale"
+        ],
+        "variants": [
+          "Looking For Property In Resale"
+        ],
+        "row_count": 165,
+        "tables": [
+          "lead"
+        ]
+      }
+    ],
+    "subject": [
+      {
+        "canonical": "Follow Up",
+        "aliases": [
+          "follow up",
+          "follow-up",
+          "followup"
+        ],
+        "variants": [
+          "Follow Up",
+          "Follow up",
+          "follow up"
+        ],
+        "row_count": 283786,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Phone Call Activity",
+        "aliases": [
+          "phone call activity",
+          "phone-call-activity",
+          "phonecallactivity"
+        ],
+        "variants": [
+          "PHONE CALL ACTIVITY",
+          "Phone Call Activity",
+          "Phone Call Activity.",
+          "Phone call Activity",
+          "Phone call activity",
+          "Phone call activity.",
+          "phone call activity",
+          "phone call activity."
+        ],
+        "row_count": 224195,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Sales Follow Up",
+        "aliases": [
+          "sales follow up",
+          "sales-follow-up",
+          "salesfollowup"
+        ],
+        "variants": [
+          "Sales Follow Up",
+          "Sales Follow up",
+          "Sales follow up"
+        ],
+        "row_count": 57826,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Personal Appointment Booked",
+        "aliases": [
+          "personal appointment booked",
+          "personal-appointment-booked",
+          "personalappointmentbooked"
+        ],
+        "variants": [
+          "Personal Appointment Booked",
+          "personal appointment booked"
+        ],
+        "row_count": 34830,
+        "tables": [
+          "event"
+        ]
+      },
+      {
+        "canonical": "Message sent",
+        "aliases": [
+          "message sent",
+          "message-sent",
+          "messagesent"
+        ],
+        "variants": [
+          "Message sent"
+        ],
+        "row_count": 28507,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Experience Calling Follow Up",
+        "aliases": [
+          "experience calling follow up",
+          "experience-calling-follow-up",
+          "experiencecallingfollowup"
+        ],
+        "variants": [
+          "Experience Calling Follow Up"
+        ],
+        "row_count": 16938,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "We were unable to contact you_Wave City",
+        "aliases": [
+          "we were unable to contact you wave city",
+          "we-were-unable-to-contact-you-wave-city",
+          "wewereunabletocontactyouwavecity"
+        ],
+        "variants": [
+          "We were unable to contact you_Wave City"
+        ],
+        "row_count": 12291,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "GRE Phone Call",
+        "aliases": [
+          "gre phone call",
+          "gre-phone-call",
+          "grephonecall"
+        ],
+        "variants": [
+          "GRE Phone Call"
+        ],
+        "row_count": 10071,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Re-query requested",
+        "aliases": [
+          "re query requested",
+          "re-query-requested",
+          "requeryrequested"
+        ],
+        "variants": [
+          "Re-query requested"
+        ],
+        "row_count": 8090,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Call Back By Sales Expert",
+        "aliases": [
+          "call back by sales expert",
+          "call-back-by-sales-expert",
+          "callbackbysalesexpert"
+        ],
+        "variants": [
+          "Call Back By Sales Expert"
+        ],
+        "row_count": 6154,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9953015883",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9953015883",
+          "sms-sent-to-9953015883",
+          "smssentto9953015883"
+        ],
+        "variants": [
+          "SMS sent to 9953015883"
+        ],
+        "row_count": 6151,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9953496449",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9953496449",
+          "sms-sent-to-9953496449",
+          "smssentto9953496449"
+        ],
+        "variants": [
+          "SMS sent to 9953496449"
+        ],
+        "row_count": 5971,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8700073899",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8700073899",
+          "sms-sent-to-8700073899",
+          "smssentto8700073899"
+        ],
+        "variants": [
+          "SMS sent to 8700073899"
+        ],
+        "row_count": 4420,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Welcome Calling Follow Up",
+        "aliases": [
+          "welcome calling follow up",
+          "welcome-calling-follow-up",
+          "welcomecallingfollowup"
+        ],
+        "variants": [
+          "Welcome Calling Follow Up"
+        ],
+        "row_count": 3349,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Request call back",
+        "aliases": [
+          "request call back",
+          "request-call-back",
+          "requestcallback"
+        ],
+        "variants": [
+          "Request call back"
+        ],
+        "row_count": 1371,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8860171699",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8860171699",
+          "sms-sent-to-8860171699",
+          "smssentto8860171699"
+        ],
+        "variants": [
+          "SMS sent to 8860171699"
+        ],
+        "row_count": 1028,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9811394209",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9811394209",
+          "sms-sent-to-9811394209",
+          "smssentto9811394209"
+        ],
+        "variants": [
+          "SMS sent to 9811394209"
+        ],
+        "row_count": 927,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8076774301",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8076774301",
+          "sms-sent-to-8076774301",
+          "smssentto8076774301"
+        ],
+        "variants": [
+          "SMS sent to 8076774301"
+        ],
+        "row_count": 926,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Live Chat Query",
+        "aliases": [
+          "live chat query",
+          "live-chat-query",
+          "livechatquery"
+        ],
+        "variants": [
+          "Live Chat Query"
+        ],
+        "row_count": 917,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SLA Notification message sent",
+        "aliases": [
+          "sla notification message sent",
+          "sla-notification-message-sent",
+          "slanotificationmessagesent"
+        ],
+        "variants": [
+          "SLA Notification message sent"
+        ],
+        "row_count": 888,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Call",
+        "aliases": [
+          "call"
+        ],
+        "variants": [
+          "Call"
+        ],
+        "row_count": 845,
+        "tables": [
+          "event",
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9643069002",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9643069002",
+          "sms-sent-to-9643069002",
+          "smssentto9643069002"
+        ],
+        "variants": [
+          "SMS sent to 9643069002"
+        ],
+        "row_count": 824,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9953806664",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9953806664",
+          "sms-sent-to-9953806664",
+          "smssentto9953806664"
+        ],
+        "variants": [
+          "SMS sent to 9953806664"
+        ],
+        "row_count": 801,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8588813695",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8588813695",
+          "sms-sent-to-8588813695",
+          "smssentto8588813695"
+        ],
+        "variants": [
+          "SMS sent to 8588813695"
+        ],
+        "row_count": 775,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9773675057",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9773675057",
+          "sms-sent-to-9773675057",
+          "smssentto9773675057"
+        ],
+        "variants": [
+          "SMS sent to 9773675057"
+        ],
+        "row_count": 769,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7982047871",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7982047871",
+          "sms-sent-to-7982047871",
+          "smssentto7982047871"
+        ],
+        "variants": [
+          "SMS sent to 7982047871"
+        ],
+        "row_count": 762,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8400183683",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8400183683",
+          "sms-sent-to-8400183683",
+          "smssentto8400183683"
+        ],
+        "variants": [
+          "SMS sent to 8400183683"
+        ],
+        "row_count": 729,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8512875940",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8512875940",
+          "sms-sent-to-8512875940",
+          "smssentto8512875940"
+        ],
+        "variants": [
+          "SMS sent to 8512875940"
+        ],
+        "row_count": 702,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8373918823",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8373918823",
+          "sms-sent-to-8373918823",
+          "smssentto8373918823"
+        ],
+        "variants": [
+          "SMS sent to 8373918823"
+        ],
+        "row_count": 698,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8791480636",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8791480636",
+          "sms-sent-to-8791480636",
+          "smssentto8791480636"
+        ],
+        "variants": [
+          "SMS sent to 8791480636"
+        ],
+        "row_count": 658,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9643702847",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9643702847",
+          "sms-sent-to-9643702847",
+          "smssentto9643702847"
+        ],
+        "variants": [
+          "SMS sent to 9643702847"
+        ],
+        "row_count": 621,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7838209399",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7838209399",
+          "sms-sent-to-7838209399",
+          "smssentto7838209399"
+        ],
+        "variants": [
+          "SMS sent to 7838209399"
+        ],
+        "row_count": 585,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8588825002",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8588825002",
+          "sms-sent-to-8588825002",
+          "smssentto8588825002"
+        ],
+        "variants": [
+          "SMS sent to 8588825002"
+        ],
+        "row_count": 575,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8130670791",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8130670791",
+          "sms-sent-to-8130670791",
+          "smssentto8130670791"
+        ],
+        "variants": [
+          "SMS sent to 8130670791"
+        ],
+        "row_count": 559,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7088078555",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7088078555",
+          "sms-sent-to-7088078555",
+          "smssentto7088078555"
+        ],
+        "variants": [
+          "SMS sent to 7088078555"
+        ],
+        "row_count": 513,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9354481112",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9354481112",
+          "sms-sent-to-9354481112",
+          "smssentto9354481112"
+        ],
+        "variants": [
+          "SMS sent to 9354481112"
+        ],
+        "row_count": 431,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Phone call",
+        "aliases": [
+          "phone call",
+          "phone-call",
+          "phonecall"
+        ],
+        "variants": [
+          "Phone Call",
+          "Phone call",
+          "pHONE CALL",
+          "phone caLL",
+          "phone call"
+        ],
+        "row_count": 417,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7772038338",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7772038338",
+          "sms-sent-to-7772038338",
+          "smssentto7772038338"
+        ],
+        "variants": [
+          "SMS sent to 7772038338"
+        ],
+        "row_count": 399,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9953262912",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9953262912",
+          "sms-sent-to-9953262912",
+          "smssentto9953262912"
+        ],
+        "variants": [
+          "SMS sent to 9953262912"
+        ],
+        "row_count": 385,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8198066279",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8198066279",
+          "sms-sent-to-8198066279",
+          "smssentto8198066279"
+        ],
+        "variants": [
+          "SMS sent to 8198066279"
+        ],
+        "row_count": 384,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7982987258",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7982987258",
+          "sms-sent-to-7982987258",
+          "smssentto7982987258"
+        ],
+        "variants": [
+          "SMS sent to 7982987258"
+        ],
+        "row_count": 379,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9310372522",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9310372522",
+          "sms-sent-to-9310372522",
+          "smssentto9310372522"
+        ],
+        "variants": [
+          "SMS sent to 9310372522"
+        ],
+        "row_count": 376,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8377087570",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8377087570",
+          "sms-sent-to-8377087570",
+          "smssentto8377087570"
+        ],
+        "variants": [
+          "SMS sent to 8377087570"
+        ],
+        "row_count": 357,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "We were unable to contact you_Wave Estate",
+        "aliases": [
+          "we were unable to contact you wave estate",
+          "we-were-unable-to-contact-you-wave-estate",
+          "wewereunabletocontactyouwaveestate"
+        ],
+        "variants": [
+          "We were unable to contact you_Wave Estate"
+        ],
+        "row_count": 326,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9711623620",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9711623620",
+          "sms-sent-to-9711623620",
+          "smssentto9711623620"
+        ],
+        "variants": [
+          "SMS sent to 9711623620"
+        ],
+        "row_count": 289,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7838978715",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7838978715",
+          "sms-sent-to-7838978715",
+          "smssentto7838978715"
+        ],
+        "variants": [
+          "SMS sent to 7838978715"
+        ],
+        "row_count": 287,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7696220391",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7696220391",
+          "sms-sent-to-7696220391",
+          "smssentto7696220391"
+        ],
+        "variants": [
+          "SMS sent to 7696220391"
+        ],
+        "row_count": 287,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9625602208",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9625602208",
+          "sms-sent-to-9625602208",
+          "smssentto9625602208"
+        ],
+        "variants": [
+          "SMS sent to 9625602208"
+        ],
+        "row_count": 284,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8373918822",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8373918822",
+          "sms-sent-to-8373918822",
+          "smssentto8373918822"
+        ],
+        "variants": [
+          "SMS sent to 8373918822"
+        ],
+        "row_count": 282,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9650018413",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9650018413",
+          "sms-sent-to-9650018413",
+          "smssentto9650018413"
+        ],
+        "variants": [
+          "SMS sent to 9650018413"
+        ],
+        "row_count": 259,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 8920969966",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 8920969966",
+          "sms-sent-to-8920969966",
+          "smssentto8920969966"
+        ],
+        "variants": [
+          "SMS sent to 8920969966"
+        ],
+        "row_count": 243,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9667800216",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9667800216",
+          "sms-sent-to-9667800216",
+          "smssentto9667800216"
+        ],
+        "variants": [
+          "SMS sent to 9667800216"
+        ],
+        "row_count": 227,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Book Site Visit",
+        "aliases": [
+          "book site visit",
+          "book-site-visit",
+          "booksitevisit"
+        ],
+        "variants": [
+          "Book Site Visit"
+        ],
+        "row_count": 221,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 9953488580",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 9953488580",
+          "sms-sent-to-9953488580",
+          "smssentto9953488580"
+        ],
+        "variants": [
+          "SMS sent to 9953488580"
+        ],
+        "row_count": 203,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "SMS sent to 7838656762",
+        "aliases": [
+          "sms sent to",
+          "sms sent to 7838656762",
+          "sms-sent-to-7838656762",
+          "smssentto7838656762"
+        ],
+        "variants": [
+          "SMS sent to 7838656762"
+        ],
+        "row_count": 202,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Request Callback",
+        "aliases": [
+          "request callback",
+          "request-callback",
+          "requestcallback"
+        ],
+        "variants": [
+          "Request Callback"
+        ],
+        "row_count": 202,
+        "tables": [
+          "task"
+        ]
+      }
+    ],
+    "appointment_status": [
+      {
+        "canonical": "Scheduled",
+        "aliases": [
+          "scheduled"
+        ],
+        "variants": [
+          "Scheduled"
+        ],
+        "row_count": 12249,
+        "tables": [
+          "event"
+        ]
+      },
+      {
+        "canonical": "Completed",
+        "aliases": [
+          "completed"
+        ],
+        "variants": [
+          "Completed"
+        ],
+        "row_count": 9775,
+        "tables": [
+          "event"
+        ]
+      },
+      {
+        "canonical": "Cancelled",
+        "aliases": [
+          "cancelled"
+        ],
+        "variants": [
+          "Cancelled"
+        ],
+        "row_count": 202,
+        "tables": [
+          "event"
+        ]
+      },
+      {
+        "canonical": "Re-Visit",
+        "aliases": [
+          "re visit",
+          "re-visit",
+          "revisit"
+        ],
+        "variants": [
+          "Re-Visit"
+        ],
+        "row_count": 159,
+        "tables": [
+          "event"
+        ]
+      },
+      {
+        "canonical": "Re-Schedule",
+        "aliases": [
+          "re schedule",
+          "re-schedule",
+          "reschedule"
+        ],
+        "variants": [
+          "Re-Schedule"
+        ],
+        "row_count": 82,
+        "tables": [
+          "event"
+        ]
+      }
+    ],
+    "sales_team_feedback": [
+      {
+        "canonical": "In Followup",
+        "aliases": [
+          "in followup",
+          "in-followup",
+          "infollowup"
+        ],
+        "variants": [
+          "In Followup"
+        ],
+        "row_count": 40958,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Disqualified",
+        "aliases": [
+          "disqualified"
+        ],
+        "variants": [
+          "Disqualified"
+        ],
+        "row_count": 13463,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Qualified",
+        "aliases": [
+          "qualified"
+        ],
+        "variants": [
+          "Qualified"
+        ],
+        "row_count": 353,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Completed",
+        "aliases": [
+          "completed"
+        ],
+        "variants": [
+          "Completed"
+        ],
+        "row_count": 8,
+        "tables": [
+          "task"
+        ]
+      }
+    ],
+    "transfer_status": [
+      {
+        "canonical": "Call Back By Sales Expert",
+        "aliases": [
+          "call back by sales expert",
+          "call-back-by-sales-expert",
+          "callbackbysalesexpert"
+        ],
+        "variants": [
+          "Call Back By Sales Expert"
+        ],
+        "row_count": 2894,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Personal Appointment Booked",
+        "aliases": [
+          "personal appointment booked",
+          "personal-appointment-booked",
+          "personalappointmentbooked"
+        ],
+        "variants": [
+          "Personal Appointment Booked"
+        ],
+        "row_count": 1947,
+        "tables": [
+          "task"
+        ]
+      },
+      {
+        "canonical": "Email Requested",
+        "aliases": [
+          "email requested",
+          "email-requested",
+          "emailrequested"
+        ],
+        "variants": [
+          "Email Requested"
+        ],
+        "row_count": 20,
+        "tables": [
+          "task"
+        ]
+      }
+    ],
+    "service_category": [
+      {
+        "canonical": "Customer Payment Related",
+        "aliases": [
+          "customer payment related",
+          "customer-payment-related",
+          "customerpaymentrelated"
+        ],
+        "variants": [
+          "Customer Payment Related"
+        ],
+        "row_count": 21427,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Possession Related",
+        "aliases": [
+          "possession related",
+          "possession-related",
+          "possessionrelated"
+        ],
+        "variants": [
+          "Possession Related"
+        ],
+        "row_count": 15434,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Registration of property",
+        "aliases": [
+          "registration of property",
+          "registration-of-property",
+          "registrationofproperty"
+        ],
+        "variants": [
+          "Registration of property"
+        ],
+        "row_count": 15251,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Document Related",
+        "aliases": [
+          "document related",
+          "document-related",
+          "documentrelated"
+        ],
+        "variants": [
+          "Document Related"
+        ],
+        "row_count": 9031,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Agreement Related",
+        "aliases": [
+          "agreement related",
+          "agreement-related",
+          "agreementrelated"
+        ],
+        "variants": [
+          "Agreement Related"
+        ],
+        "row_count": 8905,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Account Statement Related",
+        "aliases": [
+          "account statement related",
+          "account-statement-related",
+          "accountstatementrelated"
+        ],
+        "variants": [
+          "Account Statement Related"
+        ],
+        "row_count": 8774,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Request Site Visit",
+        "aliases": [
+          "request site visit",
+          "request-site-visit",
+          "requestsitevisit"
+        ],
+        "variants": [
+          "Request Site Visit"
+        ],
+        "row_count": 4677,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Sales Related",
+        "aliases": [
+          "sales related",
+          "sales-related",
+          "salesrelated"
+        ],
+        "variants": [
+          "Sales Related"
+        ],
+        "row_count": 3701,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Customer Details Updation",
+        "aliases": [
+          "customer details updation",
+          "customer-details-updation",
+          "customerdetailsupdation"
+        ],
+        "variants": [
+          "Customer Details Updation"
+        ],
+        "row_count": 3152,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Demand Related",
+        "aliases": [
+          "demand related",
+          "demand-related",
+          "demandrelated"
+        ],
+        "variants": [
+          "Demand Related"
+        ],
+        "row_count": 2616,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Construction Update",
+        "aliases": [
+          "construction update",
+          "construction-update",
+          "constructionupdate"
+        ],
+        "variants": [
+          "Construction Update"
+        ],
+        "row_count": 2594,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Others",
+        "aliases": [
+          "others"
+        ],
+        "variants": [
+          "Others"
+        ],
+        "row_count": 984,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Reallocation Related",
+        "aliases": [
+          "reallocation related",
+          "reallocation-related",
+          "reallocationrelated"
+        ],
+        "variants": [
+          "Reallocation Related"
+        ],
+        "row_count": 822,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Request Interest Waiver",
+        "aliases": [
+          "request interest waiver",
+          "request-interest-waiver",
+          "requestinterestwaiver"
+        ],
+        "variants": [
+          "Request Interest Waiver"
+        ],
+        "row_count": 763,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Possession Issues",
+        "aliases": [
+          "possession issues",
+          "possession-issues",
+          "possessionissues"
+        ],
+        "variants": [
+          "Possession Issues"
+        ],
+        "row_count": 625,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Allotment Issues",
+        "aliases": [
+          "allotment issues",
+          "allotment-issues",
+          "allotmentissues"
+        ],
+        "variants": [
+          "Allotment Issues"
+        ],
+        "row_count": 512,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Subvention Related",
+        "aliases": [
+          "subvention related",
+          "subvention-related",
+          "subventionrelated"
+        ],
+        "variants": [
+          "Subvention Related"
+        ],
+        "row_count": 362,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Management Related",
+        "aliases": [
+          "management related",
+          "management-related",
+          "managementrelated"
+        ],
+        "variants": [
+          "Management Related"
+        ],
+        "row_count": 361,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Legal",
+        "aliases": [
+          "legal"
+        ],
+        "variants": [
+          "Legal"
+        ],
+        "row_count": 336,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Construction Related Issues",
+        "aliases": [
+          "construction related issues",
+          "construction-related-issues",
+          "constructionrelatedissues"
+        ],
+        "variants": [
+          "Construction Related Issues"
+        ],
+        "row_count": 187,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Clarification on Bank Loan",
+        "aliases": [
+          "clarification on bank loan",
+          "clarification-on-bank-loan",
+          "clarificationonbankloan"
+        ],
+        "variants": [
+          "Clarification on Bank Loan"
+        ],
+        "row_count": 158,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Agreement Not Received",
+        "aliases": [
+          "agreement not received",
+          "agreement-not-received",
+          "agreementnotreceived"
+        ],
+        "variants": [
+          "Agreement Not Received"
+        ],
+        "row_count": 66,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Mutation",
+        "aliases": [
+          "mutation"
+        ],
+        "variants": [
+          "Mutation"
+        ],
+        "row_count": 16,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Bank Funding Unavailable",
+        "aliases": [
+          "bank funding unavailable",
+          "bank-funding-unavailable",
+          "bankfundingunavailable"
+        ],
+        "variants": [
+          "Bank Funding Unavailable"
+        ],
+        "row_count": 7,
+        "tables": [
+          "case"
+        ]
+      }
+    ],
+    "service_subcategory": [
+      {
+        "canonical": "Registry Details Required",
+        "aliases": [
+          "registry details required",
+          "registry-details-required",
+          "registrydetailsrequired"
+        ],
+        "variants": [
+          "Registry Details Required"
+        ],
+        "row_count": 14383,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Customer Payment Received",
+        "aliases": [
+          "customer payment received",
+          "customer-payment-received",
+          "customerpaymentreceived"
+        ],
+        "variants": [
+          "Customer Payment Received"
+        ],
+        "row_count": 11581,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Possession Details Required",
+        "aliases": [
+          "possession details required",
+          "possession-details-required",
+          "possessiondetailsrequired"
+        ],
+        "variants": [
+          "Possession Details Required"
+        ],
+        "row_count": 8824,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Agreement Processing",
+        "aliases": [
+          "agreement processing",
+          "agreement-processing",
+          "agreementprocessing"
+        ],
+        "variants": [
+          "Agreement Processing"
+        ],
+        "row_count": 8683,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Require Account Statement",
+        "aliases": [
+          "require account statement",
+          "require-account-statement",
+          "requireaccountstatement"
+        ],
+        "variants": [
+          "Require Account Statement"
+        ],
+        "row_count": 8426,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Offer of Possession Related",
+        "aliases": [
+          "offer of possession related",
+          "offer-of-possession-related",
+          "offerofpossessionrelated"
+        ],
+        "variants": [
+          "Offer of Possession Related"
+        ],
+        "row_count": 5794,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Request Site Visit",
+        "aliases": [
+          "request site visit",
+          "request-site-visit",
+          "requestsitevisit"
+        ],
+        "variants": [
+          "Request Site Visit"
+        ],
+        "row_count": 4677,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Registry Related",
+        "aliases": [
+          "registry related",
+          "registry-related",
+          "registryrelated"
+        ],
+        "variants": [
+          "Registry Related"
+        ],
+        "row_count": 4222,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Construction Update",
+        "aliases": [
+          "construction update",
+          "construction-update",
+          "constructionupdate"
+        ],
+        "variants": [
+          "Construction Update"
+        ],
+        "row_count": 2594,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Others",
+        "aliases": [
+          "others"
+        ],
+        "variants": [
+          "Others"
+        ],
+        "row_count": 2267,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "PTM & TPT Related",
+        "aliases": [
+          "ptm tpt related",
+          "ptm-tpt-related",
+          "ptmtptrelated"
+        ],
+        "variants": [
+          "PTM & TPT Related"
+        ],
+        "row_count": 2173,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment Receipt not received",
+        "aliases": [
+          "payment receipt not received",
+          "payment-receipt-not-received",
+          "paymentreceiptnotreceived"
+        ],
+        "variants": [
+          "Payment Receipt not received"
+        ],
+        "row_count": 2145,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment Verification/Confirmation",
+        "aliases": [
+          "payment verification confirmation",
+          "payment-verification-confirmation",
+          "paymentverificationconfirmation"
+        ],
+        "variants": [
+          "Payment Verification/Confirmation"
+        ],
+        "row_count": 2096,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Refund Related",
+        "aliases": [
+          "refund related",
+          "refund-related",
+          "refundrelated"
+        ],
+        "variants": [
+          "Refund Related"
+        ],
+        "row_count": 2066,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Demand Query",
+        "aliases": [
+          "demand query",
+          "demand-query",
+          "demandquery"
+        ],
+        "variants": [
+          "Demand Query"
+        ],
+        "row_count": 1598,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Duplicate copy of the Receipts",
+        "aliases": [
+          "duplicate copy of the receipts",
+          "duplicate-copy-of-the-receipts",
+          "duplicatecopyofthereceipts"
+        ],
+        "variants": [
+          "Duplicate copy of the Receipts"
+        ],
+        "row_count": 1488,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Post Possession Payment",
+        "aliases": [
+          "post possession payment",
+          "post-possession-payment",
+          "postpossessionpayment"
+        ],
+        "variants": [
+          "Post Possession Payment"
+        ],
+        "row_count": 1358,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Address Updation",
+        "aliases": [
+          "address updation",
+          "address-updation",
+          "addressupdation"
+        ],
+        "variants": [
+          "Address Updation"
+        ],
+        "row_count": 1318,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Bank account details for RTGS/NEFT",
+        "aliases": [
+          "bank account details for rtgs neft",
+          "bank-account-details-for-rtgs-neft",
+          "bankaccountdetailsforrtgsneft"
+        ],
+        "variants": [
+          "Bank account details for RTGS/NEFT"
+        ],
+        "row_count": 1066,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Request for Demand Letter",
+        "aliases": [
+          "request for demand letter",
+          "request-for-demand-letter",
+          "requestfordemandletter"
+        ],
+        "variants": [
+          "Request for Demand Letter"
+        ],
+        "row_count": 1018,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Interest cheque Related",
+        "aliases": [
+          "interest cheque related",
+          "interest-cheque-related",
+          "interestchequerelated"
+        ],
+        "variants": [
+          "Interest cheque Related"
+        ],
+        "row_count": 897,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Reallocation Related",
+        "aliases": [
+          "reallocation related",
+          "reallocation-related",
+          "reallocationrelated"
+        ],
+        "variants": [
+          "Reallocation Related"
+        ],
+        "row_count": 822,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Transfer Related",
+        "aliases": [
+          "transfer related",
+          "transfer-related",
+          "transferrelated"
+        ],
+        "variants": [
+          "Transfer Related"
+        ],
+        "row_count": 820,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Request Interest Waiver",
+        "aliases": [
+          "request interest waiver",
+          "request-interest-waiver",
+          "requestinterestwaiver"
+        ],
+        "variants": [
+          "Request Interest Waiver"
+        ],
+        "row_count": 763,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Contact Details Updation",
+        "aliases": [
+          "contact details updation",
+          "contact-details-updation",
+          "contactdetailsupdation"
+        ],
+        "variants": [
+          "Contact Details Updation"
+        ],
+        "row_count": 618,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Stamp Duty",
+        "aliases": [
+          "stamp duty",
+          "stamp-duty",
+          "stampduty"
+        ],
+        "variants": [
+          "Stamp Duty"
+        ],
+        "row_count": 552,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Transfer Query",
+        "aliases": [
+          "transfer query",
+          "transfer-query",
+          "transferquery"
+        ],
+        "variants": [
+          "Transfer Query"
+        ],
+        "row_count": 551,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Email Id Updation",
+        "aliases": [
+          "email id updation",
+          "email-id-updation",
+          "emailidupdation"
+        ],
+        "variants": [
+          "Email Id Updation"
+        ],
+        "row_count": 537,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Possession delayed",
+        "aliases": [
+          "possession delayed",
+          "possession-delayed",
+          "possessiondelayed"
+        ],
+        "variants": [
+          "Possession delayed"
+        ],
+        "row_count": 496,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Customer Details Updation",
+        "aliases": [
+          "customer details updation",
+          "customer-details-updation",
+          "customerdetailsupdation"
+        ],
+        "variants": [
+          "Customer Details Updation"
+        ],
+        "row_count": 472,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Transfer Processing",
+        "aliases": [
+          "transfer processing",
+          "transfer-processing",
+          "transferprocessing"
+        ],
+        "variants": [
+          "Transfer Processing"
+        ],
+        "row_count": 462,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Cancellation Query",
+        "aliases": [
+          "cancellation query",
+          "cancellation-query",
+          "cancellationquery"
+        ],
+        "variants": [
+          "Cancellation Query"
+        ],
+        "row_count": 409,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "NOC Related",
+        "aliases": [
+          "noc related",
+          "noc-related",
+          "nocrelated"
+        ],
+        "variants": [
+          "NOC Related"
+        ],
+        "row_count": 393,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Possession Release Inquiry",
+        "aliases": [
+          "possession release inquiry",
+          "possession-release-inquiry",
+          "possessionreleaseinquiry"
+        ],
+        "variants": [
+          "Possession Release Inquiry"
+        ],
+        "row_count": 390,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Management Cases",
+        "aliases": [
+          "management cases",
+          "management-cases",
+          "managementcases"
+        ],
+        "variants": [
+          "Management Cases"
+        ],
+        "row_count": 360,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Clarification on Account Statement",
+        "aliases": [
+          "clarification on account statement",
+          "clarification-on-account-statement",
+          "clarificationonaccountstatement"
+        ],
+        "variants": [
+          "Clarification on Account Statement"
+        ],
+        "row_count": 348,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Registry not executed",
+        "aliases": [
+          "registry not executed",
+          "registry-not-executed",
+          "registrynotexecuted"
+        ],
+        "variants": [
+          "Registry not executed"
+        ],
+        "row_count": 330,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "EMI Debit",
+        "aliases": [
+          "emi debit",
+          "emi-debit",
+          "emidebit"
+        ],
+        "variants": [
+          "EMI Debit"
+        ],
+        "row_count": 285,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "RERA Related",
+        "aliases": [
+          "rera related",
+          "rera-related",
+          "rerarelated"
+        ],
+        "variants": [
+          "RERA Related"
+        ],
+        "row_count": 238,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Agreement Amendment",
+        "aliases": [
+          "agreement amendment",
+          "agreement-amendment",
+          "agreementamendment"
+        ],
+        "variants": [
+          "Agreement Amendment"
+        ],
+        "row_count": 222,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment Plan Clarification",
+        "aliases": [
+          "payment plan clarification",
+          "payment-plan-clarification",
+          "paymentplanclarification"
+        ],
+        "variants": [
+          "Payment Plan Clarification"
+        ],
+        "row_count": 202,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment delayed - Request to Extend Due Date",
+        "aliases": [
+          "payment delayed request to extend due date",
+          "payment-delayed-request-to-extend-due-date",
+          "paymentdelayedrequesttoextendduedate"
+        ],
+        "variants": [
+          "Payment delayed - Request to Extend Due Date"
+        ],
+        "row_count": 197,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Allotment receipt not received",
+        "aliases": [
+          "allotment receipt not received",
+          "allotment-receipt-not-received",
+          "allotmentreceiptnotreceived"
+        ],
+        "variants": [
+          "Allotment receipt not received"
+        ],
+        "row_count": 177,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Allotment Letter Related",
+        "aliases": [
+          "allotment letter related",
+          "allotment-letter-related",
+          "allotmentletterrelated"
+        ],
+        "variants": [
+          "Allotment Letter Related"
+        ],
+        "row_count": 167,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Penalty Clause Related",
+        "aliases": [
+          "penalty clause related",
+          "penalty-clause-related",
+          "penaltyclauserelated"
+        ],
+        "variants": [
+          "Penalty Clause Related"
+        ],
+        "row_count": 163,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment Adjustment/Correction",
+        "aliases": [
+          "payment adjustment correction",
+          "payment-adjustment-correction",
+          "paymentadjustmentcorrection"
+        ],
+        "variants": [
+          "Payment Adjustment/Correction"
+        ],
+        "row_count": 160,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Demand for Compensation",
+        "aliases": [
+          "demand for compensation",
+          "demand-for-compensation",
+          "demandforcompensation"
+        ],
+        "variants": [
+          "Demand for Compensation"
+        ],
+        "row_count": 160,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Service Tax Query",
+        "aliases": [
+          "service tax query",
+          "service-tax-query",
+          "servicetaxquery"
+        ],
+        "variants": [
+          "Service Tax Query"
+        ],
+        "row_count": 159,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Clarification on Bank Loan",
+        "aliases": [
+          "clarification on bank loan",
+          "clarification-on-bank-loan",
+          "clarificationonbankloan"
+        ],
+        "variants": [
+          "Clarification on Bank Loan"
+        ],
+        "row_count": 158,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Construction Unsatisfactory",
+        "aliases": [
+          "construction unsatisfactory",
+          "construction-unsatisfactory",
+          "constructionunsatisfactory"
+        ],
+        "variants": [
+          "Construction Unsatisfactory"
+        ],
+        "row_count": 157,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Allotment not done",
+        "aliases": [
+          "allotment not done",
+          "allotment-not-done",
+          "allotmentnotdone"
+        ],
+        "variants": [
+          "Allotment not done"
+        ],
+        "row_count": 153,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Name Deletion",
+        "aliases": [
+          "name deletion",
+          "name-deletion",
+          "namedeletion"
+        ],
+        "variants": [
+          "Name Deletion"
+        ],
+        "row_count": 105,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Co-Applicant Addition",
+        "aliases": [
+          "co applicant addition",
+          "co-applicant-addition",
+          "coapplicantaddition"
+        ],
+        "variants": [
+          "Co-Applicant Addition"
+        ],
+        "row_count": 102,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Layout Related",
+        "aliases": [
+          "layout related",
+          "layout-related",
+          "layoutrelated"
+        ],
+        "variants": [
+          "Layout Related"
+        ],
+        "row_count": 102,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Funds Transfer",
+        "aliases": [
+          "funds transfer",
+          "funds-transfer",
+          "fundstransfer"
+        ],
+        "variants": [
+          "Funds Transfer"
+        ],
+        "row_count": 83,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Inspection related complaints",
+        "aliases": [
+          "inspection related complaints",
+          "inspection-related-complaints",
+          "inspectionrelatedcomplaints"
+        ],
+        "variants": [
+          "Inspection related complaints"
+        ],
+        "row_count": 80,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Subvention Period",
+        "aliases": [
+          "subvention period",
+          "subvention-period",
+          "subventionperiod"
+        ],
+        "variants": [
+          "Subvention Period"
+        ],
+        "row_count": 77,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Facility Management services and charges",
+        "aliases": [
+          "facility management services and charges",
+          "facility-management-services-and-charges",
+          "facilitymanagementservicesandcharges"
+        ],
+        "variants": [
+          "Facility Management services and charges"
+        ],
+        "row_count": 74,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Booking Cancellation",
+        "aliases": [
+          "booking cancellation",
+          "booking-cancellation",
+          "bookingcancellation"
+        ],
+        "variants": [
+          "Booking Cancellation"
+        ],
+        "row_count": 55,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment on Possession",
+        "aliases": [
+          "payment on possession",
+          "payment-on-possession",
+          "paymentonpossession"
+        ],
+        "variants": [
+          "Payment on Possession"
+        ],
+        "row_count": 49,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Cancellation Related",
+        "aliases": [
+          "cancellation related",
+          "cancellation-related",
+          "cancellationrelated"
+        ],
+        "variants": [
+          "Cancellation Related"
+        ],
+        "row_count": 37,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Not executed",
+        "aliases": [
+          "not executed",
+          "not-executed",
+          "notexecuted"
+        ],
+        "variants": [
+          "Not executed"
+        ],
+        "row_count": 36,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Executed",
+        "aliases": [
+          "executed"
+        ],
+        "variants": [
+          "Executed"
+        ],
+        "row_count": 30,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Offer Related",
+        "aliases": [
+          "offer related",
+          "offer-related",
+          "offerrelated"
+        ],
+        "variants": [
+          "Offer Related"
+        ],
+        "row_count": 29,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "TDS Related",
+        "aliases": [
+          "tds related",
+          "tds-related",
+          "tdsrelated"
+        ],
+        "variants": [
+          "TDS Related"
+        ],
+        "row_count": 25,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Property Document/Statement",
+        "aliases": [
+          "property document statement",
+          "property-document-statement",
+          "propertydocumentstatement"
+        ],
+        "variants": [
+          "Property Document/Statement"
+        ],
+        "row_count": 24,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Occupancy certificate clarifications",
+        "aliases": [
+          "occupancy certificate clarifications",
+          "occupancy-certificate-clarifications",
+          "occupancycertificateclarifications"
+        ],
+        "variants": [
+          "Occupancy certificate clarifications"
+        ],
+        "row_count": 23,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Mutation Related",
+        "aliases": [
+          "mutation related",
+          "mutation-related",
+          "mutationrelated"
+        ],
+        "variants": [
+          "Mutation Related"
+        ],
+        "row_count": 23,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Legal notices",
+        "aliases": [
+          "legal notices",
+          "legal-notices",
+          "legalnotices"
+        ],
+        "variants": [
+          "Legal notices"
+        ],
+        "row_count": 22,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Price Details",
+        "aliases": [
+          "price details",
+          "price-details",
+          "pricedetails"
+        ],
+        "variants": [
+          "Price Details"
+        ],
+        "row_count": 21,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Registration",
+        "aliases": [
+          "registration"
+        ],
+        "variants": [
+          "Registration"
+        ],
+        "row_count": 21,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Bank Loan Documents",
+        "aliases": [
+          "bank loan documents",
+          "bank-loan-documents",
+          "bankloandocuments"
+        ],
+        "variants": [
+          "Bank Loan Documents"
+        ],
+        "row_count": 21,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Unit Upgradation",
+        "aliases": [
+          "unit upgradation",
+          "unit-upgradation",
+          "unitupgradation"
+        ],
+        "variants": [
+          "Unit Upgradation"
+        ],
+        "row_count": 19,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Delay in Construction",
+        "aliases": [
+          "delay in construction",
+          "delay-in-construction",
+          "delayinconstruction"
+        ],
+        "variants": [
+          "Delay in Construction"
+        ],
+        "row_count": 18,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "MEDIA NEWS",
+        "aliases": [
+          "media news",
+          "media-news",
+          "medianews"
+        ],
+        "variants": [
+          "MEDIA NEWS"
+        ],
+        "row_count": 17,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Site Not Approachable",
+        "aliases": [
+          "site not approachable",
+          "site-not-approachable",
+          "sitenotapproachable"
+        ],
+        "variants": [
+          "Site Not Approachable"
+        ],
+        "row_count": 12,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Payment Plan Change",
+        "aliases": [
+          "payment plan change",
+          "payment-plan-change",
+          "paymentplanchange"
+        ],
+        "variants": [
+          "Payment Plan Change"
+        ],
+        "row_count": 11,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Property not as promised/as per choice",
+        "aliases": [
+          "property not as promised as per choice",
+          "property-not-as-promised-as-per-choice",
+          "propertynotaspromisedasperchoice"
+        ],
+        "variants": [
+          "Property not as promised/as per choice"
+        ],
+        "row_count": 9,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Approvals Related",
+        "aliases": [
+          "approvals related",
+          "approvals-related",
+          "approvalsrelated"
+        ],
+        "variants": [
+          "Approvals Related"
+        ],
+        "row_count": 7,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Incorrect Allotment",
+        "aliases": [
+          "incorrect allotment",
+          "incorrect-allotment",
+          "incorrectallotment"
+        ],
+        "variants": [
+          "Incorrect Allotment"
+        ],
+        "row_count": 6,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Club Membership Charges",
+        "aliases": [
+          "club membership charges",
+          "club-membership-charges",
+          "clubmembershipcharges"
+        ],
+        "variants": [
+          "Club Membership Charges"
+        ],
+        "row_count": 6,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "KYC Related",
+        "aliases": [
+          "kyc related",
+          "kyc-related",
+          "kycrelated"
+        ],
+        "variants": [
+          "KYC Related"
+        ],
+        "row_count": 6,
+        "tables": [
+          "case"
+        ]
+      }
+    ],
+    "service_request_type": [
+      {
+        "canonical": "Query",
+        "aliases": [
+          "query"
+        ],
+        "variants": [
+          "Query"
+        ],
+        "row_count": 13167,
+        "tables": [
+          "case"
+        ]
+      },
+      {
+        "canonical": "Complaints",
+        "aliases": [
+          "complaints"
+        ],
+        "variants": [
+          "Complaints"
+        ],
+        "row_count": 16,
+        "tables": [
+          "case"
+        ]
+      }
+    ]
+  },
+  "facet_meta": {
+    "project": {
+      "kind": "controlled",
+      "distinct_total": 7,
+      "kept": 5,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "product": {
+      "kind": "controlled",
+      "distinct_total": 73,
+      "kept": 66,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "source": {
+      "kind": "controlled",
+      "distinct_total": 21,
+      "kept": 20,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "subsource": {
+      "kind": "controlled",
+      "distinct_total": 107,
+      "kept": 81,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "feedback": {
+      "kind": "controlled",
+      "distinct_total": 13,
+      "kept": 10,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "status": {
+      "kind": "controlled",
+      "distinct_total": 9,
+      "kept": 9,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "rating": {
+      "kind": "controlled",
+      "distinct_total": 3,
+      "kept": 3,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "property_type": {
+      "kind": "controlled",
+      "distinct_total": 6,
+      "kept": 5,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "city": {
+      "kind": "free_text",
+      "distinct_total": 4762,
+      "kept": 23,
+      "min_rows": 200,
+      "alias_matchable": false
+    },
+    "owner": {
+      "kind": "controlled",
+      "distinct_total": 142,
+      "kept": 127,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "disqualification_reason": {
+      "kind": "controlled",
+      "distinct_total": 29,
+      "kept": 28,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "junk_reason": {
+      "kind": "controlled",
+      "distinct_total": 10,
+      "kept": 10,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "subject": {
+      "kind": "free_text",
+      "distinct_total": 77905,
+      "kept": 56,
+      "min_rows": 200,
+      "alias_matchable": false
+    },
+    "appointment_status": {
+      "kind": "controlled",
+      "distinct_total": 5,
+      "kept": 5,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "sales_team_feedback": {
+      "kind": "controlled",
+      "distinct_total": 4,
+      "kept": 4,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "transfer_status": {
+      "kind": "controlled",
+      "distinct_total": 3,
+      "kept": 3,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "service_category": {
+      "kind": "controlled",
+      "distinct_total": 24,
+      "kept": 24,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "service_subcategory": {
+      "kind": "controlled",
+      "distinct_total": 86,
+      "kept": 82,
+      "min_rows": 5,
+      "alias_matchable": true
+    },
+    "service_request_type": {
+      "kind": "controlled",
+      "distinct_total": 2,
+      "kept": 2,
+      "min_rows": 5,
+      "alias_matchable": true
+    }
+  },
+  "columns": {
+    "project": {
+      "lead": "Project__c",
+      "opportunity": "Project__c",
+      "event": "Project__c",
+      "task": "Project__c",
+      "case": "Project__c"
+    },
+    "product": {
+      "lead": "Product_Category__c",
+      "opportunity": "Project_Category__c",
+      "event": "Product_Category__c",
+      "task": "Product_Category__c",
+      "case": "Product_Category__c"
+    },
+    "source": {
+      "lead": "Lead_Source__c",
+      "opportunity": "Lead_Source__c"
+    },
+    "subsource": {
+      "lead": "Lead_Source_Sub_Category__c",
+      "opportunity": "Lead_Source_Sub_Category__c"
+    },
+    "feedback": {
+      "lead": "Customer_Feedback__c",
+      "task": "Customer_Feedback__c",
+      "case": "Feedback__c"
+    },
+    "status": {
+      "lead": "Status",
+      "task": "Status__c"
+    },
+    "rating": {
+      "lead": "Rating__c"
+    },
+    "property_type": {
+      "lead": "Property_Type__c",
+      "opportunity": "Property_Type__c"
+    },
+    "city": {
+      "lead": "City__c"
+    },
+    "owner": {
+      "lead": "OwnerName__c",
+      "opportunity": "Owner_Name__c",
+      "event": "OwnerName__c",
+      "task": "OwnerName__c",
+      "case": "Owner_Name__c"
+    },
+    "disqualification_reason": {
+      "lead": "Disqualification_Reason__c",
+      "opportunity": "Disqualification_Reason__c"
+    },
+    "junk_reason": {
+      "lead": "Junk_Reason__c"
+    },
+    "subject": {
+      "event": "Subject__c",
+      "task": "Subject__c"
+    },
+    "appointment_status": {
+      "event": "Appointment_Status__c"
+    },
+    "sales_team_feedback": {
+      "task": "Sales_Team_Feedback__c"
+    },
+    "transfer_status": {
+      "task": "Transfer_Status__c"
+    },
+    "service_category": {
+      "case": "Service_Category__c"
+    },
+    "service_subcategory": {
+      "case": "Service_Sub_catogery__c"
+    },
+    "service_request_type": {
+      "case": "Service_Request_Type__c"
+    }
+  },
+  "missing_files": []
+}

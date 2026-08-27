@@ -1,0 +1,2849 @@
+{
+  "generated": "2026-08-26T12:41:15",
+  "results": {
+    "lead": {
+      "status": "COVERED",
+      "rows": [
+        {
+          "dimension": "explicit_range",
+          "variant": "between X and Y",
+          "question": "total leads between 1 April 2026 and 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "from X to Y",
+          "question": "total leads from 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "X to Y (bare)",
+          "question": "total leads 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "between X to Y",
+          "question": "total leads between 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "dd-mm-yyyy",
+          "question": "total leads between 01-04-2026 and 30-06-2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "ordinal suffix",
+          "question": "total leads between 1st April 2026 and 30th June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B and C + year",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B, C + year (no 'and')",
+          "question": "total leads for April, May, June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A B and C (no commas)",
+          "question": "total leads for April May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "year on each month",
+          "question": "total leads for April 2026, May 2026 and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-05-01",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month on month (spaces)",
+          "question": "total leads month on month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month-on-month (hyphens)",
+          "question": "total leads month-on-month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "MoM (abbrev)",
+          "question": "total leads mom for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "for",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "of",
+          "question": "total leads of April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "in",
+          "question": "total leads in April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "none",
+          "question": "total leads April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month + year",
+          "question": "total leads for June 2026",
+          "expected": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month only",
+          "question": "total leads for April",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 2026",
+          "question": "total leads for Q2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "quarter 2 2026",
+          "question": "total leads for quarter 2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 FY2026",
+          "question": "total leads for Q2 FY2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "current fy",
+          "question": "total leads for current fy",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last fy",
+          "question": "total leads for last fy",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last quarter",
+          "question": "total leads for last quarter",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last qtr (abbrev)",
+          "question": "total leads for last qtr",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "this month",
+          "question": "total leads this month",
+          "expected": null,
+          "got": [
+            "2026-08-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last 40 days",
+          "question": "total leads for last 40 days",
+          "expected": null,
+          "got": [
+            "2026-07-17",
+            "2026-08-25"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "till date",
+          "question": "total leads from Jan 2026 till date",
+          "expected": null,
+          "got": [
+            "2026-01-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        }
+      ]
+    },
+    "opp": {
+      "status": "COVERED",
+      "rows": [
+        {
+          "dimension": "explicit_range",
+          "variant": "between X and Y",
+          "question": "total leads between 1 April 2026 and 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "from X to Y",
+          "question": "total leads from 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "X to Y (bare)",
+          "question": "total leads 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "between X to Y",
+          "question": "total leads between 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "dd-mm-yyyy",
+          "question": "total leads between 01-04-2026 and 30-06-2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "ordinal suffix",
+          "question": "total leads between 1st April 2026 and 30th June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B and C + year",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B, C + year (no 'and')",
+          "question": "total leads for April, May, June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A B and C (no commas)",
+          "question": "total leads for April May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "year on each month",
+          "question": "total leads for April 2026, May 2026 and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-05-01",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month on month (spaces)",
+          "question": "total leads month on month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month-on-month (hyphens)",
+          "question": "total leads month-on-month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "MoM (abbrev)",
+          "question": "total leads mom for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "for",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "of",
+          "question": "total leads of April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "in",
+          "question": "total leads in April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "none",
+          "question": "total leads April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month + year",
+          "question": "total leads for June 2026",
+          "expected": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month only",
+          "question": "total leads for April",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 2026",
+          "question": "total leads for Q2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "quarter 2 2026",
+          "question": "total leads for quarter 2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 FY2026",
+          "question": "total leads for Q2 FY2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "current fy",
+          "question": "total leads for current fy",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last fy",
+          "question": "total leads for last fy",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last quarter",
+          "question": "total leads for last quarter",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last qtr (abbrev)",
+          "question": "total leads for last qtr",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "this month",
+          "question": "total leads this month",
+          "expected": null,
+          "got": [
+            "2026-08-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last 40 days",
+          "question": "total leads for last 40 days",
+          "expected": null,
+          "got": [
+            "2026-07-17",
+            "2026-08-25"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "till date",
+          "question": "total leads from Jan 2026 till date",
+          "expected": null,
+          "got": [
+            "2026-01-01",
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        }
+      ]
+    },
+    "task": {
+      "status": "COVERED",
+      "rows": [
+        {
+          "dimension": "explicit_range",
+          "variant": "between X and Y",
+          "question": "total leads between 1 April 2026 and 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "from X to Y",
+          "question": "total leads from 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "X to Y (bare)",
+          "question": "total leads 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "between X to Y",
+          "question": "total leads between 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "dd-mm-yyyy",
+          "question": "total leads between 01-04-2026 and 30-06-2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "ordinal suffix",
+          "question": "total leads between 1st April 2026 and 30th June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B and C + year",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B, C + year (no 'and')",
+          "question": "total leads for April, May, June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A B and C (no commas)",
+          "question": "total leads for April May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "year on each month",
+          "question": "total leads for April 2026, May 2026 and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-05-01",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month on month (spaces)",
+          "question": "total leads month on month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month-on-month (hyphens)",
+          "question": "total leads month-on-month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "MoM (abbrev)",
+          "question": "total leads mom for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "for",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "of",
+          "question": "total leads of April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "in",
+          "question": "total leads in April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "none",
+          "question": "total leads April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month + year",
+          "question": "total leads for June 2026",
+          "expected": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month only",
+          "question": "total leads for April",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 2026",
+          "question": "total leads for Q2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "quarter 2 2026",
+          "question": "total leads for quarter 2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 FY2026",
+          "question": "total leads for Q2 FY2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "current fy",
+          "question": "total leads for current fy",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last fy",
+          "question": "total leads for last fy",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last quarter",
+          "question": "total leads for last quarter",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last qtr (abbrev)",
+          "question": "total leads for last qtr",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "this month",
+          "question": "total leads this month",
+          "expected": null,
+          "got": [
+            "2026-08-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last 40 days",
+          "question": "total leads for last 40 days",
+          "expected": null,
+          "got": [
+            "2026-07-17",
+            "2026-08-25"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "till date",
+          "question": "total leads from Jan 2026 till date",
+          "expected": null,
+          "got": [
+            "2026-01-01",
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        }
+      ]
+    },
+    "event": {
+      "status": "COVERED",
+      "rows": [
+        {
+          "dimension": "explicit_range",
+          "variant": "between X and Y",
+          "question": "total leads between 1 April 2026 and 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "from X to Y",
+          "question": "total leads from 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "X to Y (bare)",
+          "question": "total leads 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "between X to Y",
+          "question": "total leads between 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "dd-mm-yyyy",
+          "question": "total leads between 01-04-2026 and 30-06-2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "ordinal suffix",
+          "question": "total leads between 1st April 2026 and 30th June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B and C + year",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B, C + year (no 'and')",
+          "question": "total leads for April, May, June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A B and C (no commas)",
+          "question": "total leads for April May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "year on each month",
+          "question": "total leads for April 2026, May 2026 and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month on month (spaces)",
+          "question": "total leads month on month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month-on-month (hyphens)",
+          "question": "total leads month-on-month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "MoM (abbrev)",
+          "question": "total leads mom for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "for",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "of",
+          "question": "total leads of April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "in",
+          "question": "total leads in April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "none",
+          "question": "total leads April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month + year",
+          "question": "total leads for June 2026",
+          "expected": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month only",
+          "question": "total leads for April",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 2026",
+          "question": "total leads for Q2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "quarter 2 2026",
+          "question": "total leads for quarter 2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 FY2026",
+          "question": "total leads for Q2 FY2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "ERROR",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "current fy",
+          "question": "total leads for current fy",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last fy",
+          "question": "total leads for last fy",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last quarter",
+          "question": "total leads for last quarter",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last qtr (abbrev)",
+          "question": "total leads for last qtr",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "this month",
+          "question": "total leads this month",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last 40 days",
+          "question": "total leads for last 40 days",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "till date",
+          "question": "total leads from Jan 2026 till date",
+          "expected": null,
+          "got": [
+            null,
+            null
+          ],
+          "verdict": "RECORDED",
+          "error": "NameError: name 'is_qoq' is not defined",
+          "used_llm": false,
+          "used_db": false
+        }
+      ]
+    },
+    "case": {
+      "status": "COVERED",
+      "rows": [
+        {
+          "dimension": "explicit_range",
+          "variant": "between X and Y",
+          "question": "total leads between 1 April 2026 and 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-01"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "from X to Y",
+          "question": "total leads from 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-08-26"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "X to Y (bare)",
+          "question": "total leads 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "between X to Y",
+          "question": "total leads between 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "dd-mm-yyyy",
+          "question": "total leads between 01-04-2026 and 30-06-2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "ordinal suffix",
+          "question": "total leads between 1st April 2026 and 30th June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-01"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B and C + year",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B, C + year (no 'and')",
+          "question": "total leads for April, May, June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A B and C (no commas)",
+          "question": "total leads for April May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "year on each month",
+          "question": "total leads for April 2026, May 2026 and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month on month (spaces)",
+          "question": "total leads month on month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month-on-month (hyphens)",
+          "question": "total leads month-on-month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "MoM (abbrev)",
+          "question": "total leads mom for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "for",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "of",
+          "question": "total leads of April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "in",
+          "question": "total leads in April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "none",
+          "question": "total leads April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month + year",
+          "question": "total leads for June 2026",
+          "expected": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month only",
+          "question": "total leads for April",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 2026",
+          "question": "total leads for Q2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "quarter 2 2026",
+          "question": "total leads for quarter 2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 FY2026",
+          "question": "total leads for Q2 FY2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "current fy",
+          "question": "total leads for current fy",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last fy",
+          "question": "total leads for last fy",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last quarter",
+          "question": "total leads for last quarter",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last qtr (abbrev)",
+          "question": "total leads for last qtr",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "this month",
+          "question": "total leads this month",
+          "expected": null,
+          "got": [
+            "2026-08-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last 40 days",
+          "question": "total leads for last 40 days",
+          "expected": null,
+          "got": [
+            "2026-07-18",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "till date",
+          "question": "total leads from Jan 2026 till date",
+          "expected": null,
+          "got": [
+            "2026-01-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        }
+      ]
+    },
+    "targets": {
+      "status": "COVERED",
+      "rows": [
+        {
+          "dimension": "explicit_range",
+          "variant": "between X and Y",
+          "question": "total leads between 1 April 2026 and 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-01"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "from X to Y",
+          "question": "total leads from 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-26",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "X to Y (bare)",
+          "question": "total leads 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-26",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "between X to Y",
+          "question": "total leads between 1 April 2026 to 30 June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-26",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "dd-mm-yyyy",
+          "question": "total leads between 01-04-2026 and 30-06-2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "explicit_range",
+          "variant": "ordinal suffix",
+          "question": "total leads between 1st April 2026 and 30th June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-01"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B and C + year",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A, B, C + year (no 'and')",
+          "question": "total leads for April, May, June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "A B and C (no commas)",
+          "question": "total leads for April May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "month_list",
+          "variant": "year on each month",
+          "question": "total leads for April 2026, May 2026 and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-05-01",
+            "2026-06-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month on month (spaces)",
+          "question": "total leads month on month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "month-on-month (hyphens)",
+          "question": "total leads month-on-month for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "hyphenation",
+          "variant": "MoM (abbrev)",
+          "question": "total leads mom for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "for",
+          "question": "total leads for April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "of",
+          "question": "total leads of April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "in",
+          "question": "total leads in April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "preposition",
+          "variant": "none",
+          "question": "total leads April, May and June 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month + year",
+          "question": "total leads for June 2026",
+          "expected": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-06-01",
+            "2026-06-30"
+          ],
+          "verdict": "OK",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "single_month",
+          "variant": "month only",
+          "question": "total leads for April",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-04-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 2026",
+          "question": "total leads for Q2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "quarter 2 2026",
+          "question": "total leads for quarter 2 2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "quarter",
+          "variant": "Q2 FY2026",
+          "question": "total leads for Q2 FY2026",
+          "expected": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "got": [
+            "2026-07-01",
+            "2026-09-30"
+          ],
+          "verdict": "WRONG",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "current fy",
+          "question": "total leads for current fy",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last fy",
+          "question": "total leads for last fy",
+          "expected": null,
+          "got": [
+            "2025-04-01",
+            "2026-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last quarter",
+          "question": "total leads for last quarter",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2026-06-30"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last qtr (abbrev)",
+          "question": "total leads for last qtr",
+          "expected": null,
+          "got": [
+            "2026-04-01",
+            "2027-03-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "this month",
+          "question": "total leads this month",
+          "expected": null,
+          "got": [
+            "2026-08-01",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "last 40 days",
+          "question": "total leads for last 40 days",
+          "expected": null,
+          "got": [
+            "2026-07-18",
+            "2026-08-26"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        },
+        {
+          "dimension": "relative",
+          "variant": "till date",
+          "question": "total leads from Jan 2026 till date",
+          "expected": null,
+          "got": [
+            "2026-01-01",
+            "2026-01-31"
+          ],
+          "verdict": "RECORDED",
+          "error": null,
+          "used_llm": false,
+          "used_db": false
+        }
+      ]
+    }
+  }
+}

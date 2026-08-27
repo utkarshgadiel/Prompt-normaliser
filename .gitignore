@@ -1,0 +1,66 @@
+# =========================================================================
+# SECRETS — never commit. code/old/.env.crm_reporting and .env.funnel hold
+# live Presto and watsonx credentials. If these have ever been committed,
+# rotating the credentials is the only real fix; removing the file from the
+# next commit does not remove it from history.
+# =========================================================================
+.env
+.env.*
+*.env
+!.env.example
+!.env.template
+
+# =========================================================================
+# CUSTOMER DATA — 207 MB of raw Salesforce exports (1.35M rows of leads,
+# opportunities, tasks, service requests and events, with names and contact
+# details). Not just too large for git: this is production personal data.
+# src/vocabulary.json is the derived artefact the service actually needs,
+# and it is committed, so a clone can run without these files. Rebuild with
+# `python src/vocab_build.py` only when the exports change.
+# =========================================================================
+data/
+*.csv.gz
+*.parquet
+
+# =========================================================================
+# Local tooling and environments
+# =========================================================================
+.claude/
+venv/
+.venv/
+env/
+ENV/
+
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# =========================================================================
+# Generated output
+# =========================================================================
+# Backend service logs, written next to the code at runtime.
+*.log
+
+# Regenerated on every run of tests/run_batch.py; the exit code is the
+# signal that matters, not the file. tests/corpus_results.csv is NOT
+# ignored -- it is the committed baseline that regression diffs compare
+# against.
+tests/batch_results.csv
+new/normaliser/tests/batch_results.csv
+
+# =========================================================================
+# Editor and OS
+# =========================================================================
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

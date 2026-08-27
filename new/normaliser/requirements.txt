@@ -1,0 +1,33 @@
+# CRM Prompt Normaliser — runtime dependencies
+#
+#   python -m venv venv
+#   venv\Scripts\pip install -r requirements.txt
+#   venv\Scripts\uvicorn api:app --host 0.0.0.0 --port 8100 --app-dir src
+#
+# That is everything the service needs. It talks to no database and no LLM,
+# so there are no credentials and no client libraries to install. Date
+# handling, the vocabulary lookup and the whole grammar are stdlib only
+# (re, calendar, datetime, json, csv, dataclasses, enum, pathlib).
+#
+# Versions are pinned to what the 1,000-prompt validation ran against.
+
+fastapi==0.141.1
+uvicorn==0.52.4
+pydantic==2.13.4
+
+
+# ---------------------------------------------------------------------------
+# TESTING ONLY — not needed to host the service.
+#
+# tests/ and grammar/ import the real backend services from code/old/ so the
+# emitted canonical text can be re-parsed by the parser it will actually be
+# sent to. Those services pull in pandas and read a .env at import time.
+# watsonx, Presto, matplotlib and ibm_boto3 are stubbed by grammar/harness.py
+# and must NOT be installed.
+#
+# Install into a separate environment, never into the one that serves the API:
+#   pip install pytest pandas python-dotenv
+#
+# pytest
+# pandas
+# python-dotenv
