@@ -231,6 +231,13 @@ _PERIOD_PHRASES = [
     r"\b(?:this|current)\s+quarter\b",
     r"\b(?:last|previous|prev)\s+month\b",
     r"\b(?:this|current)\s+month\b",
+    # Weeks and days complete the ladder. Without them "this week vs last
+    # week" named no recognised phrase, fell past every branch, and silently
+    # became the current financial year (found 31 Aug 2026).
+    r"\b(?:last|previous|prev)\s+week\b",
+    r"\b(?:this|current)\s+week\b",
+    r"\byesterday\b",
+    r"\btoday\b",
     r"\bfy\s*\d{4}\b",
     r"\bfy\s*\d{2}\b",
 ]
@@ -431,12 +438,22 @@ def resolve(text: str, today: date | None = None,
     m = re.search(r"\b(?:last|past|previous)\s+(\d{1,3})\s+(day|week|month|quarter|year)s?\b", t)
     if m:
         n, unit = int(m.group(1)), m.group(2)
+        # "Last N <unit>" always means N COMPLETED units ending before the
+        # current one. The current, part-finished unit is excluded: on
+        # 31 August, "last 30 days" is 1-30 August, not 2-31 August. This is
+        # the client's stated semantics and it matches the backends'
+        # own arithmetic (lead_report.py:2961 and :2975). The month, quarter
+        # and year branches below already worked this way; days and weeks
+        # were counting back from today and silently included it, so every
+        # such window was shifted one day forward (fixed 31 Aug 2026).
         if unit == "day":
-            return done(Period(Kind.RANGE, [Span(today - timedelta(days=n - 1), today,
+            end = today - timedelta(days=1)
+            return done(Period(Kind.RANGE, [Span(end - timedelta(days=n - 1), end,
                                                  f"last {n} days")]))
         if unit == "week":
-            return done(Period(Kind.RANGE, [Span(today - timedelta(weeks=n), today,
-                                                 f"last {n} weeks")]))
+            end = today - timedelta(days=today.weekday() + 1)   # last Sunday
+            return done(Period(Kind.RANGE, [
+                Span(end - timedelta(weeks=n - 1, days=6), end, f"last {n} weeks")]))
         if unit == "month":
             spans = []
             for i in range(n, 0, -1):
@@ -484,6 +501,17 @@ def resolve(text: str, today: date | None = None,
     if re.search(r"\byesterday\b", t):
         y = today - timedelta(days=1)
         return done(Period(Kind.RANGE, [Span(y, y, "yesterday")]))
+    # Weeks, matching the backends' own definitions (lead_report.py:2944 and
+    # :2969): this week runs Monday to today, last week is the previous whole
+    # Monday-to-Sunday. Missing entirely before 31 Aug 2026, so "this week"
+    # fell through to the current-FY default without a word of warning.
+    if re.search(r"\b(this|current)\s+week\b", t):
+        return done(Period(Kind.RANGE, [Span(
+            today - timedelta(days=today.weekday()), today, "this week")]))
+    if re.search(r"\b(last|previous|prev)\s+week\b", t):
+        end = today - timedelta(days=today.weekday() + 1)
+        return done(Period(Kind.RANGE, [Span(end - timedelta(days=6), end,
+                                             "last week")]))
     if re.search(r"\bthis\s+month\b", t):
         return done(Period(Kind.MONTH_LIST, [month_span(today.year, today.month)]))
     if re.search(r"\blast\s+month\b", t):

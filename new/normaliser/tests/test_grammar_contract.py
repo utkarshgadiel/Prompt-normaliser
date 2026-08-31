@@ -256,6 +256,69 @@ def test_single_period_funnel_always_runs():
         assert norm.ok and len(norm.calls) == 1, (q, norm.clarification)
 
 
+def test_last_n_excludes_the_current_period():
+    """"Last N <unit>" means N COMPLETED units; the current one is excluded.
+
+    Client-stated semantics, 31 Aug 2026, and it matches the backends' own
+    arithmetic (lead_report.py:2961). Days and weeks were counting back from
+    today and including it, shifting every such window one day forward.
+    """
+    aug31 = date(2026, 8, 31)          # a Monday
+    cases = {
+        "total leads last 30 days": ("2026-08-01", "2026-08-30"),
+        "total leads last 7 days": ("2026-08-24", "2026-08-30"),
+        "total leads last 1 day": ("2026-08-30", "2026-08-30"),
+        "total leads last 2 weeks": ("2026-08-17", "2026-08-30"),
+        "total leads last 3 months": ("2026-05-01", "2026-07-31"),
+        "total leads last 2 quarters": ("2026-01-01", "2026-06-30"),
+        "total leads last 2 years": ("2024-04-01", "2026-03-31"),
+    }
+    for q, expected in cases.items():
+        p = resolve(q, aug31)
+        assert p.resolved, q
+        assert (p.start.isoformat(), p.end.isoformat()) == expected, \
+            (q, p.start.isoformat(), p.end.isoformat())
+        assert p.end < aug31, f"{q} must not include today"
+
+
+def test_week_and_day_pairs_resolve_and_split():
+    """this/last week and today/yesterday are real periods and split as pairs.
+
+    "this week" was absent from the resolver entirely and fell through to the
+    current-FY default -- a whole financial year answering a seven-day
+    question, with no warning (found 31 Aug 2026).
+    """
+    aug31 = date(2026, 8, 31)
+    p = resolve("total leads this week", aug31)
+    assert (p.start.isoformat(), p.end.isoformat()) == ("2026-08-31", "2026-08-31")
+    p = resolve("total leads last week", aug31)
+    assert (p.start.isoformat(), p.end.isoformat()) == ("2026-08-24", "2026-08-30")
+
+    for q in ("lead funnel for this week vs last week",
+              "total leads today vs yesterday",
+              "total leads this month vs last month",
+              "total leads this quarter vs last quarter"):
+        norm = normalise(q, aug31)
+        assert norm.ok and len(norm.calls) == 2, (q, len(norm.calls))
+        assert norm.calls[0].start_date != norm.calls[1].start_date, q
+
+
+def test_case_week_forms_round_trip():
+    """case cannot express a sub-month day range at all, and its "this week"
+    runs into the future, so weeks use the phrase or the rolling form."""
+    aug31 = date(2026, 8, 31)
+    norm = normalise("total cases last week", aug31)
+    assert norm.calls[0].canonical_text == "cases last week"
+    got, err = _parse("case", "cases last week")
+    assert err is None and got == ("2026-08-24", "2026-08-30")
+
+    # "this week" must never be emitted for case: it resolves Mon->Sun.
+    got, err = _parse("case", "cases this week")
+    assert err is None and got[1] > "2026-08-31", (
+        "case_report no longer runs 'this week' into the future; the "
+        "exclusion in render.py can be revisited.")
+
+
 def test_range_connectors_do_not_drop_the_middle():
     """"April 2025 through June 2025" is one range, not the list [Apr, Jun].
 

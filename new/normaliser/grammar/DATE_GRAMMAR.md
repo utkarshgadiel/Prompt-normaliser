@@ -285,6 +285,53 @@ FY's quarter.
 
 ---
 
+## 9. Weeks, days and the completed-period rule — 31 August 2026
+
+**"Last N units" means N COMPLETED units. The current, part-finished one is
+excluded.** On 31 August, "last 30 days" is 1–30 August, not 2–31 August.
+Client-stated, and it matches the backends: `lead_report.py:2961` sets
+`end = today - 1` before counting back.
+
+The month, quarter and year branches always worked this way. **Days and weeks
+did not** — they counted back from `today` and included it, so every such
+window sat one day forward of both the client's definition and the backend's.
+Silent, and invisible in a round-trip test, because an explicit day-form range
+makes the backend use whatever dates it is handed.
+
+**"This week" did not exist at all.** It matched no branch and fell through to
+the current-financial-year default: a twelve-month answer to a seven-day
+question, with no warning. `today` and `yesterday` were likewise missing from
+the multi-period phrase list, so "today vs yesterday" collapsed to one call.
+
+Also measured: the words `today` and `yesterday` return **no date intent** in
+lead, opp and task, and the **current FY** in case. Never emit them — a single
+day is emitted as `31 August 2026 to 31 August 2026`, which is exact
+everywhere.
+
+### Rolling windows are per-service, and all three disagree
+
+For a window of *n* days ending yesterday:
+
+| Service | What `last n days` returns | Emit |
+|---|---|---|
+| lead / opp / task / source / project / product / lead funnel | — (day form parses exactly) | day form |
+| `case_report` | today−(n−1) … **today** | `last n+1 days`, warn: one day wider |
+| `subsource_funnel` | yesterday−n … yesterday | `last n−1 days` — **exact** |
+| `lead_user` / `sales_user` | today−(n−1) … **today** | `last n+1 days`, warn: one day wider |
+
+`case_report` cannot express *any* sub-month day range: `24 August 2026 to
+30 August 2026` collapses to the 24th alone, because its single
+`<day> <month>` branch matches first. Its `last week` is exact, but its
+**`this week` runs Monday to Sunday — six days into the future** — so that
+phrase is never emitted; the rolling form covers it instead.
+
+Where no exact form exists, the rule is to emit the form that **covers** the
+requested span, warn, and let the agent label from `returned_period`. A window
+one day wide of the request, declared, beats a window silently collapsed to a
+single day.
+
+---
+
 ## Reproduce
 
 ```

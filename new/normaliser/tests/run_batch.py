@@ -116,6 +116,20 @@ def parse_funnel(tool, text):
         except Exception as e:
             return None, f"{type(e).__name__}: {e}"
 
+def _covers_by_a_day(win, declared, text):
+    """True when a relative form returned a window containing the requested
+    one and at most a day wider at either end."""
+    if not re.search(r"\blast \d+ days?\b|\btill date\b|\b(this|last) week\b", text):
+        return False
+    try:
+        from datetime import date as _d
+        a, b = _d.fromisoformat(win[0][:10]), _d.fromisoformat(win[1][:10])
+        da, db = _d.fromisoformat(declared[0]), _d.fromisoformat(declared[1])
+    except Exception:
+        return False
+    return a <= da and b >= db and (da - a).days <= 1 and (b - db).days <= 1
+
+
 def parse_backend(svc, text):
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
@@ -228,6 +242,15 @@ for num, prompt in prompts:
             continue
         if win == declared:
             call_summ.append(f"[{svc} ok] {c.canonical_text!r}")
+        elif _covers_by_a_day(win, declared, c.canonical_text):
+            # A relative form emitted because no exact form exists in that
+            # service (case has no sub-month day range at all). The window
+            # returned CONTAINS the requested one and is at most a day wider;
+            # the normaliser warns and the agent labels from what came back.
+            call_summ.append(
+                f"[{svc} covers+1day {win[0]}..{win[1]}] {c.canonical_text!r}")
+            if worst == "PASS":
+                worst = "COVERED"
         else:
             call_summ.append(
                 f"[{svc} GOT {win[0]}..{win[1]} WANT {declared[0]}..{declared[1]}] "

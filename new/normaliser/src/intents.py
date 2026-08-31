@@ -68,6 +68,21 @@ FUNNEL_GRAIN_OK = {Tool.PROJECT_FUNNEL, Tool.SUBSOURCE_FUNNEL,
 FUNNEL_DAYRANGE_OK = {Tool.PROJECT_FUNNEL, Tool.PRODUCT_FUNNEL,
                       Tool.SOURCE_FUNNEL, Tool.LEAD_FUNNEL}
 FUNNEL_QUARTER_BARE_YEAR = {Tool.PRODUCT_FUNNEL}
+
+# Rolling "last n days" conventions, measured 31 Aug 2026. Every service
+# counts a different span from the same words, so a window of n days ending
+# yesterday (the completed-period rule) needs a different n per service:
+#   subsource_funnel  "last 15 days" -> 15 Aug..30 Aug  (n+1 days, ends
+#                     yesterday), so emit n-1 and the span matches exactly.
+#   lead/sales user   "last 15 days" -> 17 Aug..31 Aug  (n days, ends TODAY).
+#                     No form ends yesterday, so emit n+1 to COVER the span
+#                     and warn: the result carries one extra day.
+# The value is added to the requested day count.
+FUNNEL_ROLLING_DAY_OFFSET = {
+    Tool.SUBSOURCE_FUNNEL: -1,
+    Tool.LEAD_USER_FUNNEL: +1,
+    Tool.SALES_USER_FUNNEL: +1,
+}
 FUNNEL_Q4_OK = {Tool.PROJECT_FUNNEL, Tool.PRODUCT_FUNNEL, Tool.SUBSOURCE_FUNNEL}
 
 # Earliest financial year each report holds, as defined by the system.

@@ -330,6 +330,9 @@ Each was found by testing, not review.
 | year series to case/targets | no backend support | decomposed to one `fy <year>` call per year |
 | `qoq last 3 years` | collapsed to one FY | one `qoq fy <year>` call per year |
 | `source funnel` / `funnel by source` | routed to lead_funnel | noun-form patterns in `resolve_funnel_tool` (only "X wise" and named entities routed before) |
+| `April 2025 through June 2025` | May silently dropped | one shared range-connector list (`to/till/thru/through/until/upto/-`) |
+| `last 30 days` included today | window shifted one day forward | completed-period rule: days and weeks now end yesterday, matching the backends |
+| `this week` unrecognised | answered with the whole current FY | week branches added; `today`/`yesterday` added to the multi-period phrases |
 
 ### 5.5 Guards built in
 
@@ -494,11 +497,13 @@ scope for CRM-Data after excluding funnel queries.
 The count moved from 277/9 to 276/10 deliberately: "total sales value" now
 refuses instead of silently answering with a sales *count*.
 
-**52 grammar contract tests pass** (29 original; 11 added 26 Aug 2026 pinning
+**56 grammar contract tests pass** (29 original; 11 added 26 Aug 2026 pinning
 the year-series, FY-pair, month-grain-over-window and token-drop grammar; 12
 added 27 Aug 2026 pinning funnel routing, the targets-over-events/cases metric
 priority, the value refusal, unknown-entity refusal, acronym aliases,
-grouping-over-entity precedence and the service-split funnel quarter forms).
+grouping-over-entity precedence and the service-split funnel quarter forms; 4
+added 31 Aug 2026 pinning the completed-period rule across all five units, the
+week and day phrases, and the case week forms).
 
 Coverage is deliberately not measured as "did it produce output". An earlier
 revision scored 98.3 percent by turning a turnaround-time question into a lead

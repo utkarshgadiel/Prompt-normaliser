@@ -12,11 +12,12 @@ from __future__ import annotations
 
 import re
 from calendar import monthrange
-from datetime import date
+from datetime import date, timedelta
 
 from dates import Comparison, Kind, MONTH_NAME, Period, Span
 from intents import (FUNNEL_DAYRANGE_OK, FUNNEL_Q4_OK,
-                     FUNNEL_QUARTER_BARE_YEAR, FUNNEL_TOOLS, Tool)
+                     FUNNEL_QUARTER_BARE_YEAR, FUNNEL_ROLLING_DAY_OFFSET,
+                     FUNNEL_TOOLS, Tool)
 
 # Tools whose date parser was verified against each form.
 # See grammar/DATE_GRAMMAR.md section 2.
@@ -161,18 +162,39 @@ def render_period(period: Period, tool: Tool,
             return (f"{MONTH_NAME[s.start.month]} to "
                     f"{MONTH_NAME[s.end.month]} {s.end.year}"), warnings
 
-        # case-only relative forms, measured 27 Aug 2026. The day form of
-        # these windows is mangled by case_report ("1 April 2025 to 27 August
-        # 2026" -> current FY substituted; "9 July to 27 August 2026" ->
-        # snapped to whole months), but case's own relative branches resolve
-        # them exactly: "from April 2025 till date" -> 2025-04-01..today, and
-        # "last 50 days" -> today-49..today.
-        if tool is Tool.CASE and s.end == today:
-            if s.start.day == 1:
+        # case_report cannot express ANY sub-month day range. Measured:
+        # "24 August 2026 to 30 August 2026" collapses to the 24th alone,
+        # because its single "<day> <month>" branch matches first. Its own
+        # relative phrases do resolve, so those are used instead.
+        if tool is Tool.CASE:
+            last_sun = today - timedelta(days=today.weekday() + 1)
+            # "last week" is exact. "this week" is NOT: case runs it Monday to
+            # SUNDAY, six days into the future (31 Aug -> 6 Sep), so it is
+            # never emitted -- the rolling-window form below covers it.
+            if (s.start, s.end) == (last_sun - timedelta(days=6), last_sun):
+                return "last week", warnings
+
+            if s.start.day == 1 and s.end == today:
                 return (f"from {MONTH_NAME[s.start.month]} {s.start.year} "
                         f"till date"), warnings
-            n = (s.end - s.start).days + 1
-            return f"last {n} days", warnings
+
+            # Rolling day window. case counts "last n days" as today-(n-1)
+            # through today, one day later than the completed-period rule
+            # every other service follows, so a window ending yesterday needs
+            # n+1 to cover the same days. The extra day is today, which by
+            # definition holds no rows the user asked for only if data is
+            # still arriving -- flag it so the agent labels from what came
+            # back rather than from the request.
+            if s.end == today:
+                return f"last {(s.end - s.start).days + 1} days", warnings
+            if s.end == today - timedelta(days=1):
+                n = (s.end - s.start).days + 2
+                warnings.append(
+                    "case_report counts 'last n days' up to and including "
+                    "today, unlike every other service; this window was "
+                    "widened by one day to cover the requested span. Label "
+                    "the table from the period actually returned.")
+                return f"last {n} days", warnings
 
     if tool is Tool.CASE:
         # case_report's extract_specific_months_from_query fires on 2+ month
@@ -232,18 +254,26 @@ def render_period(period: Period, tool: Tool,
     if tool in FUNNEL_TOOLS:
         if tool not in FUNNEL_DAYRANGE_OK:
             # A day-form range collapses to the last days of the end month in
-            # these services, which silently answers a 2-day question. A
-            # rolling window ending today has a native form that resolves to a
-            # sane window of the right length, so prefer it and let the agent
-            # report the span actually returned (their day convention differs
-            # by one or two days from ours).
-            if period.end == today and period.start is not None:
-                n = (period.end - period.start).days + 1
-                warnings.append(
-                    f"{tool.value}: emitted the relative form 'last {n} days' "
-                    f"because day-form ranges collapse in this service. Its "
-                    f"own day convention may differ by a day or two -- label "
-                    f"the table from the period actually returned.")
+            # these services, which silently answers a 2-day question. Their
+            # own rolling form does resolve, so use it, adjusted by the
+            # per-service offset measured in intents.FUNNEL_ROLLING_DAY_OFFSET.
+            if period.start is not None and period.end in (
+                    today, today - timedelta(days=1)):
+                days = (period.end - period.start).days + 1
+                off = FUNNEL_ROLLING_DAY_OFFSET.get(tool, 0) \
+                    if period.end != today else 0
+                n = max(1, days + off)
+                if off > 0:
+                    warnings.append(
+                        f"{tool.value}: no rolling form ends yesterday in this "
+                        f"service, so 'last {n} days' was emitted to cover the "
+                        f"requested {days} days; the result carries one extra "
+                        f"day. Label the table from the period returned.")
+                elif off == 0:
+                    warnings.append(
+                        f"{tool.value}: emitted the relative form 'last {n} "
+                        f"days' because day-form ranges collapse here. Label "
+                        f"the table from the period actually returned.")
                 return f"last {n} days", warnings
             warnings.append(
                 f"{tool.value}: day-form ranges collapse to the tail of the "
