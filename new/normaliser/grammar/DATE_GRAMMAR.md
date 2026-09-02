@@ -332,6 +332,36 @@ single day.
 
 ---
 
+## 10. Funnel breakdown must survive into the canonical text — 2 Sep 2026
+
+Routing and wording are two separate things, and getting the first right is
+not enough.
+
+`product funnel for June 2026` routed correctly to `product_funnel`, but the
+emitted text was a bare **`funnel June 2026`**. The breakdown word was gone,
+because `find_groupings` matches `product wise` and not `product funnel`, so
+`groupings` came back empty and `render_query` had nothing to append. The
+collaborator then read a plain funnel request and ran the overall lead
+conversion funnel instead, returning one all-products row under a heading
+saying Product Funnel.
+
+`resolve_funnel_tool` now returns the facet a bare noun form implies, and the
+normaliser adds it to the groupings, so the text reads
+`funnel product wise June 2026`. The same applies to source, sub-source,
+project and the two user funnels.
+
+**The grouping is implied only when no value is named on that facet.**
+`funnel for Eden June 2026` stays `funnel for EDEN June 2026`: Eden is a
+filter, and adding a product grouping would strip it, turning one product's
+funnel into every product's.
+
+A second guard came out of the same fix. The unknown-entity check read
+`funnel by source June 2026` as naming a source called June, because a
+capitalised word after a facet noun looked like a value. Month names, day
+names, period words and bare numbers are now excluded from that check.
+
+---
+
 ## Reproduce
 
 ```

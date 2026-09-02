@@ -423,15 +423,15 @@ def resolve_funnel_tool(text: str, groupings: list[str],
     # Hyphen-tolerant: users write "sales-user-wise" and "lead-user-wise".
     if re.search(r"\bsales?[\s\-]+(?:user|team|person|people|wise)s?\b"
                  r"|\buser[\s\-]+wise\s+sales?\b", t):
-        return Tool.SALES_USER_FUNNEL, None
+        return Tool.SALES_USER_FUNNEL, None, "owner"
     if re.search(r"\bleads?[\s\-]+(?:user|team)s?\b|\buser[\s\-]+wise\s+leads?\b", t):
-        return Tool.LEAD_USER_FUNNEL, None
+        return Tool.LEAD_USER_FUNNEL, None, "owner"
 
     # "user funnel" with no sales/lead qualifier is genuinely ambiguous.
     if re.search(r"\buser\b", t) or "owner" in groupings:
         return None, ("Did you want the sales user funnel or the lead user funnel? "
                       "Sales user shows conversion per salesperson; lead user shows "
-                      "it per lead owner.")
+                      "it per lead owner."), None
 
     # Bare dimension nouns. "source wise funnel" is caught through groupings,
     # but "source funnel" / "funnel by source" carries no "wise" and names no
@@ -440,37 +440,37 @@ def resolve_funnel_tool(text: str, groupings: list[str],
     _joins = r"(?:by|of|per|across|on|for\s+each|for\s+every|for\s+all)"
     if re.search(rf"\bsub[\s\-]?sources?\s+funnels?\b"
                  rf"|\bfunnels?\s+{_joins}\s+sub[\s\-]?sources?\b", t):
-        return Tool.SUBSOURCE_FUNNEL, None
+        return Tool.SUBSOURCE_FUNNEL, None, "subsource"
     if re.search(rf"\bsources?\s+funnels?\b|\bfunnels?\s+{_joins}\s+sources?\b", t):
-        return Tool.SOURCE_FUNNEL, None
+        return Tool.SOURCE_FUNNEL, None, "source"
     if re.search(rf"\bproducts?\s+funnels?\b|\bfunnels?\s+{_joins}\s+products?\b", t):
-        return Tool.PRODUCT_FUNNEL, None
+        return Tool.PRODUCT_FUNNEL, None, "product"
     if re.search(rf"\bprojects?\s+funnels?\b|\bfunnels?\s+{_joins}\s+projects?\b", t):
-        return Tool.PROJECT_FUNNEL, None
+        return Tool.PROJECT_FUNNEL, None, "project"
 
     # An explicit breakdown request ("source-wise funnel for Eden") outranks a
     # named entity: the grouping names the dimension the user wants rows BY,
     # the entity is a filter within it. Checking entities first sent
     # "source-wise funnel for Eden" to the product funnel (batch 27 Aug 2026).
     if "subsource" in groupings:
-        return Tool.SUBSOURCE_FUNNEL, None
+        return Tool.SUBSOURCE_FUNNEL, None, None
     if "product" in groupings:
-        return Tool.PRODUCT_FUNNEL, None
+        return Tool.PRODUCT_FUNNEL, None, None
     if "project" in groupings:
-        return Tool.PROJECT_FUNNEL, None
+        return Tool.PROJECT_FUNNEL, None, None
     if "source" in groupings:
-        return Tool.SOURCE_FUNNEL, None
+        return Tool.SOURCE_FUNNEL, None, None
 
     if ents.get("subsource"):
-        return Tool.SUBSOURCE_FUNNEL, None
+        return Tool.SUBSOURCE_FUNNEL, None, None
     if ents.get("product"):
-        return Tool.PRODUCT_FUNNEL, None
+        return Tool.PRODUCT_FUNNEL, None, None
     if ents.get("project"):
-        return Tool.PROJECT_FUNNEL, None
+        return Tool.PROJECT_FUNNEL, None, None
     if ents.get("source"):
-        return Tool.SOURCE_FUNNEL, None
+        return Tool.SOURCE_FUNNEL, None, None
 
-    return Tool.LEAD_FUNNEL, None
+    return Tool.LEAD_FUNNEL, None, None
 
 
 # Approximate distinct values per breakdown, used to predict output size before

@@ -352,10 +352,21 @@ def normalise(query: str, today: date | None = None,
     # on the breakdown asked for and the entities named.
     funnel_tool: Tool | None = None
     if any(m.metric.key == "funnel" for m in metrics):
-        funnel_tool, ask = resolve_funnel_tool(raw, groupings, entities)
+        funnel_tool, ask, implied = resolve_funnel_tool(raw, groupings, entities)
         if ask:
             result.clarification = ask
             return result
+
+        # "product funnel" is a breakdown request in the same way "product wise
+        # funnel" is, so it must emit "funnel product wise". Without this the
+        # canonical text was a bare "funnel June 2026", which reads as the
+        # overall lead funnel and was executed as one (production, 2 Sep 2026).
+        # Skipped when the user named a value on that facet: "funnel for Eden"
+        # wants Eden's row, not one row per product, and adding the grouping
+        # would strip the filter below.
+        if implied and implied not in groupings and not entities.get(implied):
+            groupings.append(implied)
+            all_filters = _strip_grouped(entities)
 
         # A funnel narrowed to ONE period always runs, whatever the breadth of
         # its breakdown -- a single-month user funnel is one row per user, and
@@ -721,11 +732,26 @@ _NAMED_FACET = re.compile(
 _FACET_KEY = {"source": "source", "project": "project", "product": "product"}
 
 
+# Words that follow a facet noun without naming a value: "funnel by source
+# June 2026" is a source breakdown for June, not a source called June.
+_NOT_A_VALUE = {
+    "january", "february", "march", "april", "may", "june", "july", "august",
+    "september", "october", "november", "december", "jan", "feb", "mar", "apr",
+    "jun", "jul", "aug", "sep", "sept", "oct", "nov", "dec",
+    "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
+    "wise", "funnel", "report", "count", "total", "last", "this", "current",
+    "previous", "next", "fy", "q1", "q2", "q3", "q4", "and", "or", "for",
+}
+
+
 def _named_entity_gap(raw: str) -> tuple[str, str] | None:
     v = vocab()
     if not v.loaded:
         return None
     for m in _NAMED_FACET.finditer(raw):
+        first = m.group(2).split()[0].lower().rstrip(",.")
+        if first in _NOT_A_VALUE or first.isdigit():
+            continue
         facet_word = re.sub(r"[\s\-]", "", m.group(1).lower())
         facet = "subsource" if facet_word == "subsource" else _FACET_KEY[facet_word]
         tokens = m.group(2).split()

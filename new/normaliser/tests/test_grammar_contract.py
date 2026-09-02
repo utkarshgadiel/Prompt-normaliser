@@ -433,6 +433,38 @@ def test_grain_kept_in_one_call_where_supported():
     assert norm.calls[0].canonical_text.endswith("mom fy 2024")
 
 
+def test_funnel_noun_form_keeps_the_breakdown_in_the_text():
+    """"product funnel" must emit "funnel product wise", not a bare "funnel".
+
+    Pins the production failure of 2 Sep 2026: routing was right but the
+    canonical text lost the breakdown, so it read as the overall lead funnel
+    and the collaborator executed it as one.
+    """
+    expect = {
+        "product funnel for June 2026": ("product_funnel", "product wise"),
+        "source funnel for June 2026": ("source_funnel", "source wise"),
+        "sub source funnel for June 2026": ("subsource_funnel", "subsource wise"),
+        "project funnel for June 2026": ("project_funnel", "project wise"),
+        "funnel by source June 2026": ("source_funnel", "source wise"),
+    }
+    for q, (tool, phrase) in expect.items():
+        norm = normalise(q, TODAY)
+        assert norm.ok, (q, norm.clarification)
+        assert norm.calls[0].tool == tool, (q, norm.calls[0].tool)
+        assert phrase in norm.calls[0].canonical_text, \
+            (q, norm.calls[0].canonical_text)
+
+    # A named value is a filter, not a breakdown: no grouping is implied and
+    # the filter must survive.
+    norm = normalise("funnel for Eden June 2026", TODAY)
+    assert norm.calls[0].tool == "product_funnel"
+    assert "product wise" not in norm.calls[0].canonical_text
+    assert norm.calls[0].filters.get("product") == ["EDEN"]
+
+    # A month after the facet noun is a period, not a missing entity.
+    assert normalise("funnel by product April 2025", TODAY).ok
+
+
 def test_funnel_noun_forms_route_to_their_dimension():
     """"source funnel" must reach source_funnel, not the overall lead funnel.
 
