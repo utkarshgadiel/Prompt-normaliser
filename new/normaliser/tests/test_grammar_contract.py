@@ -433,6 +433,67 @@ def test_grain_kept_in_one_call_where_supported():
     assert norm.calls[0].canonical_text.endswith("mom fy 2024")
 
 
+def test_hyphenated_groupings_survive():
+    """"service-request-type-wise" is the same breakdown as the spaced form.
+
+    The grouping patterns are written with spaces, so a hyphen between words
+    matched nothing and the breakdown vanished from the plan (2 Sep 2026).
+    """
+    norm = normalise(
+        "Show service-request-type-wise total satisfied cases for Wave Estate "
+        "in Q1 2025.", TODAY)
+    assert norm.ok, norm.clarification
+    text = norm.calls[0].canonical_text
+    assert "service request type wise" in text, text
+    assert "Wave Estate" in text, text
+    # The metric already carries Satisfied; it must not be repeated as a filter.
+    assert text.count("Satisfied") + text.count("satisfied") == 1, text
+
+
+def test_shared_noun_splits_into_one_metric_each():
+    """"cold and hot leads in Delhi" is two metrics, both scoped to Delhi.
+
+    Only the qualifier next to the noun matched, so "cold" was lost and its
+    rating became a filter on the hot-leads call instead (2 Sep 2026).
+    """
+    norm = normalise("how many cold and hot leads are generated in delhi ncr "
+                     "for last 3 months", TODAY)
+    assert norm.ok, norm.clarification
+    keys = {c.metric for c in norm.calls}
+    assert keys == {"cold_leads", "hot_leads"}, keys
+    for c in norm.calls:
+        assert c.filters.get("city") == ["Delhi"], (c.canonical_text, c.filters)
+        # the metric's own value must not be restated as a filter
+        assert "rating" not in c.filters, c.filters
+
+    norm = normalise("show me open and completed tasks for wave city last month",
+                     TODAY)
+    assert {c.metric for c in norm.calls} == {"open_tasks", "completed_tasks"}
+    assert all(c.filters.get("project") == ["Wave City"] for c in norm.calls)
+
+
+def test_trailing_scope_does_not_override_an_attached_entity():
+    """A trailing entity reaches only metrics that named none of their own.
+
+    "sales of Veridia and leads of Wave City" must not put Wave City on sales.
+    """
+    norm = normalise("sales of veridia and leads of wave city last fy", TODAY)
+    by_metric = {c.metric: c.filters for c in norm.calls}
+    assert by_metric["sales_done"].get("product") == ["Veridia"]
+    assert "project" not in by_metric["sales_done"], by_metric["sales_done"]
+    assert by_metric["total_leads"].get("project") == ["Wave City"]
+
+
+def test_funnel_grain_breakdowns_ask_to_narrow():
+    """A wise-breakdown repeated across periods is always too wide to show."""
+    for q in ("show me month on month product wise funnel",
+              "quarter on quarter source wise funnel",
+              "year on year sub source wise funnel"):
+        norm = normalise(q, TODAY)
+        assert not norm.ok, (q, [c.canonical_text for c in norm.calls])
+        assert "funnel rows" in norm.clarification, q
+
+
 def test_funnel_noun_form_keeps_the_breakdown_in_the_text():
     """"product funnel" must emit "funnel product wise", not a bare "funnel".
 

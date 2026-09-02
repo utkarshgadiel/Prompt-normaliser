@@ -254,8 +254,11 @@ METRICS: list[Metric] = [
     # ---------------- cases / service requests ----------------
     Metric("satisfied_cases", Tool.CASE, "Satisfied Cases",
            (r"satisfied\s+(?:cases?|service\s+requests?)",), ("feedback", "Satisfied")),
+    # The trailing noun is claimed too, so "complaint cases" does not leave a
+    # bare "cases" for the generic metric to match as a third request.
     Metric("complaint_cases", Tool.CASE, "Complaint Cases",
-           (r"complaints?\b",), ("service_request_type", "Complaint")),
+           (r"complaints?(?:\s+(?:cases?|service\s+requests?|tickets?))?\b",),
+           ("service_request_type", "Complaint")),
     # The lookahead keeps "SR target" / "SR resolved" with the targets metric.
     Metric("cases", Tool.CASE, "Cases",
            (r"\bcases?\b", r"service\s+requests?(?!\s+resolution)",
@@ -302,6 +305,31 @@ GROUPINGS: list[tuple[str, str]] = [
     (r"months?\s*[\-\s]?wise", "month"),
     (r"quarters?\s*[\-\s]?wise", "quarter"),
     (r"years?\s*[\-\s]?wise", "year"),
+
+    # "by <facet>" and "for each <facet>" are the same request as
+    # "<facet> wise", but only owner, status, property type and request type
+    # had a "by" form, so "total leads by source" silently lost its breakdown
+    # (stress run, 2 Sep 2026). Kept last so the more specific patterns above
+    # claim their span first. "grouped by" and "broken down by" are covered by
+    # the same alternation.
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+sub[\s\-]?sources?\b", "subsource"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+(?:lead\s+)?sources?\b", "source"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+projects?\b", "project"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+products?\b", "product"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+(?:owners?|users?)\b", "owner"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+cit(?:y|ies)\b", "city"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+subjects?\b", "subject"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+service\s+request\s+types?\b",
+     "service_request_type"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+appointment\s+status\b",
+     "appointment_status"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+sub[\s\-]?categor(?:y|ies)\b",
+     "service_subcategory"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+disqualification\s+reasons?\b",
+     "disqualification_reason"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+months?\b", "month"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+quarters?\b", "quarter"),
+    (r"\b(?:by|per|for\s+each|for\s+every)\s+years?\b", "year"),
 ]
 
 
@@ -369,6 +397,46 @@ class MetricMatch:
     matched_text: str
 
 
+# Qualifiers that sit in front of a metric noun. When two or more are joined
+# by "and" or a comma they share the noun -- "cold and hot leads" means cold
+# leads and hot leads -- but only the last one is adjacent to the noun, so
+# only that one matched and the other was silently lost (production,
+# 2 Sep 2026). Expanded before matching so each becomes its own metric.
+_SHARED_NOUN = {
+    "leads": ["hot", "cold", "warm", "junk", "valid", "qualified", "sol",
+              "unqualified", "nurturing", "new", "open", "not interested"],
+    "lead": ["hot", "cold", "warm", "junk", "valid", "qualified", "sol",
+             "unqualified", "nurturing", "new", "open", "not interested"],
+    "tasks": ["open", "completed", "cancelled", "canceled", "in progress"],
+    "task": ["open", "completed", "cancelled", "canceled", "in progress"],
+    "cases": ["satisfied", "complaint"],
+    "case": ["satisfied", "complaint"],
+}
+
+
+def expand_shared_noun(text: str) -> str:
+    """"cold and hot leads" -> "cold leads and hot leads".
+
+    Leaves everything else untouched, including a single qualifier and any
+    coordination that does not end in one of the nouns above.
+    """
+    out = text
+    for noun, quals in _SHARED_NOUN.items():
+        alt = "|".join(sorted((re.escape(q) for q in quals), key=len, reverse=True))
+        # two or three qualifiers sharing one trailing noun
+        pat = re.compile(
+            rf"\b((?:{alt}))\s*(?:,\s*)?(?:and\s+|,\s*)((?:{alt}))"
+            rf"(?:\s*(?:,\s*)?(?:and\s+|,\s*)((?:{alt})))?\s+{noun}\b",
+            re.IGNORECASE)
+
+        def _sub(m: re.Match) -> str:
+            parts = [g for g in m.groups() if g]
+            return " and ".join(f"{p} {noun}" for p in parts)
+
+        out = pat.sub(_sub, out)
+    return out
+
+
 def find_metrics(text: str) -> list[MetricMatch]:
     """All metrics named in the query, most-specific first, without overlap.
 
@@ -396,7 +464,13 @@ def find_metrics(text: str) -> list[MetricMatch]:
 
 
 def find_groupings(text: str) -> list[str]:
-    t = text.lower()
+    # Users hyphenate freely: "service-request-type-wise", "sub-source-wise",
+    # "product-wise". The patterns below are written with spaces, so a hyphen
+    # between two words silently matched nothing and the whole breakdown was
+    # dropped from the plan (production, 2 Sep 2026). Normalise inner hyphens
+    # to spaces first. Only hyphens BETWEEN word characters are touched, so
+    # "month-on-month" still reads the same to the comparison detector.
+    t = re.sub(r"(?<=\w)-(?=\w)", " ", text.lower())
     found: list[str] = []
     claimed: list[tuple[int, int]] = []
     for pat, facet in GROUPINGS:

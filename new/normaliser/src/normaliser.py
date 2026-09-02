@@ -30,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from dates import (Comparison, Kind, Period, Span, fq_span, fy_of, fy_span,  # noqa: E402
                    month_span, detect_comparisons, detect_multi_periods, resolve)
 from intents import (AGENT, DATA_START_FY, DEFAULT_START_FY,  # noqa: E402
+                     expand_shared_noun,
                      FUNNEL_GRAIN_OK, FUNNEL_ROW_LIMIT, FUNNEL_SCOPE_FACET,
                      FUNNEL_TOOLS, Ranking, Tool, estimate_funnel_rows,
                      find_groupings, find_metrics, find_ranking,
@@ -240,7 +241,10 @@ def normalise(query: str, today: date | None = None,
         return result
 
     # 1. metric + routing -------------------------------------------------
-    metrics = find_metrics(raw)
+    # "cold and hot leads" shares one noun between two qualifiers; expand it
+    # so both become metrics instead of only the one next to the noun.
+    expanded = expand_shared_noun(raw)
+    metrics = find_metrics(expanded)
     if not metrics:
         result.clarification = (
             "I could not identify which metric you want. Please specify one of: "
@@ -302,7 +306,11 @@ def normalise(query: str, today: date | None = None,
         groupings.append(ranking.facet)
 
     # 4. entities ---------------------------------------------------------
-    entities, located = extract_entities(raw, primary)
+    # Extract from the EXPANDED text so entity offsets and metric spans are
+    # measured against the same string. Using the raw text here left the
+    # positions short by the length of the inserted noun, so a trailing scope
+    # looked like it sat between the metrics and bound to only one of them.
+    entities, located = extract_entities(expanded, primary)
     if not vocab().loaded:
         result.warnings.append(
             "vocabulary.json not built -- entity filters were not resolved. "
@@ -335,17 +343,41 @@ def normalise(query: str, today: date | None = None,
     # With several metrics, bind each entity to the metric it sits nearest to.
     # "sales of veridia and leads of wave city" means Veridia scopes the sales
     # and Wave City scopes the leads -- not both filters on both.
+    # Bind entities to metrics once, so a trailing scope can see which metrics
+    # already have one of their own.
+    last_metric_end = max((m.span[1] for m in metrics), default=0)
+    _bound: dict[int, dict[str, list[str]]] = {id(m): {} for m in metrics}
+    _trailing: list[tuple[str, str]] = []
+    for facet, canonical, s, _e in located:
+        if s >= last_metric_end:
+            _trailing.append((facet, canonical))
+            continue
+        nearest = min(metrics, key=lambda m: abs(s - m.span[0]))
+        _bound[id(nearest)].setdefault(facet, []).append(canonical)
+
+    # An entity after every metric is a trailing scope. It applies to the
+    # metrics that have no entity of their own: "cold leads and hot leads in
+    # Delhi" filters both, because neither names anything else, while "sales
+    # of Veridia and leads of Wave City" leaves sales alone, because Veridia
+    # is already attached to it. Binding trailing scope to the nearest metric
+    # alone left "cold leads" unfiltered (production, 2 Sep 2026).
+    # "Has an entity of its own" ignores the value the metric itself implies:
+    # the word Cold in "cold leads" is the metric, not a scope the user chose,
+    # so a trailing Delhi must still reach it.
+    for m in metrics:
+        if _trailing and not _drop_implied(_bound[id(m)], m):
+            for facet, canonical in _trailing:
+                vals = _bound[id(m)].setdefault(facet, [])
+                if canonical not in vals:
+                    vals.append(canonical)
+
     def _filters_for(mm) -> dict[str, list[str]]:
         if len(metrics) < 2 or not located:
-            return all_filters
-        own: dict[str, list[str]] = {}
-        for facet, canonical, s, _e in located:
-            nearest = min(metrics, key=lambda m: abs(s - m.span[0]))
-            if nearest is mm:
-                own.setdefault(facet, []).append(canonical)
+            return _drop_implied(all_filters, mm)
+        own = _bound[id(mm)]
         # An entity written before any metric usually scopes the whole query
         # ("for wave city show me leads and tasks"), so fall back to shared.
-        return _strip_grouped(own) if own else all_filters
+        return _drop_implied(_strip_grouped(own) if own else all_filters, mm)
 
     # 4b. funnel routing --------------------------------------------------
     # A funnel question carries one metric; which funnel tool serves it depends
@@ -742,6 +774,29 @@ _NOT_A_VALUE = {
     "wise", "funnel", "report", "count", "total", "last", "this", "current",
     "previous", "next", "fy", "q1", "q2", "q3", "q4", "and", "or", "for",
 }
+
+
+def _drop_implied(filters: dict[str, list[str]], mm) -> dict[str, list[str]]:
+    """Remove a filter the metric already carries.
+
+    "satisfied cases" is the Satisfied filter, so also emitting "for Satisfied"
+    repeats it in the canonical text; "cold leads for Cold" reads the same way.
+    The backend applies the metric's own filter regardless, so the extra phrase
+    adds nothing and only risks a second, conflicting match.
+    """
+    implied = getattr(mm.metric, "implies", None)
+    if not implied:
+        return filters
+    facet, value = implied
+    if facet.startswith("__") or facet not in filters:
+        return filters
+    kept = [v for v in filters[facet] if v.lower() != str(value).lower()]
+    out = {f: list(v) for f, v in filters.items()}
+    if kept:
+        out[facet] = kept
+    else:
+        out.pop(facet, None)
+    return out
 
 
 def _named_entity_gap(raw: str) -> tuple[str, str] | None:
