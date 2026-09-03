@@ -433,6 +433,38 @@ def test_grain_kept_in_one_call_where_supported():
     assert norm.calls[0].canonical_text.endswith("mom fy 2024")
 
 
+def test_target_wording_is_preserved():
+    """targetvsactuals picks its report from literal keywords in the question.
+
+    DATA_DICTIONARY (targetvsactuals.py:2788) keys "qualified"/"ql"/"lead" to
+    report 1, "appointment"/"booked"/"completion" to report 2 and "service
+    request"/"sr"/"resolved" to report 3, and KPI_COLUMN_MAP then splits
+    booked from completion. Flattening every target question to the generic
+    label "targets vs actuals" stripped all of those words, so the backend
+    could not tell which report or columns were wanted (3 Sep 2026).
+    """
+    cases = {
+        "show me achievement qualified target for Abhishek Verma": "qualified",
+        "show me QL target and QL actual for Admin": "ql",
+        "show me SR target and resolved actual for Admin": "sr",
+        "show me appointment booked target for Admin": "booked",
+        "show me appointment completion target for Admin": "completion",
+    }
+    for q, keyword in cases.items():
+        norm = normalise(q, TODAY)
+        assert norm.ok, (q, norm.clarification)
+        text = norm.calls[0].canonical_text.lower()
+        assert keyword in text, (q, text)
+        assert not text.startswith("targets vs actuals"), (q, text)
+        # the heading follows the question too
+        assert norm.calls[0].metric_label.lower() != "targets vs actuals", q
+
+    # targetvsactuals has no lead-feedback dimension, so "qualified" must not
+    # also become a filter the tool cannot honour.
+    norm = normalise("show me qualified target for Abhishek Verma", TODAY)
+    assert set(norm.calls[0].filters) <= {"owner"}, norm.calls[0].filters
+
+
 def test_hyphenated_groupings_survive():
     """"service-request-type-wise" is the same breakdown as the spaced form.
 

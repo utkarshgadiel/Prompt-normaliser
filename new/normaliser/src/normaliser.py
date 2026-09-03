@@ -542,14 +542,15 @@ def normalise(query: str, today: date | None = None,
                 if clamp_note and clamp_note not in result.warnings:
                     result.warnings.append(clamp_note)
 
+                eset = _restrict_for_tool(eset, tool)
                 text, warns = render_query(
-                    metric.label, tool, per, groupings, eset, today)
+                    _emit_label(mm, tool), tool, per, groupings, eset, today)
                 result.warnings.extend(w for w in warns if w not in result.warnings)
                 calls.append(ToolCall(
                     tool=tool.value,
                     agent=AGENT[tool],
                     metric=metric.key,
-                    metric_label=metric.label,
+                    metric_label=_display_label(mm, tool),
                     canonical_text=text,
                     start_date=per.start.isoformat() if per.start else None,
                     end_date=per.end.isoformat() if per.end else None,
@@ -774,6 +775,50 @@ _NOT_A_VALUE = {
     "wise", "funnel", "report", "count", "total", "last", "this", "current",
     "previous", "next", "fy", "q1", "q2", "q3", "q4", "and", "or", "for",
 }
+
+
+# targetvsactuals picks its report from literal keywords in the question --
+# "qualified"/"ql"/"lead" -> report 1, "appointment"/"booked"/"completion" ->
+# report 2, "service request"/"sr"/"resolved" -> report 3 (DATA_DICTIONARY,
+# targetvsactuals.py:2788), and KPI_COLUMN_MAP then splits booked from
+# completion. Emitting the generic label "targets vs actuals" strips every one
+# of those words, so the backend cannot tell which report or columns were
+# wanted. Keep the user's own phrase instead: "qualified target",
+# "ql target", "appointment booked target", "sr target" all carry a keyword.
+_ACRONYM = {"ql": "QL", "sr": "SR", "cre": "CRE", "gre": "GRE"}
+
+
+def _emit_label(mm, tool: Tool) -> str:
+    """The phrase to lead the canonical text with."""
+    if tool is not Tool.TARGETS:
+        return mm.metric.label
+    phrase = " ".join(mm.matched_text.split()).strip()
+    return phrase or mm.metric.label
+
+
+def _display_label(mm, tool: Tool) -> str:
+    """The label the master puts in the table heading."""
+    if tool is not Tool.TARGETS:
+        return mm.metric.label
+    words = " ".join(mm.matched_text.split()).split()
+    if not words:
+        return mm.metric.label
+    return " ".join(_ACRONYM.get(w.lower(), w.capitalize()) for w in words)
+
+
+# targetvsactuals reports one row per user and holds no lead, project or
+# product dimension at all -- its columns are ql/appointment/sr targets and
+# actuals keyed by user_name. So "qualified target for Abhishek Verma" picked
+# up Qualified as a lead-feedback filter and emitted "for Qualified", a filter
+# the tool cannot honour and which only muddies the phrase it parses.
+_TARGETS_KEEP_FACETS = {"owner"}
+
+
+def _restrict_for_tool(filters: dict[str, list[str]], tool: Tool
+                       ) -> dict[str, list[str]]:
+    if tool is not Tool.TARGETS:
+        return filters
+    return {f: v for f, v in filters.items() if f in _TARGETS_KEEP_FACETS}
 
 
 def _drop_implied(filters: dict[str, list[str]], mm) -> dict[str, list[str]]:
