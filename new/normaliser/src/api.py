@@ -218,6 +218,14 @@ class FunnelFormatResponse(BaseModel):
     scope_column: str = ""
     metrics_table: str = ""
     ratios_table: str = ""
+    missing_ratio_columns: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Ratio columns the funnel service reports but that were absent "
+            "from the payload sent here -- meaning the response was trimmed "
+            "in transit. Send the tool response through unchanged and retry."),
+    )
+    warning: Optional[str] = None
     markdown: str = Field(
         "",
         description=(

@@ -103,7 +103,7 @@
       "post": {
         "operationId": "format_funnel_tables",
         "summary": "Render a funnel response as its two display tables",
-        "description": "Call this after ANY funnel tool returns, and before writing the answer.\n\nA funnel tool returns ONE flat record per row holding the stage counts and the conversion ratios interleaved in alphabetical order, so TL:VL and MB:MD sit among Total Leads and Junk Leads. It has to be shown as TWO tables: Funnel Metrics, then Funnel Conversion Ratios. Splitting it by hand is unreliable -- the same question produced both tables on one turn and only the metrics table on the next -- so this endpoint does it deterministically.\n\nSend the funnel tool's response unchanged in \"response\", the plan's tool value in \"tool\", and period_display in \"heading\". Then print the returned \"markdown\" field VERBATIM. Do not re-order its columns, re-group its numbers, add the skip-stage ratios back, or rebuild it from the raw response.\n\nIt applies the fixed column order, exactly five ratio columns (TL:VL, VL:SOL, SOL:MB, MB:MD, MD:SD), Indian digit grouping, and a Total row copied from the response's own totals block rather than summed. A single-row funnel correctly gets no S.No and no Total row.",
+        "description": "Call this after ANY funnel tool returns, from within the funnel agent that just called it.\n\nA funnel tool returns ONE flat record per row holding the stage counts and the conversion ratios interleaved in alphabetical order, so TL:VL and MB:MD sit among Total Leads and Junk Leads. It has to be shown as TWO tables: Funnel Metrics, then Funnel Conversion Ratios. This endpoint does that split deterministically.\n\nSend the funnel tool's response in \"response\" EXACTLY as it came back -- all seventeen keys, unreordered, nothing dropped. Send the tool you called in \"tool\" and the period in \"heading\". Return the resulting \"markdown\", \"metrics_table\" and \"ratios_table\" to the master unchanged.\n\nIt applies the fixed column order, exactly five ratio columns (TL:VL, VL:SOL, SOL:MB, MB:MD, MD:SD), Indian digit grouping, and a Total row copied from the response's own totals block rather than summed. A single-row funnel gets no S.No and no Total row.\n\nIf \"missing_ratio_columns\" comes back non-empty, the payload lost keys in transit -- resend the untouched response rather than displaying a short table.",
         "tags": [
           "normaliser"
         ],
@@ -348,6 +348,17 @@
           "error": {
             "type": "string",
             "description": "Present only when ok is false."
+          },
+          "missing_ratio_columns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Ratio columns the service reports but that were absent from the payload sent here. Non-empty means the response was trimmed in transit."
+          },
+          "warning": {
+            "type": "string",
+            "description": "Present when missing_ratio_columns is non-empty."
           }
         }
       }

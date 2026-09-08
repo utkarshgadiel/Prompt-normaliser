@@ -260,7 +260,18 @@ def render(payload: dict[str, Any], heading: str = "",
         blocks.append(
             f"📊 Funnel Conversion Ratios{heading and ' — ' + heading}\n\n{ratios_md}")
 
-    return {
+    # A dropped key must never be silent. A lead or breakdown funnel reports
+    # all five stage-to-stage ratios, so if one is absent here the payload lost
+    # it in transit rather than the service never having had it. On 8 Sep 2026
+    # MD:SD was present in the tool response and missing from what reached this
+    # function, and the ratios table quietly came out with four columns.
+    # The user funnels are the honest exception: they carry no lead stages, so
+    # TL:VL, VL:SOL and SOL:MB genuinely do not exist for them.
+    expected = ([c for c in RATIO_COLUMNS if c in ("MB:MD", "MD:SD")]
+                if _user_funnel(tool, rows) else RATIO_COLUMNS)
+    missing = [c for c in expected if not _present(rows, c)]
+
+    out = {
         "ok": True,
         "row_count": len(rows),
         "scope_column": scope,
@@ -268,6 +279,22 @@ def render(payload: dict[str, Any], heading: str = "",
         "ratios_table": ratios_md,
         "markdown": "\n\n".join(blocks),
     }
+    if missing:
+        out["missing_ratio_columns"] = missing
+        out["warning"] = (
+            f"These ratio columns were expected but not present in the payload: "
+            f"{', '.join(missing)}. The funnel services return all of them, so "
+            f"the response was probably trimmed on the way here. Send the tool "
+            f"response through unchanged and call again."
+        )
+    return out
+
+
+def _user_funnel(tool: str, rows: list[tuple[str, dict]]) -> bool:
+    """A user funnel has no lead stages, so it reports only MB:MD and MD:SD."""
+    if tool.strip().lower() in ("lead_user_funnel", "sales_user_funnel"):
+        return True
+    return not any("Total Leads" in rec for _, rec in rows)
 
 
 def _present(rows: list[tuple[str, dict]], key: str) -> bool:
