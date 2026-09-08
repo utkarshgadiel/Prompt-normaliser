@@ -601,7 +601,14 @@ UNSUPPORTED = [
 
 # Phrases that only make sense against a previous turn.
 CONTEXT_FRAGMENT = [
-    r"^\s*(it|this|that|these|those|they)\b",
+    # "this" is only anaphoric when it stands for a thing named earlier. In
+    # front of a period word it names the period itself, and "this month
+    # sales", "this quarter leads", "this fy total leads" and "this week
+    # service requests" are complete questions. Refusing them as follow-ups
+    # rejected a whole natural phrasing style outright. The other pronouns
+    # keep the plain rule: "that month" and "those products" do point back.
+    r"^\s*this\b(?!\s+(?:month|quarter|qtr|year|yr|fy|financial|fiscal|week|day)\b)",
+    r"^\s*(it|that|these|those|they)\b",
     r"\b(bifurcate|split|break|combine|compare)\s+(this|that|these|those|them|all)\b",
     r"^\s*now\s+\w+",
     r"\bsame\s+(as\s+)?(above|before|earlier)\b",

@@ -17,7 +17,7 @@ from __future__ import annotations
 import contextlib
 import io
 import sys
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 import pytest
@@ -309,13 +309,24 @@ def test_case_week_forms_round_trip():
     aug31 = date(2026, 8, 31)
     norm = normalise("total cases last week", aug31)
     assert norm.calls[0].canonical_text == "cases last week"
-    got, err = _parse("case", "cases last week")
-    assert err is None and got == ("2026-08-24", "2026-08-30")
 
-    # "this week" must never be emitted for case: it resolves Mon->Sun.
+    # _parse runs the real backend, which reads the real clock -- it cannot be
+    # frozen to aug31. Derive the expectation from today instead of writing
+    # the dates in: pinned literals made this test pass only during the week
+    # they were written, and it duly failed on 8 Sep 2026 for no reason but
+    # the calendar. The invariant is the shape, not the fortnight.
+    today = date.today()
+    last_sun = today - timedelta(days=today.weekday() + 1)
+    last_mon = last_sun - timedelta(days=6)
+    got, err = _parse("case", "cases last week")
+    assert err is None and got == (last_mon.isoformat(), last_sun.isoformat())
+
+    # "this week" must never be emitted for case: it resolves Mon->Sun, so its
+    # end lands on the coming Sunday -- in the future on any day but Sunday.
     got, err = _parse("case", "cases this week")
-    assert err is None and got[1] > "2026-08-31", (
-        "case_report no longer runs 'this week' into the future; the "
+    this_sun = today + timedelta(days=6 - today.weekday())
+    assert err is None and got[1] == this_sun.isoformat(), (
+        "case_report no longer runs 'this week' to the coming Sunday; the "
         "exclusion in render.py can be revisited.")
 
 
@@ -600,3 +611,107 @@ def test_grain_series_across_years_decomposes():
         assert err is None
         assert len(res["quarters"]) == 4
         assert res["quarters"][0]["start_date"] == f"{fy}0401"
+
+
+def test_last_n_fy_is_not_the_current_year():
+    """"last 2 fy" must mean the two COMPLETED financial years.
+
+    The `last N <unit>` alternation listed `year` but not `fy`, and `_clean`
+    collapsed "financial year" to "fy" without the plural, so all three
+    spellings below matched no date branch at all. They fell through to the
+    no-period default, which is the CURRENT financial year -- a request for
+    two past years answered with a partial current one, silently and under a
+    heading naming a period nobody asked for (reported 8 Sep 2026).
+
+    TODAY is 26 Aug 2026, so the current FY is 2026 and the last two
+    completed are FY2024-25 and FY2025-26: 1 Apr 2024 to 31 Mar 2026.
+    """
+    for phrase in ("last 2 fy", "last 2 financial years", "last two fiscal years",
+                   "past 2 fy", "previous 2 financial years"):
+        norm = normalise(f"total leads for {phrase}", TODAY)
+        assert norm.ok, (phrase, norm.clarification)
+        call = norm.calls[0]
+        assert (call.start_date, call.end_date) == ("2024-04-01", "2026-03-31"), \
+            (phrase, call.canonical_text, call.start_date, call.end_date)
+        # the plain "year" spelling must keep behaving identically
+        same = normalise("total leads for last 2 years", TODAY).calls[0]
+        assert (call.start_date, call.end_date) == (same.start_date, same.end_date)
+
+    three = normalise("total leads for last 3 fy", TODAY).calls[0]
+    assert (three.start_date, three.end_date) == ("2023-04-01", "2026-03-31")
+
+    # singular "last fy" was always correct and must stay put: fy 2025 is the
+    # year BEGINNING April 2025, i.e. FY2025-26.
+    one = normalise("total leads for last fy", TODAY).calls[0]
+    assert one.canonical_text == "total leads fy 2025"
+    assert (one.start_date, one.end_date) == ("2025-04-01", "2026-03-31")
+
+
+def test_this_quarter_is_the_fiscal_quarter_containing_today():
+    """"this quarter" on 26 Aug 2026 is fiscal Q2, July to September."""
+    call = normalise("show me total unqualified leads for this quarter", TODAY).calls[0]
+    assert (call.start_date, call.end_date) == ("2026-07-01", "2026-09-30")
+    prev = normalise("total leads for last quarter", TODAY).calls[0]
+    assert (prev.start_date, prev.end_date) == ("2026-04-01", "2026-06-30")
+
+
+def test_leading_this_before_a_period_word_is_not_anaphora():
+    """"this month sales" is a complete question, not a follow-up fragment.
+
+    The context-fragment guard refused every query opening with "this",
+    which rejected a whole natural phrasing style. Only "this" is exempted,
+    and only before a period word: "that month" still points backwards.
+    """
+    for q, (start, end) in {
+        "this month sales": ("2026-08-01", "2026-08-31"),
+        "this quarter leads": ("2026-07-01", "2026-09-30"),
+        "this fy leads": ("2026-04-01", "2027-03-31"),
+        "this year total leads": ("2026-04-01", "2027-03-31"),
+    }.items():
+        norm = normalise(q, TODAY)
+        assert norm.ok, (q, norm.clarification)
+        assert (norm.calls[0].start_date, norm.calls[0].end_date) == (start, end), q
+
+    for q in ("this one", "that month", "these products", "they need it"):
+        norm = normalise(q, TODAY)
+        assert not norm.ok and "refers back" in norm.clarification, q
+
+
+def test_unhandled_last_n_unit_asks_instead_of_defaulting():
+    """An unresolvable "last N <unit>" must ask, never fall to the current FY.
+
+    This is the general form of the "last 2 fy" bug. Any time unit the date
+    grammar does not know falls past every branch into the no-period default,
+    which answers a question about several PAST units with a partial CURRENT
+    year and reports it as "no date expression found" -- untrue, and invisible
+    to the reader. Abbreviations that we can resolve are resolved; the rest
+    ask.
+    """
+    # An abbreviation must resolve to exactly what the full spelling does.
+    # Asserting equality rather than literal dates keeps the test about the
+    # alias and not about a hand-derived calendar.
+    for abbrev, full in (("last 3 wks", "last 3 weeks"),
+                         ("last 3 dys", "last 3 days"),
+                         ("last 3 fin years", "last 3 financial years")):
+        got = normalise(f"total leads for {abbrev}", TODAY)
+        want = normalise(f"total leads for {full}", TODAY)
+        assert got.ok and want.ok, (abbrev, got.clarification)
+        assert (got.calls[0].start_date, got.calls[-1].end_date) == \
+               (want.calls[0].start_date, want.calls[-1].end_date), \
+            (abbrev, got.calls[0].start_date, got.calls[-1].end_date)
+
+    current_fy = ("2026-04-01", "2027-03-31")
+    for phrase in ("last 3 fortnights", "last 2 semesters", "last 3 mons",
+                   "last 3 mondays", "last 4 sprints"):
+        norm = normalise(f"total leads for {phrase}", TODAY)
+        assert not norm.ok, (
+            f"{phrase!r} resolved instead of asking -- if a branch now handles "
+            f"it, drop it from this list; if it silently defaulted, that is "
+            f"the bug this test exists to catch")
+        assert "date range" in norm.clarification, phrase
+
+    # "last 5 leads" is a count, not a period: it must keep the documented
+    # current-FY default rather than being swept up by the guard.
+    norm = normalise("show me last 5 leads", TODAY)
+    assert norm.ok
+    assert (norm.calls[0].start_date, norm.calls[0].end_date) == current_fy

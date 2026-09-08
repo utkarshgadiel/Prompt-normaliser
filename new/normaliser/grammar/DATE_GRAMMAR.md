@@ -362,6 +362,72 @@ names, period words and bare numbers are now excluded from that check.
 
 ---
 
+## 11. `last N fy` matched nothing and defaulted to the current year — 8 Sep 2026
+
+Reported as "last fy normalises to the wrong year". Singular `last fy` was
+always right (`fy 2025` = 1 Apr 2025 → 31 Mar 2026, `period_display`
+`FY2025-26`). The plural was not:
+
+| query | before | after |
+|---|---|---|
+| `last 2 years` | 1 Apr 2024 → 31 Mar 2026 | unchanged |
+| `last 2 fy` | **1 Apr 2026 → 31 Mar 2027** | 1 Apr 2024 → 31 Mar 2026 |
+| `last 2 financial years` | **1 Apr 2026 → 31 Mar 2027** | 1 Apr 2024 → 31 Mar 2026 |
+| `last 3 fy` | **1 Apr 2026 → 31 Mar 2027** | 1 Apr 2023 → 31 Mar 2026 |
+
+Two causes, both one line:
+
+1. The `last N <unit>` alternation listed `year` but not `fy`, so `last 2 fy`
+   matched no branch in `resolve` at all.
+2. `_clean` collapsed `financial year` → `fy` without the plural, so
+   `last 2 financial years` never even reached that alternation.
+
+**The failure mode is what matters.** Neither miss raised anything. The query
+fell past every branch to the no-period default, which is the *current*
+financial year — so a request for the last two years was answered with a
+partial current year, under a heading naming a period the user never asked
+for. A date branch that silently defaults is worse than one that errors:
+every future `last N <newunit>` addition must be probed for this.
+
+**`this quarter` and `last fy` were both correct** when checked on
+2026-09-08: `this quarter` → 1 Jul → 30 Sep 2026 (fiscal Q2, §5), `last fy` →
+`fy 2025` / FY2025-26. The reported symptom was the *display* of `fy 2025` as
+"FY 2024-2025" by the agent reading the canonical text instead of
+`period_display` — a behaviour-layer fix, now §4.3a of the master behaviour.
+
+### The general fix: an unresolvable `last N <unit>` now asks
+
+Probing the rest of the family found three more of the same silent default —
+`last 3 wks`, `last 3 dys` and `last 3 fin years` all returned the current
+financial year. Those three are now aliases (`wks`/`dys` in `_clean`
+alongside the existing `qtrs`/`yrs`/`mnths`, and `fin year` joining
+`financial year`).
+
+Aliases alone only fix the spellings someone thought of. So `resolve` now
+checks, immediately before the no-period default, for a `last N <time unit>`
+phrase it did not handle, and returns `UNRESOLVED` — which the normaliser
+turns into "I could not determine a date range from that". `last 3
+fortnights`, `last 2 semesters`, `last 3 mons` and `last 3 mondays` ask
+instead of answering the wrong period.
+
+The guard is deliberately restricted to words that really are time units, so
+`last 5 leads` — a count, not a period — keeps the documented current-FY
+default.
+
+**The principle:** in a date grammar, a branch that falls through to a
+default is more dangerous than one that raises. The default is plausible, it
+is never questioned, and its warning ("no date expression found") is a lie
+whenever the query plainly contained one. Prefer asking.
+
+### Related: a leading "this" was read as anaphora
+
+`^\s*(it|this|that|these|those|they)\b` classified `this month sales`,
+`this quarter leads` and `this fy leads` as follow-up fragments needing prior
+context, and refused them. `this` before a period word names the period, not
+something said earlier; the other pronouns keep the plain rule.
+
+---
+
 ## Reproduce
 
 ```

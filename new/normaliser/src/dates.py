@@ -155,8 +155,13 @@ def _clean(text: str) -> str:
         t = re.sub(rf"\b{w}\b", str(n), t)
     t = re.sub(r"\bqtrs?\b", "quarter", t)
     t = re.sub(r"\byrs?\b", "year", t)
-    t = re.sub(r"\bmnths?\b", "month", t)
-    t = re.sub(r"\bfinancial\s+year\b|\bfiscal\s+year\b", "fy", t)
+    t = re.sub(r"\b(?:mnths?|mons?ths?)\b", "month", t)
+    t = re.sub(r"\bwks?\b", "week", t)
+    t = re.sub(r"\bdys\b", "day", t)
+    # Plural included: without the "s?" the phrase "last 2 financial years"
+    # kept its long form, matched no branch at all, and fell through to the
+    # current-FY default -- the query silently answered the wrong period.
+    t = re.sub(r"\b(?:financial|fiscal|fin)\s+years?\b", "fy", t)
     # FY labels written as a year pair -- "FY2019-20", "fy 2019/2020",
     # "fy 19-20" -- collapse to the single anchor year every parser
     # understands. Only when the suffix really is the following year;
@@ -435,9 +440,17 @@ def resolve(text: str, today: date | None = None,
         return done(Period(kind, spans))
 
     # -- last N <unit> --
-    m = re.search(r"\b(?:last|past|previous)\s+(\d{1,3})\s+(day|week|month|quarter|year)s?\b", t)
+    # "fy" is a unit here as much as "year" is. Leaving it out meant
+    # "last 2 fy", "last 3 financial years" and "last two fiscal years"
+    # matched nothing in this function and were answered as the CURRENT
+    # financial year -- a wrong period reported with no warning. Singular
+    # "last fy" is handled further down and is unaffected.
+    m = re.search(r"\b(?:last|past|previous)\s+(\d{1,3})\s+"
+                  r"(day|week|month|quarter|year|fy)s?\b", t)
     if m:
         n, unit = int(m.group(1)), m.group(2)
+        if unit == "fy":
+            unit = "year"
         # "Last N <unit>" always means N COMPLETED units ending before the
         # current one. The current, part-finished unit is excluded: on
         # 31 August, "last 30 days" is 1-30 August, not 2-31 August. This is
@@ -567,6 +580,25 @@ def resolve(text: str, today: date | None = None,
         p.warnings.append(
             f"No period given; 'month on month' defaulted to FY{cur_fy} months. "
             f"State this in the response.")
+        return done(p)
+
+    # -- an unhandled "last N <time unit>" must ask, not default --
+    # Reaching here means no branch above matched, so a phrase like
+    # "last 3 fortnights" or "last 2 semesters" names a period we cannot
+    # resolve. Falling into the current-FY default would answer a question
+    # about several past units with a partial current year, and the warning
+    # would untruthfully read "no date expression found". That is the exact
+    # shape of the "last 2 fy" bug (DATE_GRAMMAR.md s11): wrong period,
+    # no visible signal. Ask instead. Restricted to words that really are
+    # time units so "last 5 leads" keeps its current-FY default.
+    if re.search(r"\b(?:last|past|previous)\s+\d{1,3}\s+"
+                 r"(?:fortnight|decade|century|semester|half|halves|biweek|"
+                 r"bimonth|season|cycle|period|term|session|sprint|"
+                 r"week|day|mon|quarter|qtr|year|yr|fy)\w*\b", t):
+        p = Period(Kind.UNRESOLVED, [])
+        p.warnings.append(
+            "A 'last N <unit>' phrase was found but the unit is not one this "
+            "system can resolve. Asking rather than defaulting.")
         return done(p)
 
     # -- nothing recognised --
