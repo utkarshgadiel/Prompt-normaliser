@@ -98,6 +98,54 @@
           }
         }
       }
+    },
+    "/format_funnel": {
+      "post": {
+        "operationId": "format_funnel_tables",
+        "summary": "Render a funnel response as its two display tables",
+        "description": "Call this after ANY funnel tool returns, and before writing the answer.\n\nA funnel tool returns ONE flat record per row holding the stage counts and the conversion ratios interleaved in alphabetical order, so TL:VL and MB:MD sit among Total Leads and Junk Leads. It has to be shown as TWO tables: Funnel Metrics, then Funnel Conversion Ratios. Splitting it by hand is unreliable -- the same question produced both tables on one turn and only the metrics table on the next -- so this endpoint does it deterministically.\n\nSend the funnel tool's response unchanged in \"response\", the plan's tool value in \"tool\", and period_display in \"heading\". Then print the returned \"markdown\" field VERBATIM. Do not re-order its columns, re-group its numbers, add the skip-stage ratios back, or rebuild it from the raw response.\n\nIt applies the fixed column order, exactly five ratio columns (TL:VL, VL:SOL, SOL:MB, MB:MD, MD:SD), Indian digit grouping, and a Total row copied from the response's own totals block rather than summed. A single-row funnel correctly gets no S.No and no Total row.",
+        "tags": [
+          "normaliser"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FunnelFormatRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Both tables, ready to display.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FunnelFormatResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "The request body was malformed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "detail": {
+                      "type": "string",
+                      "description": "What was wrong with the request."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -235,6 +283,71 @@
               "type": "string"
             },
             "description": "INTERNAL ONLY. Engineering notes about how the plan was built. Never display these, never quote them and never paraphrase them into a warning. The period in period_display already tells the user what they need."
+          }
+        }
+      },
+      "FunnelFormatRequest": {
+        "type": "object",
+        "required": [
+          "response"
+        ],
+        "properties": {
+          "response": {
+            "type": "object",
+            "description": "The funnel tool's response, pasted through unchanged. Every shape the seven funnel services return is accepted: the single record under lead_funnel, a breakdown keyed by scope under product_wise_metrics, and the list forms under source_wise_metrics, sub_source_wise_metrics, lead_wise_user_metrics and sales_wise_user_metrics. Do not trim, flatten or reformat it first."
+          },
+          "tool": {
+            "type": "string",
+            "description": "The plan's tool value, copied exactly: lead_funnel, product_funnel, project_funnel, source_funnel, subsource_funnel, lead_user_funnel or sales_user_funnel. It names the breakdown column. Always pass it: project_funnel returns its rows under a key reading product_wise_metrics, so without the tool name a project breakdown comes out headed Product.",
+            "example": "lead_funnel"
+          },
+          "heading": {
+            "type": "string",
+            "description": "Period for the table headings, taken from period_display, for example FY2025-26. Optional but recommended.",
+            "example": "FY2025-26"
+          },
+          "show": {
+            "type": "string",
+            "default": "both",
+            "enum": [
+              "both",
+              "metrics",
+              "ratios"
+            ],
+            "description": "Leave as both, which is right for almost every funnel question. Use ratios only when the user's own words said funnel ratios or conversion ratios, and metrics only when they said funnel metrics or stage counts. Never narrow on inference."
+          }
+        }
+      },
+      "FunnelFormatResponse": {
+        "type": "object",
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "description": "False means no funnel rows were found in the payload. Show the figures another way rather than an empty section."
+          },
+          "markdown": {
+            "type": "string",
+            "description": "BOTH tables, ready to display. Copy this verbatim into the response, the same way a graph url is copied. This is the field you print."
+          },
+          "metrics_table": {
+            "type": "string",
+            "description": "The Funnel Metrics table alone, if you need it separately."
+          },
+          "ratios_table": {
+            "type": "string",
+            "description": "The Funnel Conversion Ratios table alone, if you need it separately."
+          },
+          "row_count": {
+            "type": "integer",
+            "description": "Rows rendered. Check your table against it."
+          },
+          "scope_column": {
+            "type": "string",
+            "description": "The breakdown column used, such as Product, Source, Sub-Source, Project or User. Empty for an overall funnel."
+          },
+          "error": {
+            "type": "string",
+            "description": "Present only when ok is false."
           }
         }
       }
