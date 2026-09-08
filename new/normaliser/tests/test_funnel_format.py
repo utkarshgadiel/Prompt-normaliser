@@ -10,6 +10,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
@@ -118,7 +120,7 @@ def test_breakdown_gets_serial_scope_and_total():
         },
         "totals": {"Total Leads": 300},
     }
-    out = render(payload)
+    out = render(payload, tool="product_funnel")
     assert out["row_count"] == 2 and out["scope_column"] == "Product"
     assert "S.No" in out["metrics_table"] and "Product" in out["metrics_table"]
     assert _has_total_row(out["metrics_table"])
@@ -178,3 +180,114 @@ def test_indian_grouping_is_digit_preserving():
 def test_unrecognised_payload_reports_rather_than_guessing():
     out = render({"status": "error", "message": "boom"})
     assert out["ok"] is False and out["markdown"] == ""
+
+
+# --------------------------------------------------------------------------
+# All seven funnel services. Each returns a different wrapper key and some
+# return lists where others return dicts, so this pins that every one of them
+# yields two tables with the right breakdown column.
+# --------------------------------------------------------------------------
+
+_FULL = {
+    "Total Leads": 1000, "Valid Leads": 800, "Junk Leads": 200, "Junk %": "20.0%",
+    "SOL Leads (Interested)": 400, "Meeting Booked": 200, "Meeting Done": 100,
+    "Sales Done": 50, "TL:VL": 1.25, "VL:SOL": 2.0, "SOL:MB": 2.0, "MB:MD": 2.0,
+    "MD:SD": 2.0, "TL:SD": 20.0, "VL:SD": 16.0, "SOL:SD": 8.0, "MB:SD": 4.0,
+}
+# The user funnels report meetings and sales only -- no lead stages at all.
+_USER = {"Meeting Booked": 200, "Meeting Done": 100, "Sales Done": 50,
+         "MB:MD": 2.0, "MD:SD": 2.0, "MB:SD": 4.0}
+_TOTALS = {"Total Leads": 2000, "Valid Leads": 1600, "Junk Leads": 400,
+           "SOL Leads (Interested)": 800, "Meeting Booked": 400,
+           "Meeting Done": 200, "Sales Done": 100}
+
+SERVICE_SHAPES = [
+    ("lead_funnel", "",
+     {"lead_funnel": dict(_FULL), "totals": dict(_TOTALS)}),
+    ("product_funnel", "Product",
+     {"product_wise_metrics": {"EDEN": dict(_FULL), "VERIDIA": dict(_FULL)},
+      "totals": dict(_TOTALS)}),
+    # project_funnel groups by project but emits "product_wise_metrics"; only
+    # the tool name distinguishes it from a product funnel.
+    ("project_funnel", "Project",
+     {"product_wise_metrics": {"Wave City": dict(_FULL),
+                               "Wave Estate": dict(_FULL)},
+      "totals": dict(_TOTALS)}),
+    ("source_funnel", "Source",
+     {"source_wise_metrics": [{"name": "Digital", **_FULL},
+                              {"name": "Print Media", **_FULL}],
+      "totals": dict(_TOTALS)}),
+    ("subsource_funnel", "Sub-Source",
+     {"sub_source_wise_metrics": [{"name": "Facebook", **_FULL},
+                                  {"name": "Google", **_FULL}],
+      "totals": dict(_TOTALS)}),
+    ("lead_user_funnel", "User",
+     {"lead_wise_user_metrics": [{"name": "A. Sharma", **_USER},
+                                 {"name": "B. Rao", **_USER}],
+      "totals": {"Meeting Booked": 400, "Meeting Done": 200, "Sales Done": 100}}),
+    ("sales_user_funnel", "User",
+     {"sales_wise_user_metrics": [{"name": "X. Iyer", **_USER},
+                                  {"name": "Y. Nair", **_USER}],
+      "totals": {"Meeting Booked": 400, "Meeting Done": 200, "Sales Done": 100}}),
+]
+
+
+@pytest.mark.parametrize("tool,scope,payload", SERVICE_SHAPES,
+                         ids=[c[0] for c in SERVICE_SHAPES])
+def test_every_funnel_service_yields_two_tables(tool, scope, payload):
+    out = render(payload, heading="FY2025-26", tool=tool)
+    assert out["ok"], tool
+    assert "Funnel Metrics" in out["markdown"], tool
+    assert "Funnel Conversion Ratios" in out["markdown"], tool
+    assert out["scope_column"] == scope, (tool, out["scope_column"])
+
+    # never a skip-stage ratio, in any service
+    for skipped in ("TL:SD", "VL:SD", "SOL:SD", "MB:SD"):
+        assert skipped not in out["ratios_table"], (tool, skipped)
+
+    # the ratio columns present are exactly those the service reports,
+    # in the fixed order -- user funnels legitimately have only two
+    header = out["ratios_table"].splitlines()[0]
+    cells = [c.strip() for c in header.strip("|").split("|")]
+    ratios = [c for c in cells if ":" in c]
+    assert ratios == [c for c in RATIO_COLUMNS if c in ratios], (tool, ratios)
+    assert ratios, tool
+
+
+@pytest.mark.parametrize("tool,scope,payload", SERVICE_SHAPES,
+                         ids=[c[0] for c in SERVICE_SHAPES])
+def test_every_service_copies_its_total_row(tool, scope, payload):
+    """A breakdown gets a Total row copied from totals; an overall gets none."""
+    out = render(payload, tool=tool)
+    if out["row_count"] > 1:
+        assert _has_total_row(out["metrics_table"]), tool
+        total_line = [l for l in out["metrics_table"].splitlines()
+                      if l.strip("|").split("|")[0].strip() == "Total"][0]
+        assert "2,000" in total_line or "400" in total_line, (tool, total_line)
+    else:
+        assert not _has_total_row(out["metrics_table"]), tool
+    assert not _has_total_row(out["ratios_table"]), tool
+
+
+def test_project_funnel_is_not_mislabelled_as_product():
+    """The payload key says product; only the tool name says project."""
+    payload = {"product_wise_metrics": {"Wave City": dict(_FULL)},
+               "totals": dict(_TOTALS)}
+    assert render(payload, tool="project_funnel")["scope_column"] == "Project"
+    assert render(payload, tool="product_funnel")["scope_column"] == "Product"
+
+
+def test_metadata_blocks_are_never_mistaken_for_rows():
+    """A response's metadata is nested dicts too, and must not become a table."""
+    payload = {
+        "status": "success",
+        "metadata": {"date_intent": {"start_date": "20250401"},
+                     "llm_intent": {"group_by": ["source"]}},
+        "intent_summary": {"aggregation": ["Sales Count"]},
+        "source_wise_metrics": [{"name": "Digital", **_FULL}],
+        "totals": dict(_TOTALS),
+    }
+    out = render(payload, tool="source_funnel")
+    assert out["ok"] and out["row_count"] == 1
+    assert "Digital" in out["metrics_table"]
+    assert "date_intent" not in out["markdown"]

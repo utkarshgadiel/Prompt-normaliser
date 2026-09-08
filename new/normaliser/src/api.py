@@ -200,6 +200,16 @@ class FunnelFormatRequest(BaseModel):
             "when the user said funnel ratios or conversion ratios, or "
             "'metrics' only when they said funnel metrics or stage counts."),
     )
+    tool: str = Field(
+        "",
+        description=(
+            "The tool field from the plan, copied exactly: lead_funnel, "
+            "product_funnel, project_funnel, source_funnel, subsource_funnel, "
+            "lead_user_funnel or sales_user_funnel. It names the breakdown "
+            "column. Pass it: project_funnel returns its rows under the key "
+            "'product_wise_metrics', so without the tool name a project "
+            "breakdown would be headed Product."),
+    )
 
 
 class FunnelFormatResponse(BaseModel):
@@ -233,7 +243,7 @@ def format_funnel(req: FunnelFormatRequest) -> FunnelFormatResponse:
     Indian digit grouping, and a Total row copied from the response's own
     totals block rather than summed.
     """
-    out = render(req.response, heading=req.heading, show=req.show)
+    out = render(req.response, heading=req.heading, show=req.show, tool=req.tool)
     return FunnelFormatResponse(**out)
 
 

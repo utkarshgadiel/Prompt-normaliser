@@ -121,41 +121,99 @@ def _row_of(record: dict[str, Any]) -> dict[str, Any]:
     return {k: v for k, v in record.items() if not isinstance(v, (dict, list))}
 
 
-def extract_rows(payload: dict[str, Any]) -> tuple[list[tuple[str, dict]], str]:
-    """Pull (scope_label, record) pairs out of any funnel response shape.
+# The scope column each funnel tool breaks down by. Keyed on the tool name from
+# the plan, because the payload cannot be trusted to say: project_funnel groups
+# by project_c but emits its rows under the key "product_wise_metrics", so
+# inferring "Product" from that key would mislabel every project funnel.
+TOOL_SCOPE: dict[str, str] = {
+    "lead_funnel":        "",            # overall funnel, no breakdown
+    "product_funnel":     "Product",
+    "project_funnel":     "Project",
+    "source_funnel":      "Source",
+    "subsource_funnel":   "Sub-Source",
+    "lead_user_funnel":   "User",
+    "sales_user_funnel":  "User",
+}
 
-    Handles the three shapes the seven services actually return:
-      * single period   -> {"lead_funnel": {...17 keys...}}
-      * breakdown dict  -> {"product_wise_metrics": {"EDEN": {...}, ...}}
-      * breakdown list  -> {"data": [{"product": "EDEN", ...}, ...]}
+# Wrapper keys that hold the rows, across the seven services. Some hold a dict
+# keyed by scope name, others a list of {"name": ..., **metrics} records.
+_ROW_KEYS = (
+    "lead_funnel", "product_wise_metrics", "source_wise_metrics",
+    "sub_source_wise_metrics", "subsource_wise_metrics",
+    "lead_wise_user_metrics", "sales_wise_user_metrics",
+    "funnel", "sources", "data",
+)
 
-    Returns the rows and the scope column name ("" when there is no breakdown).
+# Keys that never hold funnel rows, whatever their shape.
+_NOT_ROWS = {"totals", "metadata", "intent_summary", "execution", "date_ranges",
+             "llm_intent", "date_intent", "schema", "periods_data"}
+
+
+def _label_of(rec: dict[str, Any]) -> str:
+    """The scope name in a list-style record.
+
+    The services build these as {"name": <scope>, **metrics}, so `name` is
+    checked first; the fallback covers any service that labels it differently.
     """
-    # A breakdown keyed by scope name.
-    for key, value in payload.items():
-        if key == "totals" or not isinstance(value, dict):
-            continue
+    for key in ("name", "scope", "label", "product", "project", "source",
+                "sub_source", "subsource", "user", "user_name"):
+        if isinstance(rec.get(key), str):
+            return rec[key]
+    for key, value in rec.items():
+        if isinstance(value, str) and not _is_ratio(key) and not key.endswith("%"):
+            return value
+    return ""
+
+
+def _rows_from(value: Any) -> list[tuple[str, dict]] | None:
+    """Rows out of one wrapper value, or None if it holds no funnel rows."""
+    if isinstance(value, dict):
+        if any(_is_ratio(k) for k in value):          # a single flat record
+            return [("", _row_of(value))]
         inner = list(value.values())
         if inner and all(isinstance(v, dict) for v in inner):
-            return ([(str(k), _row_of(v)) for k, v in value.items()],
-                    _scope_name(key))
+            return [(str(k), _row_of(v)) for k, v in value.items()]
+        return None
+    if isinstance(value, list) and value and isinstance(value[0], dict):
+        rows = []
+        for rec in value:
+            label = _label_of(rec)
+            if label.strip().lower() == "total":
+                continue                               # a summary, not a row
+            rows.append((label, _row_of(rec)))
+        return rows or None
+    return None
 
-    # A breakdown as a list of records.
-    for key, value in payload.items():
-        if isinstance(value, list) and value and isinstance(value[0], dict):
-            rows = []
-            for rec in value:
-                label = next((str(v) for k, v in rec.items()
-                              if isinstance(v, str) and not _is_ratio(k)), "")
-                if label.lower() == "total":
-                    continue          # a totals summary, not a data row
-                rows.append((label, _row_of(rec)))
-            return rows, _scope_name(key)
 
-    # A single funnel record.
+def extract_rows(payload: dict[str, Any],
+                 tool: str = "") -> tuple[list[tuple[str, dict]], str]:
+    """Pull (scope_label, record) pairs out of any funnel response shape.
+
+    Covers every shape the seven services return:
+      * overall        -> {"lead_funnel": {...17 keys...}}
+      * dict breakdown -> {"product_wise_metrics": {"EDEN": {...}, ...}}
+      * list breakdown -> {"source_wise_metrics": [{"name": "Digital", ...}]}
+      * the bare record, unwrapped
+
+    `tool` comes from the plan and decides the scope column. Without it the
+    column falls back to "Scope", which is honest rather than wrong.
+    """
+    scope = TOOL_SCOPE.get(tool.strip().lower(), "") if tool else ""
+
+    # Named wrappers first, in the order the services use them.
+    for key in _ROW_KEYS:
+        if key in payload:
+            rows = _rows_from(payload[key])
+            if rows:
+                return rows, _resolve_scope(scope, tool, rows)
+
+    # Then any other wrapper that looks like funnel rows.
     for key, value in payload.items():
-        if isinstance(value, dict) and any(_is_ratio(k) for k in value):
-            return [("", _row_of(value))], ""
+        if key in _NOT_ROWS:
+            continue
+        rows = _rows_from(value)
+        if rows:
+            return rows, _resolve_scope(scope, tool, rows)
 
     # The record itself, unwrapped.
     if any(_is_ratio(k) for k in payload):
@@ -163,34 +221,37 @@ def extract_rows(payload: dict[str, Any]) -> tuple[list[tuple[str, dict]], str]:
     return [], ""
 
 
-def _scope_name(key: str) -> str:
-    k = key.lower()
-    for token, label in (("subsource", "Sub-Source"), ("sub_source", "Sub-Source"),
-                         ("product", "Product"), ("project", "Project"),
-                         ("source", "Source"), ("user", "User"),
-                         ("city", "City"), ("month", "Month")):
-        if token in k:
-            return label
-    return "Scope"
+def _resolve_scope(scope: str, tool: str, rows: list) -> str:
+    """A breakdown needs a scope column; a single unlabelled row does not."""
+    if len(rows) == 1 and not rows[0][0]:
+        return ""
+    if scope:
+        return scope
+    return "Scope" if not tool else TOOL_SCOPE.get(tool.strip().lower(), "Scope")
 
 
 def render(payload: dict[str, Any], heading: str = "",
-           show: str = "both") -> dict[str, Any]:
+           show: str = "both", tool: str = "") -> dict[str, Any]:
     """Render a funnel response as the two markdown tables.
 
     `show` is "both" (the default), "metrics" or "ratios", and reflects only
     what the user asked for in words -- never a judgement about the data.
     """
-    rows, scope = extract_rows(payload)
+    rows, scope = extract_rows(payload, tool)
     if not rows:
         return {"ok": False, "error": "No funnel rows found in the payload.",
                 "metrics_table": "", "ratios_table": "", "markdown": ""}
 
     totals = payload.get("totals") or {}
+    # Two independent questions. `labelled` decides whether a breakdown
+    # column appears -- a funnel filtered to ONE source is still a source
+    # breakdown and must say which source. `multi` decides S.No and the
+    # Total row, which only make sense across two or more rows.
+    labelled = any(label for label, _ in rows)
     multi = len(rows) > 1
 
-    metrics_md = _metrics_table(rows, scope, totals, multi)
-    ratios_md = _ratios_table(rows, scope, multi)
+    metrics_md = _metrics_table(rows, scope, totals, multi, labelled)
+    ratios_md = _ratios_table(rows, scope, labelled)
 
     blocks = []
     if show in ("both", "metrics"):
@@ -220,13 +281,15 @@ def _present(rows: list[tuple[str, dict]], key: str) -> bool:
     return any(key in rec for _, rec in rows)
 
 
-def _metrics_table(rows, scope, totals, multi) -> str:
+def _metrics_table(rows, scope, totals, multi, labelled) -> str:
     cols = [(k, h) for k, h in METRIC_COLUMNS if _present(rows, k)]
-    header = ([("S.No"), (scope or "Scope")] if multi else []) + [h for _, h in cols]
+    header = ((["S.No"] if multi else [])
+              + ([scope or "Scope"] if labelled else [])
+              + [h for _, h in cols])
 
     body = []
     for i, (label, rec) in enumerate(rows, 1):
-        cells = ([str(i), label] if multi else []) + [
+        cells = ([str(i)] if multi else []) + ([label] if labelled else []) + [
             _fmt(rec.get(k), _kind_of(k)) for k, _ in cols]
         body.append(cells)
 
@@ -234,7 +297,7 @@ def _metrics_table(rows, scope, totals, multi) -> str:
         # The Total row is COPIED from the backend's totals block, never summed.
         # A breakdown that can double-count (a lead under two sub-sources) makes
         # the row sum legitimately disagree with the backend's figure.
-        total_cells = ["Total", ""]
+        total_cells = ["Total"] + ([""] if labelled else [])
         for k, _ in cols:
             total_cells.append(
                 EM_DASH if k in _NOT_SUMMABLE or k not in totals
@@ -244,14 +307,14 @@ def _metrics_table(rows, scope, totals, multi) -> str:
     return _markdown(header, body)
 
 
-def _ratios_table(rows, scope, multi) -> str:
+def _ratios_table(rows, scope, labelled) -> str:
     cols = [c for c in RATIO_COLUMNS if _present(rows, c)]
     # No S.No on the ratios table, and no Total row at all: ratios do not sum,
     # and an empty Total row only invites the reader to look for one.
-    header = ([scope or "Scope"] if multi else []) + cols
+    header = ([scope or "Scope"] if labelled else []) + cols
     body = []
     for label, rec in rows:
-        body.append(([label] if multi else [])
+        body.append(([label] if labelled else [])
                     + [_fmt(rec.get(c), "ratio") for c in cols])
     return _markdown(header, body)
 

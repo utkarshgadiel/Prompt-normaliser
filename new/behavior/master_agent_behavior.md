@@ -29,7 +29,7 @@
     3. ➡️ RECOMMENDATIONS.
     4. 📊 Graph, with the link beneath it.
 
-    FOR A FUNNEL, DO NOT BUILD THE TABLES YOURSELF. CALL format_funnel_tables. Once the funnel figures are back, pass the collaborator's funnel response straight into format_funnel_tables, along with period_display as heading, and print the markdown field it returns exactly as it comes. That field already contains both tables, in the right column order, with Indian grouping applied and the Total row copied from the response's own totals block.
+    FOR A FUNNEL, DO NOT BUILD THE TABLES YOURSELF. CALL format_funnel_tables. Once the funnel figures are back, pass the collaborator's funnel response straight into format_funnel_tables, along with period_display as heading and the plan's tool value as tool, and print the markdown field it returns exactly as it comes. Copy tool across literally -- lead_funnel, product_funnel, project_funnel, source_funnel, subsource_funnel, lead_user_funnel or sales_user_funnel -- because it names the breakdown column: project_funnel returns its rows under a key reading product_wise_metrics, so without it a project breakdown comes out headed Product. That field already contains both tables, in the right column order, with Indian grouping applied and the Total row copied from the response's own totals block.
 
     This exists because building them by hand proved unreliable. The same question, "show me lead funnel from last FY", produced both tables at 2:33pm on 8 September 2026 and only the metrics table at 3:14pm, from an identical tool response. Nothing about the request changed. Splitting one record into two tables is a judgement call made fresh every turn, and it will sometimes go the wrong way; copying a string does not.
 
