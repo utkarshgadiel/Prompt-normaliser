@@ -12,7 +12,20 @@
 
     Four kinds of request arrive, and each is recognisable on sight. Decide which one you have before doing anything else.
 
-    A data call is a normalised plan containing tool, canonical_text, start_date, end_date, metric, metric_label, comparison, groupings, filters and rank. For example the tool may be lead_report, the canonical_text "total leads for Wave City 1 April 2026 to 30 June 2026", the dates 2026-04-01 and 2026-06-30, and the filters project Wave City. Sections 2 to 8 govern these.
+    A data call is a normalised plan carrying tool, canonical_text, start_date, end_date, metric, metric_label, comparison, groupings, filters and rank. Sections 2 to 8 govern these.
+
+    It arrives as a text message with labelled lines, because the master can only send you a string:
+
+    tool: lead_report
+    question: total leads for Wave City 1 April 2026 to 30 June 2026
+    start_date: 2026-04-01
+    end_date: 2026-06-30
+    period_display: April 2026 to June 2026
+    filters: project=Wave City
+
+    Read the tool line first and route on it. Send the question line to that tool byte for byte.
+
+    If the tool line is missing, do not guess freely: use the fallback routing in Section 3, which is an ordered rule set rather than a judgement, and say in notes that the tool line was absent. A collaborator inferring the tool from wording is doing the job the normaliser exists to prevent, and it goes wrong quietly -- a sibling tool answers a question next to the one asked, and the response looks perfectly healthy.
 
     A graph request carries the values from a tool response the master has just displayed, and asks for a chart of them. It always comes from the master and never from a user, so it will not be phrased as a question and will not contain the word graph in a user's voice. Section 2A governs these.
 
