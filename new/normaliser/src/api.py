@@ -22,6 +22,7 @@ from pydantic import BaseModel, Field
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from funnel_format import render  # noqa: E402
 from normaliser import normalise, vocab  # noqa: E402
 
 app = FastAPI(
@@ -177,6 +178,63 @@ def _period_display(call: dict) -> str:
 
     return f"{sd.day} {_MONTHS[sd.month - 1]} {sd.year} to " \
            f"{ed.day} {_MONTHS[ed.month - 1]} {ed.year}"
+
+
+class FunnelFormatRequest(BaseModel):
+    response: dict[str, Any] = Field(
+        ...,
+        description=(
+            "The funnel tool's response, pasted through unchanged. Any of the "
+            "shapes the seven funnel services return is accepted."),
+    )
+    heading: str = Field(
+        "",
+        description=(
+            "Period for the table headings, taken from period_display, "
+            "for example 'FY2025-26'. Optional."),
+    )
+    show: str = Field(
+        "both",
+        description=(
+            "'both' (the default and almost always correct), 'ratios' only "
+            "when the user said funnel ratios or conversion ratios, or "
+            "'metrics' only when they said funnel metrics or stage counts."),
+    )
+
+
+class FunnelFormatResponse(BaseModel):
+    ok: bool
+    row_count: int = 0
+    scope_column: str = ""
+    metrics_table: str = ""
+    ratios_table: str = ""
+    markdown: str = Field(
+        "",
+        description=(
+            "Both tables, ready to display. Copy this verbatim into the "
+            "response; do not rebuild, reorder or re-format it."),
+    )
+    error: Optional[str] = None
+
+
+@app.post("/format_funnel", response_model=FunnelFormatResponse,
+          operation_id="format_funnel_tables")
+def format_funnel(req: FunnelFormatRequest) -> FunnelFormatResponse:
+    """Split a funnel response into its two display tables.
+
+    A funnel result is ONE flat record per row holding the stage counts and the
+    conversion ratios interleaved alphabetically, and it must be shown as two
+    tables: Funnel Metrics, then Funnel Conversion Ratios. Deriving that split
+    by hand proved unreliable -- the same question produced two tables on one
+    turn and one on the next -- so it is done here deterministically.
+
+    Call this after any funnel tool and print the `markdown` field as returned.
+    It applies the fixed column order, the five stage-to-stage ratio columns,
+    Indian digit grouping, and a Total row copied from the response's own
+    totals block rather than summed.
+    """
+    out = render(req.response, heading=req.heading, show=req.show)
+    return FunnelFormatResponse(**out)
 
 
 @app.get("/health", operation_id="normaliser_health")
