@@ -3,7 +3,14 @@
 Everything built, everything found, and why. Written as a handover: someone who
 has never seen this work should be able to read it and continue.
 
-Last updated 26 August 2026.
+Last updated 9 September 2026.
+
+Sections 1 to 10 describe the system as designed and built (August 2026).
+**Section 11 is the production hardening round of 3 to 9 September**: every
+failure real users hit, what caused it, and what was changed. Read it before
+changing anything — most of those failures were invisible in the code and
+several recurred because the first fix was written as prose when it needed to
+be written as code.
 
 ---
 
@@ -365,7 +372,7 @@ straddle the floor are trimmed silently.
 
 ---
 
-## 6. THE FOUR BEHAVIOR FILES
+## 6. THE THREE BEHAVIOR FILES
 
 In `behavior/`, written as plain prose. GPT-OSS 120B follows continuous
 instructions more reliably than heavily formatted ones, so decorative markdown
@@ -439,9 +446,14 @@ Executes the seven funnel tools. Same fidelity discipline. Additionally handles
 the `.title()` scope mangling, the first-match-only project extractor, and the
 excluded names. Never calculates a ratio.
 
-### crm_other_tools_agent_behavior.md
+### RETIRED_crm_other_tools_agent_behavior.md
 
-Query SOP for internal process, `websearch:web_search` for the outside world.
+**Retired on 3 September 2026 and no longer deployed.** Query SOP and
+`websearch:web_search` moved into both CRM-Data and CRM-Funnel, so the agent
+holding the figures also holds the research and the chart builder, and nothing
+is handed between collaborators. The file is kept because the incident below
+is why the anti-fabrication rules exist; those rules now live in both
+collaborator files and in Section 6 of the master.
 
 This file exists because of a real incident. Asked to compare performance to
 competitors, the master produced a table containing "Key competitor A — 610
@@ -528,6 +540,22 @@ the raw tool is not.
 
 **Year-on-year floors are hardcoded** and differ per service.
 
+**product_funnel returns no_data for a named product across every year.**
+`funnel for EDEN fy 2021` through `fy 2023` all came back "No leads found
+(product: eden)", while Eden holds 82 sales in the opportunity data. The filter
+goes in lower-cased as `eden`. Most likely a case or matching problem in the
+product extractor rather than a real absence; not yet diagnosed. The pipeline
+now reports it honestly as an empty result (§11.7) instead of rendering a
+nonsense table, so it is visible rather than silent.
+
+**Insight wording still slips past the no-arithmetic rules occasionally.**
+Computed shares such as "roughly 30.8% of Valid Leads" recurred through several
+rounds of increasingly explicit prose before the funnel ratio columns gave the
+agent a correct number to quote instead. It is much improved but not
+guaranteed. If it returns, the fix is the one that worked everywhere else:
+a checked endpoint that verifies every numeral in a draft against the tool
+response, rather than another rule.
+
 **Backend hygiene** — SQL injection surface, `date_parse` without `TRY()`,
 `list(set(...))` nondeterminism, funnel services pulling raw rows into pandas
 with no `LIMIT`.
@@ -552,7 +580,10 @@ funnel services share this architecture and should get the same check.
 **Fiscal versus calendar quarters.** All services return `Q2` as Jul–Sep,
 matching `behavior.md:429`. UAT prompt #131 reads `Q2 2026 (April to June)` —
 the client means calendar Q2. Every `Q<n>` query is one quarter off from user
-expectation. The resolver follows the fiscal definition; this needs a ruling.
+expectation. The resolver follows the fiscal definition; this still needs a
+ruling. Mitigated in the meantime: the master no longer prints a quarter
+number it computed itself, and names the window by its months instead
+(§11.2), so a reader is never told "Q3" for a July-to-September window.
 
 **Comparison plus explicit range.** `tasks year on year between 1 April and
 30 June 2026` — backends discard the window. Roughly 20 UAT prompts hit this.
@@ -584,18 +615,35 @@ uvicorn api:app --host 0.0.0.0 --port 8100 --app-dir src
 `--host 0.0.0.0` matters; `127.0.0.1` is not reachable through a tunnel. The
 normaliser needs no database and no LLM.
 
-Expose with `ngrok http 8100`, then import
-`normaliser/openapi_orchestrate.yaml` into Orchestrate. Use the **file**, not
-the live `/openapi.json`, which serves OpenAPI 3.1 and is often rejected; the
-file is deliberately 3.0.3.
+Deployed on **IBM Code Engine** since 9 September 2026 (previously an ngrok
+tunnel). Bind the port Code Engine injects, and set `servers.url` in the spec
+files to the Code Engine URL before uploading.
 
-Give the tool to the **master only**. Collaborators receive an already
-normalised plan.
+Import `normaliser/openapi_orchestrate.yaml` or `.json` into Orchestrate. Use
+the **file**, not the live `/openapi.json`, which serves OpenAPI 3.1 and is
+often rejected; the files are deliberately 3.0.3 and both carry all three
+operations.
+
+The service now exposes three operations:
+
+| operation | path | attach to |
+|---|---|---|
+| `normalise_crm_query` | `POST /normalise` | **Master only** |
+| `format_funnel_tables` | `POST /format_funnel` | **CRM-Funnel only** |
+| `normaliser_health` | `GET /health` | — |
+
+`format_funnel_tables` belongs on CRM-Funnel, not the master: the collaborator
+is already holding the funnel response and passes it through untouched, while
+the master would have to retype it — which is how the `MD:SD` key was lost on
+8 September 2026. See §11.4.
+
+The master holds no CRM tool and builds no funnel table. Collaborators receive
+an already normalised plan as labelled lines (§11.5).
 
 ### Testing
 
 ```bash
-python -m pytest tests/ -q                  # 52 contract tests
+python -m pytest tests/ -q                  # 97 tests (66 grammar + 31 formatter)
 python tests/run_batch.py                   # 1,000 prompts, full round-trip
 python tests/run_corpus.py --csv out.csv    # 374 real prompts
 python src/normaliser.py "total sales for eden last fy" --today 2026-08-26
@@ -619,7 +667,391 @@ re-import. A reserved domain avoids repeated re-imports.
 
 ---
 
-## 11. PRINCIPLES WORTH KEEPING
+## 11. THE PRODUCTION HARDENING ROUND — 3 TO 9 SEPTEMBER 2026
+
+Everything above describes the system as built. This section records what
+happened when it met real users, what broke, and what was done about it. It is
+the most useful part of this document for anyone maintaining the system,
+because almost none of these failures were visible in the code.
+
+The round produced one conclusion that outranks the rest, so it is stated
+first: **a rule written in prose gets followed most of the time, and a check
+written in code gets followed every time.** Every failure below that recurred
+after being "fixed" was fixed in prose. Every one that stopped recurring was
+moved into code. That is the pattern to apply to whatever breaks next.
+
+---
+
+### 11.1 Normaliser defects found and fixed
+
+These are the deterministic layer, and each is pinned by a regression test.
+
+**`last N fy` silently answered the current financial year.** The `last N
+<unit>` branch listed `year` but not `fy`, and `_clean` collapsed "financial
+year" to "fy" without the plural. So `last 2 fy`, `last 2 financial years` and
+`last 3 fy` matched no date branch at all, fell past every rule to the
+no-period default, and returned FY2026-27 — a partial current year — for a
+question about two completed past years. `last 2 years` worked throughout,
+which is why it went unnoticed.
+
+The failure mode matters more than the fix. Nothing raised. The warning
+attached to the default read "no date expression found", which was untrue: the
+query plainly contained one. **A date branch that falls through to a default is
+more dangerous than one that raises**, because the default is plausible and its
+own diagnostics lie about it.
+
+**Unresolvable `last N <unit>` now asks instead of defaulting.** Aliases only
+fix the spellings someone thought of, so `resolve` now checks, immediately
+before the no-period default, for a `last N <time unit>` phrase it did not
+handle and returns `UNRESOLVED`. `last 3 fortnights`, `last 2 semesters`,
+`last 3 mons` and `last 3 mondays` ask rather than answering the wrong period.
+`wks`, `dys` and `fin years` became aliases. The guard is restricted to words
+that really are time units, so `last 5 leads` — a count, not a period — keeps
+the documented current-FY default.
+
+**A leading "this" was read as anaphora.** The context-fragment guard matched
+`^\s*(it|this|that|these|those|they)\b`, so `this month sales`, `this quarter
+leads` and `this fy leads` were all refused as follow-up fragments needing
+prior context. An entire natural phrasing style was rejected. `this` before a
+period word names the period; the other pronouns keep the plain rule, and
+`that month` still points backwards.
+
+**Two reported bugs that were not bugs.** `this quarter` and `last fy` were
+both correct. `this quarter` on 8 Sep 2026 is 1 Jul – 30 Sep, fiscal Q2, and
+`last fy` resolves to 1 Apr 2025 – 31 Mar 2026 with `period_display` reading
+FY2025-26. What was wrong was the *display*: the agent was reading the
+canonical string `fy 2025` and printing "FY 2024-2025". The lesson is to check
+which layer actually failed before changing the one that was blamed.
+
+**A test that broke on the calendar.** `test_case_week_forms_round_trip`
+pinned literal dates while calling the real backend, which reads the real
+clock. It passed only during the week it was written. Rewritten to derive its
+expectation from `date.today()`.
+
+---
+
+### 11.2 Agent-layer failures
+
+None of these were normaliser faults. All were fixed in the behavior files, in
+code, or both.
+
+**Period naming from `canonical_text`.** `fy 2025` means the year *beginning*
+April 2025. Displayed as "FY 2024-2025" it is a year out. `period_display`
+already carries the right label. Now §4.3a: name the period from
+`start_date`, `end_date` and `period_display`, never from the canonical text.
+
+**Fiscal quarters numbered as calendar quarters.** A July-to-September window
+was headed "Q3 2026". By Wave's calendar that is Q2, and the heading told every
+reader the figures covered October to December. The rule is now: do not compute
+a quarter number at all — name the window by its months, which is always
+correct and needs no arithmetic.
+
+**Invented numbers in insights.** Three distinct instances:
+
+- *"more than twice the 3,311 unqualified leads recorded in August alone"* —
+  the tool returned exactly one field, `Lead Count 7424`. No August figure was
+  ever fetched. 3,311 appears nowhere.
+- *"Only 2 sales are recorded for LIG, LIG_001_(310) and LIG_P2 combined"* —
+  the three rows immediately above read 1, 8 and 189, totalling 198. The same
+  block claimed "the top three products drive 57% of total sales" and "the
+  overall sales volume is modest at 5,970 units".
+- *"Qualified Leads (7,820) made up roughly 30.80% of Valid Leads"* — a
+  division of one cell by another, when the backend had already supplied the
+  answer in the `VL:SOL` column as 3.25.
+
+A single-value answer is where this fails hardest: one number gives nothing to
+say and the pull towards supplying a second is strong. §5.5 now requires every
+numeral in every bullet to be findable in the table above, and adds the funnel
+case explicitly — the ratio columns *are* the stage-to-stage conversion, so
+quote the ratio rather than dividing two cells.
+
+**A fabricated Total row.** A product breakdown returned forty rows summing to
+exactly 4,678, a `totals` block of 4,678, and a `Total` row inside `data` also
+reading 4,678. The answer displayed **5,970** — not the backend's total, not
+the row sum, not the sum of any subset. Three copies of the right number were
+in the payload and a fourth, invented one was printed.
+
+The previous rule only warned against *summing the rows*, which did not cover a
+figure conjured from nowhere. Rewritten as "THE TOTAL ROW IS COPIED, NOT
+CALCULATED", naming both places the figure lives. The Total is the most
+dangerous cell in any table: it is the one figure a reader quotes without
+checking, and the only one nobody verifies by glancing at the rows.
+
+**Truncated tables.** Breakdowns were being shortened — "and 56 more", "top 10
+shown". The rows silently dropped are exactly the ones a user could not have
+known to ask about. §5.3 now leads with SHOW EVERY ROW and a mechanical check:
+count the rows in the response, count the rows in the table, confirm they
+match. Only a user-requested rank or a plan filter may reduce them. The same
+rule went into both collaborators, because the master cannot detect rows a
+collaborator dropped.
+
+**An invented row label.** Two rows both read `NEW PLOTS` (a real duplicate in
+the source data, 701 and 192). The second was displayed as "NEW PLOTS (2)". No
+such product exists — the label was invented to tidy an inconsistency. Row
+labels now print exactly as returned, including `WAVE FLOOORS` and `SCO.`.
+
+---
+
+### 11.3 The worst failure: a fabricated table for a call never made
+
+A request for product-wise sales across three financial years normalised three
+plans. FY2023-24 executed and returned. FY2024-25 executed and returned.
+**FY2025-26 was normalised and never sent to the collaborator at all.**
+
+The answer displayed all three years. The FY2025-26 table had thirty rows, a
+total of 13,495, and products including `WAVE GALLERIA 2` and `WAVE FLOOR 98`
+that appear in no tool response anywhere in that conversation. Every figure was
+invented. It sat beside two real tables, formatted identically, with nothing to
+distinguish it. The giveaway, visible only on arithmetic, is that 13,495 is not
+even the sum of its own fabricated rows (15,501).
+
+This is worse than any other error available to the system. A wrong total is
+one bad cell; an unexecuted call filled in from imagination is an entire table
+about a year of the business that nobody measured.
+
+Two fixes:
+
+- **Count plans against executions against tables.** Those three numbers must
+  agree before anything is written. It is checklist item one.
+- **One question to the normaliser, not one per period.** The master had split
+  the request into three separate `normalise` calls, leaving three unconnected
+  plans; dropping one left no trace. Asked as a single question, the normaliser
+  returns one plan with `call_count: 3`, which is a built-in checksum. The
+  normaliser already supported this — the master simply was not using it.
+
+The pressure to fabricate is strongest exactly where it struck: the other
+periods succeeded, and the missing one would have left the answer looking
+lopsided. The file now says plainly that symmetry is not worth a fabricated
+year.
+
+---
+
+### 11.4 The funnel two-table saga
+
+This took five rounds and is the clearest illustration of the prose-versus-code
+lesson.
+
+**The requirement.** Every funnel answer shows two tables: Funnel Metrics
+(stage counts and Junk %) and Funnel Conversion Ratios. The ratios table shows
+exactly five stage-to-stage columns — `TL:VL, VL:SOL, SOL:MB, MB:MD, MD:SD`.
+The backends also return `TL:SD, VL:SD, SOL:SD, MB:SD`, which skip stages and
+are never displayed.
+
+**Round 1 — the rule was buried.** §5.6 already required both tables. Moved to
+the top-of-file block, which demonstrably does get followed.
+
+**Round 2 — the tool does not return two tables.** It returns ONE flat record
+with counts and ratios interleaved *alphabetically*, so `MB:MD` sits between
+`Junk Leads` and `Meeting Booked`. There is no ratios section to notice. Worse,
+the separate `totals` block contains the seven counts and no ratios — and the
+agent had been building its column list from `totals`, which has no ratios to
+lose. That also explained a Total row of em dashes under a single row.
+
+**Round 3 — the collaborator was discarding them.** CRM-Funnel's step three
+read *"Take the stage counts from the result, ignoring the ratios and any Total
+row."* It was written to describe the chart payload — counts and ratios cannot
+share an axis — but sat as a plain numbered step with no mention of charts. The
+agent read it as "discard the ratios" and returned counts alone. It flatly
+contradicted Section 6 four screens later, and when two instructions disagree,
+the one inside the numbered procedure wins.
+
+**Round 4 — non-determinism proved prose insufficient.** The same question
+produced both tables at 2:33pm and only the metrics table at 3:14pm, from an
+identical tool response. Nothing had changed. Splitting one record into two
+tables is a judgement made fresh every turn, and it will sometimes go the wrong
+way.
+
+So the split moved into code: `src/funnel_format.py` and `POST /format_funnel`,
+exposed as the `format_funnel_tables` tool. It decides deterministically which
+keys are counts and which are ratios (a colon in the key), the column order,
+the five ratio columns, Indian digit grouping, the Total row copied from
+`totals` rather than summed, and no Total row under a single row. Covered by
+27 tests across all seven funnel services.
+
+**Round 5 — the master was retyping the payload.** With the tool attached to
+the master, it had to hand-copy the seventeen-key response into a tool
+parameter, and it dropped `MD:SD` on the way. The ratios table rendered with
+four columns and nothing said why. **Copying a large JSON object by hand is the
+wrong job to give an LLM.** The tool moved to CRM-Funnel, which is holding the
+response already and passes the object straight through. The formatter also
+now returns `missing_ratio_columns` so a dropped key can never be silent again.
+
+---
+
+### 11.5 Routing: the tool name was being dropped in transit
+
+`show me lead funnel for last year` ran `fetch_funnel_for_lead_user` and
+returned ten rows keyed by `user_name` for a question asking for the overall
+funnel. The master then could not recognise the shape and replied *"I wasn't
+able to retrieve the raw lead-funnel data."*
+
+The normaliser's plan was perfect: `tool: lead_funnel`, correct dates, `ok:
+true`. The master's message to the collaborator was:
+
+```json
+{ "message": "funnel fy 2025" }
+```
+
+A single string. CRM-Funnel's rule is *"Route on the tool field. This is a
+lookup, not a judgement"* — but there was no tool field, so it guessed. The
+master's own instruction said "pass each call through exactly as received,
+including tool", but never said *how*, when the channel is one string.
+
+Every layer behaved reasonably. The tool name was simply lost in transit, and
+nothing downstream could recover it.
+
+The fix is a labelled-line message format, documented identically in all three
+files:
+
+```
+tool: lead_funnel
+question: funnel fy 2025
+start_date: 2025-04-01
+end_date: 2026-03-31
+period_display: FY2025-26
+```
+
+Plus: if the tool line is missing, CRM-Funnel must not guess — a bare "funnel"
+is `lead_funnel`, and a user funnel is *never* the default, being the widest
+breakdown it owns. And the master must recognise a shape mismatch: `lead_funnel`
+returns ONE record, so a list keyed by `user_name` is the wrong funnel, and the
+call is reissued with the tool line rather than abandoned.
+
+---
+
+### 11.6 The graph
+
+**A link nobody generated.** A funnel turn made no chart call at all — the
+collaborator ran the funnel tool and stopped — and the answer still ended with
+a Graph link. Collaborator chart calls do appear in traces, so its absence was
+real. Two failures, one at each end: the collaborator skipped the call, and the
+master covered for it.
+
+Both are now closed. Both collaborators check, before replying, that
+`generate_dashboard` is among the tools they actually called. The master must
+point at the `url` field it is copying from; no field, no link.
+
+**The chart call carrying no rows.** A call went out as label "Funnel
+FY2023-24", question "funnel for EDEN fy 2023", `chart_type` empty — and no
+data. `generate_dashboard` draws what it is sent and has no CRM access; a
+question string fetches nothing. It errored. Every chart call must now carry
+the label and value pairs in `json_data`, and when there is nothing to plot the
+tool is not called at all.
+
+**A raw transport error on screen.** That failure surfaced to the user as an
+SSE error. A missing graph now drops the Graph section silently — no heading,
+no placeholder, no apology, no error text — and the tables and insights go out
+as normal. A missing chart should never cost the user the answer, and a
+transport message means nothing to a business reader.
+
+---
+
+### 11.7 Empty results
+
+`product_funnel` filtered to one product answers in a different shape:
+
+```json
+{"responses": {"funnel for EDEN fy 2021": {"result": {"status": "no_data",
+  "message": "No leads found for 01-04-2021 to 31-03-2022 (product: eden)"}}}}
+```
+
+The formatter accepted any dict-of-dicts as a breakdown, so it rendered a
+one-row table whose Product column held the literal question string — and
+reported `ok: true`. **A wrong table claiming success is worse than an error**,
+because nothing downstream can tell it apart from a real one.
+
+Fixed in code: a row must now prove it holds funnel figures (a count key or a
+ratio), the `responses` wrapper is unwrapped to `result`, and `no_data` returns
+`ok: false` with `empty: true` and the service's own message. The master now
+reports an empty result as a sentence naming scope and period — "no leads were
+recorded for Eden in FY2021-22" — never as a table of zeros, which reads as
+*we measured zero* rather than *there is nothing here*.
+
+---
+
+### 11.8 Clarifications must be selectable
+
+§2.3 previously said only "take the clarification text, say it in your own
+voice, and stop". That left the user composing a reply and guessing which
+rephrasing would be accepted. Every clarification is now one short question
+plus two or three numbered options, so a reply of `1` continues the turn. Bare
+numbers, the option text, close paraphrases and ordinals are all accepted.
+
+---
+
+### 11.9 Architecture changes made during this round
+
+**Three agents, not four.** `crm_other_tools_agent_behavior.md` is retired
+(`RETIRED_` prefix). Query SOP and `websearch:web_search` moved into both
+CRM-Data and CRM-Funnel, so the agent that holds the figures also holds the
+research and the chart builder. Nothing is handed between collaborators.
+
+**Tool attachment, final:**
+
+| agent | tools |
+|---|---|
+| Master | `normalise_crm_query` only |
+| CRM-Data | 6 report tools, `generate_dashboard`, Query SOP, websearch |
+| CRM-Funnel | 7 funnel tools, `generate_dashboard`, **`format_funnel_tables`**, Query SOP, websearch |
+
+The master holds no CRM tool and now builds no funnel table. Its job is
+plan → delegate → print.
+
+**Call counts per collaborator.** CRM-Data is two calls: report tool, then
+chart. CRM-Funnel is three: funnel tool, then `format_funnel_tables`, then
+chart.
+
+**Deployment moved from ngrok to IBM Code Engine.** The `servers.url` in both
+spec files must be set to the Code Engine URL before upload.
+
+---
+
+### 11.10 What the validation suite looks like now
+
+| check | scope |
+|---|---|
+| `pytest tests/` | 97 tests — 66 grammar contract, 31 funnel formatter |
+| `run_stress.py` | 406 phrasing variants, invariant-checked |
+| `run_batch.py` | 1,000 prompts, full round-trip against the real backends |
+| `run_corpus.py` | 374 real UAT prompts |
+
+Every normaliser fix in 12.1 has a named regression test. The funnel formatter
+is parametrised across all seven funnel services.
+
+---
+
+### 11.11 Principles this round added
+
+**Prose is probabilistic; code is not.** The funnel ratios table was required
+by the behavior file for five rounds and still went missing. It stopped going
+missing the day the split moved into `funnel_format.py`. When a rule keeps
+being violated after being made clearer, that is the signal to move it into
+code, not to write it again more forcefully.
+
+**Never make an LLM copy structured data by hand.** The `MD:SD` key was lost
+because the master retyped a seventeen-key object into a tool call. Give the
+call to whichever agent is already holding the object.
+
+**A wrong table that claims success is the worst possible output.** Worse than
+an error, worse than an empty result, worse than a refusal. Everything
+downstream — and the reader — treats it as real. Several fixes in this round
+exist only to convert a confident wrong answer into an honest failure.
+
+**Check which layer actually failed.** "This quarter is wrong" and "last fy is
+wrong" were both reported against the normaliser and both were display bugs in
+the agent. Verify before changing.
+
+**An instruction inside a numbered procedure outranks one in a later section.**
+CRM-Funnel dropped the ratios because step three said to, even though Section 6
+said the opposite. Contradictions are resolved by position, not by intent.
+
+**Say what failed, never how.** Users get "no leads were recorded for Eden in
+FY2021-22" and a missing Graph section. They never get an SSE error, a status
+code or a tool name.
+
+---
+
+## 12. PRINCIPLES WORTH KEEPING
 
 **Measure, do not infer.** Every rule here came from executing code against real
 services and real data. The findings that mattered most — the `is_qoq` crash,
