@@ -225,6 +225,13 @@ class FunnelFormatResponse(BaseModel):
             "from the payload sent here -- meaning the response was trimmed "
             "in transit. Send the tool response through unchanged and retry."),
     )
+    empty: bool = Field(
+        False,
+        description=(
+            "True when the funnel service reported no rows for this scope and "
+            "period. That is a real answer, not a failure: say there were no "
+            "records, and show no table and no graph."),
+    )
     warning: Optional[str] = None
     markdown: str = Field(
         "",

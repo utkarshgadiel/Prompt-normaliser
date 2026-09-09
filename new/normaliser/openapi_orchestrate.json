@@ -359,6 +359,10 @@
           "warning": {
             "type": "string",
             "description": "Present when missing_ratio_columns is non-empty."
+          },
+          "empty": {
+            "type": "boolean",
+            "description": "True when the funnel service reported no rows for this scope and period. A real answer, not a failure: say there were no records, show no table and no graph."
           }
         }
       }

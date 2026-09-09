@@ -165,24 +165,79 @@ def _label_of(rec: dict[str, Any]) -> str:
     return ""
 
 
+# The count keys every funnel record carries at least one of. A dict without
+# any of these, and without a ratio, is not a funnel row whatever else it is.
+_COUNT_KEYS = {k for k, _ in METRIC_COLUMNS}
+
+
+def _is_funnel_record(rec: Any) -> bool:
+    """True only for a dict that actually holds funnel figures.
+
+    Without this the extractor accepted any dict-of-dicts as a breakdown. A
+    product funnel filtered to a product with no leads returns
+    {"responses": {"funnel for EDEN fy 2021": {"result": {"status":
+    "no_data"}}}}, and that was rendered as a one-row table whose Product was
+    the literal question string, reported ok true. A wrong table that claims
+    success is worse than an error, so a row now has to prove it is one.
+    """
+    if not isinstance(rec, dict):
+        return False
+    return any(_is_ratio(k) or k in _COUNT_KEYS for k in rec)
+
+
 def _rows_from(value: Any) -> list[tuple[str, dict]] | None:
     """Rows out of one wrapper value, or None if it holds no funnel rows."""
     if isinstance(value, dict):
-        if any(_is_ratio(k) for k in value):          # a single flat record
+        if _is_funnel_record(value):                   # a single flat record
             return [("", _row_of(value))]
         inner = list(value.values())
-        if inner and all(isinstance(v, dict) for v in inner):
+        if inner and all(_is_funnel_record(v) for v in inner):
             return [(str(k), _row_of(v)) for k, v in value.items()]
         return None
-    if isinstance(value, list) and value and isinstance(value[0], dict):
+    if isinstance(value, list) and value:
         rows = []
         for rec in value:
+            if not _is_funnel_record(rec):
+                continue
             label = _label_of(rec)
             if label.strip().lower() == "total":
                 continue                               # a summary, not a row
             rows.append((label, _row_of(rec)))
         return rows or None
     return None
+
+
+def _unwrap(payload: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
+    """Peel the per-question wrapper product_funnel uses when it is filtered.
+
+    Filtered to one product it answers with
+    {"responses": {"<the question>": {"result": {...}}}} rather than the flat
+    shape, and `result` is where the funnel actually lives -- or where a
+    no_data status says there is none. Returns the payload to read, plus an
+    explanatory message when the service reported no data.
+    """
+    responses = payload.get("responses")
+    if isinstance(responses, dict) and responses:
+        merged: dict[str, Any] = {}
+        messages: list[str] = []
+        for entry in responses.values():
+            if not isinstance(entry, dict):
+                continue
+            result = entry.get("result", entry)
+            if isinstance(result, dict):
+                if str(result.get("status", "")).lower() in ("no_data", "empty"):
+                    messages.append(str(result.get("message") or "No data."))
+                    continue
+                merged.update(result)
+        if merged:
+            return merged, None
+        return payload, (messages[0] if messages
+                         else "The funnel service returned no rows.")
+
+    # A bare no_data / message payload with no funnel block at all.
+    if str(payload.get("status", "")).lower() in ("no_data", "empty"):
+        return payload, str(payload.get("message") or "No data.")
+    return payload, None
 
 
 def extract_rows(payload: dict[str, Any],
@@ -237,9 +292,20 @@ def render(payload: dict[str, Any], heading: str = "",
     `show` is "both" (the default), "metrics" or "ratios", and reflects only
     what the user asked for in words -- never a judgement about the data.
     """
+    payload, no_data = _unwrap(payload)
     rows, scope = extract_rows(payload, tool)
+    if no_data and not rows:
+        # A real, honest empty result. Say so plainly rather than rendering
+        # an empty table, which would read as "we measured zero" instead of
+        # "there is nothing here for this scope and period".
+        return {"ok": False, "error": no_data, "empty": True,
+                "row_count": 0, "scope_column": "",
+                "metrics_table": "", "ratios_table": "", "markdown": ""}
     if not rows:
-        return {"ok": False, "error": "No funnel rows found in the payload.",
+        return {"ok": False,
+                "error": ("No funnel rows found in the payload. Send the "
+                          "funnel tool's response exactly as it came back."),
+                "row_count": 0, "scope_column": "",
                 "metrics_table": "", "ratios_table": "", "markdown": ""}
 
     totals = payload.get("totals") or {}

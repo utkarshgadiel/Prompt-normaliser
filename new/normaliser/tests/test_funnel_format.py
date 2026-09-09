@@ -291,3 +291,71 @@ def test_metadata_blocks_are_never_mistaken_for_rows():
     assert out["ok"] and out["row_count"] == 1
     assert "Digital" in out["metrics_table"]
     assert "date_intent" not in out["markdown"]
+
+
+# --------------------------------------------------------------------------
+# product_funnel filtered to one product answers in a different shape, and
+# when that product has no leads it says so. Both were mishandled on
+# 9 Sep 2026: the question string was rendered as a Product row, ok true.
+# --------------------------------------------------------------------------
+
+NO_DATA = {
+    "count": 1, "header_col": "product_category_c", "status": "success",
+    "responses": {"funnel for EDEN fy 2021": {
+        "parsed": {"period": {"end": "31-03-2022", "start": "01-04-2021"},
+                   "type": "single"},
+        "product_filter_applied": ["eden"],
+        "result": {"message": "No leads found for 01-04-2021 to 31-03-2022 "
+                              "(product: eden)",
+                   "status": "no_data"}}},
+}
+
+
+def test_no_data_is_reported_not_rendered():
+    """An empty funnel must never come back as a table.
+
+    It rendered as a one-row table whose Product column held the literal
+    question string "funnel for EDEN fy 2021", with ok true. A wrong table
+    claiming success is worse than an error, because nothing downstream can
+    tell it apart from a real one.
+    """
+    out = render(NO_DATA, heading="FY2021-22", tool="product_funnel")
+    assert out["ok"] is False
+    assert out.get("empty") is True
+    assert out["markdown"] == "" and out["metrics_table"] == ""
+    assert "No leads found" in out["error"]
+    assert "funnel for EDEN" not in out["markdown"]
+
+
+def test_question_string_is_never_a_scope_label():
+    """A dict of dicts is only a breakdown if the inner dicts hold figures."""
+    out = render(NO_DATA, tool="product_funnel")
+    assert "funnel for EDEN fy 2021" not in str(out.get("metrics_table", ""))
+    assert out["row_count"] == 0
+
+
+def test_filtered_product_funnel_unwraps_responses():
+    """With a product filter the rows sit under responses -> result."""
+    metrics = {"Total Leads": 500, "Valid Leads": 400, "Junk Leads": 100,
+               "Junk %": "20.0%", "SOL Leads (Interested)": 200,
+               "Meeting Booked": 100, "Meeting Done": 50, "Sales Done": 25,
+               "TL:VL": 1.25, "VL:SOL": 2.0, "SOL:MB": 2.0, "MB:MD": 2.0,
+               "MD:SD": 2.0}
+    payload = {"count": 1, "status": "success", "responses": {
+        "funnel for EDEN fy 2025": {
+            "product_filter_applied": ["eden"],
+            "result": {"product_wise_metrics": {"EDEN": metrics},
+                       "totals": {"Total Leads": 500}}}}}
+    out = render(payload, heading="FY2025-26", tool="product_funnel")
+    assert out["ok"] and out["row_count"] == 1
+    assert out["scope_column"] == "Product"
+    assert "EDEN" in out["metrics_table"]
+    assert "funnel for EDEN fy 2025" not in out["metrics_table"]
+    assert "Funnel Conversion Ratios" in out["markdown"]
+
+
+def test_a_dict_of_non_funnel_dicts_is_not_a_breakdown():
+    """metadata-shaped nesting must not become rows."""
+    out = render({"responses": {"q": {"parsed": {"type": "single"}}}},
+                 tool="product_funnel")
+    assert out["ok"] is False
