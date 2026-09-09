@@ -228,16 +228,11 @@ def test_case_range_uses_month_name_form():
     assert got == ("2024-04-01", "2024-06-30")
 
 
-def test_comparison_token_dropped_on_day_form():
-    """yoy/qoq next to an unexpressible window: the window wins, the token is
-    dropped, and a warning says so. With the token the backend would discard
-    the window for its hardcoded floor."""
+def test_unexpressible_comparison_does_not_silently_drop_grouping():
+    """A date-correct total is still wrong when a series was requested."""
     norm = normalise("total leads yoy between 1 April 2026 and 15 June 2026", TODAY)
-    assert norm.ok and len(norm.calls) == 1
-    call = norm.calls[0]
-    assert "yoy" not in call.canonical_text, call.canonical_text
-    assert call.canonical_text.endswith("1 April 2026 to 15 June 2026")
-    assert any("breakdown dropped" in w or "grain" in w for w in norm.warnings)
+    assert not norm.ok and norm.calls == []
+    assert norm.blocked_reason == "backend_period_unavailable"
 
 
 def test_single_period_funnel_always_runs():

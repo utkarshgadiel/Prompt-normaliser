@@ -15,11 +15,11 @@ Invariants:
 import sys, itertools
 from datetime import date
 from pathlib import Path
-sys.path.insert(0, r"d:\CRM\new\normaliser\src")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from normaliser import normalise
 
 TODAY = date(2026, 9, 2)
-fails, total = [], 0
+fails, total, blocked = [], 0, []
 
 def check(prompt, *, grouping=None, filters=(), metrics=None, period=True):
     global total
@@ -28,6 +28,10 @@ def check(prompt, *, grouping=None, filters=(), metrics=None, period=True):
         n = normalise(prompt, TODAY)
     except Exception as e:
         fails.append((prompt, f"RAISED {type(e).__name__}: {e}")); return
+    if not n.ok and "meetings booked" in prompt and n.blocked_reason == "backend_period_unavailable":
+        assert n.calls == []
+        blocked.append(prompt)
+        return
     if not n.ok:
         fails.append((prompt, f"REFUSED: {(n.clarification or '')[:70]}")); return
     if grouping and not any(grouping in c.groupings for c in n.calls):
@@ -114,10 +118,11 @@ for form in ["how many leads do we have for last month",
              "lead count last month"]:
     check(form)
 
-print(f"variants checked: {total}   failures: {len(fails)}")
+print(f"variants checked: {total}   supported: {total - len(blocked) - len(fails)}   known backend limitations: {len(blocked)}   failures: {len(fails)}")
 seen = set()
 for p, why in fails:
     key = why.split()[0]
     seen.add(key)
     print(f"  [{key}] {p}\n        {why}")
 print("\nfailure classes:", sorted(seen) or "none")
+sys.exit(1 if fails else 0)

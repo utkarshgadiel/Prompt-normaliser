@@ -1,0 +1,1001 @@
+num,prompt,category,detail,calls
+1,Show me total sales for this month.,PASS,[opp ok] 'sales done September 2026',1
+2,Show me total sales for last month.,PASS,[opp ok] 'sales done August 2026',1
+3,Show me total sales for this quarter.,PASS,[opp ok] 'sales done 1 July 2026 to 30 September 2026',1
+4,Show me total sales for last quarter.,PASS,[opp ok] 'sales done 1 April 2026 to 30 June 2026',1
+5,Show me total sales for current FY.,PASS,[opp ok] 'sales done fy 2026',1
+6,Show me total sales for last FY.,PASS,[opp ok] 'sales done fy 2025',1
+7,Show me total sales for this year.,PASS,[opp ok] 'sales done fy 2026',1
+8,Show me total sales for last year.,PASS,[opp ok] 'sales done fy 2025',1
+9,Show me total sales for the last 30 days.,PASS,[opp ok] 'sales done 10 August 2026 to 8 September 2026',1
+10,Show me total sales for the last 90 days.,PASS,[opp ok] 'sales done 11 June 2026 to 8 September 2026',1
+11,Show me total sales value for this month.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+12,Show me total sales value for last month.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+13,Show me total sales value for this quarter.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+14,Show me total sales value for last quarter.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+15,Show me total sales value for current FY.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+16,Show me total sales value for last FY.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+17,Show me total sales value for this year.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+18,Show me total sales value for last year.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+19,Show me total sales value for the last 30 days.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+20,Show me total sales value for the last 90 days.,CLARIFY,"'sale value / amount' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- n",
+21,Show me total opportunities for this month.,PASS,[opp ok] 'opportunities September 2026',1
+22,Show me total opportunities for last month.,PASS,[opp ok] 'opportunities August 2026',1
+23,Show me total opportunities for this quarter.,PASS,[opp ok] 'opportunities 1 July 2026 to 30 September 2026',1
+24,Show me total opportunities for last quarter.,PASS,[opp ok] 'opportunities 1 April 2026 to 30 June 2026',1
+25,Show me total opportunities for current FY.,PASS,[opp ok] 'opportunities fy 2026',1
+26,Show me total opportunities for last FY.,PASS,[opp ok] 'opportunities fy 2025',1
+27,Show me total opportunities for this year.,PASS,[opp ok] 'opportunities fy 2026',1
+28,Show me total opportunities for last year.,PASS,[opp ok] 'opportunities fy 2025',1
+29,Show me total opportunities for the last 30 days.,PASS,[opp ok] 'opportunities 10 August 2026 to 8 September 2026',1
+30,Show me total opportunities for the last 90 days.,PASS,[opp ok] 'opportunities 11 June 2026 to 8 September 2026',1
+31,Show me total open opportunities for this month.,PASS,[opp ok] 'opportunities for Open September 2026',1
+32,Show me total open opportunities for last month.,PASS,[opp ok] 'opportunities for Open August 2026',1
+33,Show me total open opportunities for this quarter.,PASS,[opp ok] 'opportunities for Open 1 July 2026 to 30 September 2026',1
+34,Show me total open opportunities for last quarter.,PASS,[opp ok] 'opportunities for Open 1 April 2026 to 30 June 2026',1
+35,Show me total open opportunities for current FY.,PASS,[opp ok] 'opportunities for Open fy 2026',1
+36,Show me total open opportunities for last FY.,PASS,[opp ok] 'opportunities for Open fy 2025',1
+37,Show me total open opportunities for this year.,PASS,[opp ok] 'opportunities for Open fy 2026',1
+38,Show me total open opportunities for last year.,PASS,[opp ok] 'opportunities for Open fy 2025',1
+39,Show me total open opportunities for the last 30 days.,PASS,[opp ok] 'opportunities for Open 10 August 2026 to 8 September 2026',1
+40,Show me total open opportunities for the last 90 days.,PASS,[opp ok] 'opportunities for Open 11 June 2026 to 8 September 2026',1
+41,Show me total sales and total opportunities for this month.,PASS,[opp ok] 'sales done September 2026' | [opp ok] 'opportunities September 2026',2
+42,Show me total sales and total opportunities for last month.,PASS,[opp ok] 'sales done August 2026' | [opp ok] 'opportunities August 2026',2
+43,Show me total sales and total opportunities for this quarter.,PASS,[opp ok] 'sales done 1 July 2026 to 30 September 2026' | [opp ok] 'opportunities 1 July 2026 to 30 September 2026',2
+44,Show me total sales and total opportunities for last quarter.,PASS,[opp ok] 'sales done 1 April 2026 to 30 June 2026' | [opp ok] 'opportunities 1 April 2026 to 30 June 2026',2
+45,Show me total sales and total opportunities for current FY.,PASS,[opp ok] 'sales done fy 2026' | [opp ok] 'opportunities fy 2026',2
+46,Show me total sales and total opportunities for last FY.,PASS,[opp ok] 'sales done fy 2025' | [opp ok] 'opportunities fy 2025',2
+47,Show me total sales and total opportunities for this year.,PASS,[opp ok] 'sales done fy 2026' | [opp ok] 'opportunities fy 2026',2
+48,Show me total sales and total opportunities for last year.,PASS,[opp ok] 'sales done fy 2025' | [opp ok] 'opportunities fy 2025',2
+49,Show me total sales and total opportunities for the last 30 days.,PASS,[opp ok] 'sales done 10 August 2026 to 8 September 2026' | [opp ok] 'opportunities 10 August 2026 to 8 September 2026',2
+50,Show me total sales and total opportunities for the last 90 days.,PASS,[opp ok] 'sales done 11 June 2026 to 8 September 2026' | [opp ok] 'opportunities 11 June 2026 to 8 September 2026',2
+51,Show me project-wise total opportunities for current FY.,PASS,[opp ok] 'opportunities project wise fy 2026',1
+52,Show me project-wise total sales for current FY.,PASS,[opp ok] 'sales done project wise fy 2026',1
+53,Show me project-wise total opportunities for last FY.,PASS,[opp ok] 'opportunities project wise fy 2025',1
+54,Show me project-wise total sales for last FY.,PASS,[opp ok] 'sales done project wise fy 2025',1
+55,Show me project-wise total opportunities for 2024.,PASS,[opp ok] 'opportunities project wise fy 2024',1
+56,Show me project-wise total sales for 2024.,PASS,[opp ok] 'sales done project wise fy 2024',1
+57,Show me project-wise total opportunities for 2025.,PASS,[opp ok] 'opportunities project wise fy 2025',1
+58,Show me project-wise total sales for 2025.,PASS,[opp ok] 'sales done project wise fy 2025',1
+59,Show me project-wise total opportunities for last quarter.,PASS,[opp ok] 'opportunities project wise 1 April 2026 to 30 June 2026',1
+60,Show me project-wise total sales for last quarter.,PASS,[opp ok] 'sales done project wise 1 April 2026 to 30 June 2026',1
+61,Show me product-wise total opportunities for current FY.,PASS,[opp ok] 'opportunities product wise fy 2026',1
+62,Show me product-wise total sales for current FY.,PASS,[opp ok] 'sales done product wise fy 2026',1
+63,Show me product-wise total opportunities for last FY.,PASS,[opp ok] 'opportunities product wise fy 2025',1
+64,Show me product-wise total sales for last FY.,PASS,[opp ok] 'sales done product wise fy 2025',1
+65,Show me product-wise total opportunities for 2024.,PASS,[opp ok] 'opportunities product wise fy 2024',1
+66,Show me product-wise total sales for 2024.,PASS,[opp ok] 'sales done product wise fy 2024',1
+67,Show me product-wise total opportunities for 2025.,PASS,[opp ok] 'opportunities product wise fy 2025',1
+68,Show me product-wise total sales for 2025.,PASS,[opp ok] 'sales done product wise fy 2025',1
+69,Show me product-wise total opportunities for last quarter.,PASS,[opp ok] 'opportunities product wise 1 April 2026 to 30 June 2026',1
+70,Show me product-wise total sales for last quarter.,PASS,[opp ok] 'sales done product wise 1 April 2026 to 30 June 2026',1
+71,Show me lead source-wise total opportunities for current FY.,PASS,[opp ok] 'opportunities source wise fy 2026',1
+72,Show me lead source-wise total sales for current FY.,PASS,[opp ok] 'sales done source wise fy 2026',1
+73,Show me lead source-wise total opportunities for last FY.,PASS,[opp ok] 'opportunities source wise fy 2025',1
+74,Show me lead source-wise total sales for last FY.,PASS,[opp ok] 'sales done source wise fy 2025',1
+75,Show me lead source-wise total opportunities for 2024.,PASS,[opp ok] 'opportunities source wise fy 2024',1
+76,Show me lead source-wise total sales for 2024.,PASS,[opp ok] 'sales done source wise fy 2024',1
+77,Show me lead source-wise total opportunities for 2025.,PASS,[opp ok] 'opportunities source wise fy 2025',1
+78,Show me lead source-wise total sales for 2025.,PASS,[opp ok] 'sales done source wise fy 2025',1
+79,Show me lead source-wise total opportunities for last quarter.,PASS,[opp ok] 'opportunities source wise 1 April 2026 to 30 June 2026',1
+80,Show me lead source-wise total sales for last quarter.,PASS,[opp ok] 'sales done source wise 1 April 2026 to 30 June 2026',1
+81,Show me property type-wise total opportunities for current FY.,PASS,[opp ok] 'opportunities property type wise fy 2026',1
+82,Show me property type-wise total sales for current FY.,PASS,[opp ok] 'sales done property type wise fy 2026',1
+83,Show me property type-wise total opportunities for last FY.,PASS,[opp ok] 'opportunities property type wise fy 2025',1
+84,Show me property type-wise total sales for last FY.,PASS,[opp ok] 'sales done property type wise fy 2025',1
+85,Show me property type-wise total opportunities for 2024.,PASS,[opp ok] 'opportunities property type wise fy 2024',1
+86,Show me property type-wise total sales for 2024.,PASS,[opp ok] 'sales done property type wise fy 2024',1
+87,Show me property type-wise total opportunities for 2025.,PASS,[opp ok] 'opportunities property type wise fy 2025',1
+88,Show me property type-wise total sales for 2025.,PASS,[opp ok] 'sales done property type wise fy 2025',1
+89,Show me property type-wise total opportunities for last quarter.,PASS,[opp ok] 'opportunities property type wise 1 April 2026 to 30 June 2026',1
+90,Show me property type-wise total sales for last quarter.,PASS,[opp ok] 'sales done property type wise 1 April 2026 to 30 June 2026',1
+91,Show me owner-wise total opportunities for current FY.,PASS,[opp ok] 'opportunities owner wise fy 2026',1
+92,Show me owner-wise total sales for current FY.,PASS,[opp ok] 'sales done owner wise fy 2026',1
+93,Show me owner-wise total opportunities for last FY.,PASS,[opp ok] 'opportunities owner wise fy 2025',1
+94,Show me owner-wise total sales for last FY.,PASS,[opp ok] 'sales done owner wise fy 2025',1
+95,Show me owner-wise total opportunities for 2024.,PASS,[opp ok] 'opportunities owner wise fy 2024',1
+96,Show me owner-wise total sales for 2024.,PASS,[opp ok] 'sales done owner wise fy 2024',1
+97,Show me owner-wise total opportunities for 2025.,PASS,[opp ok] 'opportunities owner wise fy 2025',1
+98,Show me owner-wise total sales for 2025.,PASS,[opp ok] 'sales done owner wise fy 2025',1
+99,Show me owner-wise total opportunities for last quarter.,PASS,[opp ok] 'opportunities owner wise 1 April 2026 to 30 June 2026',1
+100,Show me owner-wise total sales for last quarter.,PASS,[opp ok] 'sales done owner wise 1 April 2026 to 30 June 2026',1
+101,Show all opportunities with a budget between 1 crore and 2 crore.,PASS,[opp ok] 'opportunities fy 2026',1
+102,Show all opportunities for Wave City.,PASS,[opp ok] 'opportunities for Wave City fy 2026',1
+103,Show all open opportunities for Wave City month on month.,PASS,[opp ok] 'opportunities for Wave City for Open mom fy 2026',1
+104,Show all opportunities for Residential property type.,PASS,[opp ok] 'opportunities for Residential fy 2026',1
+105,Show all opportunities for Commercial property type.,PASS,[opp ok] 'opportunities for Commercial fy 2026',1
+106,Show opportunity count by budget range.,PASS,[opp ok] 'opportunities fy 2026',1
+107,Show the top 5 products by total sales.,PASS,[opp ok] 'sales done product wise fy 2026',1
+108,Show the top 5 projects by total sales.,PASS,[opp ok] 'sales done project wise fy 2026',1
+109,Show project-wise opportunities grouped by lead source.,PASS,[opp ok] 'opportunities source wise project wise fy 2026',1
+110,Show opportunity count for each owner with disqualification reason.,PASS,[opp ok] 'opportunities owner wise fy 2026',1
+111,Show total opportunities for Eden in Wave City.,PASS,[opp ok] 'opportunities for Wave City for EDEN fy 2026',1
+112,Show total opportunities for New Plots.,PASS,[opp ok] 'opportunities for NEW  PLOTS fy 2026',1
+113,Show total opportunities for 3BHK.,PASS,[opp ok] 'opportunities fy 2026',1
+114,Show total opportunities for Ajay Sejwal.,PASS,[opp ok] 'opportunities for Ajay Sejwal fy 2026',1
+115,Show total opportunities for Wave City with a budget between 1 crore and 2 crore.,PASS,[opp ok] 'opportunities for Wave City fy 2026',1
+116,Show project-category-wise total opportunities for Wave City.,PASS,[opp ok] 'opportunities product wise for Wave City fy 2026',1
+117,Show property-type-wise opportunities in 2024.,PASS,[opp ok] 'opportunities property type wise fy 2024',1
+118,Show lead-source-wise opportunities in 2025.,PASS,[lead ok] 'total leads source wise fy 2025' | [opp ok] 'opportunities source wise fy 2025',2
+119,Show month-on-month total opportunities for last quarter.,PASS,[opp ok] 'opportunities mom April to June 2026',1
+120,Show quarter-on-quarter total opportunities for 2024.,PASS,[opp ok] 'opportunities qoq fy 2024',1
+121,Show month-on-month total sales for Wave City in 2025.,PASS,[opp ok] 'sales done for Wave City mom fy 2025',1
+122,Show quarter-on-quarter total sales for Wave City in 2024.,PASS,[opp ok] 'sales done for Wave City qoq fy 2024',1
+123,Show total opportunities for Wave City in current FY.,PASS,[opp ok] 'opportunities for Wave City fy 2026',1
+124,Show total open opportunities for Wave City in current FY.,PASS,[opp ok] 'opportunities for Wave City for Open fy 2026',1
+125,Show month-on-month total sales for Wave Estate in 2025.,PASS,[opp ok] 'sales done for Wave Estate mom fy 2025',1
+126,Show quarter-on-quarter total sales for Wave Estate in 2024.,PASS,[opp ok] 'sales done for Wave Estate qoq fy 2024',1
+127,Show total opportunities for Wave Estate in current FY.,PASS,[opp ok] 'opportunities for Wave Estate fy 2026',1
+128,Show total open opportunities for Wave Estate in current FY.,PASS,[opp ok] 'opportunities for Wave Estate for Open fy 2026',1
+129,Show month-on-month total sales for WMCC in 2025.,PASS,[opp ok] 'sales done for WMCC Sec 32 mom fy 2025',1
+130,Show quarter-on-quarter total sales for WMCC in 2024.,PASS,[opp ok] 'sales done for WMCC Sec 32 qoq fy 2024',1
+131,Show total opportunities for WMCC in current FY.,PASS,[opp ok] 'opportunities for WMCC Sec 32 fy 2026',1
+132,Show total open opportunities for WMCC in current FY.,PASS,[opp ok] 'opportunities for WMCC Sec 32 for Open fy 2026',1
+133,Show month-on-month total sales for Wave Garden in 2025.,PASS,[opp ok] 'sales done for WAVE GARDEN mom fy 2025',1
+134,Show quarter-on-quarter total sales for Wave Garden in 2024.,PASS,[opp ok] 'sales done for WAVE GARDEN qoq fy 2024',1
+135,Show total opportunities for Wave Garden in current FY.,PASS,[opp ok] 'opportunities for WAVE GARDEN fy 2026',1
+136,Show total open opportunities for Wave Garden in current FY.,PASS,[opp ok] 'opportunities for WAVE GARDEN for Open fy 2026',1
+137,Show month-on-month total sales for Dream Homes in 2025.,PASS,[opp ok] 'sales done for DREAM HOMES mom fy 2025',1
+138,Show quarter-on-quarter total sales for Dream Homes in 2024.,PASS,[opp ok] 'sales done for DREAM HOMES qoq fy 2024',1
+139,Show total opportunities for Dream Homes in current FY.,PASS,[opp ok] 'opportunities for DREAM HOMES fy 2026',1
+140,Show total open opportunities for Dream Homes in current FY.,PASS,[opp ok] 'opportunities for DREAM HOMES for Open fy 2026',1
+141,Show total sales where lead source is Digital in current FY.,PASS,[opp ok] 'sales done for Digital fy 2026',1
+142,Show total opportunities where lead source is Digital in last FY.,PASS,[opp ok] 'opportunities for Digital fy 2025',1
+143,Show total sales where lead source is Facebook in current FY.,PASS,[opp ok] 'sales done for Facebook fy 2026',1
+144,Show total opportunities where lead source is Facebook in last FY.,PASS,[opp ok] 'opportunities for Facebook fy 2025',1
+145,Show total sales where lead source is Google in current FY.,PASS,[opp ok] 'sales done for Google fy 2026',1
+146,Show total opportunities where lead source is Google in last FY.,PASS,[opp ok] 'opportunities for Google fy 2025',1
+147,Show total sales where lead source is Channel Partner in current FY.,PASS,[opp ok] 'sales done for Channel Partner fy 2026',1
+148,Show total opportunities where lead source is Channel Partner in last FY.,PASS,[opp ok] 'opportunities for Channel Partner fy 2025',1
+149,Show total sales where lead source is Referral in current FY.,PASS,[opp ok] 'sales done for Referral fy 2026',1
+150,Show total opportunities where lead source is Referral in last FY.,PASS,[opp ok] 'opportunities for Referral fy 2025',1
+151,Show me total events for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+152,Show me total events for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+153,Show me total events for this quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+154,Show me total events for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+155,Show me total events for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+156,Show me total events for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+157,Show me total events for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+158,Show me total events for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+159,Show me total appointments scheduled for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+160,Show me total appointments scheduled for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+161,Show me total appointments scheduled for this quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+162,Show me total appointments scheduled for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+163,Show me total appointments scheduled for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+164,Show me total appointments scheduled for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+165,Show me total appointments scheduled for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+166,Show me total appointments scheduled for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+167,Show me total appointments completed for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+168,Show me total appointments completed for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+169,Show me total appointments completed for this quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+170,Show me total appointments completed for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+171,Show me total appointments completed for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+172,Show me total appointments completed for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+173,Show me total appointments completed for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+174,Show me total appointments completed for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+175,Show me total appointments cancelled for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+176,Show me total appointments cancelled for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+177,Show me total appointments cancelled for this quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+178,Show me total appointments cancelled for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+179,Show me total appointments cancelled for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+180,Show me total appointments cancelled for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+181,Show me total appointments cancelled for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+182,Show me total appointments cancelled for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+183,Show me total meetings booked for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+184,Show me total meetings booked for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+185,Show me total meetings booked for this quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+186,Show me total meetings booked for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+187,Show me total meetings booked for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+188,Show me total meetings booked for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+189,Show me total meetings booked for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+190,Show me total meetings booked for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+191,Show me total meetings done for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+192,Show me total meetings done for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+193,Show me total meetings done for this quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+194,Show me total meetings done for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+195,Show me total meetings done for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+196,Show me total meetings done for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+197,Show me total meetings done for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+198,Show me total meetings done for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+199,Show total appointments with status Scheduled for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+200,Show total appointments with status Scheduled for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+201,Show total appointments with status Scheduled for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+202,Show total appointments with status Scheduled for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+203,Show total appointments with status Completed for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+204,Show total appointments with status Completed for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+205,Show total appointments with status Completed for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+206,Show total appointments with status Completed for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+207,Show total appointments with status Cancelled for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+208,Show total appointments with status Cancelled for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+209,Show total appointments with status Cancelled for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+210,Show total appointments with status Cancelled for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+211,Show total appointments with status Rescheduled for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+212,Show total appointments with status Rescheduled for last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+213,Show total appointments with status Rescheduled for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+214,Show total appointments with status Rescheduled for 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+215,Show owner-wise total appointments for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+216,Show owner-wise total events for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+217,Show owner-wise total appointments for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+218,Show owner-wise total events for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+219,Show owner-wise total appointments for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+220,Show owner-wise total events for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+221,Show owner-wise total appointments for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+222,Show owner-wise total events for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+223,Show project-wise total appointments for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+224,Show project-wise total events for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+225,Show project-wise total appointments for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+226,Show project-wise total events for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+227,Show project-wise total appointments for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+228,Show project-wise total events for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+229,Show project-wise total appointments for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+230,Show project-wise total events for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+231,Show product-wise total appointments for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+232,Show product-wise total events for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+233,Show product-wise total appointments for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+234,Show product-wise total events for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+235,Show product-wise total appointments for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+236,Show product-wise total events for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+237,Show product-wise total appointments for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+238,Show product-wise total events for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+239,Show appointment status-wise total appointments for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+240,Show appointment status-wise total events for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+241,Show appointment status-wise total appointments for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+242,Show appointment status-wise total events for last FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+243,Show appointment status-wise total appointments for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+244,Show appointment status-wise total events for 2024.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+245,Show appointment status-wise total appointments for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+246,Show appointment status-wise total events for last quarter.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+247,Show events marked as completed last month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+248,Show all scheduled events for this month.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+249,List all appointments in July 2025.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+250,List all appointments month on month for current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+251,Show the count of events grouped by appointment status.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+252,Show the top 3 event owners by total events.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+253,Show all rescheduled appointments in current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+254,Show all revisited events in current FY.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+255,Show owners with fewer than 2 completed appointments.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+256,Show appointment count for each owner where status is Scheduled.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+257,Show all appointments created by Rohit Hansa.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+258,Show total appointments completed for Nupoor Aggarwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+259,Show total rescheduled appointments by Ishan Gaur.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+260,Show total rescheduled appointments by Lovepreet Singh.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+261,Show me total leads for this month.,PASS,[lead ok] 'total leads September 2026',1
+262,Show me total leads for last month.,PASS,[lead ok] 'total leads August 2026',1
+263,Show me total leads for this quarter.,PASS,[lead ok] 'total leads 1 July 2026 to 30 September 2026',1
+264,Show me total leads for last quarter.,PASS,[lead ok] 'total leads 1 April 2026 to 30 June 2026',1
+265,Show me total leads for current FY.,PASS,[lead ok] 'total leads fy 2026',1
+266,Show me total leads for last FY.,PASS,[lead ok] 'total leads fy 2025',1
+267,Show me total leads for 2024.,PASS,[lead ok] 'total leads fy 2024',1
+268,Show me total leads for 2025.,PASS,[lead ok] 'total leads fy 2025',1
+269,Show me total open leads for this month.,PASS,[lead ok] 'open leads for Open September 2026',1
+270,Show me total open leads for last month.,PASS,[lead ok] 'open leads for Open August 2026',1
+271,Show me total open leads for this quarter.,PASS,[lead ok] 'open leads for Open 1 July 2026 to 30 September 2026',1
+272,Show me total open leads for last quarter.,PASS,[lead ok] 'open leads for Open 1 April 2026 to 30 June 2026',1
+273,Show me total open leads for current FY.,PASS,[lead ok] 'open leads for Open fy 2026',1
+274,Show me total open leads for last FY.,PASS,[lead ok] 'open leads for Open fy 2025',1
+275,Show me total open leads for 2024.,PASS,[lead ok] 'open leads for Open fy 2024',1
+276,Show me total open leads for 2025.,PASS,[lead ok] 'open leads for Open fy 2025',1
+277,Show me total qualified leads for this month.,PASS,[lead ok] 'qualified leads (sol) for Qualified September 2026',1
+278,Show me total qualified leads for last month.,PASS,[lead ok] 'qualified leads (sol) for Qualified August 2026',1
+279,Show me total qualified leads for this quarter.,PASS,[lead ok] 'qualified leads (sol) for Qualified 1 July 2026 to 30 September 2026',1
+280,Show me total qualified leads for last quarter.,PASS,[lead ok] 'qualified leads (sol) for Qualified 1 April 2026 to 30 June 2026',1
+281,Show me total qualified leads for current FY.,PASS,[lead ok] 'qualified leads (sol) for Qualified fy 2026',1
+282,Show me total qualified leads for last FY.,PASS,[lead ok] 'qualified leads (sol) for Qualified fy 2025',1
+283,Show me total qualified leads for 2024.,PASS,[lead ok] 'qualified leads (sol) for Qualified fy 2024',1
+284,Show me total qualified leads for 2025.,PASS,[lead ok] 'qualified leads (sol) for Qualified fy 2025',1
+285,Show me total new leads for this month.,PASS,[lead ok] 'new leads September 2026',1
+286,Show me total new leads for last month.,PASS,[lead ok] 'new leads August 2026',1
+287,Show me total new leads for this quarter.,PASS,[lead ok] 'new leads 1 July 2026 to 30 September 2026',1
+288,Show me total new leads for last quarter.,PASS,[lead ok] 'new leads 1 April 2026 to 30 June 2026',1
+289,Show me total new leads for current FY.,PASS,[lead ok] 'new leads fy 2026',1
+290,Show me total new leads for last FY.,PASS,[lead ok] 'new leads fy 2025',1
+291,Show me total new leads for 2024.,PASS,[lead ok] 'new leads fy 2024',1
+292,Show me total new leads for 2025.,PASS,[lead ok] 'new leads fy 2025',1
+293,Show me total nurturing leads for this month.,PASS,[lead ok] 'nurturing leads September 2026',1
+294,Show me total nurturing leads for last month.,PASS,[lead ok] 'nurturing leads August 2026',1
+295,Show me total nurturing leads for this quarter.,PASS,[lead ok] 'nurturing leads 1 July 2026 to 30 September 2026',1
+296,Show me total nurturing leads for last quarter.,PASS,[lead ok] 'nurturing leads 1 April 2026 to 30 June 2026',1
+297,Show me total nurturing leads for current FY.,PASS,[lead ok] 'nurturing leads fy 2026',1
+298,Show me total nurturing leads for last FY.,PASS,[lead ok] 'nurturing leads fy 2025',1
+299,Show me total nurturing leads for 2024.,PASS,[lead ok] 'nurturing leads fy 2024',1
+300,Show me total nurturing leads for 2025.,PASS,[lead ok] 'nurturing leads fy 2025',1
+301,Show me total unqualified leads for this month.,PASS,[lead ok] 'unqualified leads September 2026',1
+302,Show me total unqualified leads for last month.,PASS,[lead ok] 'unqualified leads August 2026',1
+303,Show me total unqualified leads for this quarter.,PASS,[lead ok] 'unqualified leads 1 July 2026 to 30 September 2026',1
+304,Show me total unqualified leads for last quarter.,PASS,[lead ok] 'unqualified leads 1 April 2026 to 30 June 2026',1
+305,Show me total unqualified leads for current FY.,PASS,[lead ok] 'unqualified leads fy 2026',1
+306,Show me total unqualified leads for last FY.,PASS,[lead ok] 'unqualified leads fy 2025',1
+307,Show me total unqualified leads for 2024.,PASS,[lead ok] 'unqualified leads fy 2024',1
+308,Show me total unqualified leads for 2025.,PASS,[lead ok] 'unqualified leads fy 2025',1
+309,Show me total junk leads for this month.,PASS,[lead ok] 'junk leads September 2026',1
+310,Show me total junk leads for last month.,PASS,[lead ok] 'junk leads August 2026',1
+311,Show me total junk leads for this quarter.,PASS,[lead ok] 'junk leads 1 July 2026 to 30 September 2026',1
+312,Show me total junk leads for last quarter.,PASS,[lead ok] 'junk leads 1 April 2026 to 30 June 2026',1
+313,Show me total junk leads for current FY.,PASS,[lead ok] 'junk leads fy 2026',1
+314,Show me total junk leads for last FY.,PASS,[lead ok] 'junk leads fy 2025',1
+315,Show me total junk leads for 2024.,PASS,[lead ok] 'junk leads fy 2024',1
+316,Show me total junk leads for 2025.,PASS,[lead ok] 'junk leads fy 2025',1
+317,Show me total valid leads for this month.,PASS,[lead ok] 'valid leads September 2026',1
+318,Show me total valid leads for last month.,PASS,[lead ok] 'valid leads August 2026',1
+319,Show me total valid leads for this quarter.,PASS,[lead ok] 'valid leads 1 July 2026 to 30 September 2026',1
+320,Show me total valid leads for last quarter.,PASS,[lead ok] 'valid leads 1 April 2026 to 30 June 2026',1
+321,Show me total valid leads for current FY.,PASS,[lead ok] 'valid leads fy 2026',1
+322,Show me total valid leads for last FY.,PASS,[lead ok] 'valid leads fy 2025',1
+323,Show me total valid leads for 2024.,PASS,[lead ok] 'valid leads fy 2024',1
+324,Show me total valid leads for 2025.,PASS,[lead ok] 'valid leads fy 2025',1
+325,Show project-wise total leads for current FY.,PASS,[lead ok] 'total leads project wise fy 2026',1
+326,Show project-wise total leads for last FY.,PASS,[lead ok] 'total leads project wise fy 2025',1
+327,Show project-wise total leads for 2025.,PASS,[lead ok] 'total leads project wise fy 2025',1
+328,Show project-wise total leads for last quarter.,PASS,[lead ok] 'total leads project wise 1 April 2026 to 30 June 2026',1
+329,Show product-wise total leads for current FY.,PASS,[lead ok] 'total leads product wise fy 2026',1
+330,Show product-wise total leads for last FY.,PASS,[lead ok] 'total leads product wise fy 2025',1
+331,Show product-wise total leads for 2025.,PASS,[lead ok] 'total leads product wise fy 2025',1
+332,Show product-wise total leads for last quarter.,PASS,[lead ok] 'total leads product wise 1 April 2026 to 30 June 2026',1
+333,Show source-wise total leads for current FY.,PASS,[lead ok] 'total leads source wise fy 2026',1
+334,Show source-wise total leads for last FY.,PASS,[lead ok] 'total leads source wise fy 2025',1
+335,Show source-wise total leads for 2025.,PASS,[lead ok] 'total leads source wise fy 2025',1
+336,Show source-wise total leads for last quarter.,PASS,[lead ok] 'total leads source wise 1 April 2026 to 30 June 2026',1
+337,Show sub-source-wise total leads for current FY.,PASS,[lead ok] 'total leads subsource wise fy 2026',1
+338,Show sub-source-wise total leads for last FY.,PASS,[lead ok] 'total leads subsource wise fy 2025',1
+339,Show sub-source-wise total leads for 2025.,PASS,[lead ok] 'total leads subsource wise fy 2025',1
+340,Show sub-source-wise total leads for last quarter.,PASS,[lead ok] 'total leads subsource wise 1 April 2026 to 30 June 2026',1
+341,Show status-wise total leads for current FY.,PASS,[lead ok] 'total leads status wise fy 2026',1
+342,Show status-wise total leads for last FY.,PASS,[lead ok] 'total leads status wise fy 2025',1
+343,Show status-wise total leads for 2025.,PASS,[lead ok] 'total leads status wise fy 2025',1
+344,Show status-wise total leads for last quarter.,PASS,[lead ok] 'total leads status wise 1 April 2026 to 30 June 2026',1
+345,Show property type-wise total leads for current FY.,PASS,[lead ok] 'total leads property type wise fy 2026',1
+346,Show property type-wise total leads for last FY.,PASS,[lead ok] 'total leads property type wise fy 2025',1
+347,Show property type-wise total leads for 2025.,PASS,[lead ok] 'total leads property type wise fy 2025',1
+348,Show property type-wise total leads for last quarter.,PASS,[lead ok] 'total leads property type wise 1 April 2026 to 30 June 2026',1
+349,Show city-wise total leads for current FY.,PASS,[lead ok] 'total leads city wise fy 2026',1
+350,Show city-wise total leads for last FY.,PASS,[lead ok] 'total leads city wise fy 2025',1
+351,Show city-wise total leads for 2025.,PASS,[lead ok] 'total leads city wise fy 2025',1
+352,Show city-wise total leads for last quarter.,PASS,[lead ok] 'total leads city wise 1 April 2026 to 30 June 2026',1
+353,Show owner-wise total leads for current FY.,PASS,[lead ok] 'total leads owner wise fy 2026',1
+354,Show owner-wise total leads for last FY.,PASS,[lead ok] 'total leads owner wise fy 2025',1
+355,Show owner-wise total leads for 2025.,PASS,[lead ok] 'total leads owner wise fy 2025',1
+356,Show owner-wise total leads for last quarter.,PASS,[lead ok] 'total leads owner wise 1 April 2026 to 30 June 2026',1
+357,Show open leads created in August 2025.,PASS,[lead ok] 'open leads for Open August 2025',1
+358,Show the number of open leads in each city.,PASS,[lead ok] 'open leads city wise for Open fy 2026',1
+359,Show which source generated the most leads in current FY.,PASS,[lead ok] 'total leads source wise fy 2026',1
+360,Show month-on-month total leads for current FY.,PASS,[lead ok] 'total leads mom fy 2026',1
+361,Show quarter-on-quarter total leads for 2024.,PASS,[lead ok] 'total leads qoq fy 2024',1
+362,Show total leads for the last 40 days.,PASS,[lead ok] 'total leads 31 July 2026 to 8 September 2026',1
+363,Show the distribution of open leads by property type.,PASS,[lead ok] 'open leads property type wise for Open fy 2026',1
+364,Show the trend of open leads month on month.,PASS,[lead ok] 'open leads for Open mom fy 2026',1
+365,Show total leads for Facebook in current FY.,PASS,[lead ok] 'total leads for Facebook fy 2026',1
+366,Show total leads for Digital in current FY.,PASS,[lead ok] 'total leads for Digital fy 2026',1
+367,Show total leads for Wave City product wise.,PASS,[lead ok] 'total leads product wise for Wave City fy 2026',1
+368,Show source-subcategory-wise total leads for Wave City.,PASS,[lead ok] 'total leads subsource wise for Wave City fy 2026',1
+369,Show total new leads in Delhi.,PASS,[lead ok] 'new leads for Delhi fy 2026',1
+370,Show total leads in Delhi for Wave City.,PASS,[lead ok] 'total leads for Wave City for Delhi fy 2026',1
+371,Show total leads for budget range between 1 crore and 2 crore.,CLARIFY,'budget range' is not recognised as a entity in the CRM vocabulary.,
+372,Show total leads by Anubhav Kumar.,PASS,[lead ok] 'total leads for Anubhav Kumar fy 2026',1
+373,Show total Not Interested leads for Wave City quarter on quarter in 2024.,PASS,[lead ok] 'not interested leads for Wave City qoq fy 2024',1
+374,Show month-on-month total qualified leads for Wave City in 2025.,PASS,[lead ok] 'qualified leads (sol) for Wave City for Qualified mom fy 2025',1
+375,Show source-wise total leads for Wave City in current FY.,PASS,[lead ok] 'total leads source wise for Wave City fy 2026',1
+376,Show month-on-month total qualified leads for Wave Estate in 2025.,PASS,[lead ok] 'qualified leads (sol) for Wave Estate for Qualified mom fy 2025',1
+377,Show source-wise total leads for Wave Estate in current FY.,PASS,[lead ok] 'total leads source wise for Wave Estate fy 2026',1
+378,Show month-on-month total qualified leads for WMCC in 2025.,PASS,[lead ok] 'qualified leads (sol) for Qualified for WMCC Sec 32 mom fy 2025',1
+379,Show source-wise total leads for WMCC in current FY.,PASS,[lead ok] 'total leads source wise for WMCC Sec 32 fy 2026',1
+380,Show month-on-month total qualified leads for Wave Garden in 2025.,PASS,[lead ok] 'qualified leads (sol) for WAVE GARDEN for Qualified mom fy 2025',1
+381,Show source-wise total leads for Wave Garden in current FY.,PASS,[lead ok] 'total leads source wise for WAVE GARDEN fy 2026',1
+382,Show me total tasks for this month.,PASS,[task ok] 'tasks September 2026',1
+383,Show me total tasks for last month.,PASS,[task ok] 'tasks August 2026',1
+384,Show me total tasks for this quarter.,PASS,[task ok] 'tasks 1 July 2026 to 30 September 2026',1
+385,Show me total tasks for last quarter.,PASS,[task ok] 'tasks 1 April 2026 to 30 June 2026',1
+386,Show me total tasks for current FY.,PASS,[task ok] 'tasks fy 2026',1
+387,Show me total tasks for last FY.,PASS,[task ok] 'tasks fy 2025',1
+388,Show me total tasks for 2024.,PASS,[task ok] 'tasks fy 2024',1
+389,Show me total tasks for 2025.,PASS,[task ok] 'tasks fy 2025',1
+390,Show me total follow-up tasks for this month.,PASS,[task ok] 'follow up tasks for Follow Up September 2026' | [task ok] 'tasks for Follow Up September 2026',2
+391,Show me total follow-up tasks for last month.,PASS,[task ok] 'follow up tasks for Follow Up August 2026' | [task ok] 'tasks for Follow Up August 2026',2
+392,Show me total follow-up tasks for this quarter.,PASS,[task ok] 'follow up tasks for Follow Up 1 July 2026 to 30 September 2026' | [task ok] 'tasks for Follow Up 1 July 2026 to 30 September 2026',2
+393,Show me total follow-up tasks for last quarter.,PASS,[task ok] 'follow up tasks for Follow Up 1 April 2026 to 30 June 2026' | [task ok] 'tasks for Follow Up 1 April 2026 to 30 June 2026',2
+394,Show me total follow-up tasks for current FY.,PASS,[task ok] 'follow up tasks for Follow Up fy 2026' | [task ok] 'tasks for Follow Up fy 2026',2
+395,Show me total follow-up tasks for last FY.,PASS,[task ok] 'follow up tasks for Follow Up fy 2025' | [task ok] 'tasks for Follow Up fy 2025',2
+396,Show me total follow-up tasks for 2024.,PASS,[task ok] 'follow up tasks for Follow Up fy 2024' | [task ok] 'tasks for Follow Up fy 2024',2
+397,Show me total follow-up tasks for 2025.,PASS,[task ok] 'follow up tasks for Follow Up fy 2025' | [task ok] 'tasks for Follow Up fy 2025',2
+398,Show me total open follow-ups for this month.,PASS,[task ok] 'follow up tasks for Open September 2026',1
+399,Show me total open follow-ups for last month.,PASS,[task ok] 'follow up tasks for Open August 2026',1
+400,Show me total open follow-ups for this quarter.,PASS,[task ok] 'follow up tasks for Open 1 July 2026 to 30 September 2026',1
+401,Show me total open follow-ups for last quarter.,PASS,[task ok] 'follow up tasks for Open 1 April 2026 to 30 June 2026',1
+402,Show me total open follow-ups for current FY.,PASS,[task ok] 'follow up tasks for Open fy 2026',1
+403,Show me total open follow-ups for last FY.,PASS,[task ok] 'follow up tasks for Open fy 2025',1
+404,Show me total open follow-ups for 2024.,PASS,[task ok] 'follow up tasks for Open fy 2024',1
+405,Show me total open follow-ups for 2025.,PASS,[task ok] 'follow up tasks for Open fy 2025',1
+406,Show me total completed tasks for this month.,PASS,[task ok] 'completed tasks September 2026',1
+407,Show me total completed tasks for last month.,PASS,[task ok] 'completed tasks August 2026',1
+408,Show me total completed tasks for this quarter.,PASS,[task ok] 'completed tasks 1 July 2026 to 30 September 2026',1
+409,Show me total completed tasks for last quarter.,PASS,[task ok] 'completed tasks 1 April 2026 to 30 June 2026',1
+410,Show me total completed tasks for current FY.,PASS,[task ok] 'completed tasks fy 2026',1
+411,Show me total completed tasks for last FY.,PASS,[task ok] 'completed tasks fy 2025',1
+412,Show me total completed tasks for 2024.,PASS,[task ok] 'completed tasks fy 2024',1
+413,Show me total completed tasks for 2025.,PASS,[task ok] 'completed tasks fy 2025',1
+414,Show me total cancelled tasks for this month.,PASS,[task ok] 'cancelled tasks for Cancelled September 2026',1
+415,Show me total cancelled tasks for last month.,PASS,[task ok] 'cancelled tasks for Cancelled August 2026',1
+416,Show me total cancelled tasks for this quarter.,PASS,[task ok] 'cancelled tasks for Cancelled 1 July 2026 to 30 September 2026',1
+417,Show me total cancelled tasks for last quarter.,PASS,[task ok] 'cancelled tasks for Cancelled 1 April 2026 to 30 June 2026',1
+418,Show me total cancelled tasks for current FY.,PASS,[task ok] 'cancelled tasks for Cancelled fy 2026',1
+419,Show me total cancelled tasks for last FY.,PASS,[task ok] 'cancelled tasks for Cancelled fy 2025',1
+420,Show me total cancelled tasks for 2024.,PASS,[task ok] 'cancelled tasks for Cancelled fy 2024',1
+421,Show me total cancelled tasks for 2025.,PASS,[task ok] 'cancelled tasks for Cancelled fy 2025',1
+422,Show me total open tasks for this month.,PASS,[task ok] 'open tasks September 2026',1
+423,Show me total open tasks for last month.,PASS,[task ok] 'open tasks August 2026',1
+424,Show me total open tasks for this quarter.,PASS,[task ok] 'open tasks 1 July 2026 to 30 September 2026',1
+425,Show me total open tasks for last quarter.,PASS,[task ok] 'open tasks 1 April 2026 to 30 June 2026',1
+426,Show me total open tasks for current FY.,PASS,[task ok] 'open tasks fy 2026',1
+427,Show me total open tasks for last FY.,PASS,[task ok] 'open tasks fy 2025',1
+428,Show me total open tasks for 2024.,PASS,[task ok] 'open tasks fy 2024',1
+429,Show me total open tasks for 2025.,PASS,[task ok] 'open tasks fy 2025',1
+430,Show owner-wise total tasks for current FY.,PASS,[task ok] 'tasks owner wise fy 2026',1
+431,Show owner-wise total follow-up tasks for current FY.,PASS,[task ok] 'follow up tasks owner wise for Follow Up fy 2026' | [task ok] 'tasks owner wise for Follow Up fy 2026',2
+432,Show owner-wise total tasks for last FY.,PASS,[task ok] 'tasks owner wise fy 2025',1
+433,Show owner-wise total follow-up tasks for last FY.,PASS,[task ok] 'follow up tasks owner wise for Follow Up fy 2025' | [task ok] 'tasks owner wise for Follow Up fy 2025',2
+434,Show owner-wise total tasks for 2025.,PASS,[task ok] 'tasks owner wise fy 2025',1
+435,Show owner-wise total follow-up tasks for 2025.,PASS,[task ok] 'follow up tasks owner wise for Follow Up fy 2025' | [task ok] 'tasks owner wise for Follow Up fy 2025',2
+436,Show owner-wise total tasks for last quarter.,PASS,[task ok] 'tasks owner wise 1 April 2026 to 30 June 2026',1
+437,Show owner-wise total follow-up tasks for last quarter.,PASS,[task ok] 'follow up tasks owner wise for Follow Up 1 April 2026 to 30 June 2026' | [task ok] 'tasks owner wise for Follow Up 1 April 2026 to 30 June 2026',2
+438,Show status-wise total tasks for current FY.,PASS,[task ok] 'tasks status wise fy 2026',1
+439,Show status-wise total follow-up tasks for current FY.,PASS,[task ok] 'follow up tasks status wise for Follow Up fy 2026' | [task ok] 'tasks status wise for Follow Up fy 2026',2
+440,Show status-wise total tasks for last FY.,PASS,[task ok] 'tasks status wise fy 2025',1
+441,Show status-wise total follow-up tasks for last FY.,PASS,[task ok] 'follow up tasks status wise for Follow Up fy 2025' | [task ok] 'tasks status wise for Follow Up fy 2025',2
+442,Show status-wise total tasks for 2025.,PASS,[task ok] 'tasks status wise fy 2025',1
+443,Show status-wise total follow-up tasks for 2025.,PASS,[task ok] 'follow up tasks status wise for Follow Up fy 2025' | [task ok] 'tasks status wise for Follow Up fy 2025',2
+444,Show status-wise total tasks for last quarter.,PASS,[task ok] 'tasks status wise 1 April 2026 to 30 June 2026',1
+445,Show status-wise total follow-up tasks for last quarter.,PASS,[task ok] 'follow up tasks status wise for Follow Up 1 April 2026 to 30 June 2026' | [task ok] 'tasks status wise for Follow Up 1 April 2026 to 30 June 2026',2
+446,Show subject-wise total tasks for current FY.,PASS,[task ok] 'tasks subject wise fy 2026',1
+447,Show subject-wise total follow-up tasks for current FY.,PASS,[task ok] 'follow up tasks subject wise for Follow Up fy 2026' | [task ok] 'tasks subject wise for Follow Up fy 2026',2
+448,Show subject-wise total tasks for last FY.,PASS,[task ok] 'tasks subject wise fy 2025',1
+449,Show subject-wise total follow-up tasks for last FY.,PASS,[task ok] 'follow up tasks subject wise for Follow Up fy 2025' | [task ok] 'tasks subject wise for Follow Up fy 2025',2
+450,Show subject-wise total tasks for 2025.,PASS,[task ok] 'tasks subject wise fy 2025',1
+451,Show subject-wise total follow-up tasks for 2025.,PASS,[task ok] 'follow up tasks subject wise for Follow Up fy 2025' | [task ok] 'tasks subject wise for Follow Up fy 2025',2
+452,Show subject-wise total tasks for last quarter.,PASS,[task ok] 'tasks subject wise 1 April 2026 to 30 June 2026',1
+453,Show subject-wise total follow-up tasks for last quarter.,PASS,[task ok] 'follow up tasks subject wise for Follow Up 1 April 2026 to 30 June 2026' | [task ok] 'tasks subject wise for Follow Up 1 April 2026 to 30 June 2026',2
+454,Show project-wise total tasks for current FY.,PASS,[task ok] 'tasks project wise fy 2026',1
+455,Show project-wise total follow-up tasks for current FY.,PASS,[task ok] 'follow up tasks project wise for Follow Up fy 2026' | [task ok] 'tasks project wise for Follow Up fy 2026',2
+456,Show project-wise total tasks for last FY.,PASS,[task ok] 'tasks project wise fy 2025',1
+457,Show project-wise total follow-up tasks for last FY.,PASS,[task ok] 'follow up tasks project wise for Follow Up fy 2025' | [task ok] 'tasks project wise for Follow Up fy 2025',2
+458,Show project-wise total tasks for 2025.,PASS,[task ok] 'tasks project wise fy 2025',1
+459,Show project-wise total follow-up tasks for 2025.,PASS,[task ok] 'follow up tasks project wise for Follow Up fy 2025' | [task ok] 'tasks project wise for Follow Up fy 2025',2
+460,Show project-wise total tasks for last quarter.,PASS,[task ok] 'tasks project wise 1 April 2026 to 30 June 2026',1
+461,Show project-wise total follow-up tasks for last quarter.,PASS,[task ok] 'follow up tasks project wise for Follow Up 1 April 2026 to 30 June 2026' | [task ok] 'tasks project wise for Follow Up 1 April 2026 to 30 June 2026',2
+462,Show product-wise total tasks for current FY.,PASS,[task ok] 'tasks product wise fy 2026',1
+463,Show product-wise total follow-up tasks for current FY.,PASS,[task ok] 'follow up tasks product wise for Follow Up fy 2026' | [task ok] 'tasks product wise for Follow Up fy 2026',2
+464,Show product-wise total tasks for last FY.,PASS,[task ok] 'tasks product wise fy 2025',1
+465,Show product-wise total follow-up tasks for last FY.,PASS,[task ok] 'follow up tasks product wise for Follow Up fy 2025' | [task ok] 'tasks product wise for Follow Up fy 2025',2
+466,Show product-wise total tasks for 2025.,PASS,[task ok] 'tasks product wise fy 2025',1
+467,Show product-wise total follow-up tasks for 2025.,PASS,[task ok] 'follow up tasks product wise for Follow Up fy 2025' | [task ok] 'tasks product wise for Follow Up fy 2025',2
+468,Show product-wise total tasks for last quarter.,PASS,[task ok] 'tasks product wise 1 April 2026 to 30 June 2026',1
+469,Show product-wise total follow-up tasks for last quarter.,PASS,[task ok] 'follow up tasks product wise for Follow Up 1 April 2026 to 30 June 2026' | [task ok] 'tasks product wise for Follow Up 1 April 2026 to 30 June 2026',2
+470,Show unique user-wise follow-up count.,PASS,[task ok] 'follow up tasks owner wise for Follow Up fy 2026',1
+471,Show the owner with the most sales follow-ups.,PASS,[opp ok] 'sales done fy 2026' | [task ok] 'follow up tasks fy 2026',2
+472,Show owner-wise sales follow-up count.,PASS,[opp ok] 'sales done owner wise for Sales Follow Up fy 2026' | [task ok] 'follow up tasks owner wise for Sales Follow Up fy 2026',2
+473,Show owner-wise tasks created on 2 April.,PASS,[task ok] 'tasks owner wise 2 April 2026 to 2 April 2026',1
+474,Show month-on-month total tasks.,PASS,[task ok] 'tasks mom fy 2026',1
+475,Show quarter-on-quarter total follow-ups.,PASS,[task ok] 'follow up tasks qoq fy 2026',1
+476,Show follow-ups grouped by status.,PASS,[task ok] 'follow up tasks status wise fy 2026',1
+477,Show user-wise follow-ups in the last one month.,PASS,[task ok] 'follow up tasks owner wise August 2026',1
+478,Show total tasks for Aishwarya MK.,PASS,[task ok] 'tasks for Aishwarya MK fy 2026',1
+479,Show total follow-up tasks for Aishwarya MK.,PASS,[task ok] 'follow up tasks for Follow Up fy 2026' | [task ok] 'tasks for Aishwarya MK fy 2026',2
+480,Show month-on-month follow-up tasks for owner Ambuj in 2025.,CLARIFY,"'Ambuj' is not recognised as a owner in the CRM vocabulary. Known values include: Admin, Anubhav Kumar, Prabin Kumar, Digamber Negi.",
+481,Show owner-wise total tasks for yesterday.,PASS,[task ok] 'tasks owner wise 8 September 2026 to 8 September 2026',1
+482,Show follow-up tasks for the last 90 days by status.,PASS,[task ok] 'follow up tasks status wise for Follow Up 11 June 2026 to 8 September 2026' | [task ok] 'tasks status wise for Follow Up 11 June 2026 to 8 September 2026',2
+483,Show me total cases for this month.,PASS,[case ok] 'cases September 2026',1
+484,Show me total cases for last month.,PASS,[case ok] 'cases August 2026',1
+485,Show me total cases for this quarter.,PASS,[case ok] 'cases July to September 2026',1
+486,Show me total cases for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+487,Show me total cases for current FY.,PASS,[case ok] 'cases fy 2026',1
+488,Show me total cases for last FY.,PASS,[case ok] 'cases fy 2025',1
+489,Show me total cases for 2024.,PASS,[case ok] 'cases fy 2024',1
+490,Show me total cases for 2025.,PASS,[case ok] 'cases fy 2025',1
+491,Show me total service requests for this month.,PASS,[case ok] 'cases September 2026',1
+492,Show me total service requests for last month.,PASS,[case ok] 'cases August 2026',1
+493,Show me total service requests for this quarter.,PASS,[case ok] 'cases July to September 2026',1
+494,Show me total service requests for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+495,Show me total service requests for current FY.,PASS,[case ok] 'cases fy 2026',1
+496,Show me total service requests for last FY.,PASS,[case ok] 'cases fy 2025',1
+497,Show me total service requests for 2024.,PASS,[case ok] 'cases fy 2024',1
+498,Show me total service requests for 2025.,PASS,[case ok] 'cases fy 2025',1
+499,Show me total satisfied cases for this month.,PASS,[case ok] 'satisfied cases September 2026',1
+500,Show me total satisfied cases for last month.,PASS,[case ok] 'satisfied cases August 2026',1
+501,Show me total satisfied cases for this quarter.,PASS,[case ok] 'satisfied cases July to September 2026',1
+502,Show me total satisfied cases for last quarter.,PASS,[case ok] 'satisfied cases April to June 2026',1
+503,Show me total satisfied cases for current FY.,PASS,[case ok] 'satisfied cases fy 2026',1
+504,Show me total satisfied cases for last FY.,PASS,[case ok] 'satisfied cases fy 2025',1
+505,Show me total satisfied cases for 2024.,PASS,[case ok] 'satisfied cases fy 2024',1
+506,Show me total satisfied cases for 2025.,PASS,[case ok] 'satisfied cases fy 2025',1
+507,Show me total complaint cases for this month.,PASS,[case ok] 'complaint cases September 2026',1
+508,Show me total complaint cases for last month.,PASS,[case ok] 'complaint cases August 2026',1
+509,Show me total complaint cases for this quarter.,PASS,[case ok] 'complaint cases July to September 2026',1
+510,Show me total complaint cases for last quarter.,PASS,[case ok] 'complaint cases April to June 2026',1
+511,Show me total complaint cases for current FY.,PASS,[case ok] 'complaint cases fy 2026',1
+512,Show me total complaint cases for last FY.,PASS,[case ok] 'complaint cases fy 2025',1
+513,Show me total complaint cases for 2024.,PASS,[case ok] 'complaint cases fy 2024',1
+514,Show me total complaint cases for 2025.,PASS,[case ok] 'complaint cases fy 2025',1
+515,Show me total resolved service requests for this month.,PASS,[case ok] 'cases September 2026',1
+516,Show me total resolved service requests for last month.,PASS,[case ok] 'cases August 2026',1
+517,Show me total resolved service requests for this quarter.,PASS,[case ok] 'cases July to September 2026',1
+518,Show me total resolved service requests for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+519,Show me total resolved service requests for current FY.,PASS,[case ok] 'cases fy 2026',1
+520,Show me total resolved service requests for last FY.,PASS,[case ok] 'cases fy 2025',1
+521,Show me total resolved service requests for 2024.,PASS,[case ok] 'cases fy 2024',1
+522,Show me total resolved service requests for 2025.,PASS,[case ok] 'cases fy 2025',1
+523,Show project-wise total cases for current FY.,PASS,[case ok] 'cases project wise fy 2026',1
+524,Show project-wise total service requests for current FY.,PASS,[case ok] 'cases project wise fy 2026',1
+525,Show project-wise total cases for last FY.,PASS,[case ok] 'cases project wise fy 2025',1
+526,Show project-wise total service requests for last FY.,PASS,[case ok] 'cases project wise fy 2025',1
+527,Show project-wise total cases for 2025.,PASS,[case ok] 'cases project wise fy 2025',1
+528,Show project-wise total service requests for 2025.,PASS,[case ok] 'cases project wise fy 2025',1
+529,Show project-wise total cases for last quarter.,PASS,[case ok] 'cases project wise April to June 2026',1
+530,Show project-wise total service requests for last quarter.,PASS,[case ok] 'cases project wise April to June 2026',1
+531,Show product-wise total cases for current FY.,PASS,[case ok] 'cases product wise fy 2026',1
+532,Show product-wise total service requests for current FY.,PASS,[case ok] 'cases product wise fy 2026',1
+533,Show product-wise total cases for last FY.,PASS,[case ok] 'cases product wise fy 2025',1
+534,Show product-wise total service requests for last FY.,PASS,[case ok] 'cases product wise fy 2025',1
+535,Show product-wise total cases for 2025.,PASS,[case ok] 'cases product wise fy 2025',1
+536,Show product-wise total service requests for 2025.,PASS,[case ok] 'cases product wise fy 2025',1
+537,Show product-wise total cases for last quarter.,PASS,[case ok] 'cases product wise April to June 2026',1
+538,Show product-wise total service requests for last quarter.,PASS,[case ok] 'cases product wise April to June 2026',1
+539,Show request type-wise total cases for current FY.,PASS,[case ok] 'cases fy 2026',1
+540,Show request type-wise total service requests for current FY.,PASS,[case ok] 'cases fy 2026',1
+541,Show request type-wise total cases for last FY.,PASS,[case ok] 'cases fy 2025',1
+542,Show request type-wise total service requests for last FY.,PASS,[case ok] 'cases fy 2025',1
+543,Show request type-wise total cases for 2025.,PASS,[case ok] 'cases fy 2025',1
+544,Show request type-wise total service requests for 2025.,PASS,[case ok] 'cases fy 2025',1
+545,Show request type-wise total cases for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+546,Show request type-wise total service requests for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+547,Show service subcategory-wise total cases for current FY.,PASS,[case ok] 'cases service subcategory wise fy 2026',1
+548,Show service subcategory-wise total service requests for current FY.,PASS,[case ok] 'cases service subcategory wise fy 2026',1
+549,Show service subcategory-wise total cases for last FY.,PASS,[case ok] 'cases service subcategory wise fy 2025',1
+550,Show service subcategory-wise total service requests for last FY.,PASS,[case ok] 'cases service subcategory wise fy 2025',1
+551,Show service subcategory-wise total cases for 2025.,PASS,[case ok] 'cases service subcategory wise fy 2025',1
+552,Show service subcategory-wise total service requests for 2025.,PASS,[case ok] 'cases service subcategory wise fy 2025',1
+553,Show service subcategory-wise total cases for last quarter.,PASS,[case ok] 'cases service subcategory wise April to June 2026',1
+554,Show service subcategory-wise total service requests for last quarter.,PASS,[case ok] 'cases service subcategory wise April to June 2026',1
+555,Show action taken-wise total cases for current FY.,PASS,[case ok] 'cases fy 2026',1
+556,Show action taken-wise total service requests for current FY.,PASS,[case ok] 'cases fy 2026',1
+557,Show action taken-wise total cases for last FY.,PASS,[case ok] 'cases fy 2025',1
+558,Show action taken-wise total service requests for last FY.,PASS,[case ok] 'cases fy 2025',1
+559,Show action taken-wise total cases for 2025.,PASS,[case ok] 'cases fy 2025',1
+560,Show action taken-wise total service requests for 2025.,PASS,[case ok] 'cases fy 2025',1
+561,Show action taken-wise total cases for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+562,Show action taken-wise total service requests for last quarter.,PASS,[case ok] 'cases April to June 2026',1
+563,Show owner-wise total cases for current FY.,PASS,[case ok] 'cases owner wise fy 2026',1
+564,Show owner-wise total service requests for current FY.,PASS,[case ok] 'cases owner wise fy 2026',1
+565,Show owner-wise total cases for last FY.,PASS,[case ok] 'cases owner wise fy 2025',1
+566,Show owner-wise total service requests for last FY.,PASS,[case ok] 'cases owner wise fy 2025',1
+567,Show owner-wise total cases for 2025.,PASS,[case ok] 'cases owner wise fy 2025',1
+568,Show owner-wise total service requests for 2025.,PASS,[case ok] 'cases owner wise fy 2025',1
+569,Show owner-wise total cases for last quarter.,PASS,[case ok] 'cases owner wise April to June 2026',1
+570,Show owner-wise total service requests for last quarter.,PASS,[case ok] 'cases owner wise April to June 2026',1
+571,Show total cases for Eden.,PASS,[case ok] 'cases for EDEN fy 2026',1
+572,Show total cases for Veridia.,PASS,[case ok] 'cases for Veridia fy 2026',1
+573,Show total cases for Wave City.,PASS,[case ok] 'cases for Wave City fy 2026',1
+574,Show total cases for Eden in Wave City.,PASS,[case ok] 'cases for Wave City for EDEN fy 2026',1
+575,Show total satisfied cases for Wave City.,PASS,[case ok] 'satisfied cases for Wave City fy 2026',1
+576,Show total cases for Refund Reload subcategory.,CLARIFY,'Refund Reload subcategory' is not recognised as a entity in the CRM vocabulary.,
+577,Show total service requests raised per month.,PASS,[case ok] 'cases mom fy 2026',1
+578,Show total cases by action taken.,PASS,[case ok] 'cases action taken wise fy 2026',1
+579,Show total cases till 15 September.,PASS,[case ok] 'cases 15 September 2026 to 15 September 2026',1
+580,Show cases raised in the last 50 days.,BACKEND_UNAVAILABLE,"The report cannot reliably preserve both this date window and breakdown. Choose a supported whole month, quarter or financial year; the requested period has not",
+581,Show total cases for Cheena Sharma from April 2025 till date.,PASS,[case ok] 'cases for Cheena Sharma from April 2025 till date',1
+582,Show total cases for Prerna Sharma from April 2025 till date.,PASS,[case ok] 'cases for Prerna Sharma from April 2025 till date',1
+583,Show me source-wise lead funnel for this month.,FUNNEL_OK,[source_funnel ok] 'funnel source wise September 2026',1
+584,Show me source-wise lead funnel for last month.,FUNNEL_OK,[source_funnel ok] 'funnel source wise August 2026',1
+585,Show me source-wise lead funnel for this quarter.,FUNNEL_OK,[source_funnel ok] 'funnel source wise q2 fy 2026',1
+586,Show me source-wise lead funnel for last quarter.,FUNNEL_OK,[source_funnel ok] 'funnel source wise q1 fy 2026',1
+587,Show me source-wise lead funnel for current FY.,FUNNEL_OK,[source_funnel ok] 'funnel source wise fy 2026',1
+588,Show me source-wise lead funnel for last FY.,FUNNEL_OK,[source_funnel ok] 'funnel source wise fy 2025',1
+589,Show me source-wise lead funnel for 2024.,FUNNEL_OK,[source_funnel ok] 'funnel source wise fy 2024',1
+590,Show me source-wise lead funnel for 2025.,FUNNEL_OK,[source_funnel ok] 'funnel source wise fy 2025',1
+591,Show me sub-source-wise lead funnel for this month.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise September 2026',1
+592,Show me sub-source-wise lead funnel for last month.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise August 2026',1
+593,Show me sub-source-wise lead funnel for this quarter.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise q2 fy 2026',1
+594,Show me sub-source-wise lead funnel for last quarter.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise q1 fy 2026',1
+595,Show me sub-source-wise lead funnel for current FY.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise fy 2026',1
+596,Show me sub-source-wise lead funnel for last FY.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise fy 2025',1
+597,Show me sub-source-wise lead funnel for 2024.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise fy 2024',1
+598,Show me sub-source-wise lead funnel for 2025.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise fy 2025',1
+599,Show me project-wise lead funnel for this month.,FUNNEL_OK,[project_funnel ok] 'funnel project wise September 2026',1
+600,Show me project-wise lead funnel for last month.,FUNNEL_OK,[project_funnel ok] 'funnel project wise August 2026',1
+601,Show me project-wise lead funnel for this quarter.,FUNNEL_OK,[project_funnel ok] 'funnel project wise q2 fy 2026',1
+602,Show me project-wise lead funnel for last quarter.,FUNNEL_OK,[project_funnel ok] 'funnel project wise q1 fy 2026',1
+603,Show me project-wise lead funnel for current FY.,FUNNEL_OK,[project_funnel ok] 'funnel project wise fy 2026',1
+604,Show me project-wise lead funnel for last FY.,FUNNEL_OK,[project_funnel ok] 'funnel project wise fy 2025',1
+605,Show me project-wise lead funnel for 2024.,FUNNEL_OK,[project_funnel ok] 'funnel project wise fy 2024',1
+606,Show me project-wise lead funnel for 2025.,FUNNEL_OK,[project_funnel ok] 'funnel project wise fy 2025',1
+607,Show me product-wise lead funnel for this month.,FUNNEL_OK,[product_funnel ok] 'funnel product wise September 2026',1
+608,Show me product-wise lead funnel for last month.,FUNNEL_OK,[product_funnel ok] 'funnel product wise August 2026',1
+609,Show me product-wise lead funnel for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel product wise q2 2026',1
+610,Show me product-wise lead funnel for last quarter.,FUNNEL_OK,[product_funnel ok] 'funnel product wise q1 2026',1
+611,Show me product-wise lead funnel for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel product wise fy 2026',1
+612,Show me product-wise lead funnel for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel product wise fy 2025',1
+613,Show me product-wise lead funnel for 2024.,FUNNEL_OK,[product_funnel ok] 'funnel product wise fy 2024',1
+614,Show me product-wise lead funnel for 2025.,FUNNEL_OK,[product_funnel ok] 'funnel product wise fy 2025',1
+615,Show me lead user-wise lead funnel for this month.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise September 2026',1
+616,Show me lead user-wise lead funnel for last month.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise August 2026',1
+617,Show me lead user-wise lead funnel for this quarter.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise q2 fy 2026',1
+618,Show me lead user-wise lead funnel for last quarter.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise q1 fy 2026',1
+619,Show me lead user-wise lead funnel for current FY.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise fy 2026',1
+620,Show me lead user-wise lead funnel for last FY.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise fy 2025',1
+621,Show me lead user-wise lead funnel for 2024.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise fy 2024',1
+622,Show me lead user-wise lead funnel for 2025.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise fy 2025',1
+623,Show me sales user-wise lead funnel for this month.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise September 2026',1
+624,Show me sales user-wise lead funnel for last month.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise August 2026',1
+625,Show me sales user-wise lead funnel for this quarter.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise q2 fy 2026',1
+626,Show me sales user-wise lead funnel for last quarter.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise q1 fy 2026',1
+627,Show me sales user-wise lead funnel for current FY.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise fy 2026',1
+628,Show me sales user-wise lead funnel for last FY.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise fy 2025',1
+629,Show me sales user-wise lead funnel for 2024.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise fy 2024',1
+630,Show me sales user-wise lead funnel for 2025.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise fy 2025',1
+631,Show me the lead funnel for Wave City for this month.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City September 2026',1
+632,Show me the lead funnel for Wave City for last month.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City August 2026',1
+633,Show me the lead funnel for Wave City for this quarter.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City q2 fy 2026',1
+634,Show me the lead funnel for Wave City for current FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City fy 2026',1
+635,Show me the lead funnel for Wave City for last FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City fy 2025',1
+636,Show me the lead funnel for Wave Estate for this month.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate September 2026',1
+637,Show me the lead funnel for Wave Estate for last month.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate August 2026',1
+638,Show me the lead funnel for Wave Estate for this quarter.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate q2 fy 2026',1
+639,Show me the lead funnel for Wave Estate for current FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate fy 2026',1
+640,Show me the lead funnel for Wave Estate for last FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate fy 2025',1
+641,Show me the lead funnel for WMCC for this month.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 September 2026',1
+642,Show me the lead funnel for WMCC for last month.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 August 2026',1
+643,Show me the lead funnel for WMCC for this quarter.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 q2 fy 2026',1
+644,Show me the lead funnel for WMCC for current FY.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 fy 2026',1
+645,Show me the lead funnel for WMCC for last FY.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 fy 2025',1
+646,Show me the lead funnel for Wave Garden for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GARDEN September 2026',1
+647,Show me the lead funnel for Wave Garden for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GARDEN August 2026',1
+648,Show me the lead funnel for Wave Garden for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GARDEN q2 2026',1
+649,Show me the lead funnel for Wave Garden for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GARDEN fy 2026',1
+650,Show me the lead funnel for Wave Garden for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GARDEN fy 2025',1
+651,Show me the lead funnel for Dream Homes for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for DREAM HOMES September 2026',1
+652,Show me the lead funnel for Dream Homes for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for DREAM HOMES August 2026',1
+653,Show me the lead funnel for Dream Homes for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for DREAM HOMES q2 2026',1
+654,Show me the lead funnel for Dream Homes for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for DREAM HOMES fy 2026',1
+655,Show me the lead funnel for Dream Homes for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for DREAM HOMES fy 2025',1
+656,Show me the lead funnel for Wave Galleria for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GALLERIA September 2026',1
+657,Show me the lead funnel for Wave Galleria for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GALLERIA August 2026',1
+658,Show me the lead funnel for Wave Galleria for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GALLERIA q2 2026',1
+659,Show me the lead funnel for Wave Galleria for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GALLERIA fy 2026',1
+660,Show me the lead funnel for Wave Galleria for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GALLERIA fy 2025',1
+661,Show me the lead funnel for Eden for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN September 2026',1
+662,Show me the lead funnel for Eden for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN August 2026',1
+663,Show me the lead funnel for Eden for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN q2 2026',1
+664,Show me the lead funnel for Eden for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN fy 2026',1
+665,Show me the lead funnel for Eden for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN fy 2025',1
+666,Show me the lead funnel for Veridia for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia September 2026',1
+667,Show me the lead funnel for Veridia for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia August 2026',1
+668,Show me the lead funnel for Veridia for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia q2 2026',1
+669,Show me the lead funnel for Veridia for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2026',1
+670,Show me the lead funnel for Veridia for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2025',1
+671,Show me the lead funnel for Amore for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE September 2026',1
+672,Show me the lead funnel for Amore for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE August 2026',1
+673,Show me the lead funnel for Amore for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE q2 2026',1
+674,Show me the lead funnel for Amore for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE fy 2026',1
+675,Show me the lead funnel for Amore for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE fy 2025',1
+676,Show me the lead funnel for New Plots for this month.,FUNNEL_OK,[product_funnel ok] 'funnel for NEW  PLOTS September 2026',1
+677,Show me the lead funnel for New Plots for last month.,FUNNEL_OK,[product_funnel ok] 'funnel for NEW  PLOTS August 2026',1
+678,Show me the lead funnel for New Plots for this quarter.,FUNNEL_OK,[product_funnel ok] 'funnel for NEW  PLOTS q2 2026',1
+679,Show me the lead funnel for New Plots for current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for NEW  PLOTS fy 2026',1
+680,Show me the lead funnel for New Plots for last FY.,FUNNEL_OK,[product_funnel ok] 'funnel for NEW  PLOTS fy 2025',1
+681,Show me the lead funnel for Penthouse for this month.,CLARIFY,'Penthouse' is not recognised as a entity in the CRM vocabulary.,
+682,Show me the lead funnel for Penthouse for last month.,CLARIFY,'Penthouse' is not recognised as a entity in the CRM vocabulary.,
+683,Show me the lead funnel for Penthouse for this quarter.,CLARIFY,'Penthouse' is not recognised as a entity in the CRM vocabulary.,
+684,Show me the lead funnel for Penthouse for current FY.,CLARIFY,'Penthouse' is not recognised as a entity in the CRM vocabulary.,
+685,Show me the lead funnel for Penthouse for last FY.,CLARIFY,'Penthouse' is not recognised as a entity in the CRM vocabulary.,
+686,Show me the lead funnel for Skyvillas for this month.,CLARIFY,'Skyvillas' is not recognised as a entity in the CRM vocabulary.,
+687,Show me the lead funnel for Skyvillas for last month.,CLARIFY,'Skyvillas' is not recognised as a entity in the CRM vocabulary.,
+688,Show me the lead funnel for Skyvillas for this quarter.,CLARIFY,'Skyvillas' is not recognised as a entity in the CRM vocabulary.,
+689,Show me the lead funnel for Skyvillas for current FY.,CLARIFY,'Skyvillas' is not recognised as a entity in the CRM vocabulary.,
+690,Show me the lead funnel for Skyvillas for last FY.,CLARIFY,'Skyvillas' is not recognised as a entity in the CRM vocabulary.,
+691,Show month-on-month lead funnel for Wave City in current FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City mom fy 2026',1
+692,Show quarter-on-quarter lead funnel for Wave City in 2025.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City qoq fy 2025',1
+693,Show year-on-year lead funnel for Wave City.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City fy 2020' | [project_funnel ok] 'funnel for Wave City fy 2021' | [project_funnel ok] 'funnel for Wave City fy 2022' | [project_funnel ok] 'funnel for Wave City fy 2023' | [project_funnel ok] 'funnel for Wave City fy 2024' | [project_funnel ok] 'funnel for Wave City fy 2025' | [project_funnel ok] 'funnel for Wave City fy 2026',7
+694,Show month-on-month lead funnel for Wave Estate in current FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate mom fy 2026',1
+695,Show quarter-on-quarter lead funnel for Wave Estate in 2025.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate qoq fy 2025',1
+696,Show year-on-year lead funnel for Wave Estate.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate fy 2020' | [project_funnel ok] 'funnel for Wave Estate fy 2021' | [project_funnel ok] 'funnel for Wave Estate fy 2022' | [project_funnel ok] 'funnel for Wave Estate fy 2023' | [project_funnel ok] 'funnel for Wave Estate fy 2024' | [project_funnel ok] 'funnel for Wave Estate fy 2025' | [project_funnel ok] 'funnel for Wave Estate fy 2026',7
+697,Show month-on-month lead funnel for WMCC in current FY.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 mom fy 2026',1
+698,Show quarter-on-quarter lead funnel for WMCC in 2025.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 qoq fy 2025',1
+699,Show year-on-year lead funnel for WMCC.,FUNNEL_OK,[project_funnel ok] 'funnel for WMCC Sec 32 fy 2020' | [project_funnel ok] 'funnel for WMCC Sec 32 fy 2021' | [project_funnel ok] 'funnel for WMCC Sec 32 fy 2022' | [project_funnel ok] 'funnel for WMCC Sec 32 fy 2023' | [project_funnel ok] 'funnel for WMCC Sec 32 fy 2024' | [project_funnel ok] 'funnel for WMCC Sec 32 fy 2025' | [project_funnel ok] 'funnel for WMCC Sec 32 fy 2026',7
+700,Show month-on-month lead funnel for Eden in current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN April 2026' | [product_funnel ok] 'funnel for EDEN May 2026' | [product_funnel ok] 'funnel for EDEN June 2026' | [product_funnel ok] 'funnel for EDEN July 2026' | [product_funnel ok] 'funnel for EDEN August 2026' | [product_funnel ok] 'funnel for EDEN September 2026' | [product_funnel ok] 'funnel for EDEN October 2026' | [product_funnel ok] 'funnel for EDEN Nov,12
+701,Show quarter-on-quarter lead funnel for Eden in 2025.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN q1 2025' | [product_funnel ok] 'funnel for EDEN q2 2025' | [product_funnel ok] 'funnel for EDEN q3 2025' | [product_funnel ok] 'funnel for EDEN q4 2025',4
+702,Show year-on-year lead funnel for Eden.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN fy 2020' | [product_funnel ok] 'funnel for EDEN fy 2021' | [product_funnel ok] 'funnel for EDEN fy 2022' | [product_funnel ok] 'funnel for EDEN fy 2023' | [product_funnel ok] 'funnel for EDEN fy 2024' | [product_funnel ok] 'funnel for EDEN fy 2025' | [product_funnel ok] 'funnel for EDEN fy 2026',7
+703,Show month-on-month lead funnel for Veridia in current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia April 2026' | [product_funnel ok] 'funnel for Veridia May 2026' | [product_funnel ok] 'funnel for Veridia June 2026' | [product_funnel ok] 'funnel for Veridia July 2026' | [product_funnel ok] 'funnel for Veridia August 2026' | [product_funnel ok] 'funnel for Veridia September 2026' | [product_funnel ok] 'funnel for Veridia October 2026' | [product_funnel ok],12
+704,Show quarter-on-quarter lead funnel for Veridia in 2025.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia q1 2025' | [product_funnel ok] 'funnel for Veridia q2 2025' | [product_funnel ok] 'funnel for Veridia q3 2025' | [product_funnel ok] 'funnel for Veridia q4 2025',4
+705,Show year-on-year lead funnel for Veridia.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2020' | [product_funnel ok] 'funnel for Veridia fy 2021' | [product_funnel ok] 'funnel for Veridia fy 2022' | [product_funnel ok] 'funnel for Veridia fy 2023' | [product_funnel ok] 'funnel for Veridia fy 2024' | [product_funnel ok] 'funnel for Veridia fy 2025' | [product_funnel ok] 'funnel for Veridia fy 2026',7
+706,Show month-on-month lead funnel for Amore in current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE April 2026' | [product_funnel ok] 'funnel for AMORE May 2026' | [product_funnel ok] 'funnel for AMORE June 2026' | [product_funnel ok] 'funnel for AMORE July 2026' | [product_funnel ok] 'funnel for AMORE August 2026' | [product_funnel ok] 'funnel for AMORE September 2026' | [product_funnel ok] 'funnel for AMORE October 2026' | [product_funnel ok] 'funnel for A,12
+707,Show quarter-on-quarter lead funnel for Amore in 2025.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE q1 2025' | [product_funnel ok] 'funnel for AMORE q2 2025' | [product_funnel ok] 'funnel for AMORE q3 2025' | [product_funnel ok] 'funnel for AMORE q4 2025',4
+708,Show year-on-year lead funnel for Amore.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE fy 2020' | [product_funnel ok] 'funnel for AMORE fy 2021' | [product_funnel ok] 'funnel for AMORE fy 2022' | [product_funnel ok] 'funnel for AMORE fy 2023' | [product_funnel ok] 'funnel for AMORE fy 2024' | [product_funnel ok] 'funnel for AMORE fy 2025' | [product_funnel ok] 'funnel for AMORE fy 2026',7
+709,Show lead funnel for source Digital in current FY.,FUNNEL_OK,[source_funnel ok] 'funnel for Digital fy 2026',1
+710,Show month-on-month lead funnel for source Digital in 2025.,FUNNEL_OK,[source_funnel ok] 'funnel for Digital mom fy 2025',1
+711,Show lead funnel for source Facebook in current FY.,FUNNEL_OK,[subsource_funnel ok] 'funnel for Facebook fy 2026',1
+712,Show month-on-month lead funnel for source Facebook in 2025.,FUNNEL_OK,[subsource_funnel ok] 'funnel for Facebook mom fy 2025',1
+713,Show lead funnel for source Google in current FY.,FUNNEL_OK,[subsource_funnel ok] 'funnel for Google fy 2026',1
+714,Show month-on-month lead funnel for source Google in 2025.,FUNNEL_OK,[subsource_funnel ok] 'funnel for Google mom fy 2025',1
+715,Show lead funnel for source Channel Partner in current FY.,FUNNEL_OK,[source_funnel ok] 'funnel for Channel Partner fy 2026',1
+716,Show month-on-month lead funnel for source Channel Partner in 2025.,FUNNEL_OK,[source_funnel ok] 'funnel for Channel Partner mom fy 2025',1
+717,Show lead funnel for source Referral in current FY.,FUNNEL_OK,[source_funnel ok] 'funnel for Referral fy 2026',1
+718,Show month-on-month lead funnel for source Referral in 2025.,FUNNEL_OK,[source_funnel ok] 'funnel for Referral mom fy 2025',1
+719,Show lead funnel for source Social Media in current FY.,CLARIFY,"'Social Media' is not recognised as a source in the CRM vocabulary. Known values include: Digital, Channel Partner, SMS Campaign, Outdoor.",
+720,Show month-on-month lead funnel for source Social Media in 2025.,CLARIFY,"'Social Media' is not recognised as a source in the CRM vocabulary. Known values include: Digital, Channel Partner, SMS Campaign, Outdoor.",
+721,Show me source-wise lead funnel for Eden in 2025.,FUNNEL_OK,[source_funnel ok] 'funnel source wise for EDEN fy 2025',1
+722,Show me source-wise lead funnel for Wave City in current FY.,FUNNEL_OK,[source_funnel ok] 'funnel source wise for Wave City fy 2026',1
+723,Show me sub-source-wise lead funnel for the last 15 days.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise last 14 days',1
+724,Show me sub-source-wise lead funnel for August 2025.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise August 2025',1
+725,Show me project-wise lead funnel in current FY.,FUNNEL_OK,[project_funnel ok] 'funnel project wise fy 2026',1
+726,Show me product-wise lead funnel in current FY.,FUNNEL_OK,[product_funnel ok] 'funnel product wise fy 2026',1
+727,Show me lead-user-wise lead funnel in last FY.,FUNNEL_OK,[lead_user_funnel ok] 'funnel owner wise fy 2025',1
+728,Show me sales-user-wise lead funnel for last quarter.,FUNNEL_OK,[sales_user_funnel ok] 'funnel owner wise q1 fy 2026',1
+729,Show me lead conversion funnel for current FY.,FUNNEL_OK,[lead_funnel ok] 'funnel fy 2026',1
+730,Show me lead funnel for Wave City.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City fy 2026',1
+731,Show me funnel for Eden.,FUNNEL_OK,[product_funnel ok] 'funnel for EDEN fy 2026',1
+732,Show me funnel for Veridia.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2026',1
+733,Show me funnel for Amore.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE fy 2026',1
+734,Show month-on-month lead funnel for Wave Estate.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave Estate mom fy 2026',1
+735,Show month-on-month lead funnel for Wave City.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City mom fy 2026',1
+736,Compare lead funnel for Eden and Veridia in current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2026' | [product_funnel ok] 'funnel for EDEN fy 2026',2
+737,Compare lead funnel for Eden and Amore in current FY.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE fy 2026' | [product_funnel ok] 'funnel for EDEN fy 2026',2
+738,Compare lead funnel for Wave City in current FY versus last FY.,FUNNEL_OK,[project_funnel ok] 'funnel for Wave City fy 2026' | [project_funnel ok] 'funnel for Wave City fy 2025',2
+739,Compare lead funnel for this quarter versus last quarter.,FUNNEL_OK,[lead_funnel ok] 'funnel q2 fy 2026' | [lead_funnel ok] 'funnel q1 fy 2026',2
+740,Compare funnel conversion ratios of Eden and Amore.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE fy 2026' | [product_funnel ok] 'funnel for EDEN fy 2026',2
+741,Compare funnel conversion ratios of Eden and Veridia.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2026' | [product_funnel ok] 'funnel for EDEN fy 2026',2
+742,Compare funnel conversion ratios of New Plots between this year and FY 2024-25.,FUNNEL_OK,[product_funnel ok] 'funnel for NEW  PLOTS fy 2024',1
+743,Show product-wise funnel conversion ratios for Wave City.,FUNNEL_OK,[product_funnel ok] 'funnel product wise for Wave City fy 2026',1
+744,Show product-wise funnel conversion ratios for New Plots.,FUNNEL_OK,[product_funnel ok] 'funnel product wise for NEW  PLOTS fy 2026',1
+745,Show source-wise funnel conversion ratios for current FY.,FUNNEL_OK,[source_funnel ok] 'funnel source wise fy 2026',1
+746,Show sub-source-wise funnel conversion ratios for current FY.,FUNNEL_OK,[subsource_funnel ok] 'funnel subsource wise fy 2026',1
+747,Show project-wise funnel conversion ratios for current FY.,FUNNEL_OK,[project_funnel ok] 'funnel project wise fy 2026',1
+748,Show user-wise funnel conversion ratios for current FY.,CLARIFY,Did you want the sales user funnel or the lead user funnel? Sales user shows conversion per salesperson; lead user shows it per lead owner.,
+749,Show lead funnel for Digital and Outdoor sources in April.,FUNNEL_OK,[source_funnel ok] 'funnel for Digital April 2026' | [source_funnel ok] 'funnel for Outdoor April 2026',2
+750,Show Channel Partner lead funnel for this year versus last year.,FUNNEL_OK,[source_funnel ok] 'funnel for Channel Partner fy 2026' | [source_funnel ok] 'funnel for Channel Partner fy 2025',2
+751,Show lead-user-wise lead funnel for Jan and Feb 2026 separately.,CLARIFY,That would return about 254 funnel rows — every user across 2 periods from Jan 2026 to Feb 2026 — which is too much to read in one table. /  / 1. The user funnel fo,
+752,Show project-wise lead funnel from May 2020 to Sep 2020.,FUNNEL_OK,[project_funnel ok] 'funnel project wise 1 May 2020 to 30 September 2020',1
+753,Show quarter-wise lead funnel for Wave Garden in 2022.,FUNNEL_OK,[product_funnel ok] 'funnel for WAVE GARDEN q1 2022' | [product_funnel ok] 'funnel for WAVE GARDEN q2 2022' | [product_funnel ok] 'funnel for WAVE GARDEN q3 2022' | [product_funnel ok] 'funnel for WAVE GARDEN q4 2022',4
+754,Show lead funnel for Amore from 1 Jul to 12 Jul.,CLARIFY,"I could not determine a date range from that. Please give one, for example 'last FY', 'Q1 2025', 'April to June 2026', or 'between 1 April 2026 and 30 June 2026",
+755,Show lead funnel for Amore from 1 Jan 2026 till 15 May 2026.,FUNNEL_OK,[product_funnel ok] 'funnel for AMORE 1 January 2026 to 15 May 2026',1
+756,"Compare lead funnel for Q1, Q2, Q3, and Q4 of FY 2025.",FUNNEL_OK,[lead_funnel ok] 'funnel q1 fy 2025' | [lead_funnel ok] 'funnel q2 fy 2025' | [lead_funnel ok] 'funnel q3 fy 2025' | [lead_funnel ok] 'funnel 1 January 2026 to 31 March 2026',4
+757,"Compare lead funnel for Q1, Q2, Q3, and Q4 of FY 2024.",FUNNEL_OK,[lead_funnel ok] 'funnel q1 fy 2024' | [lead_funnel ok] 'funnel q2 fy 2024' | [lead_funnel ok] 'funnel q3 fy 2024' | [lead_funnel ok] 'funnel 1 January 2025 to 31 March 2025',4
+758,Show lead funnel for Dream Homes.,FUNNEL_OK,[product_funnel ok] 'funnel for DREAM HOMES fy 2026',1
+759,Show lead funnel for all Veridia 1-7 combined.,FUNNEL_OK,[product_funnel ok] 'funnel for Veridia fy 2026',1
+760,Show QL target and QL actual for Aastha Chaudhary.,PASS,[targets ok] 'ql target for Aastha Chaudhary fy 2026',1
+761,Compare QL target vs QL actual for Aastha Chaudhary.,PASS,[targets ok] 'ql target for Aastha Chaudhary fy 2026',1
+762,Show appointment booked target and appointment booked actual for Aastha Chaudhary.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+763,Compare appointment booked target vs actual for Aastha Chaudhary.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+764,Show appointment completion target and appointment completion actual for Aastha Chaudhary.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+765,Compare appointment completion target vs actual for Aastha Chaudhary.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+766,Show SR target and resolved actual for Aastha Chaudhary.,PASS,[targets ok] 'sr target for Aastha Chaudhary fy 2026',1
+767,Compare SR target vs resolved actual for Aastha Chaudhary.,PASS,[targets ok] 'sr target for Aastha Chaudhary fy 2026',1
+768,Show all target and actual metrics for user Aastha Chaudhary.,PASS,[targets ok] 'target and actual for Aastha Chaudhary fy 2026',1
+769,Show total number of leads handled by Aastha Chaudhary.,PASS,[lead ok] 'total leads for Aastha Chaudhary fy 2026',1
+770,Show QL achievement percentage for Aastha Chaudhary.,PASS,[targets ok] 'ql achievement for Aastha Chaudhary fy 2026',1
+771,Show appointment completion rate for Aastha Chaudhary.,PASS,[targets ok] 'appointment completion rate for Aastha Chaudhary fy 2026',1
+772,Show appointment booking achievement percentage for Aastha Chaudhary.,PASS,[targets ok] 'appointment booking achievement for Aastha Chaudhary fy 2026',1
+773,Show service request resolution rate for Aastha Chaudhary.,PASS,[targets ok] 'service request resolution rate for Aastha Chaudhary fy 2026',1
+774,Show QL target and QL actual for Aishwarya MK.,PASS,[targets ok] 'ql target for Aishwarya MK fy 2026',1
+775,Compare QL target vs QL actual for Aishwarya MK.,PASS,[targets ok] 'ql target for Aishwarya MK fy 2026',1
+776,Show appointment booked target and appointment booked actual for Aishwarya MK.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+777,Compare appointment booked target vs actual for Aishwarya MK.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+778,Show appointment completion target and appointment completion actual for Aishwarya MK.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+779,Compare appointment completion target vs actual for Aishwarya MK.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+780,Show SR target and resolved actual for Aishwarya MK.,PASS,[targets ok] 'sr target for Aishwarya MK fy 2026',1
+781,Compare SR target vs resolved actual for Aishwarya MK.,PASS,[targets ok] 'sr target for Aishwarya MK fy 2026',1
+782,Show all target and actual metrics for user Aishwarya MK.,PASS,[targets ok] 'target and actual for Aishwarya MK fy 2026',1
+783,Show total number of leads handled by Aishwarya MK.,PASS,[lead ok] 'total leads for Aishwarya MK fy 2026',1
+784,Show QL achievement percentage for Aishwarya MK.,PASS,[targets ok] 'ql achievement for Aishwarya MK fy 2026',1
+785,Show appointment completion rate for Aishwarya MK.,PASS,[targets ok] 'appointment completion rate for Aishwarya MK fy 2026',1
+786,Show appointment booking achievement percentage for Aishwarya MK.,PASS,[targets ok] 'appointment booking achievement for Aishwarya MK fy 2026',1
+787,Show service request resolution rate for Aishwarya MK.,PASS,[targets ok] 'service request resolution rate for Aishwarya MK fy 2026',1
+788,Show QL target and QL actual for Abhishek Verma.,PASS,[targets ok] 'ql target for Abhishek Verma fy 2026',1
+789,Compare QL target vs QL actual for Abhishek Verma.,PASS,[targets ok] 'ql target for Abhishek Verma fy 2026',1
+790,Show appointment booked target and appointment booked actual for Abhishek Verma.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+791,Compare appointment booked target vs actual for Abhishek Verma.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+792,Show appointment completion target and appointment completion actual for Abhishek Verma.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+793,Compare appointment completion target vs actual for Abhishek Verma.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+794,Show SR target and resolved actual for Abhishek Verma.,PASS,[targets ok] 'sr target for Abhishek Verma fy 2026',1
+795,Compare SR target vs resolved actual for Abhishek Verma.,PASS,[targets ok] 'sr target for Abhishek Verma fy 2026',1
+796,Show all target and actual metrics for user Abhishek Verma.,PASS,[targets ok] 'target and actual for Abhishek Verma fy 2026',1
+797,Show total number of leads handled by Abhishek Verma.,PASS,[lead ok] 'total leads for Abhishek Verma fy 2026',1
+798,Show QL achievement percentage for Abhishek Verma.,PASS,[targets ok] 'ql achievement for Abhishek Verma fy 2026',1
+799,Show appointment completion rate for Abhishek Verma.,PASS,[targets ok] 'appointment completion rate for Abhishek Verma fy 2026',1
+800,Show appointment booking achievement percentage for Abhishek Verma.,PASS,[targets ok] 'appointment booking achievement for Abhishek Verma fy 2026',1
+801,Show service request resolution rate for Abhishek Verma.,PASS,[targets ok] 'service request resolution rate for Abhishek Verma fy 2026',1
+802,Show QL target and QL actual for Admin.,PASS,[targets ok] 'ql target for Admin fy 2026',1
+803,Compare QL target vs QL actual for Admin.,PASS,[targets ok] 'ql target for Admin fy 2026',1
+804,Show appointment booked target and appointment booked actual for Admin.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+805,Compare appointment booked target vs actual for Admin.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+806,Show appointment completion target and appointment completion actual for Admin.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+807,Compare appointment completion target vs actual for Admin.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+808,Show SR target and resolved actual for Admin.,PASS,[targets ok] 'sr target for Admin fy 2026',1
+809,Compare SR target vs resolved actual for Admin.,PASS,[targets ok] 'sr target for Admin fy 2026',1
+810,Show all target and actual metrics for user Admin.,PASS,[targets ok] 'target and actual for Admin fy 2026',1
+811,Show total number of leads handled by Admin.,PASS,[lead ok] 'total leads for Admin fy 2026',1
+812,Show QL achievement percentage for Admin.,PASS,[targets ok] 'ql achievement for Admin fy 2026',1
+813,Show appointment completion rate for Admin.,PASS,[targets ok] 'appointment completion rate for Admin fy 2026',1
+814,Show appointment booking achievement percentage for Admin.,PASS,[targets ok] 'appointment booking achievement for Admin fy 2026',1
+815,Show service request resolution rate for Admin.,PASS,[targets ok] 'service request resolution rate for Admin fy 2026',1
+816,Show QL target and QL actual for Ajay Sejwal.,PASS,[targets ok] 'ql target for Ajay Sejwal fy 2026',1
+817,Compare QL target vs QL actual for Ajay Sejwal.,PASS,[targets ok] 'ql target for Ajay Sejwal fy 2026',1
+818,Show appointment booked target and appointment booked actual for Ajay Sejwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+819,Compare appointment booked target vs actual for Ajay Sejwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+820,Show appointment completion target and appointment completion actual for Ajay Sejwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+821,Compare appointment completion target vs actual for Ajay Sejwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+822,Show SR target and resolved actual for Ajay Sejwal.,PASS,[targets ok] 'sr target for Ajay Sejwal fy 2026',1
+823,Compare SR target vs resolved actual for Ajay Sejwal.,PASS,[targets ok] 'sr target for Ajay Sejwal fy 2026',1
+824,Show all target and actual metrics for user Ajay Sejwal.,PASS,[targets ok] 'target and actual for Ajay Sejwal fy 2026',1
+825,Show total number of leads handled by Ajay Sejwal.,PASS,[lead ok] 'total leads for Ajay Sejwal fy 2026',1
+826,Show QL achievement percentage for Ajay Sejwal.,PASS,[targets ok] 'ql achievement for Ajay Sejwal fy 2026',1
+827,Show appointment completion rate for Ajay Sejwal.,PASS,[targets ok] 'appointment completion rate for Ajay Sejwal fy 2026',1
+828,Show appointment booking achievement percentage for Ajay Sejwal.,PASS,[targets ok] 'appointment booking achievement for Ajay Sejwal fy 2026',1
+829,Show service request resolution rate for Ajay Sejwal.,PASS,[targets ok] 'service request resolution rate for Ajay Sejwal fy 2026',1
+830,Show QL target and QL actual for Rohit Hansa.,PASS,[targets ok] 'ql target for Rohit Hansa fy 2026',1
+831,Compare QL target vs QL actual for Rohit Hansa.,PASS,[targets ok] 'ql target for Rohit Hansa fy 2026',1
+832,Show appointment booked target and appointment booked actual for Rohit Hansa.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+833,Compare appointment booked target vs actual for Rohit Hansa.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+834,Show appointment completion target and appointment completion actual for Rohit Hansa.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+835,Compare appointment completion target vs actual for Rohit Hansa.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+836,Show SR target and resolved actual for Rohit Hansa.,PASS,[targets ok] 'sr target for Rohit Hansa fy 2026',1
+837,Compare SR target vs resolved actual for Rohit Hansa.,PASS,[targets ok] 'sr target for Rohit Hansa fy 2026',1
+838,Show all target and actual metrics for user Rohit Hansa.,PASS,[targets ok] 'target and actual for Rohit Hansa fy 2026',1
+839,Show total number of leads handled by Rohit Hansa.,PASS,[lead ok] 'total leads for Rohit Hansa fy 2026',1
+840,Show QL achievement percentage for Rohit Hansa.,PASS,[targets ok] 'ql achievement for Rohit Hansa fy 2026',1
+841,Show appointment completion rate for Rohit Hansa.,PASS,[targets ok] 'appointment completion rate for Rohit Hansa fy 2026',1
+842,Show appointment booking achievement percentage for Rohit Hansa.,PASS,[targets ok] 'appointment booking achievement for Rohit Hansa fy 2026',1
+843,Show service request resolution rate for Rohit Hansa.,PASS,[targets ok] 'service request resolution rate for Rohit Hansa fy 2026',1
+844,Show QL target and QL actual for Nupoor Aggarwal.,PASS,[targets ok] 'ql target for Nupoor Aggarwal fy 2026',1
+845,Compare QL target vs QL actual for Nupoor Aggarwal.,PASS,[targets ok] 'ql target for Nupoor Aggarwal fy 2026',1
+846,Show appointment booked target and appointment booked actual for Nupoor Aggarwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+847,Compare appointment booked target vs actual for Nupoor Aggarwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+848,Show appointment completion target and appointment completion actual for Nupoor Aggarwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+849,Compare appointment completion target vs actual for Nupoor Aggarwal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+850,Show SR target and resolved actual for Nupoor Aggarwal.,PASS,[targets ok] 'sr target for Nupoor Aggarwal fy 2026',1
+851,Compare SR target vs resolved actual for Nupoor Aggarwal.,PASS,[targets ok] 'sr target for Nupoor Aggarwal fy 2026',1
+852,Show all target and actual metrics for user Nupoor Aggarwal.,PASS,[targets ok] 'target and actual for Nupoor Aggarwal fy 2026',1
+853,Show total number of leads handled by Nupoor Aggarwal.,PASS,[lead ok] 'total leads for Nupoor Aggarwal fy 2026',1
+854,Show QL achievement percentage for Nupoor Aggarwal.,PASS,[targets ok] 'ql achievement for Nupoor Aggarwal fy 2026',1
+855,Show appointment completion rate for Nupoor Aggarwal.,PASS,[targets ok] 'appointment completion rate for Nupoor Aggarwal fy 2026',1
+856,Show appointment booking achievement percentage for Nupoor Aggarwal.,PASS,[targets ok] 'appointment booking achievement for Nupoor Aggarwal fy 2026',1
+857,Show service request resolution rate for Nupoor Aggarwal.,PASS,[targets ok] 'service request resolution rate for Nupoor Aggarwal fy 2026',1
+858,Show QL target and QL actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+859,Compare QL target vs QL actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+860,Show appointment booked target and appointment booked actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+861,Compare appointment booked target vs actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+862,Show appointment completion target and appointment completion actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+863,Compare appointment completion target vs actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+864,Show SR target and resolved actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+865,Compare SR target vs resolved actual for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+866,Show all target and actual metrics for user Ambuj.,CLARIFY,"'Ambuj.' is not recognised as a owner in the CRM vocabulary. Known values include: Admin, Anubhav Kumar, Prabin Kumar, Digamber Negi.",
+867,Show total number of leads handled by Ambuj.,PASS,[lead ok] 'total leads fy 2026',1
+868,Show QL achievement percentage for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+869,Show appointment completion rate for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+870,Show appointment booking achievement percentage for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+871,Show service request resolution rate for Ambuj.,CLARIFY,'Ambuj' is not recognised as a entity in the CRM vocabulary.,
+872,Show QL target and QL actual for Manpreet Dhanjal.,PASS,[targets ok] 'ql target for Manpreet Dhanjal fy 2026',1
+873,Compare QL target vs QL actual for Manpreet Dhanjal.,PASS,[targets ok] 'ql target for Manpreet Dhanjal fy 2026',1
+874,Show appointment booked target and appointment booked actual for Manpreet Dhanjal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+875,Compare appointment booked target vs actual for Manpreet Dhanjal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+876,Show appointment completion target and appointment completion actual for Manpreet Dhanjal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+877,Compare appointment completion target vs actual for Manpreet Dhanjal.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+878,Show SR target and resolved actual for Manpreet Dhanjal.,PASS,[targets ok] 'sr target for Manpreet Dhanjal fy 2026',1
+879,Compare SR target vs resolved actual for Manpreet Dhanjal.,PASS,[targets ok] 'sr target for Manpreet Dhanjal fy 2026',1
+880,Show all target and actual metrics for user Manpreet Dhanjal.,PASS,[targets ok] 'target and actual for Manpreet Dhanjal fy 2026',1
+881,Show total number of leads handled by Manpreet Dhanjal.,PASS,[lead ok] 'total leads for Manpreet Dhanjal fy 2026',1
+882,Show QL achievement percentage for Manpreet Dhanjal.,PASS,[targets ok] 'ql achievement for Manpreet Dhanjal fy 2026',1
+883,Show appointment completion rate for Manpreet Dhanjal.,PASS,[targets ok] 'appointment completion rate for Manpreet Dhanjal fy 2026',1
+884,Show appointment booking achievement percentage for Manpreet Dhanjal.,PASS,[targets ok] 'appointment booking achievement for Manpreet Dhanjal fy 2026',1
+885,Show service request resolution rate for Manpreet Dhanjal.,PASS,[targets ok] 'service request resolution rate for Manpreet Dhanjal fy 2026',1
+886,Show QL target and QL actual for Ishan Gaur.,PASS,[targets ok] 'ql target for Ishan Gaur fy 2026',1
+887,Compare QL target vs QL actual for Ishan Gaur.,PASS,[targets ok] 'ql target for Ishan Gaur fy 2026',1
+888,Show appointment booked target and appointment booked actual for Ishan Gaur.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+889,Compare appointment booked target vs actual for Ishan Gaur.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+890,Show appointment completion target and appointment completion actual for Ishan Gaur.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+891,Compare appointment completion target vs actual for Ishan Gaur.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+892,Show SR target and resolved actual for Ishan Gaur.,PASS,[targets ok] 'sr target for Ishan Gaur fy 2026',1
+893,Compare SR target vs resolved actual for Ishan Gaur.,PASS,[targets ok] 'sr target for Ishan Gaur fy 2026',1
+894,Show all target and actual metrics for user Ishan Gaur.,PASS,[targets ok] 'target and actual for Ishan Gaur fy 2026',1
+895,Show total number of leads handled by Ishan Gaur.,PASS,[lead ok] 'total leads for Ishan Gaur fy 2026',1
+896,Show QL achievement percentage for Ishan Gaur.,PASS,[targets ok] 'ql achievement for Ishan Gaur fy 2026',1
+897,Show appointment completion rate for Ishan Gaur.,PASS,[targets ok] 'appointment completion rate for Ishan Gaur fy 2026',1
+898,Show appointment booking achievement percentage for Ishan Gaur.,PASS,[targets ok] 'appointment booking achievement for Ishan Gaur fy 2026',1
+899,Show service request resolution rate for Ishan Gaur.,PASS,[targets ok] 'service request resolution rate for Ishan Gaur fy 2026',1
+900,Show QL target and QL actual for Lovepreet Singh.,PASS,[targets ok] 'ql target for Lovepreet Singh fy 2026',1
+901,Compare QL target vs QL actual for Lovepreet Singh.,PASS,[targets ok] 'ql target for Lovepreet Singh fy 2026',1
+902,Show appointment booked target and appointment booked actual for Lovepreet Singh.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+903,Compare appointment booked target vs actual for Lovepreet Singh.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+904,Show appointment completion target and appointment completion actual for Lovepreet Singh.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+905,Compare appointment completion target vs actual for Lovepreet Singh.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+906,Show SR target and resolved actual for Lovepreet Singh.,PASS,[targets ok] 'sr target for Lovepreet Singh fy 2026',1
+907,Compare SR target vs resolved actual for Lovepreet Singh.,PASS,[targets ok] 'sr target for Lovepreet Singh fy 2026',1
+908,Show all target and actual metrics for user Lovepreet Singh.,PASS,[targets ok] 'target and actual for Lovepreet Singh fy 2026',1
+909,Show total number of leads handled by Lovepreet Singh.,PASS,[lead ok] 'total leads for Lovepreet Singh fy 2026',1
+910,Show QL achievement percentage for Lovepreet Singh.,PASS,[targets ok] 'ql achievement for Lovepreet Singh fy 2026',1
+911,Show appointment completion rate for Lovepreet Singh.,PASS,[targets ok] 'appointment completion rate for Lovepreet Singh fy 2026',1
+912,Show appointment booking achievement percentage for Lovepreet Singh.,PASS,[targets ok] 'appointment booking achievement for Lovepreet Singh fy 2026',1
+913,Show service request resolution rate for Lovepreet Singh.,PASS,[targets ok] 'service request resolution rate for Lovepreet Singh fy 2026',1
+914,Show QL target and QL actual for Anubhav Kumar.,PASS,[targets ok] 'ql target for Anubhav Kumar fy 2026',1
+915,Compare QL target vs QL actual for Anubhav Kumar.,PASS,[targets ok] 'ql target for Anubhav Kumar fy 2026',1
+916,Show appointment booked target and appointment booked actual for Anubhav Kumar.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+917,Compare appointment booked target vs actual for Anubhav Kumar.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+918,Show appointment completion target and appointment completion actual for Anubhav Kumar.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+919,Compare appointment completion target vs actual for Anubhav Kumar.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+920,Show SR target and resolved actual for Anubhav Kumar.,PASS,[targets ok] 'sr target for Anubhav Kumar fy 2026',1
+921,Compare SR target vs resolved actual for Anubhav Kumar.,PASS,[targets ok] 'sr target for Anubhav Kumar fy 2026',1
+922,Show all target and actual metrics for user Anubhav Kumar.,PASS,[targets ok] 'target and actual for Anubhav Kumar fy 2026',1
+923,Show total number of leads handled by Anubhav Kumar.,PASS,[lead ok] 'total leads for Anubhav Kumar fy 2026',1
+924,Show QL achievement percentage for Anubhav Kumar.,PASS,[targets ok] 'ql achievement for Anubhav Kumar fy 2026',1
+925,Show appointment completion rate for Anubhav Kumar.,PASS,[targets ok] 'appointment completion rate for Anubhav Kumar fy 2026',1
+926,Show appointment booking achievement percentage for Anubhav Kumar.,PASS,[targets ok] 'appointment booking achievement for Anubhav Kumar fy 2026',1
+927,Show service request resolution rate for Anubhav Kumar.,PASS,[targets ok] 'service request resolution rate for Anubhav Kumar fy 2026',1
+928,Show target vs actual performance for all users.,PASS,[targets ok] 'target vs actual fy 2026',1
+929,Show QL target shortfall or surplus for each user.,PASS,[targets ok] 'ql target owner wise fy 2026',1
+930,Show appointment booked target shortfall or surplus for each user.,PASS,[targets ok] 'appointment booked target owner wise fy 2026',1
+931,Show appointment completion target shortfall or surplus for each user.,PASS,[targets ok] 'appointment completion target owner wise fy 2026',1
+932,Show SR target shortfall or surplus for each user.,PASS,[targets ok] 'sr target owner wise fy 2026',1
+933,Show users who achieved their QL target.,PASS,[targets ok] 'ql target fy 2026',1
+934,Show users who missed their QL target.,PASS,[targets ok] 'ql target fy 2026',1
+935,Show users who achieved their appointment booked target.,PASS,[targets ok] 'appointment booked target fy 2026',1
+936,Show users who missed their appointment booked target.,PASS,[targets ok] 'appointment booked target fy 2026',1
+937,Show users who achieved their appointment completion target.,PASS,[targets ok] 'appointment completion target fy 2026',1
+938,Show users who missed their appointment completion target.,PASS,[targets ok] 'appointment completion target fy 2026',1
+939,Show users where appointment booked actual is less than target.,PASS,[targets ok] 'appointment booked actual fy 2026',1
+940,Show users where appointment completion actual is less than target.,PASS,[targets ok] 'appointment completion actual fy 2026',1
+941,Show users where QL actual is greater than QL target.,PASS,[targets ok] 'ql actual fy 2026',1
+942,Show users where SR resolved actual is greater than SR target.,PASS,[targets ok] 'sr resolved fy 2026',1
+943,Show the QL target variance for each user.,PASS,[targets ok] 'ql target owner wise fy 2026',1
+944,Show the appointment booked target variance for each user.,PASS,[targets ok] 'appointment booked target owner wise fy 2026',1
+945,Show the appointment completion target variance for each user.,PASS,[targets ok] 'appointment completion target owner wise fy 2026',1
+946,Show the SR target variance for each user.,PASS,[targets ok] 'sr target owner wise fy 2026',1
+947,Show the user with the highest gap between target and actual leads.,PASS,[targets ok] 'target and actual fy 2026' | [lead ok] 'total leads fy 2026',2
+948,Show the user with the highest QL target surplus.,PASS,[targets ok] 'ql target fy 2026',1
+949,Show the user with the largest QL target shortfall.,PASS,[targets ok] 'ql target fy 2026',1
+950,Show the user with the highest appointment booking target surplus.,PASS,[targets ok] 'appointment booking target fy 2026',1
+951,Show the user with the largest appointment completion target shortfall.,PASS,[targets ok] 'appointment completion target fy 2026',1
+952,Show top 5 users by QL actual.,PASS,[targets ok] 'ql actual owner wise fy 2026',1
+953,Show bottom 3 users by QL actual.,PASS,[targets ok] 'ql actual owner wise fy 2026',1
+954,Show top 5 users by appointment booked actual.,PASS,[targets ok] 'appointment booked actual owner wise fy 2026',1
+955,Show bottom 3 users by appointment completion actual.,PASS,[targets ok] 'appointment completion actual owner wise fy 2026',1
+956,Rank users by total leads handled.,PASS,[lead ok] 'total leads fy 2026',1
+957,Rank users by QL actual.,PASS,[targets ok] 'ql actual fy 2026',1
+958,Rank users by appointment booked actual.,PASS,[targets ok] 'appointment booked actual fy 2026',1
+959,Rank users by appointment completion actual.,PASS,[targets ok] 'appointment completion actual fy 2026',1
+960,Rank users by service requests resolved actual.,PASS,[case ok] 'cases fy 2026',1
+961,Show the best performer in appointment booking based on achievement percentage.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+962,Show the best performer in QL based on achievement percentage.,PASS,[targets ok] 'achievement percentage fy 2026',1
+963,Show the user who resolved the most service requests.,PASS,[case ok] 'cases fy 2026',1
+964,Show the user with the highest QL achievement percentage.,PASS,[targets ok] 'ql achievement fy 2026',1
+965,Show appointment completion rate for each user.,PASS,[targets ok] 'appointment completion rate owner wise fy 2026',1
+966,Show appointment booking achievement percentage for each user.,PASS,[targets ok] 'appointment booking achievement owner wise fy 2026',1
+967,Show service request resolution rate for each user.,PASS,[targets ok] 'service request resolution rate owner wise fy 2026',1
+968,Show users with zero service requests.,PASS,[case ok] 'cases fy 2026',1
+969,Show users with appointment completion actual equal to 0.,PASS,[targets ok] 'appointment completion actual fy 2026',1
+970,Show users with appointment booked actual equal to 0.,PASS,[targets ok] 'appointment booked actual fy 2026',1
+971,Show users with QL actual equal to 0.,PASS,[targets ok] 'ql actual fy 2026',1
+972,Show users who have targets but no actuals.,PASS,[targets ok] 'targets fy 2026',1
+973,Show users with unusually high total leads.,PASS,[lead ok] 'total leads fy 2026',1
+974,Show users with unusually low QL achievement percentage.,PASS,[targets ok] 'ql achievement fy 2026',1
+975,Show users with total leads above their target.,PASS,[lead ok] 'total leads fy 2026' | [targets ok] 'target fy 2026',2
+976,Show users with total leads below their target.,PASS,[lead ok] 'total leads fy 2026' | [targets ok] 'target fy 2026',2
+977,Compare total leads versus total opportunities for current FY.,PASS,[lead ok] 'total leads fy 2026' | [opp ok] 'opportunities fy 2026',2
+978,Compare project-wise sales versus project-wise leads for current FY.,PASS,[opp ok] 'sales done project wise fy 2026' | [lead ok] 'total leads project wise fy 2026',2
+979,Compare total sales versus total opportunities for current FY.,PASS,[opp ok] 'sales done fy 2026' | [opp ok] 'opportunities fy 2026',2
+980,"Show project-wise total events, meetings booked, and meetings done for last year.",BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+981,Show total opportunities and total sales for New Plots quarter on quarter where lead source is Referral.,PASS,[opp ok] 'opportunities for NEW  PLOTS for Referral qoq fy 2026' | [opp ok] 'sales done for NEW  PLOTS for Referral qoq fy 2026',2
+982,Show year-on-year total sales and total opportunities for Residential and Commercial property types separately.,PASS,[opp ok] 'sales done for Residential and Commercial 2018 to 2026' | [opp ok] 'opportunities for Residential and Commercial 2018 to 2026',2
+983,Show quarter-on-quarter total opportunities where disqualification reason is Out of Budget.,PASS,[opp ok] 'opportunities for Out of budget qoq fy 2026',1
+984,Show quarter-on-quarter total opportunities where disqualification reason is Inventory Sold Out.,PASS,[opp ok] 'opportunities for Inventory sold out qoq fy 2026',1
+985,Show month-on-month qualified leads for Digital source from June to Dec 2025.,PASS,[lead ok] 'qualified leads (sol) for Qualified for Digital mom June to December 2025',1
+986,Show month-on-month total follow-ups in Q1 2022 and Q1 2023 separately.,PASS,[task ok] 'follow up tasks mom April to June 2022',1
+987,Show quarter-on-quarter total tasks where customer feedback is Discussion Pending.,PASS,[task ok] 'tasks for Discussion Pending qoq fy 2026',1
+988,Show product-wise total follow-ups where task status is In Progress.,PASS,[task ok] 'follow up tasks product wise for In Progress fy 2026' | [task ok] 'tasks product wise for In Progress fy 2026',2
+989,Show subject-wise total Open tasks where transfer status is Personal Appointment Booked.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+990,Show subject-wise total In Progress tasks where transfer status is Personal Appointment Booked.,BACKEND_UNAVAILABLE,The event service cannot reliably execute this period and breakdown. A year-by-year series from FY2020-21 through the current FY is supported.,
+991,Show the average TAT for a lead to move from creation to booking over the last 3 months.,CLARIFY,"'turnaround time' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- not d",
+992,Show the average TAT for a lead to move from creation to Qualified status.,CLARIFY,"'turnaround time' is not something the current tools compute. They return counts and breakdowns of leads, opportunities, sales, events, tasks and cases -- not d",
+993,Show month-on-month comparison of total cases for Eden and Veridia in the last 10 months.,PASS,[case ok] 'cases for Veridia November 2025' | [case ok] 'cases for Veridia December 2025' | [case ok] 'cases for Veridia January 2026' | [case ok] 'cases for Veridia February 2026' | [case ok] 'cases for Veridia March 2026' | [case ok] 'cases for Veridia April 2026' | [case ok] 'cases for Veridia May 2026' | [case ok] 'cases for Veridia June 2026' | [case ok] 'cases for Veridia July 2026' | [case ,20
+994,Show total qualified leads in the last 3 quarters with project-wise distribution.,PASS,[lead ok] 'qualified leads (sol) project wise for Qualified 1 October 2025 to 30 June 2026',1
+995,Show total qualified leads in the last 3 quarters with city-wise distribution.,PASS,[lead ok] 'qualified leads (sol) city wise for Qualified 1 October 2025 to 30 June 2026',1
+996,Show service-request-type-wise total satisfied cases for Wave Estate in Q1 2025.,PASS,[case ok] 'satisfied cases service request type wise for Wave Estate April to June 2025',1
+997,Show service-request-type-wise total satisfied cases for Wave Estate in Q2 2025.,PASS,[case ok] 'satisfied cases service request type wise for Wave Estate July to September 2025',1
+998,Show total leads for Wave City where lead source is Digital for current FY.,PASS,[lead ok] 'total leads for Wave City for Digital fy 2026',1
+999,Show total qualified leads for Wave City where lead source is Digital for current FY.,PASS,[lead ok] 'qualified leads (sol) for Wave City for Qualified for Digital fy 2026',1
+1000,Show total opportunities for Wave City where lead source is Digital for current FY.,PASS,[opp ok] 'opportunities for Wave City for Digital fy 2026',1

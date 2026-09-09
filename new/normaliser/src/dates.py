@@ -25,6 +25,7 @@ from calendar import monthrange
 from dataclasses import dataclass, field
 from datetime import date, timedelta
 from enum import Enum
+from clock_utils import business_today
 
 MONTHS = {
     "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
@@ -270,7 +271,7 @@ def detect_multi_periods(text: str, today: date | None = None) -> list[Period]:
     range. "last fy and current fy separately" is two result sets;
     "between 1 April 2026 and 30 June 2026" is one.
     """
-    today = today or date.today()
+    today = today or business_today()
     t = _clean(text)
     if _RANGE_MARKERS.search(t):
         return []
@@ -313,18 +314,46 @@ def _year_for_month(m: int, anchor_year: int) -> int:
 
 def resolve(text: str, today: date | None = None,
             force_comparison: Comparison | None = None) -> Period:
+    """Reject invalid dates and normalize explicit numeric dates before parsing.
+
+    Numeric day-first dates use DD/MM/YYYY, matching existing range semantics.
+    ISO YYYY-MM-DD is also accepted. Invalid dates never become whole months.
+    """
+    try:
+        def iso_date(m):
+            d = date.fromisoformat(m.group(0))
+            return f"{d.day} {MONTH_NAME[d.month]} {d.year}"
+        def numeric_date(m):
+            day, month, year = map(int, m.groups())
+            d = date(year, month, day)
+            return f"{d.day} {MONTH_NAME[d.month]} {d.year}"
+        normalized = re.sub(r"(?<!\d)\d{4}-\d{2}-\d{2}(?!\d)", iso_date, text)
+        normalized = re.sub(r"(?<![\d/-])(\d{1,2})[-/](\d{1,2})[-/](\d{4})(?!\d)", numeric_date, normalized)
+        for m in re.finditer(r"\bfy\s*(\d{4})\s*[-/]\s*(\d{2}|\d{4})\b", normalized, re.I):
+            first, last = m.groups()
+            if int(last) != (int(first) + 1 if len(last) == 4 else (int(first) + 1) % 100):
+                raise ValueError("A financial-year label must name consecutive years.")
+        return _resolve(normalized, today, force_comparison)
+    except (ValueError, OverflowError) as exc:
+        return Period(Kind.UNRESOLVED, warnings=[f"Invalid date expression: {exc}"], source_text=text)
+
+
+def _resolve(text: str, today: date | None = None,
+            force_comparison: Comparison | None = None) -> Period:
     """Resolve the period in `text`.
 
     `force_comparison` pins which comparison applies, so a query naming several
     ("year on year ... and also month on month") can be resolved once per
     comparison instead of losing all but the first.
     """
-    today = today or date.today()
+    today = today or business_today()
     t = _clean(text)
     cmp_ = force_comparison if force_comparison is not None else detect_comparison(t)
     cur_fy = fy_of(today)
 
     def done(p: Period) -> Period:
+        if any(span.start > span.end for span in p.spans):
+            return Period(Kind.UNRESOLVED, warnings=["Start date is after end date."], source_text=text)
         p.comparison = cmp_
         p.source_text = text
         # A comparison qualifier plus an explicit sub-year window is
@@ -393,6 +422,17 @@ def resolve(text: str, today: date | None = None,
             if start <= today:
                 return done(Period(Kind.RANGE, [Span(start, today, "till date")]))
 
+    # Single day must precede month matching; otherwise 15 June becomes
+    # all of June and an impossible 31 September looks like a valid month.
+    days = list(re.finditer(rf"\b(\d{{1,2}})\s+({_M})\.?\s*(\d{{4}})?\b", t))
+    if days:
+        if len(days) != 1:
+            return Period(Kind.UNRESOLVED, warnings=["Give separate day queries or one explicit date range."], source_text=text)
+        day, month, year = days[0].groups()
+        mm = MONTHS[month]
+        d = date(int(year) if year else _year_for_month(mm, cur_fy), mm, int(day))
+        return done(Period(Kind.RANGE, [Span(d, d)]))
+
     # -- discrete month list: "April, May and June 2026" --
     found = re.findall(rf"\b({_M})\b", t)
     if len(found) >= 2:
@@ -449,6 +489,8 @@ def resolve(text: str, today: date | None = None,
                   r"(day|week|month|quarter|year|fy)s?\b", t)
     if m:
         n, unit = int(m.group(1)), m.group(2)
+        if n < 1:
+            raise ValueError("Relative period length must be positive.")
         if unit == "fy":
             unit = "year"
         # "Last N <unit>" always means N COMPLETED units ending before the

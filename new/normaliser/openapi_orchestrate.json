@@ -2,37 +2,28 @@
   "openapi": "3.0.3",
   "info": {
     "title": "CRM Prompt Normaliser",
-    "version": "1.0.0",
-    "description": "Converts a free-form CRM question into a validated execution plan for The Wave Group CRM tools. Returns the metric, the tool that owns it, resolved start and end dates, canonical entity filters, and the exact query text each backend tool parses correctly.\nThis tool MUST be called first on every CRM question, before any lead, opportunity, event, task, case or targets-vs-actuals tool. It performs no database access and returns in milliseconds."
+    "description": "Normalises a free-form CRM question into a validated execution plan: the metric, the tool that owns it, resolved dates, canonical entity filters, and the exact query text each backend tool parses correctly. Call this FIRST on every CRM data question, before any CRM tool.",
+    "version": "1.1.0"
   },
-  "servers": [
-    {
-      "url": "https://cuspal-retroserrate-nancey.ngrok-free.dev",
-      "description": "Normaliser service"
-    }
-  ],
   "paths": {
     "/normalise": {
       "post": {
+        "summary": "Normalise Query",
+        "description": "Call this FIRST for every CRM data question, before selecting or calling any other tool.\n\nSend the user's question exactly as they typed it. The response tells you\nwhich tool to call, with which query text, over which resolved dates.\n\nIf \"ok\" is false, do not call any tool. Rephrase \"clarification\" naturally\nfor the user, as a short question with numbered options they can answer\nwith a single keystroke.\n\nIf \"ok\" is true, execute every entry in \"calls\". Pass each \"canonical_text\"\nto its tool as the question parameter WITHOUT ANY MODIFICATION. Do not\nreword, reorder, re-punctuate or shorten it. The wording is chosen to match\nwhat that specific backend parser accepts, and altering it causes the tool\nto return data for the wrong period without raising an error.\n\nSend the whole call to the collaborator, not just the text: write \"tool\",\n\"question\", \"start_date\", \"end_date\" and \"period_display\" as labelled lines\nin the message. A collaborator with no tool name has to guess which of its\ntools you meant, and it guesses wrong silently.\n\n\"call_count\" is a checksum. Execute that many calls and confirm you have\nthat many sets of rows before writing anything. Never display a table for a\ncall that was not issued or did not return.\n\nNever show the user anything from \"diagnostics\"; it is internal engineering\noutput. Put the period in the table heading using \"period_display\", and add\nno caveat, warning or note about it.",
         "operationId": "normalise_crm_query",
-        "summary": "Normalise a CRM question into a tool execution plan",
-        "description": "Call this FIRST for every CRM data question, before selecting or calling any other tool.\n\nSend the user's question exactly as they typed it. The response tells you which tool to call, with which query text, over which resolved dates.\n\nIf \"ok\" is false, do not call any tool. Rephrase \"clarification\" naturally for the user.\n\nIf \"ok\" is true, execute every entry in \"calls\". Pass each \"canonical_text\" to its tool as the question parameter WITHOUT ANY MODIFICATION. Do not reword, reorder, re-punctuate or shorten it. The wording is chosen to match what that specific backend parser accepts, and altering it causes the tool to return data for the wrong period without raising an error.\n\nNever show the user anything from \"diagnostics\"; it is internal engineering output. Put the period in the table heading using \"period_display\", and add no caveat, warning or note about it.",
-        "tags": [
-          "normaliser"
-        ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/NormaliseRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "A validated execution plan, or a clarification request.",
+            "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -42,56 +33,11 @@
             }
           },
           "422": {
-            "description": "The request body was malformed.",
+            "description": "Validation Error",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "string",
-                      "description": "What was wrong with the request."
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/health": {
-      "get": {
-        "operationId": "normaliser_health",
-        "summary": "Check the normaliser is running",
-        "description": "Liveness check. Reports whether the canonical entity vocabulary is loaded. Not needed during normal conversation.",
-        "tags": [
-          "normaliser"
-        ],
-        "responses": {
-          "200": {
-            "description": "Service status.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "description": "healthy when the service is up."
-                    },
-                    "vocabulary_loaded": {
-                      "type": "boolean",
-                      "description": "False means entity filters will not be resolved and vocab_build.py needs to be run."
-                    },
-                    "facets": {
-                      "type": "array",
-                      "description": "Entity categories available for filtering.",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -101,25 +47,22 @@
     },
     "/format_funnel": {
       "post": {
+        "summary": "Format Funnel",
+        "description": "Call this after ANY funnel tool returns, from within the funnel agent that just called it.\n\nA funnel tool returns ONE flat record per row holding the stage counts and\nthe conversion ratios interleaved in alphabetical order, so TL:VL and MB:MD\nsit among Total Leads and Junk Leads. It has to be shown as TWO tables:\nFunnel Metrics, then Funnel Conversion Ratios. Deriving that split by hand\nproved unreliable -- the same question produced two tables on one turn and\none on the next -- so this endpoint does it deterministically.\n\nSend the funnel tool's response in \"response\" EXACTLY as it came back --\nevery key, unreordered, nothing dropped. Send the tool you called in \"tool\"\nand the period in \"heading\". Return the resulting \"markdown\",\n\"metrics_table\" and \"ratios_table\" to the master unchanged.\n\nIt applies the fixed column order, exactly five ratio columns (TL:VL,\nVL:SOL, SOL:MB, MB:MD, MD:SD), Indian digit grouping, and a Total row\ncopied from the response's own totals block rather than summed. A\nsingle-row funnel gets no S.No and no Total row.\n\nIf \"missing_ratio_columns\" comes back non-empty, the payload lost keys in\ntransit -- resend the untouched response rather than displaying a short\ntable. If \"empty\" comes back true the service found no records for that\nscope and period: say so in a sentence, and show no table and no graph.",
         "operationId": "format_funnel_tables",
-        "summary": "Render a funnel response as its two display tables",
-        "description": "Call this after ANY funnel tool returns, from within the funnel agent that just called it.\n\nA funnel tool returns ONE flat record per row holding the stage counts and the conversion ratios interleaved in alphabetical order, so TL:VL and MB:MD sit among Total Leads and Junk Leads. It has to be shown as TWO tables: Funnel Metrics, then Funnel Conversion Ratios. This endpoint does that split deterministically.\n\nSend the funnel tool's response in \"response\" EXACTLY as it came back -- all seventeen keys, unreordered, nothing dropped. Send the tool you called in \"tool\" and the period in \"heading\". Return the resulting \"markdown\", \"metrics_table\" and \"ratios_table\" to the master unchanged.\n\nIt applies the fixed column order, exactly five ratio columns (TL:VL, VL:SOL, SOL:MB, MB:MD, MD:SD), Indian digit grouping, and a Total row copied from the response's own totals block rather than summed. A single-row funnel gets no S.No and no Total row.\n\nIf \"missing_ratio_columns\" comes back non-empty, the payload lost keys in transit -- resend the untouched response rather than displaying a short table.",
-        "tags": [
-          "normaliser"
-        ],
         "requestBody": {
-          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/FunnelFormatRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
-            "description": "Both tables, ready to display.",
+            "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
@@ -129,17 +72,31 @@
             }
           },
           "422": {
-            "description": "The request body was malformed.",
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "description": "Liveness check, including whether the entity vocabulary is loaded.",
+        "operationId": "normaliser_health",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                    "detail": {
-                      "type": "string",
-                      "description": "What was wrong with the request."
-                    }
-                  }
+                  "title": "Response Normaliser Health"
                 }
               }
             }
@@ -150,228 +107,431 @@
   },
   "components": {
     "schemas": {
-      "NormaliseRequest": {
-        "type": "object",
-        "required": [
-          "query"
-        ],
-        "properties": {
-          "query": {
-            "type": "string",
-            "description": "The user's CRM question, exactly as they typed it. For a follow-up such as \"what about Veridia?\", first rewrite it into a standalone question carrying the previous metric and period, then send that.",
-            "example": "Total leads for wave city between 1 April 2026 and 30 June 2026"
-          },
-          "today": {
-            "type": "string",
-            "description": "Reference date as YYYY-MM-DD, used to resolve relative periods such as \"last quarter\". Omit in normal use so the server date applies.",
-            "example": "2026-08-26"
-          },
-          "decompose": {
-            "type": "boolean",
-            "default": true,
-            "description": "Split questions naming several entities or periods into separate tool calls. Leave true; this is what removes the need for the user to type \"separately\"."
-          }
-        }
-      },
-      "ToolCall": {
-        "type": "object",
-        "description": "One backend tool invocation to perform.",
-        "properties": {
-          "tool": {
-            "type": "string",
-            "description": "The backend tool to invoke. CRM-Data tools: lead_report, opportunity_report, event_report, task_report, case_report, targetvsactuals. CRM-Funnel tools: lead_funnel, project_funnel, product_funnel, source_funnel, subsource_funnel, lead_user_funnel, sales_user_funnel."
-          },
-          "agent": {
-            "type": "string",
-            "description": "The collaborator agent that owns this tool, either CRM-Data or CRM-Funnel. Delegate the call to that agent."
-          },
-          "metric": {
-            "type": "string",
-            "description": "Canonical metric key, for example total_leads or sales_done."
-          },
-          "metric_label": {
-            "type": "string",
-            "description": "Human-readable metric name for use in headings."
-          },
-          "canonical_text": {
-            "type": "string",
-            "description": "Pass this to the tool as its question parameter, byte for byte. Never edit it. For example \"April, May and June 2026\" must keep the word \"and\", and \"fy 2025\" must not be expanded into a date range, because the backend parsers silently resolve the altered forms to the wrong period."
-          },
-          "start_date": {
-            "type": "string",
-            "description": "Resolved period start, YYYY-MM-DD. Authoritative. Pass it as a parameter where the tool accepts one."
-          },
-          "end_date": {
-            "type": "string",
-            "description": "Resolved period end, YYYY-MM-DD."
-          },
-          "period_kind": {
-            "type": "string",
-            "description": "range, month_list, quarter_list, year_list or unresolved."
-          },
-          "period_label": {
-            "type": "string",
-            "description": "Internal label. Do not show this to the user."
-          },
-          "comparison": {
-            "type": "string",
-            "description": "none, month_on_month, quarter_on_quarter or year_on_year."
-          },
-          "groupings": {
-            "type": "array",
-            "description": "Breakdown dimensions requested, for example project, product, source, owner.",
-            "items": {
-              "type": "string"
-            }
-          },
-          "filters": {
-            "type": "object",
-            "description": "Canonical entity values to filter on, keyed by category such as project or product. Rows outside these values must not be shown to the user.",
-            "additionalProperties": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          "period_display": {
-            "type": "string",
-            "description": "Clean period text for the table heading, for example 'FY2025-26' or 'April 2026 to June 2026'. Use it in the heading when the returned rows match it. When the backend returns a different span, build the heading from the actual rows instead. Never add a caveat about the difference."
-          }
-        }
-      },
-      "NormaliseResponse": {
-        "type": "object",
-        "properties": {
-          "ok": {
-            "type": "boolean",
-            "description": "True means a plan was produced and you should execute \"calls\". False means call nothing and show \"clarification\" to the user."
-          },
-          "raw": {
-            "type": "string",
-            "description": "The question as received."
-          },
-          "call_count": {
-            "type": "integer",
-            "description": "Number of tool calls in the plan."
-          },
-          "calls": {
-            "type": "array",
-            "description": "The tool calls to execute, in order. Execute every one and wait for all results before answering.",
-            "items": {
-              "$ref": "#/components/schemas/ToolCall"
-            }
-          },
-          "agents": {
-            "type": "array",
-            "description": "Collaborator agents these calls belong to.",
-            "items": {
-              "type": "string"
-            }
-          },
-          "clarification": {
-            "type": "string",
-            "description": "Present when ok is false. Rephrase it naturally for the user and call no tool. This is the only field whose content may reach them."
-          },
-          "decomposed": {
-            "type": "boolean",
-            "description": "True when the question was split into several calls because it named multiple entities or periods."
-          },
-          "diagnostics": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "INTERNAL ONLY. Engineering notes about how the plan was built. Never display these, never quote them and never paraphrase them into a warning. The period in period_display already tells the user what they need."
-          }
-        }
-      },
       "FunnelFormatRequest": {
-        "type": "object",
-        "required": [
-          "response"
-        ],
         "properties": {
+          "include_totals": {
+            "type": "boolean",
+            "title": "Include Totals",
+            "description": "Set false for ranked, filtered or assembled results when the original aggregate no longer applies.",
+            "default": true
+          },
+          "period_column": {
+            "type": "string",
+            "enum": [
+              "",
+              "Month",
+              "Quarter",
+              "Financial Year",
+              "Period"
+            ],
+            "title": "Period Column",
+            "description": "Period column for explicitly assembled, labelled time-series rows.",
+            "default": ""
+          },
           "response": {
             "type": "object",
-            "description": "The funnel tool's response, pasted through unchanged. Every shape the seven funnel services return is accepted: the single record under lead_funnel, a breakdown keyed by scope under product_wise_metrics, and the list forms under source_wise_metrics, sub_source_wise_metrics, lead_wise_user_metrics and sales_wise_user_metrics. Do not trim, flatten or reformat it first."
-          },
-          "tool": {
-            "type": "string",
-            "description": "The plan's tool value, copied exactly: lead_funnel, product_funnel, project_funnel, source_funnel, subsource_funnel, lead_user_funnel or sales_user_funnel. It names the breakdown column. Always pass it: project_funnel returns its rows under a key reading product_wise_metrics, so without the tool name a project breakdown comes out headed Product.",
-            "example": "lead_funnel"
+            "title": "Response",
+            "description": "The funnel tool's response, pasted through unchanged. Any of the shapes the seven funnel services return is accepted."
           },
           "heading": {
             "type": "string",
-            "description": "Period for the table headings, taken from period_display, for example FY2025-26. Optional but recommended.",
-            "example": "FY2025-26"
+            "title": "Heading",
+            "description": "Period for the table headings, taken from period_display, for example 'FY2025-26'. Optional.",
+            "default": ""
           },
           "show": {
             "type": "string",
-            "default": "both",
             "enum": [
               "both",
               "metrics",
               "ratios"
             ],
-            "description": "Leave as both, which is right for almost every funnel question. Use ratios only when the user's own words said funnel ratios or conversion ratios, and metrics only when they said funnel metrics or stage counts. Never narrow on inference."
+            "title": "Show",
+            "description": "'both' (the default and almost always correct), 'ratios' only when the user said funnel ratios or conversion ratios, or 'metrics' only when they said funnel metrics or stage counts.",
+            "default": "both"
+          },
+          "tool": {
+            "type": "string",
+            "enum": [
+              "",
+              "lead_funnel",
+              "product_funnel",
+              "project_funnel",
+              "source_funnel",
+              "subsource_funnel",
+              "lead_user_funnel",
+              "sales_user_funnel"
+            ],
+            "title": "Tool",
+            "description": "The tool field from the plan, copied exactly: lead_funnel, product_funnel, project_funnel, source_funnel, subsource_funnel, lead_user_funnel or sales_user_funnel. It names the breakdown column. Pass it: project_funnel returns its rows under the key 'product_wise_metrics', so without the tool name a project breakdown would be headed Product.",
+            "default": ""
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "response"
+        ],
+        "title": "FunnelFormatRequest"
       },
       "FunnelFormatResponse": {
-        "type": "object",
         "properties": {
           "ok": {
             "type": "boolean",
-            "description": "False means no funnel rows were found in the payload. Show the figures another way rather than an empty section."
-          },
-          "markdown": {
-            "type": "string",
-            "description": "BOTH tables, ready to display. Copy this verbatim into the response, the same way a graph url is copied. This is the field you print."
-          },
-          "metrics_table": {
-            "type": "string",
-            "description": "The Funnel Metrics table alone, if you need it separately."
-          },
-          "ratios_table": {
-            "type": "string",
-            "description": "The Funnel Conversion Ratios table alone, if you need it separately."
+            "title": "Ok"
           },
           "row_count": {
             "type": "integer",
-            "description": "Rows rendered. Check your table against it."
+            "title": "Row Count",
+            "default": 0
           },
           "scope_column": {
             "type": "string",
-            "description": "The breakdown column used, such as Product, Source, Sub-Source, Project or User. Empty for an overall funnel."
+            "title": "Scope Column",
+            "default": ""
           },
-          "error": {
+          "metrics_table": {
             "type": "string",
-            "description": "Present only when ok is false."
+            "title": "Metrics Table",
+            "default": ""
+          },
+          "ratios_table": {
+            "type": "string",
+            "title": "Ratios Table",
+            "default": ""
           },
           "missing_ratio_columns": {
-            "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Ratio columns the service reports but that were absent from the payload sent here. Non-empty means the response was trimmed in transit."
-          },
-          "warning": {
-            "type": "string",
-            "description": "Present when missing_ratio_columns is non-empty."
+            "type": "array",
+            "title": "Missing Ratio Columns",
+            "description": "Required ratio columns absent from one or more rows. Compare against the original response to determine whether the backend or transmission omitted them."
           },
           "empty": {
             "type": "boolean",
-            "description": "True when the funnel service reported no rows for this scope and period. A real answer, not a failure: say there were no records, show no table and no graph."
+            "title": "Empty",
+            "description": "True when the funnel service reported no rows for this scope and period. That is a real answer, not a failure: say there were no records, and show no table and no graph.",
+            "default": false
+          },
+          "missing_metric_columns": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Metric Columns"
+          },
+          "warning": {
+            "title": "Warning",
+            "nullable": true,
+            "type": "string"
+          },
+          "markdown": {
+            "type": "string",
+            "title": "Markdown",
+            "description": "Both tables, ready to display. Copy this verbatim into the response; do not rebuild, reorder or re-format it.",
+            "default": ""
+          },
+          "error": {
+            "title": "Error",
+            "nullable": true,
+            "type": "string"
           }
-        }
+        },
+        "type": "object",
+        "required": [
+          "ok"
+        ],
+        "title": "FunnelFormatResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "NormaliseRequest": {
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 8000,
+            "minLength": 1,
+            "title": "Query",
+            "description": "The standalone CRM question, preserving the user's intent and explicit changes.",
+            "example": "Total leads for wave city between 1 April 2026 and 30 June 2026"
+          },
+          "today": {
+            "title": "Today",
+            "description": "Reference date as YYYY-MM-DD. Omit to use the Asia/Kolkata business date. Only set this for testing.",
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "decompose": {
+            "type": "boolean",
+            "title": "Decompose",
+            "description": "Split multi-entity and multi-period questions into separate tool calls. Leave true unless you specifically want one call.",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "query"
+        ],
+        "title": "NormaliseRequest"
+      },
+      "NormaliseResponse": {
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "title": "Plan Id"
+          },
+          "ok": {
+            "type": "boolean",
+            "title": "Ok",
+            "description": "False means execute no CRM calls; explain the limitation or ask the supplied clarification."
+          },
+          "raw": {
+            "type": "string",
+            "title": "Raw"
+          },
+          "calls": {
+            "items": {
+              "$ref": "#/components/schemas/ToolCallOut"
+            },
+            "type": "array",
+            "title": "Calls"
+          },
+          "call_count": {
+            "type": "integer",
+            "title": "Call Count",
+            "default": 0
+          },
+          "agents": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Agents"
+          },
+          "clarification": {
+            "title": "Clarification",
+            "description": "When ok is false, the reason. Rephrase it naturally for the user. Do not disguise backend limitations as ambiguous user input.",
+            "nullable": true,
+            "type": "string"
+          },
+          "diagnostics": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Diagnostics",
+            "description": "Internal diagnostic evidence. Do not print raw engineering text. Explain material coverage or validation limitations in plain language."
+          },
+          "decomposed": {
+            "type": "boolean",
+            "title": "Decomposed",
+            "default": false
+          },
+          "blocked_reason": {
+            "title": "Blocked Reason",
+            "description": "A known backend capability limitation; do not execute a replacement period or metric.",
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "plan_id",
+          "ok",
+          "raw"
+        ],
+        "title": "NormaliseResponse"
+      },
+      "RankingOut": {
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom"
+            ],
+            "title": "Direction"
+          },
+          "count": {
+            "title": "Count",
+            "description": "Null means ordering all rows without a limit.",
+            "nullable": true,
+            "type": "integer",
+            "minimum": 1.0
+          }
+        },
+        "type": "object",
+        "required": [
+          "direction"
+        ],
+        "title": "RankingOut"
+      },
+      "ToolCallOut": {
+        "properties": {
+          "call_id": {
+            "type": "string",
+            "title": "Call Id"
+          },
+          "tool": {
+            "type": "string",
+            "title": "Tool",
+            "description": "Backend tool to invoke."
+          },
+          "agent": {
+            "type": "string",
+            "title": "Agent",
+            "description": "Agent that owns this tool."
+          },
+          "metric": {
+            "type": "string",
+            "title": "Metric",
+            "description": "Canonical metric key."
+          },
+          "metric_label": {
+            "type": "string",
+            "title": "Metric Label",
+            "description": "Display label for the metric."
+          },
+          "canonical_text": {
+            "type": "string",
+            "title": "Canonical Text",
+            "description": "Send this EXACTLY as the tool's question or query parameter according to its schema. Do not reword, reorder, re-punctuate or 'tidy' it — the wording is chosen to match what that specific parser accepts."
+          },
+          "start_date": {
+            "title": "Start Date",
+            "description": "Resolved start, YYYY-MM-DD.",
+            "nullable": true,
+            "type": "string"
+          },
+          "end_date": {
+            "title": "End Date",
+            "description": "Resolved end, YYYY-MM-DD.",
+            "nullable": true,
+            "type": "string"
+          },
+          "period_kind": {
+            "type": "string",
+            "title": "Period Kind"
+          },
+          "period_label": {
+            "type": "string",
+            "title": "Period Label",
+            "description": "Internal label. Do not show this to the user.",
+            "default": ""
+          },
+          "period_display": {
+            "type": "string",
+            "title": "Period Display",
+            "description": "Clean period text for the table heading, e.g. 'FY2025-26' or 'April 2026 to June 2026'. Use this in the heading only after verifying the applied backend period. A different span is a validation failure.",
+            "default": ""
+          },
+          "comparison": {
+            "type": "string",
+            "title": "Comparison",
+            "description": "none | month_on_month | quarter_on_quarter | year_on_year"
+          },
+          "groupings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Groupings"
+          },
+          "rank": {
+            "nullable": true,
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/RankingOut"
+              }
+            ]
+          },
+          "defer_chart": {
+            "type": "boolean",
+            "title": "Defer Chart",
+            "default": false
+          },
+          "collaborator_message": {
+            "type": "string",
+            "title": "Collaborator Message",
+            "description": "Ready-to-send JSON string containing this complete call. Copy as the collaborator message without rebuilding it or dropping fields."
+          },
+          "filters": {
+            "additionalProperties": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Filters",
+            "description": "Canonical entity values. Rows outside these values must not be shown."
+          }
+        },
+        "type": "object",
+        "required": [
+          "call_id",
+          "tool",
+          "agent",
+          "metric",
+          "metric_label",
+          "canonical_text",
+          "period_kind",
+          "comparison",
+          "collaborator_message"
+        ],
+        "title": "ToolCallOut"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
       }
     }
   },
-  "tags": [
+  "servers": [
     {
-      "name": "normaliser",
-      "description": "Query normalisation for The Wave Group CRM agents."
+      "url": "https://cuspal-retroserrate-nancey.ngrok-free.dev",
+      "description": "Normaliser service"
     }
   ]
 }

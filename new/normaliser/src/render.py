@@ -13,6 +13,7 @@ from __future__ import annotations
 import re
 from calendar import monthrange
 from datetime import date, timedelta
+from clock_utils import business_today
 
 from dates import Comparison, Kind, MONTH_NAME, Period, Span
 from intents import (FUNNEL_DAYRANGE_OK, FUNNEL_Q4_OK,
@@ -74,7 +75,7 @@ def render_period(period: Period, tool: Tool,
                   today: date | None = None) -> tuple[str, list[str]]:
     """Return (canonical date phrase, warnings) for this tool's grammar."""
     warnings: list[str] = []
-    today = today or date.today()
+    today = today or business_today()
 
     if not period.resolved:
         return "", ["Period unresolved; no date phrase emitted."]
@@ -90,8 +91,8 @@ def render_period(period: Period, tool: Tool,
             return f"fy {_whole_fy(period.spans[0])}", warnings
         warnings.append(
             "targetvsactuals cannot parse date ranges (see DATE_GRAMMAR.md s4): "
-            "20 of 21 forms resolve incorrectly. Pass resolved dates as explicit "
-            "parameters, or treat this result as unverified."
+            "20 of 21 forms resolve incorrectly. The service ignores explicit "
+            "parameters; execution must be blocked."
         )
         s = period.spans[0]
         return f"{MONTH_NAME[s.start.month]} {s.start.year}", warnings
@@ -121,8 +122,8 @@ def render_period(period: Period, tool: Tool,
     #   A multi-year SPAN with no series asked (comparison none) falls through
     #     to the day-form range below, which returns one total.
     #   event is the exception both ways: every dated form except yoy crashes
-    #     (NameError: is_qoq, event_report.py:1829), and its yoy branch --
-    #     uniquely -- honours an explicit range. So event always gets
+    #     (NameError: is_qoq, event_report.py:1829), and its yoy branch expands to the served floor through current FY.
+    #     execution_guard permits only a matching declared window. Event gets
     #     "yoy A to B" and can only ever answer year-wise.
     #   case/targets have no per-year series support at all -- the normaliser
     #     decomposes those into one "fy <year>" call per year upstream, as it
@@ -208,8 +209,8 @@ def render_period(period: Period, tool: Tool,
             warnings.append(
                 "case_report discards the year on any range spanning 2+ months "
                 "and substitutes the current FY (DATE_GRAMMAR.md s6). This range "
-                "cannot be expressed safely -- pass resolved dates as parameters "
-                "or treat the result as unverified.")
+                "cannot be expressed safely -- block this call "
+                "until a verified canonical form exists.")
 
     # Discrete months -> "April, May and June 2026".
     # Year stated ONCE at the end: repeating it per month silently drops the

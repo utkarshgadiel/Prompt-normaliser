@@ -18,11 +18,9 @@ real services. Expect a few minutes: thirteen backends are exercised.
 
 Categories:
   PASS            every report-tool call round-tripped to the declared window
-  FUNNEL_OK       every funnel-tool call round-tripped (exact, or a relative
-                  form landing within the service's own day convention)
-  EVENT_BLOCKED   event_report raises NameError(is_qoq) -- a backend bug, not a
-                  bad plan. See grammar/BACKEND_FIXES.md; with the one-line fix
-                  applied, all such plans verify.
+  FUNNEL_OK       every funnel-tool call round-tripped to the exact window
+  BACKEND_UNAVAILABLE  normaliser explicitly blocked a measured backend defect
+  EVENT_BLOCKED   an emitted event plan crashed; this FAILS the run
   CLARIFY         normaliser asked or refused instead of running. Review each:
                   a refusal is correct only when no tool can answer.
   MISMATCH        a backend resolved a DIFFERENT window than declared -- a real
@@ -30,7 +28,8 @@ Categories:
   NOPARSE         a backend found no date intent in the canonical text
   ERROR           the normaliser itself raised
 """
-import argparse, csv, io, re, sys, contextlib
+import argparse, csv, io, re, sys, contextlib, logging
+logging.disable(logging.CRITICAL)
 from datetime import date
 from pathlib import Path
 
@@ -41,6 +40,7 @@ sys.path.insert(0, str(ROOT / "grammar"))
 import harness
 from probe import extract_range
 from normaliser import normalise
+from clock_utils import business_today
 
 ap = argparse.ArgumentParser(description=__doc__)
 ap.add_argument("--prompts", default=str(ROOT.parents[1] / "allprompts.md"),
@@ -50,7 +50,7 @@ ap.add_argument("--csv", default=str(ROOT / "tests" / "batch_results.csv"),
 ap.add_argument("--today", default=None, help="reference date YYYY-MM-DD")
 args = ap.parse_args()
 
-TODAY = date.fromisoformat(args.today) if args.today else date.today()
+TODAY = date.fromisoformat(args.today) if args.today else business_today()
 SVC = {"lead_report": "lead", "opportunity_report": "opp", "task_report": "task",
        "case_report": "case", "event_report": "event", "targetvsactuals": "targets"}
 FUNNELS = {"lead_funnel", "project_funnel", "product_funnel", "source_funnel",
@@ -116,20 +116,6 @@ def parse_funnel(tool, text):
         except Exception as e:
             return None, f"{type(e).__name__}: {e}"
 
-def _covers_by_a_day(win, declared, text):
-    """True when a relative form returned a window containing the requested
-    one and at most a day wider at either end."""
-    if not re.search(r"\blast \d+ days?\b|\btill date\b|\b(this|last) week\b", text):
-        return False
-    try:
-        from datetime import date as _d
-        a, b = _d.fromisoformat(win[0][:10]), _d.fromisoformat(win[1][:10])
-        da, db = _d.fromisoformat(declared[0]), _d.fromisoformat(declared[1])
-    except Exception:
-        return False
-    return a <= da and b >= db and (da - a).days <= 1 and (b - db).days <= 1
-
-
 def parse_backend(svc, text):
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf):
@@ -167,7 +153,7 @@ for num, prompt in prompts:
         continue
 
     if not norm.ok:
-        cat = "CLARIFY"
+        cat = "BACKEND_UNAVAILABLE" if norm.blocked_reason else "CLARIFY"
         detail = (norm.clarification or "")[:160].replace("\n", " / ")
         rows.append((num, prompt, cat, detail, ""))
         cat_count[cat] = cat_count.get(cat, 0) + 1
@@ -187,29 +173,6 @@ for num, prompt in prompts:
                 call_summ.append(f"[{c.tool} ok] {c.canonical_text!r}")
                 if worst == "PASS":
                     worst = "FUNNEL_OK"
-            elif win and c.canonical_text.endswith(" days") and \
-                    " last " in f" {c.canonical_text} ":
-                # Relative form: the service applies its own day convention.
-                # Accept when the window is the right shape and length +-2.
-                from datetime import date as _d
-                try:
-                    a, b = _d.fromisoformat(win[0][:10]), _d.fromisoformat(win[1][:10])
-                    da, db = _d.fromisoformat(declared[0]), _d.fromisoformat(declared[1])
-                    close = abs((b - a).days - (db - da).days) <= 2 and \
-                        abs((b - db).days) <= 2
-                except Exception:
-                    close = False
-                if close:
-                    call_summ.append(
-                        f"[{c.tool} relative-ok {win[0][:10]}..{win[1][:10]}] "
-                        f"{c.canonical_text!r}")
-                    if worst == "PASS":
-                        worst = "FUNNEL_OK"
-                else:
-                    call_summ.append(
-                        f"[{c.tool} GOT {win[0]}..{win[1]} "
-                        f"WANT {declared[0]}..{declared[1]}] {c.canonical_text!r}")
-                    worst = "MISMATCH"
             elif win is None:
                 call_summ.append(f"[{c.tool} NOPARSE] {c.canonical_text!r}")
                 if worst != "MISMATCH":
@@ -234,7 +197,8 @@ for num, prompt in prompts:
         win = window_of(res)
         declared = (c.start_date, c.end_date)
         if win == "NO_DATE_FILTER":
-            call_summ.append(f"[{svc} all-years] {c.canonical_text!r}")
+            call_summ.append(f"[{svc} missing date filter] {c.canonical_text!r}")
+            worst = "MISMATCH"
             continue
         if win is None:
             call_summ.append(f"[{svc} NOPARSE] {c.canonical_text!r}")
@@ -242,15 +206,6 @@ for num, prompt in prompts:
             continue
         if win == declared:
             call_summ.append(f"[{svc} ok] {c.canonical_text!r}")
-        elif _covers_by_a_day(win, declared, c.canonical_text):
-            # A relative form emitted because no exact form exists in that
-            # service (case has no sub-month day range at all). The window
-            # returned CONTAINS the requested one and is at most a day wider;
-            # the normaliser warns and the agent labels from what came back.
-            call_summ.append(
-                f"[{svc} covers+1day {win[0]}..{win[1]}] {c.canonical_text!r}")
-            if worst == "PASS":
-                worst = "COVERED"
         else:
             call_summ.append(
                 f"[{svc} GOT {win[0]}..{win[1]} WANT {declared[0]}..{declared[1]}] "
@@ -270,7 +225,7 @@ print(f"today={TODAY}  prompts={len(prompts)}")
 for k in sorted(cat_count, key=lambda k: -cat_count[k]):
     print(f"  {k:14} {cat_count[k]}")
 
-bad = sum(cat_count.get(k, 0) for k in ("MISMATCH", "NOPARSE", "ERROR"))
+bad = sum(cat_count.get(k, 0) for k in ("MISMATCH", "NOPARSE", "ERROR", "EVENT_BLOCKED"))
 print(f"\nwrote {out}")
 if bad:
     print(f"\nFAIL: {bad} prompt(s) did not round-trip. Filter the CSV on "

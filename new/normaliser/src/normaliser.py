@@ -36,6 +36,8 @@ from intents import (AGENT, DATA_START_FY, DEFAULT_START_FY,  # noqa: E402
                      find_groupings, find_metrics, find_ranking,
                      resolve_funnel_tool, route)
 from render import render_query  # noqa: E402
+from clock_utils import business_today
+from execution_guard import execution_blocker
 
 VOCAB_PATH = Path(__file__).parent / "vocabulary.json"
 
@@ -76,6 +78,7 @@ class ToolCall:
     filters: dict[str, list[str]] = field(default_factory=dict)
     period_label: str = ""
     rank: dict | None = None
+    defer_chart: bool = False
 
 
 @dataclass
@@ -88,6 +91,7 @@ class NormalisedQuery:
     unknown_entities: list[str] = field(default_factory=list)
     decomposed: bool = False
     agents: list[str] = field(default_factory=list)
+    blocked_reason: str | None = None
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -101,6 +105,7 @@ class Vocabulary:
         self._alias: dict[str, list[tuple[str, str, int]]] = {}
         self._facets: dict[str, list[dict]] = {}
         self._meta: dict[str, dict] = {}
+        self._trie: dict = {}
         if not self.loaded:
             return
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -116,6 +121,13 @@ class Vocabulary:
                 for a in forms:
                     self._alias.setdefault(a, []).append(
                         (facet, e["canonical"], e["row_count"]))
+        # Compile the literal alias vocabulary once. Previously every query
+        # compiled/scanned tens of thousands of regular expressions.
+        for order, alias in enumerate(self._alias):
+            node = self._trie
+            for char in alias:
+                node = node.setdefault(char, {})
+            node[None] = (alias, order)
 
     @staticmethod
     def _norm(s: str) -> str:
@@ -126,6 +138,24 @@ class Vocabulary:
 
     def longest_aliases(self) -> list[str]:
         return sorted(self._alias, key=len, reverse=True)
+
+    def matches(self, text: str):
+        """Same longest-first, stable tie order and word boundaries as before."""
+        matches = []
+        for start in range(len(text)):
+            if start and (text[start - 1].isalnum() or text[start - 1] == "_"):
+                continue
+            node = self._trie
+            end = start
+            while end < len(text) and text[end] in node:
+                node = node[text[end]]
+                end += 1
+                if None in node and (end == len(text) or
+                                     not (text[end].isalnum() or text[end] == "_")):
+                    alias, order = node[None]
+                    matches.append((alias, order, start, end))
+        matches.sort(key=lambda m: (-len(m[0]), m[1], m[2]))
+        return [(alias, start, end) for alias, _, start, end in matches]
 
     def lookup(self, token: str, prefer: list[str] | None = None):
         """Return (facet, canonical) or None. `prefer` biases facet choice."""
@@ -183,22 +213,20 @@ def extract_entities(text: str, tool: Tool):
         Tool.TASK: ["project", "product", "status", "subject", "owner"],
     }.get(tool, FILTERABLE)
 
-    for alias in v.longest_aliases():
+    for alias, s, e in v.matches(t):
         if len(alias) < 3 or alias in STOPWORDS:
             continue
-        for m in re.finditer(rf"(?<!\w){re.escape(alias)}(?!\w)", t):
-            s, e = m.span()
-            if any(s < ce and e > cs for cs, ce in claimed):
-                continue
-            hit = v.lookup(alias, prefer=prefer)
-            if not hit:
-                continue
-            facet, canonical = hit
-            claimed.append((s, e))
-            found.setdefault(facet, [])
-            if canonical not in found[facet]:
-                found[facet].append(canonical)
-            located.append((facet, canonical, s, e))
+        if any(s < ce and e > cs for cs, ce in claimed):
+            continue
+        hit = v.lookup(alias, prefer=prefer)
+        if not hit:
+            continue
+        facet, canonical = hit
+        claimed.append((s, e))
+        found.setdefault(facet, [])
+        if canonical not in found[facet]:
+            found[facet].append(canonical)
+        located.append((facet, canonical, s, e))
     return found, located
 
 
@@ -212,11 +240,16 @@ def normalise(query: str, today: date | None = None,
               decompose_entities: bool = True) -> NormalisedQuery:
     """Normalise one user query into validated, per-tool canonical calls."""
     raw = query.strip()
-    today = today or date.today()
+    today = today or business_today()
     result = NormalisedQuery(raw=raw, ok=False)
 
     if not raw:
         result.clarification = "Empty query."
+        return result
+
+    if not vocab().loaded:
+        result.clarification = "The CRM entity vocabulary is unavailable. Please try again after the service is restored."
+        result.warnings.append("vocabulary_unavailable: execution blocked")
         return result
 
     # 0a. Concepts no tool computes. Answering these with a row count would be
@@ -239,6 +272,41 @@ def normalise(query: str, today: date | None = None,
             "metric and period, or the orchestrator must supply the prior context.")
         result.warnings.append("context_fragment: requires conversation state")
         return result
+
+    # Exclusions are not represented by the positive-filter tool contract.
+    # In particular, never turn "excluding junk" into "for Junk".
+    no_chart = bool(re.search(r"\b(?:no|without|skip|omit)\s+(?:the\s+)?(?:graphs?|charts?)\b", raw, re.I))
+    predicate_text = re.sub(r"\b(?:no|without|skip|omit)\s+(?:the\s+)?(?:graphs?|charts?)\b", "", raw, flags=re.I)
+    if re.search(r"\b(exclude|excluding|except|without)\b|\bnot\s+(junk|from|in|for)\b", predicate_text, re.I):
+        result.clarification = "Exclusion filters are not supported by these tools. Specify a supported positive classification or filter."
+        return result
+
+    # Independently specified metric/date clauses must stay paired. Shared
+    # trailing periods still use the normal multi-metric path below.
+    clauses = re.split(r"\s+(?:and(?:\s+also)?|also|versus|vs)\s+|;\s*", raw, flags=re.I)
+    if 1 < len(clauses) <= 8:
+        clause_periods = [resolve(c, today) for c in clauses]
+        if all(find_metrics(expand_shared_noun(c)) and p.resolved and
+               not any("default" in w.lower() for w in p.warnings)
+               for c, p in zip(clauses, clause_periods)):
+            pieces = [normalise(c, today, decompose_entities) for c in clauses]
+            failed = next((piece for piece in pieces if not piece.ok), None)
+            if failed is not None:
+                result.clarification, result.blocked_reason = failed.clarification, failed.blocked_reason
+                result.warnings = failed.warnings
+                return result
+            result.calls = [call for piece in pieces for call in piece.calls]
+            if len(result.calls) > 128:
+                result.calls = []
+                result.clarification = "This request needs more than 128 calls. Choose fewer scopes or periods."
+                return result
+            if no_chart:
+                for call in result.calls:
+                    call.defer_chart = True
+            result.agents = sorted({call.agent for call in result.calls})
+            result.warnings = list(dict.fromkeys(w for piece in pieces for w in piece.warnings))
+            result.decomposed, result.ok = True, True
+            return result
 
     # 1. metric + routing -------------------------------------------------
     # "cold and hot leads" shares one noun between two qualifiers; expand it
@@ -290,7 +358,7 @@ def normalise(query: str, today: date | None = None,
             "; each is returned as a separate result set.")
 
     period = periods[0]
-    if not period.resolved:
+    if any(not p.resolved for p in periods):
         result.clarification = (
             "I could not determine a date range from that. Please give one, "
             "for example 'last FY', 'Q1 2025', 'April to June 2026', or "
@@ -300,6 +368,9 @@ def normalise(query: str, today: date | None = None,
     # 3. grouping + ranking -----------------------------------------------
     groupings = find_groupings(raw)
     ranking = find_ranking(raw)
+    if ranking and ranking.count is not None and ranking.count < 1:
+        result.clarification = "Ranking requires a positive number of rows."
+        return result
     # "top 5 products" / "which source has the most leads" name the breakdown
     # dimension implicitly; without this the ranking has nothing to rank.
     if ranking and ranking.facet and ranking.facet not in groupings:
@@ -321,22 +392,22 @@ def normalise(query: str, today: date | None = None,
     # when Social Media matched nothing (batch 27 Aug 2026). Conservative on
     # purpose -- only fires on "source/sub source/project/product <Proper
     # Noun>" where no vocabulary entry resolves any prefix of the name.
-    gap = _named_entity_gap(raw)
+    gap = _named_entity_gap(raw) or _untyped_entity_gap(raw)
     if gap:
         facet_word, candidate = gap
         known = ", ".join(
             e["canonical"] for e in vocab()._facets.get(facet_word, [])[:4])
         result.clarification = (
-            f"'{candidate}' is not a {facet_word.replace('subsource', 'sub-source')} "
-            f"in the data." + (f" Known values include: {known}." if known else ""))
+            f"'{candidate}' is not recognised as a {facet_word.replace('subsource', 'sub-source')} "
+            f"in the CRM vocabulary." + (f" Known values include: {known}." if known else ""))
         result.unknown_entities = [candidate]
         result.warnings.append(f"unknown_entity: {facet_word}={candidate}")
         return result
 
-    # Do not filter on a facet the user is grouping by; that would collapse
-    # the very breakdown they asked for.
+    # Grouping and named scope are independent: grouping by project must
+    # still honour an explicit list of projects.
     def _strip_grouped(d: dict[str, list[str]]) -> dict[str, list[str]]:
-        return {f: v for f, v in d.items() if f not in groupings}
+        return {f: list(v) for f, v in d.items()}
 
     all_filters = _strip_grouped(entities)
 
@@ -433,9 +504,11 @@ def normalise(query: str, today: date | None = None,
         if decompose_entities:
             for facet in ("project", "product", "source", "subsource"):
                 if len(base.get(facet, [])) > 1:
-                    entity_sets = [{**base, facet: [v]} for v in base[facet]]
+                    if len(entity_sets) * len(base[facet]) > 128:
+                        result.clarification = "This request needs too many separate scopes. Choose fewer entities or one breakdown."
+                        return result
+                    entity_sets = [{**scope, facet: [v]} for scope in entity_sets for v in base[facet]]
                     result.decomposed = True
-                    break
 
         # One period set per comparison the user asked for. Within each, split
         # discrete month lists into one call per month so each period is
@@ -538,14 +611,21 @@ def normalise(query: str, today: date | None = None,
         for eset in entity_sets:
             for per in period_sets:
                 # Never ask a backend for a year it does not hold.
-                per, clamp_note = clamp_to_coverage(per, tool)
+                per, clamp_note = clamp_to_coverage(per, tool, today)
                 if clamp_note and clamp_note not in result.warnings:
                     result.warnings.append(clamp_note)
 
+                if tool is Tool.TARGETS and any(f in eset for f in ("project", "product", "source", "subsource", "city")):
+                    result.clarification = "Targets support user-level scope, not the requested project/product/source/city filter."
+                    result.blocked_reason = "backend_filter_unavailable"
+                    return result
                 eset = _restrict_for_tool(eset, tool)
                 text, warns = render_query(
                     _emit_label(mm, tool), tool, per, groupings, eset, today)
                 result.warnings.extend(w for w in warns if w not in result.warnings)
+                if len(calls) >= 128:
+                    result.clarification = "This request needs more than 128 calls. Choose a smaller scope or period."
+                    return result
                 calls.append(ToolCall(
                     tool=tool.value,
                     agent=AGENT[tool],
@@ -559,9 +639,16 @@ def normalise(query: str, today: date | None = None,
                     groupings=list(groupings),
                     filters={k: list(v) for k, v in eset.items()},
                     period_label=per.label or period.label,
+                    defer_chart=no_chart,
                     rank=({"direction": ranking.direction, "count": ranking.count}
                           if ranking else None),
                 ))
+                blocker = execution_blocker(calls[-1], warns, today)
+                if blocker:
+                    result.blocked_reason, result.clarification = blocker
+                    # No partial plan is executable when a requested piece is unsafe.
+                    result.warnings.append(f"{result.blocked_reason}: {tool.value}")
+                    return result
 
     # 6. validation gate --------------------------------------------------
     # Nothing may be invented or lost between input and output.
@@ -586,6 +673,7 @@ def normalise(query: str, today: date | None = None,
 # Concepts the CRM tools cannot compute. All of them are durations, averages or
 # rates; every tool returns row counts and groupings only.
 UNSUPPORTED = [
+    (r"\brevenue\b", "revenue amount"),
     (r"\bturn[\s\-]?around\s+time\b|\btat\b", "turnaround time"),
     # The tools count rows; none holds a rupee amount. Answering "sales value"
     # with a sales COUNT is a silent wrong answer (logics.md defines no value
@@ -645,7 +733,7 @@ def _is_q4_span(span: Span) -> bool:
         (span.end.year, span.end.month, span.end.day) == (span.start.year, 3, 31)
 
 
-def clamp_to_coverage(period: Period, tool: Tool) -> tuple[Period, str | None]:
+def clamp_to_coverage(period: Period, tool: Tool, today: date | None = None) -> tuple[Period, str | None]:
     """Trim a period so it never starts before the tool's first year of data.
 
     The backends hold nothing earlier and will not return it, so requesting it
@@ -660,7 +748,7 @@ def clamp_to_coverage(period: Period, tool: Tool) -> tuple[Period, str | None]:
     # so rebuild it from the tool's own floor. Opportunities reach back further
     # than the other reports, and trimming alone would never extend to it.
     if period.label.startswith("all years held"):
-        cur_fy = date.today().year if date.today().month >= 4 else date.today().year - 1
+        cur_fy = fy_of(today or business_today())
         end_fy = max(fy_of(period.end) if period.end else cur_fy, floor_fy)
         spans = [fy_span(y) for y in range(floor_fy, end_fy + 1)]
         return Period(Kind.YEAR_LIST, spans, period.comparison, period.label,
@@ -766,10 +854,10 @@ def _funnel_too_broad(scope: str | None, period_count: int,
 # naming a specific value, and if no prefix of it resolves, the value is not
 # in the data.
 _NAMED_FACET = re.compile(
-    r"\b(sub[\s\-]?source|source|project|product)\s+(?:is\s+)?"
-    r"((?:[A-Z][\w&.-]*)(?:\s+[A-Z][\w&.-]*){0,3})")
+    r"\b(sub[\s\-]?source|source|project|product|owner|user|city)\s+(?:is\s+)?"
+    r"((?:[A-Z][\w&.-]*)(?:\s+[A-Z][\w&.-]*){0,3})", re.I)
 
-_FACET_KEY = {"source": "source", "project": "project", "product": "product"}
+_FACET_KEY = {"source": "source", "project": "project", "product": "product", "owner": "owner", "user": "owner", "city": "city"}
 
 
 # Words that follow a facet noun without naming a value: "funnel by source
@@ -781,6 +869,7 @@ _NOT_A_VALUE = {
     "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
     "wise", "funnel", "report", "count", "total", "last", "this", "current",
     "previous", "next", "fy", "q1", "q2", "q3", "q4", "and", "or", "for",
+    "where", "month", "quarter", "year", "monthly", "quarterly", "yearly",
 }
 
 
@@ -855,20 +944,62 @@ def _named_entity_gap(raw: str) -> tuple[str, str] | None:
     v = vocab()
     if not v.loaded:
         return None
+    known_spans = [(a, b) for alias, a, b in v.matches(v._norm(raw)) if alias not in STOPWORDS]
     for m in _NAMED_FACET.finditer(raw):
+        # "City" inside Wave City is part of a known project, not a new facet.
+        if any(a < m.start() < b for a, b in known_spans):
+            continue
         first = m.group(2).split()[0].lower().rstrip(",.")
-        if first in _NOT_A_VALUE or first.isdigit():
+        if first in (_NOT_A_VALUE | STOPWORDS | {"generated", "generates", "has", "had"}) or first.isdigit():
             continue
         facet_word = re.sub(r"[\s\-]", "", m.group(1).lower())
         facet = "subsource" if facet_word == "subsource" else _FACET_KEY[facet_word]
-        tokens = m.group(2).split()
+        tokens = []
+        for token in m.group(2).split():
+            if token.lower().rstrip(".,") in (_NOT_A_VALUE | STOPWORDS):
+                break
+            tokens.append(token)
+        if not tokens:
+            continue
         resolved = False
         for k in range(len(tokens), 0, -1):
             if v.lookup(" ".join(tokens[:k])) is not None:
                 resolved = True
                 break
         if not resolved:
-            return facet, m.group(2)
+            return facet, " ".join(tokens)
+    return None
+
+
+def _untyped_entity_gap(raw: str) -> tuple[str, str] | None:
+    # Only a scope immediately following for/in/of. Dates and ordinary
+    # analytical phrases are excluded; unknown names must not vanish.
+    non_scope = _NOT_A_VALUE | STOPWORDS | {
+        "a", "an", "past", "rolling", "today", "yesterday", "year", "years",
+        "month", "months", "quarter", "quarters", "week", "weeks", "day", "days",
+        "financial", "fiscal", "calendar", "till", "date", "each", "every",
+        "period", "periods", "detail", "comparison", "order", "terms", "fy2024",
+        "project", "projects", "product", "products", "source", "sources", "sub",
+        "subsource", "owner", "user", "city", "status", "lead", "leads",
+        "sales", "task", "tasks", "case", "cases", "event", "events", "meeting",
+        "appointment", "appointments", "ql", "sr", "cre", "gre",
+    }
+    known_spans = [(a, b) for alias, a, b in vocab().matches(vocab()._norm(raw)) if alias not in STOPWORDS]
+    for m in re.finditer(r"\b(?:for|in|of)\s+([a-z][\w.-]*(?:\s+[a-z][\w.-]*){0,3})", raw, re.I):
+        if any(a <= m.start() < b for a, b in known_spans):
+            continue
+        tokens = [token.rstrip(".,") for token in m.group(1).split()]
+        if tokens[0].lower() in non_scope or re.match(r"(?:fy|q)\d", tokens[0], re.I):
+            continue
+        if any(vocab().lookup(" ".join(tokens[:k])) for k in range(len(tokens), 0, -1)):
+            continue
+        candidate = []
+        for token in tokens:
+            if token.lower() in non_scope:
+                break
+            candidate.append(token)
+        if candidate:
+            return "entity", " ".join(candidate)
     return None
 
 

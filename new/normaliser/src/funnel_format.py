@@ -6,16 +6,10 @@ the conversion ratios interleaved in alphabetical order:
 
     {"Junk %": "31.2%", "Junk Leads": 11514, "MB:MD": 2.02, ..., "Valid Leads": 25390}
 
-The master agent is supposed to split that into two tables. In practice it does
-so unreliably -- the same question produced both tables at 2:33pm on 8 Sep 2026
-and only the metrics table at 3:14pm, from an identical response. Prose cannot
-fix that, because there is no instruction strong enough to make an LLM split a
-record it has already decided looks like one table.
-
-So the split happens here instead, in code, and the agent transcribes the
-markdown it is handed. That is the one thing agents do reliably: the graph
-tool's `markdown` field has been copied through correctly every single time,
-because copying is not a judgement call.
+Production incidents included omitted ratio tables and lost columns. This module
+makes the table split, column order and number formatting deterministic. Agents
+must still validate the source response and copy the successful output without
+omitting rows; rendering alone cannot guarantee end-to-end accuracy.
 
 Everything this module decides is fixed:
   * which keys are counts and which are ratios (a colon in the key)
@@ -28,6 +22,8 @@ Everything this module decides is fixed:
 from __future__ import annotations
 
 from typing import Any
+from decimal import Decimal, InvalidOperation
+import html
 
 # Table 1, in display order. Keys are what the backends emit; values are the
 # column headers the behaviour spec requires.
@@ -86,24 +82,21 @@ def _fmt(value: Any, kind: str = "count") -> str:
     if value is None or value == "":
         return EM_DASH
     if isinstance(value, bool):
-        return str(value)
+        raise ValueError("A boolean is not a funnel metric.")
+    try:
+        text = str(value).strip()
+        number = Decimal(text[:-1] if kind == "percent" and text.endswith("%") else text)
+    except InvalidOperation:
+        raise ValueError("A funnel metric must be numeric or null.")
+    if not number.is_finite():
+        raise ValueError("A non-finite funnel metric cannot be displayed.")
     if kind == "ratio":
-        try:
-            return f"{float(value):.2f}"
-        except (TypeError, ValueError):
-            return str(value)
+        return f"{number:.2f}"
     if kind == "percent":
-        if isinstance(value, str):
-            return value if value.strip().endswith("%") else f"{value}%"
-        try:
-            return f"{float(value):.2f}%"
-        except (TypeError, ValueError):
-            return str(value)
-    if isinstance(value, (int, float)) and float(value).is_integer():
-        return indian_group(int(value))
-    if isinstance(value, float):
-        return f"{value:.2f}"
-    return str(value)
+        return f"{number:.2f}%"
+    if number != number.to_integral_value():
+        raise ValueError("A count must be an integer; refusing to round it.")
+    return indian_group(int(number))
 
 
 def _kind_of(key: str) -> str:
@@ -182,7 +175,7 @@ def _is_funnel_record(rec: Any) -> bool:
     """
     if not isinstance(rec, dict):
         return False
-    return any(_is_ratio(k) or k in _COUNT_KEYS for k in rec)
+    return any(k in RATIO_COLUMNS or k in _COUNT_KEYS for k in rec)
 
 
 def _rows_from(value: Any) -> list[tuple[str, dict]] | None:
@@ -192,13 +185,14 @@ def _rows_from(value: Any) -> list[tuple[str, dict]] | None:
             return [("", _row_of(value))]
         inner = list(value.values())
         if inner and all(_is_funnel_record(v) for v in inner):
-            return [(str(k), _row_of(v)) for k, v in value.items()]
+            return [(str(k), _row_of(v)) for k, v in value.items()
+                    if str(k).strip().lower() != "total"]
         return None
     if isinstance(value, list) and value:
         rows = []
         for rec in value:
             if not _is_funnel_record(rec):
-                continue
+                raise ValueError("A funnel row is malformed; refusing to silently drop it.")
             label = _label_of(rec)
             if label.strip().lower() == "total":
                 continue                               # a summary, not a row
@@ -216,23 +210,22 @@ def _unwrap(payload: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
     no_data status says there is none. Returns the payload to read, plus an
     explanatory message when the service reported no data.
     """
+    if payload.get("error") or str(payload.get("status", "")).lower() in ("error", "failed"):
+        raise ValueError(str(payload.get("error") or payload.get("message") or "Funnel service failed."))
     responses = payload.get("responses")
     if isinstance(responses, dict) and responses:
-        merged: dict[str, Any] = {}
-        messages: list[str] = []
-        for entry in responses.values():
-            if not isinstance(entry, dict):
-                continue
-            result = entry.get("result", entry)
-            if isinstance(result, dict):
-                if str(result.get("status", "")).lower() in ("no_data", "empty"):
-                    messages.append(str(result.get("message") or "No data."))
-                    continue
-                merged.update(result)
-        if merged:
-            return merged, None
-        return payload, (messages[0] if messages
-                         else "The funnel service returned no rows.")
+        if len(responses) != 1:
+            raise ValueError("Multiple wrapped results must be formatted separately; merging would lose periods or rows.")
+        entry = next(iter(responses.values()))
+        if not isinstance(entry, dict):
+            raise ValueError("Malformed wrapped funnel result.")
+        result = entry.get("result", entry)
+        if not isinstance(result, dict):
+            raise ValueError("Malformed wrapped funnel result.")
+        return _unwrap(result)
+
+    if payload.get("error") or str(payload.get("status", "")).lower() in ("error", "failed"):
+        raise ValueError(str(payload.get("error") or payload.get("message") or "Funnel service failed."))
 
     # A bare no_data / message payload with no funnel block at all.
     if str(payload.get("status", "")).lower() in ("no_data", "empty"):
@@ -271,7 +264,7 @@ def extract_rows(payload: dict[str, Any],
             return rows, _resolve_scope(scope, tool, rows)
 
     # The record itself, unwrapped.
-    if any(_is_ratio(k) for k in payload):
+    if _is_funnel_record(payload):
         return [("", _row_of(payload))], ""
     return [], ""
 
@@ -286,7 +279,26 @@ def _resolve_scope(scope: str, tool: str, rows: list) -> str:
 
 
 def render(payload: dict[str, Any], heading: str = "",
-           show: str = "both", tool: str = "") -> dict[str, Any]:
+           show: str = "both", tool: str = "", include_totals: bool = True,
+           period_column: str = "") -> dict[str, Any]:
+    """Render or return an explicit failure; malformed data is never skipped."""
+    try:
+        if show not in ("both", "metrics", "ratios"):
+            raise ValueError("show must be both, metrics or ratios.")
+        if tool and tool not in TOOL_SCOPE:
+            raise ValueError("Unrecognised funnel tool.")
+        if period_column not in ("", "Month", "Quarter", "Financial Year", "Period"):
+            raise ValueError("Unrecognised period column.")
+        return _render(payload, heading, show, tool, include_totals, period_column)
+    except (ValueError, TypeError, AttributeError) as exc:
+        return {"ok": False, "error": str(exc), "row_count": 0,
+                "metrics_table": "", "ratios_table": "", "markdown": "",
+                "scope_column": ""}
+
+
+def _render(payload: dict[str, Any], heading: str,
+            show: str, tool: str, include_totals: bool,
+            period_column: str) -> dict[str, Any]:
     """Render a funnel response as the two markdown tables.
 
     `show` is "both" (the default), "metrics" or "ratios", and reflects only
@@ -294,6 +306,10 @@ def render(payload: dict[str, Any], heading: str = "",
     """
     payload, no_data = _unwrap(payload)
     rows, scope = extract_rows(payload, tool)
+    if period_column:
+        scope = period_column
+    if no_data and rows:
+        raise ValueError("The response says no data but also carries funnel rows.")
     if no_data and not rows:
         # A real, honest empty result. Say so plainly rather than rendering
         # an empty table, which would read as "we measured zero" instead of
@@ -308,7 +324,23 @@ def render(payload: dict[str, Any], heading: str = "",
                 "row_count": 0, "scope_column": "",
                 "metrics_table": "", "ratios_table": "", "markdown": ""}
 
-    totals = payload.get("totals") or {}
+    totals = dict(payload.get("totals") or {})
+    for key in _ROW_KEYS:
+        block = payload.get(key)
+        candidates = ([(str(k), v) for k, v in block.items()] if isinstance(block, dict)
+                      else [(_label_of(v), v) for v in block if isinstance(v, dict)]
+                      if isinstance(block, list) else [])
+        for label, record in candidates:
+            if label.strip().lower() != "total" or not isinstance(record, dict):
+                continue
+            for metric, value in record.items():
+                if metric not in _COUNT_KEYS:
+                    continue
+                if metric in totals and totals[metric] != value:
+                    raise ValueError("The totals block and Total row disagree.")
+                totals[metric] = value
+    if not include_totals:
+        totals = {}
     # Two independent questions. `labelled` decides whether a breakdown
     # column appears -- a funnel filtered to ONE source is still a source
     # breakdown and must say which source. `multi` decides S.No and the
@@ -327,15 +359,15 @@ def render(payload: dict[str, Any], heading: str = "",
             f"📊 Funnel Conversion Ratios{heading and ' — ' + heading}\n\n{ratios_md}")
 
     # A dropped key must never be silent. A lead or breakdown funnel reports
-    # all five stage-to-stage ratios, so if one is absent here the payload lost
-    # it in transit rather than the service never having had it. On 8 Sep 2026
+    # all five stage-to-stage ratios. Absence is an error; compare with the
+    # original response before attributing it to the backend or transmission. On 8 Sep 2026
     # MD:SD was present in the tool response and missing from what reached this
     # function, and the ratios table quietly came out with four columns.
     # The user funnels are the honest exception: they carry no lead stages, so
     # TL:VL, VL:SOL and SOL:MB genuinely do not exist for them.
     expected = ([c for c in RATIO_COLUMNS if c in ("MB:MD", "MD:SD")]
                 if _user_funnel(tool, rows) else RATIO_COLUMNS)
-    missing = [c for c in expected if not _present(rows, c)]
+    missing = [c for c in expected if any(c not in rec for _, rec in rows)]
 
     out = {
         "ok": True,
@@ -345,21 +377,28 @@ def render(payload: dict[str, Any], heading: str = "",
         "ratios_table": ratios_md,
         "markdown": "\n\n".join(blocks),
     }
-    if missing:
+    expected_metrics = (["Meeting Booked", "Meeting Done", "Sales Done"]
+                        if _user_funnel(tool, rows) else [k for k, _ in METRIC_COLUMNS])
+    missing_metrics = [k for k in expected_metrics if any(k not in rec for _, rec in rows)]
+    if missing_metrics:
+        out["missing_metric_columns"] = missing_metrics
+    if missing or missing_metrics:
+        out["ok"] = False
         out["missing_ratio_columns"] = missing
         out["warning"] = (
-            f"These ratio columns were expected but not present in the payload: "
-            f"{', '.join(missing)}. The funnel services return all of them, so "
-            f"the response was probably trimmed on the way here. Send the tool "
-            f"response through unchanged and call again."
+            f"Required fields are absent from one or more rows: {', '.join(missing + missing_metrics)}. "
+            "Compare with the original response; the origin of the missing fields is unverified."
         )
+        out["error"] = out["warning"]
+        # Partial tables are diagnostic only. No finished answer on failure.
+        out["markdown"] = ""
     return out
 
 
 def _user_funnel(tool: str, rows: list[tuple[str, dict]]) -> bool:
     """A user funnel has no lead stages, so it reports only MB:MD and MD:SD."""
-    if tool.strip().lower() in ("lead_user_funnel", "sales_user_funnel"):
-        return True
+    if tool:
+        return tool.strip().lower() in ("lead_user_funnel", "sales_user_funnel")
     return not any("Total Leads" in rec for _, rec in rows)
 
 
@@ -386,7 +425,7 @@ def _metrics_table(rows, scope, totals, multi, labelled) -> str:
             _fmt(rec.get(k), _kind_of(k)) for k, _ in cols]
         body.append(cells)
 
-    if multi:
+    if multi and totals:
         # The Total row is COPIED from the backend's totals block, never summed.
         # A breakdown that can double-count (a lead under two sub-sources) makes
         # the row sum legitimately disagree with the backend's figure.
@@ -413,8 +452,10 @@ def _ratios_table(rows, scope, labelled) -> str:
 
 
 def _markdown(header: list[str], body: list[list[str]]) -> str:
-    lines = ["| " + " | ".join(header) + " |",
+    def cell(value):
+        return html.escape(str(value), quote=False).replace("|", "&#124;").replace("\r\n", "\n").replace("\n", "<br>")
+    lines = ["| " + " | ".join(map(cell, header)) + " |",
              "|" + "|".join("---" for _ in header) + "|"]
     for row in body:
-        lines.append("| " + " | ".join(row) + " |")
+        lines.append("| " + " | ".join(map(cell, row)) + " |")
     return "\n".join(lines)

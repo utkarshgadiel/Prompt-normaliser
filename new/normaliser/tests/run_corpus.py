@@ -5,8 +5,7 @@ Corpora:
   new.md        -- 262 client UAT prompts
   crmprompts.md -- 130 earlier production prompts
 
-Funnel prompts belong to the CRM-Funnel agent and are out of scope for this
-phase; they are counted separately rather than as failures.
+Includes report and funnel planning. Coverage is not a live data accuracy score.
 
 Run: python tests/run_corpus.py [--csv out.csv]
 """
@@ -45,11 +44,9 @@ def load(path: Path) -> list[str]:
 
 def classify(q: str):
     """Return (bucket, result). Buckets are mutually exclusive."""
-    if FUNNEL.search(q):
-        return "funnel_out_of_scope", None
     r = normalise(q, TODAY)
     if not r.ok:
-        return "needs_clarification", r
+        return "backend_unavailable" if r.blocked_reason else "needs_clarification", r
     if r.unknown_entities:
         return "unknown_entity", r
     return "normalised", r
@@ -91,9 +88,9 @@ def main() -> int:
             })
 
         total = len(prompts)
-        in_scope = total - counts["funnel_out_of_scope"]
+        in_scope = total
         print(f"\n=== {name} — {total} prompts ===")
-        print(f"  funnel (other agent)   {counts['funnel_out_of_scope']:4d}")
+        print(f"  backend unavailable    {counts['backend_unavailable']:4d}")
         print(f"  in scope               {in_scope:4d}")
         if in_scope:
             ok = counts["normalised"]
@@ -109,8 +106,8 @@ def main() -> int:
 
     print(f"\n=== combined ===")
     tot = sum(grand.values())
-    ins = tot - grand["funnel_out_of_scope"]
-    print(f"  {tot} prompts, {ins} in scope for CRM-Data")
+    ins = tot
+    print(f"  {tot} prompts, {ins} in scope across report and funnel planning")
     if ins:
         print(f"  normalised {grand['normalised']}/{ins} = "
               f"{grand['normalised'] / ins * 100:.1f}%")
